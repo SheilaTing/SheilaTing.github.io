@@ -1,0 +1,262 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>vueRecord | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="vue路由传参——–params和query的区别1.params只能用name来引入路由，query用path来引入2.params类似于post，query更加类似于我们ajax中get传参，说的再简单一点，前者在浏览器地址栏中不显示参数，后者显示，所以params传值相对安全一些。3.取值用法类似分别是this.$route.params.name和this.$route.query.n">
+<meta property="og:type" content="article">
+<meta property="og:title" content="vueRecord">
+<meta property="og:url" content="http://yoursite.com/2019/08/20/vueRecord/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="vue路由传参——–params和query的区别1.params只能用name来引入路由，query用path来引入2.params类似于post，query更加类似于我们ajax中get传参，说的再简单一点，前者在浏览器地址栏中不显示参数，后者显示，所以params传值相对安全一些。3.取值用法类似分别是this.$route.params.name和this.$route.query.n">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2019-08-20T10:24:23.738Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="vueRecord">
+<meta name="twitter:description" content="vue路由传参——–params和query的区别1.params只能用name来引入路由，query用path来引入2.params类似于post，query更加类似于我们ajax中get传参，说的再简单一点，前者在浏览器地址栏中不显示参数，后者显示，所以params传值相对安全一些。3.取值用法类似分别是this.$route.params.name和this.$route.query.n">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-vueRecord" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2019/08/20/vueRecord/" class="article-date">
+  <time datetime="2019-08-20T03:21:25.000Z" itemprop="datePublished">2019-08-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      vueRecord
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <ul>
+<li></li>
+<li><p>vue路由传参——–params和query的区别<br>1.params只能用name来引入路由，query用path来引入<br>2.params类似于post，query更加类似于我们ajax中get传参，说的再简单一点，前者在浏览器地址栏中不显示参数，后者显示，所以params传值相对安全一些。<br>3.取值用法类似分别是this.$route.params.name和this.$route.query.name。<br>4.params传值一刷新就没了，query传值刷新还存在  <a id="more"></a> </p>
+<pre><code>this.$router.push({
+path:&quot;/detail&quot;,
+params:{
+name:&apos;nameValue&apos;,
+code:10011
+}
+});
+
+this.$router.push({
+path:&apos;/xxx&apos;
+query:{
+id:id
+}
+})
+</code></pre><p>总结：少量参数可以用此方法，如果有大量公共数据，可以采用vuex或本地存储的方式。</p>
+</li>
+</ul>
+<h2 id="router-link-传递参数"><a href="#router-link-传递参数" class="headerlink" title="router-link 传递参数"></a>router-link 传递参数</h2><pre><code>拼接 ： :to = &apos;&quot;/detail/&quot;+item.id&apos;
+或者： ：to{name=&quot;路由名称&quot;，query:{参数名称：参数值}}
+或者： ：to{name=&quot;路由名称&quot;，params:{参数名称：参数值}}
+</code></pre><h2 id="模板字符串"><a href="#模板字符串" class="headerlink" title="模板字符串"></a>模板字符串</h2><pre><code>使用${} 传值 `` 包裹
+</code></pre><h2 id="使用moment-js-加过滤器-处理日期格式化"><a href="#使用moment-js-加过滤器-处理日期格式化" class="headerlink" title="使用moment.js 加过滤器 处理日期格式化"></a>使用moment.js 加过滤器 处理日期格式化</h2><pre><code>自定义全局过滤器
+Vue.filter(&apos;过滤器名称&apos;，function(data,formatstr){
+    return Monment(data),format(formatstr)
+});
+使用时：
+{{data|过滤器名称（converTime）("YYYY-MM-DD")}}
+</code></pre><h2 id="图片懒加载"><a href="#图片懒加载" class="headerlink" title="图片懒加载"></a>图片懒加载</h2><pre><code>可以使用MINT-UI的 lazy-load 来实现，机制 加载 n+1 张图片，n 为页面能显示的数量
+</code></pre><h2 id="vue-绑定原生事件-click-…"><a href="#vue-绑定原生事件-click-…" class="headerlink" title="vue 绑定原生事件 click …"></a>vue 绑定原生事件 click …</h2><pre><code>https://www.cnblogs.com/qjuly/p/8881982.html
+</code></pre><h2 id="为了解决用户直接使用URL-访问页面"><a href="#为了解决用户直接使用URL-访问页面" class="headerlink" title="为了解决用户直接使用URL 访问页面"></a>为了解决用户直接使用URL 访问页面</h2><pre><code>可以使用导航守卫功能，
+beforeRouterUpdate
+onRouterUpdate
+afterRouterUpdate
+时候接受携带的参数，请求相应的接口，渲染页面即可
+或者直接进入也面时携带相应参数也可以
+</code></pre><h2 id="图片查看器-可以使用插件-vue-preview"><a href="#图片查看器-可以使用插件-vue-preview" class="headerlink" title="图片查看器  可以使用插件 vue-preview"></a>图片查看器  可以使用插件 vue-preview</h2>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2019/08/20/vueRecord/" data-id="ck8u72sjc000bpcw1ypclmwdf" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2019/08/24/js-event/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          js-event
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2019/07/31/js-record/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">js record</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/10/markdown-常用语法/">markdown 常用语法</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/10/hello-world/">Hello World</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/06/css学习笔记/">css学习笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/24/js-event/">js-event</a>
+          </li>
+        
+          <li>
+            <a href="/2019/08/20/vueRecord/">vueRecord</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
