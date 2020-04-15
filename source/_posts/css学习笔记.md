@@ -80,11 +80,11 @@ date: 2020-04-06 18:55:30
 
   - 伪类/first-child
 
-    > 作为自己父亲的第x个孩子
+    作为自己父亲的第x个孩子
 
   - 伪类/first-of-type
 
-    > 作为自己父亲当前标签类型的第x个孩子 ü first-of-type、last-of-type、nth-of-type(n)
+    作为自己父亲当前标签类型的第x个孩子 ü first-of-type、last-of-type、nth-of-type(n)
 
   - 伪类 :link - :visited - :hover - :active
 
@@ -96,13 +96,13 @@ date: 2020-04-06 18:55:30
 
   - • :target  选中页面上id为当前hash的元素 
 
-    > 实战1 • 不使用JS实现一个Tab切换 http://js.jirengu.com/fikan ü 实战2 • 不使用JS实现弹框 http://js.jirengu.com/neyul • :not(xx) ü 选中不为xx的元素
+    实战1 • 不使用JS实现一个Tab切换 http://js.jirengu.com/fikan ü 实战2 • 不使用JS实现弹框 http://js.jirengu.com/neyul • :not(xx) ü 选中不为xx的元素
 
   #### 伪元素
 
   - ::before、 ::after
 
-  > 在元素内插入一段内容，作为元素的第一个/最后一个 孩子 ü 必须有 content 属性 ü 常用来替代图标、无实际意义的标签
+  在元素内插入一段内容，作为元素的第一个/最后一个 孩子 ü 必须有 content 属性 ü 常用来替代图标、无实际意义的标签
 
   - ::first-line ü 选中段落的第一行 •
   -  ::first-letter ü 选中段落的第一个字符
@@ -117,28 +117,28 @@ date: 2020-04-06 18:55:30
 
   #### 优先级顺序
 
-  > !import > 内联样式 > 选择器设置样式 > 浏 览器默认样式 > 继承样式
+  !import > 内联样式 > 选择器设置样式 > 浏览器默认样式 > 继承样式
 
-  > !import的优先级最高 ü 尽量少用!import，除非迫不得已 • 比如队友写了垃圾代码如内联样式，需要覆盖掉 • 比如有一些高优先级的代码，只能通过!import来覆盖
-  >
-  > 浏览器默认样式
-  >
-  > 继承样式
+  !import的优先级最高  尽量少用!import，除非迫不得已 • 比如队友写了垃圾代码如内联样式，需要覆盖掉 • 比如有一些高优先级的代码，只能通过!import来覆盖
+  
+  浏览器默认样式
+  
+  继承样式
 
   #### 继承属性与非继承属性
 
-  > color、 font-size、font-family、line-height
+  color、 font-size、font-family、line-height
 
   #### 非继承属性
 
-  > border、background、margin、padding、display...
+  border、background、margin、padding、display...
 
   #### 如何查询该属性是否可继承
 
-  > https://www.w3.org/TR/CSS21/propidx.html
+  https://www.w3.org/TR/CSS21/propidx.html
 
   #### 优先级计算
 
-  > 千位： 如果声明在 style 的属性（内联样式）则该位得一分 ü 百位： 选择器中包含ID选择器则该位得一分 ü 十位： 选择器中包含类选择器、属性选择器或者伪类则该位得一分。 ü 个位：选择器中包含元素、伪元素选择器则该位得一分。
+  千位： 如果声明在 style 的属性（内联样式）则该位得一分 ü 百位： 选择器中包含ID选择器则该位得一分 ü 十位： 选择器中包含类选择器、属性选择器或者伪类则该位得一分。 ü 个位：选择器中包含元素、伪元素选择器则该位得一分。
 
   ![](./cal.png)
