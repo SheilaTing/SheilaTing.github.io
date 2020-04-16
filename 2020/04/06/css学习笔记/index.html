@@ -15,7 +15,7 @@
 <meta property="og:description" content="css引入方式 link方式在html页面中引用 &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;index.css&amp;quot;&amp;gt;  @import 方式在 style标签或者 css文件中引入，注意在CSS文件中引入时，要在顶部引入（即前面无css语句）且句尾要用分号;结束 否则不生效 例如：          @import url(&quot;ind">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/04/06/css学习笔记/cal.png">
-<meta property="og:updated_time" content="2020-04-10T12:10:59.506Z">
+<meta property="og:updated_time" content="2020-04-15T04:14:54.718Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="css学习笔记">
 <meta name="twitter:description" content="css引入方式 link方式在html页面中引用 &amp;lt;link rel=&amp;quot;stylesheet&amp;quot; href=&amp;quot;index.css&amp;quot;&amp;gt;  @import 方式在 style标签或者 css文件中引入，注意在CSS文件中引入时，要在顶部引入（即前面无css语句）且句尾要用分号;结束 否则不生效 例如：          @import url(&quot;ind">
@@ -115,7 +115,7 @@
 <li><p>AB  选中既是A又是B的元素，注意A和B之间没有空格</p>
 </li>
 <li><p>A &gt; B  选中A 的直接子元素B</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">”detail”</span>&gt;</span> <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span>aaa<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="tag">&lt;/<span class="name">ul</span>&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="tag">&lt;<span class="name">li</span>&gt;</span>bbb<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="tag">&lt;/<span class="name">ul</span>&gt;</span> <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"> .detail li &#123; border: 1px solid red; &#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">ul</span> <span class="attr">class</span>=<span class="string">”detail”</span>&gt;</span> <span class="tag">&lt;<span class="name">li</span>&gt;</span><span class="tag">&lt;<span class="name">ul</span>&gt;</span><span class="tag">&lt;<span class="name">li</span>&gt;</span>aaa<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="tag">&lt;/<span class="name">ul</span>&gt;</span> <span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="tag">&lt;<span class="name">li</span>&gt;</span>bbb<span class="tag">&lt;/<span class="name">li</span>&gt;</span> <span class="tag">&lt;/<span class="name">ul</span>&gt;</span> <span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="css"> <span class="selector-class">.detail</span> <span class="selector-tag">li</span> &#123; <span class="attribute">border</span>: <span class="number">1px</span> solid red; &#125;</span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
 </li>
 <li><p>A + B  选中A 的下一个相邻元素B</p>
 </li>
@@ -128,14 +128,10 @@
 </blockquote>
 <ul>
 <li><p>伪类/first-child</p>
-<blockquote>
 <p>作为自己父亲的第x个孩子</p>
-</blockquote>
 </li>
 <li><p>伪类/first-of-type</p>
-<blockquote>
 <p>作为自己父亲当前标签类型的第x个孩子 ü first-of-type、last-of-type、nth-of-type(n)</p>
-</blockquote>
 </li>
 <li><p>伪类 :link - :visited - :hover - :active</p>
 </li>
@@ -147,14 +143,10 @@
 </ul>
 </li>
 <li><p>• :target  选中页面上id为当前hash的元素 </p>
-<blockquote>
 <p>实战1 • 不使用JS实现一个Tab切换 <a href="http://js.jirengu.com/fikan" target="_blank" rel="noopener">http://js.jirengu.com/fikan</a> ü 实战2 • 不使用JS实现弹框 <a href="http://js.jirengu.com/neyul" target="_blank" rel="noopener">http://js.jirengu.com/neyul</a> • :not(xx) ü 选中不为xx的元素</p>
-</blockquote>
 <h4 id="伪元素"><a href="#伪元素" class="headerlink" title="伪元素"></a>伪元素</h4></li>
 <li><p>::before、 ::after</p>
-<blockquote>
 <p>在元素内插入一段内容，作为元素的第一个/最后一个 孩子 ü 必须有 content 属性 ü 常用来替代图标、无实际意义的标签</p>
-</blockquote>
 </li>
 <li><p>::first-line ü 选中段落的第一行 •</p>
 </li>
@@ -175,26 +167,14 @@
 <li><ol start="3">
 <li>继承的样式 (Inherited from xxx)</li>
 </ol>
-<h4 id="优先级顺序"><a href="#优先级顺序" class="headerlink" title="优先级顺序"></a>优先级顺序</h4><blockquote>
-<p>!import &gt; 内联样式 &gt; 选择器设置样式 &gt; 浏 览器默认样式 &gt; 继承样式</p>
-</blockquote>
-<blockquote>
-<p>!import的优先级最高 ü 尽量少用!import，除非迫不得已 • 比如队友写了垃圾代码如内联样式，需要覆盖掉 • 比如有一些高优先级的代码，只能通过!import来覆盖</p>
+<h4 id="优先级顺序"><a href="#优先级顺序" class="headerlink" title="优先级顺序"></a>优先级顺序</h4><p>!import &gt; 内联样式 &gt; 选择器设置样式 &gt; 浏览器默认样式 &gt; 继承样式</p>
+<p>!import的优先级最高  尽量少用!import，除非迫不得已 • 比如队友写了垃圾代码如内联样式，需要覆盖掉 • 比如有一些高优先级的代码，只能通过!import来覆盖</p>
 <p>浏览器默认样式</p>
 <p>继承样式</p>
-</blockquote>
-<h4 id="继承属性与非继承属性"><a href="#继承属性与非继承属性" class="headerlink" title="继承属性与非继承属性"></a>继承属性与非继承属性</h4><blockquote>
-<p>color、 font-size、font-family、line-height</p>
-</blockquote>
-<h4 id="非继承属性"><a href="#非继承属性" class="headerlink" title="非继承属性"></a>非继承属性</h4><blockquote>
-<p>border、background、margin、padding、display…</p>
-</blockquote>
-<h4 id="如何查询该属性是否可继承"><a href="#如何查询该属性是否可继承" class="headerlink" title="如何查询该属性是否可继承"></a>如何查询该属性是否可继承</h4><blockquote>
-<p><a href="https://www.w3.org/TR/CSS21/propidx.html" target="_blank" rel="noopener">https://www.w3.org/TR/CSS21/propidx.html</a></p>
-</blockquote>
-<h4 id="优先级计算"><a href="#优先级计算" class="headerlink" title="优先级计算"></a>优先级计算</h4><blockquote>
-<p>千位： 如果声明在 style 的属性（内联样式）则该位得一分 ü 百位： 选择器中包含ID选择器则该位得一分 ü 十位： 选择器中包含类选择器、属性选择器或者伪类则该位得一分。 ü 个位：选择器中包含元素、伪元素选择器则该位得一分。</p>
-</blockquote>
+<h4 id="继承属性与非继承属性"><a href="#继承属性与非继承属性" class="headerlink" title="继承属性与非继承属性"></a>继承属性与非继承属性</h4><p>color、 font-size、font-family、line-height</p>
+<h4 id="非继承属性"><a href="#非继承属性" class="headerlink" title="非继承属性"></a>非继承属性</h4><p>border、background、margin、padding、display…</p>
+<h4 id="如何查询该属性是否可继承"><a href="#如何查询该属性是否可继承" class="headerlink" title="如何查询该属性是否可继承"></a>如何查询该属性是否可继承</h4><p><a href="https://www.w3.org/TR/CSS21/propidx.html" target="_blank" rel="noopener">https://www.w3.org/TR/CSS21/propidx.html</a></p>
+<h4 id="优先级计算"><a href="#优先级计算" class="headerlink" title="优先级计算"></a>优先级计算</h4><p>千位： 如果声明在 style 的属性（内联样式）则该位得一分 ü 百位： 选择器中包含ID选择器则该位得一分 ü 十位： 选择器中包含类选择器、属性选择器或者伪类则该位得一分。 ü 个位：选择器中包含元素、伪元素选择器则该位得一分。</p>
 <p><img src="./cal.png" alt></p>
 </li>
 </ul>
@@ -202,7 +182,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/06/css学习笔记/" data-id="ck90t3ac90002j8w1r1bzixn3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/06/css学习笔记/" data-id="ck92689k90003c8w1x23p7112" class="article-share-link">Share</a>
       
       
     </footer>
@@ -274,6 +254,10 @@
       <ul>
         
           <li>
+            <a href="/2020/04/15/水平垂直剧中的几种方式/">水平垂直剧中的几种方式</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/14/flex-布局/">flex 布局</a>
           </li>
         
@@ -287,10 +271,6 @@
         
           <li>
             <a href="/2020/04/10/markdown-常用语法/">markdown 常用语法</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/10/hello-world/">Hello World</a>
           </li>
         
       </ul>
