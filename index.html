@@ -62,6 +62,67 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-js运算符疑惑笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/20/js运算符疑惑笔记/" class="article-date">
+  <time datetime="2020-04-20T07:32:46.000Z" itemprop="datePublished">2020-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/20/js运算符疑惑笔记/">js运算符疑惑笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="运算符"><a href="#运算符" class="headerlink" title="+ 运算符"></a>+ 运算符</h4><ul>
+<li>在两个操作数都是数字的时候，会做加法运算 </li>
+<li>两个参数都是字符串或在有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接 </li>
+<li>在参数有对象的情况下会调用其valueOf或toString ü 在只有一个字符串参数的时候会尝试将其转换为数字 </li>
+<li>在只有一个数字参数的时候返回其整数值（例如：+“3” 返回3）</li>
+</ul>
+<h4 id="x-和-x"><a href="#x-和-x" class="headerlink" title="++x 和 x++"></a>++x 和 x++</h4><p>++x 表示x 先自加1在参与运算，而x++表示x先参与运算，再自加1</p>
+<p>例如：a=1; b=a++; 此时 b=1; a=2；</p>
+<p>​            a=1;b=++a; 此时  a=a+1=2; b = a=2;</p>
+<p>​            – 和 ++ 是一样的道理；</p>
+<p>注意：我今天突然忘记了这种写法： a+=2; 代表 a=a+2; 时间久了不写，忘记了。哈哈，不只是+=包括%= -= 都是一样的道理；</p>
+<!--展开更多-->
+<p>注意，还有一种场景：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">let a = 1</span><br><span class="line">console.log( a+++a ) /** 此时打印出结果为：3**/</span><br><span class="line">let a = 1</span><br><span class="line">console.log( a+a++ ) /** 此时打印结果为： 2**/</span><br><span class="line">解释如下：</span><br><span class="line">  +</span><br><span class="line">    /   \</span><br><span class="line">   /     \</span><br><span class="line"> a        a++</span><br><span class="line"></span><br><span class="line">编译器的处理过程：</span><br><span class="line">1. push(a), a入栈(1)</span><br><span class="line">2. push(a++)，即push(1)，之后 a自增变成2</span><br><span class="line">3. result = pop()+pop(), 出栈两个操作数(1,1)相加，得到2</span><br><span class="line"></span><br><span class="line">      +</span><br><span class="line">    /   \</span><br><span class="line">   /     \</span><br><span class="line">  a++     a</span><br><span class="line"></span><br><span class="line">编译器的处理过程：</span><br><span class="line">1. push(a++), 即push(1)，之后 a自增变成2</span><br><span class="line">2. push(a)，即push(2)</span><br><span class="line">3. result = pop()+pop(), 出栈两个操作数(1,2)相加，得到3</span><br></pre></td></tr></table></figure>
+<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p>对于判断语句if（）来说</p>
+<p>看括号中的内容的类型来判断：参考下表：</p>
+<p><img src="../img/js疑惑笔记/boolean1.png" alt></p>
+<p>例如：括号中如果是“”空字符串则为false 其他都为true 包括（“ ”）的。但是当“ ”直接与true作比较的话，会返回false。原因是作比较时，会把布尔类型的值 false 转为数字number 类型 也就是1，然后把“ ”也转化为number 类型也是0,1和0比较自然为false；而在if（）语句中，他是通过 boolean()方法来转化的，所以为true；</p>
+<p>还有，当两个不同类型的变量或表达式作比较时 x和y，参考下表：</p>
+<p>解释：例如 x 为numer y为string 则比较的时候会把Y（string类型）通过toNumber方法转化后作比较</p>
+<p><img src="../img/js疑惑笔记/boolean2.png" alt></p>
+<h4 id="toNumber方法"><a href="#toNumber方法" class="headerlink" title="toNumber方法"></a>toNumber方法</h4><p><img src="../img/js疑惑笔记/number.png" alt></p>
+<p>上图解析：当 toNumber()方法中的参数为undefined时，结果为NaN;一次类推；</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ck987ghox000a4ww1il41ygt7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-grid-布局" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/16/grid-布局/" class="article-date">
@@ -127,7 +188,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/16/grid-布局/" data-id="ck928oepp0004i8w1pd8n0ps7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/16/grid-布局/" data-id="ck987ghos00064ww1naqllsoe" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -173,7 +234,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/15/水平垂直居中的几种方式/" data-id="ck928oeqg000bi8w1sf8u7pch" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/15/水平垂直居中的几种方式/" data-id="ck987ghp7000f4ww1yyp4qc8w" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -256,7 +317,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/14/flex-布局/" data-id="ck928oepn0003i8w1jni6mfu2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/14/flex-布局/" data-id="ck987ghoq00054ww1970qj8db" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -311,7 +372,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/13/css案例总结/" data-id="ck928oepl0002i8w1yszwxlkk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/13/css案例总结/" data-id="ck987ghop00044ww1pj84q9xw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -364,7 +425,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/11/css-float/" data-id="ck928oepj0001i8w166upjvtb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/11/css-float/" data-id="ck987ghok00014ww13tnhhhtd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -425,7 +486,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/10/markdown-常用语法/" data-id="ck928oeqc000ai8w1vikzasws" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/10/markdown-常用语法/" data-id="ck987ghp0000b4ww1y5iqm000" class="article-share-link">Share</a>
       
       
     </footer>
@@ -470,7 +531,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/10/hello-world/" data-id="ck928oeqj000ci8w1mikqyd4b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/10/hello-world/" data-id="ck987ghot00074ww117v1r0lp" class="article-share-link">Share</a>
       
       
     </footer>
@@ -528,7 +589,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/06/css学习笔记/" data-id="ck928oepr0005i8w1q30h9kug" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/06/css学习笔记/" data-id="ck987ghon00034ww1ktvc5r33" class="article-share-link">Share</a>
       
       
     </footer>
@@ -569,54 +630,11 @@ console.log(event)；
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/24/js-event/" data-id="ck928oeq50006i8w16nusa8su" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/24/js-event/" data-id="ck987ghow00094ww1yejy0o0g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-vueRecord" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/20/vueRecord/" class="article-date">
-  <time datetime="2019-08-20T03:21:25.000Z" itemprop="datePublished">2019-08-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/20/vueRecord/">vueRecord</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li></li>
-<li><p>vue路由传参——–params和query的区别<br>1.params只能用name来引入路由，query用path来引入<br>2.params类似于post，query更加类似于我们ajax中get传参，说的再简单一点，前者在浏览器地址栏中不显示参数，后者显示，所以params传值相对安全一些。<br>3.取值用法类似分别是this.$route.params.name和this.$route.query.name。<br>4.params传值一刷新就没了，query传值刷新还存在
-        
-          <p class="article-more-link">
-            <a href="/2019/08/20/vueRecord/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/20/vueRecord/" data-id="ck928oeqn000ei8w13hwo0clx" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -652,7 +670,7 @@ console.log(event)；
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/js/" style="font-size: 10px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a>
+      <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a>
     </div>
   </div>
 
@@ -674,6 +692,10 @@ console.log(event)；
       <ul>
         
           <li>
+            <a href="/2020/04/20/js运算符疑惑笔记/">js运算符疑惑笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/16/grid-布局/">grid 布局</a>
           </li>
         
@@ -687,10 +709,6 @@ console.log(event)；
         
           <li>
             <a href="/2020/04/13/css案例总结/">css案例总结</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/11/css-float/">css-float</a>
           </li>
         
       </ul>

@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>js运算符疑惑笔记 | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="+ 运算符 在两个操作数都是数字的时候，会做加法运算  两个参数都是字符串或在有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接  在参数有对象的情况下会调用其valueOf或toString ü 在只有一个字符串参数的时候会尝试将其转换为数字  在只有一个数字参数的时候返回其整数值（例如：+“3” 返回3）  ++x 和 x++++x 表示x 先自加1在参与运算，而x++表示x先">
+<meta name="keywords" content="js">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js运算符疑惑笔记">
+<meta property="og:url" content="http://yoursite.com/2020/04/20/js运算符疑惑笔记/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="+ 运算符 在两个操作数都是数字的时候，会做加法运算  两个参数都是字符串或在有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接  在参数有对象的情况下会调用其valueOf或toString ü 在只有一个字符串参数的时候会尝试将其转换为数字  在只有一个数字参数的时候返回其整数值（例如：+“3” 返回3）  ++x 和 x++++x 表示x 先自加1在参与运算，而x++表示x先">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2020/04/20/img/js疑惑笔记/boolean1.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/20/img/js疑惑笔记/boolean2.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/20/img/js疑惑笔记/number.png">
+<meta property="og:updated_time" content="2020-04-20T08:04:44.740Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js运算符疑惑笔记">
+<meta name="twitter:description" content="+ 运算符 在两个操作数都是数字的时候，会做加法运算  两个参数都是字符串或在有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接  在参数有对象的情况下会调用其valueOf或toString ü 在只有一个字符串参数的时候会尝试将其转换为数字  在只有一个数字参数的时候返回其整数值（例如：+“3” 返回3）  ++x 和 x++++x 表示x 先自加1在参与运算，而x++表示x先">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/20/img/js疑惑笔记/boolean1.png">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js运算符疑惑笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/20/js运算符疑惑笔记/" class="article-date">
+  <time datetime="2020-04-20T07:32:46.000Z" itemprop="datePublished">2020-04-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js运算符疑惑笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="运算符"><a href="#运算符" class="headerlink" title="+ 运算符"></a>+ 运算符</h4><ul>
+<li>在两个操作数都是数字的时候，会做加法运算 </li>
+<li>两个参数都是字符串或在有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接 </li>
+<li>在参数有对象的情况下会调用其valueOf或toString ü 在只有一个字符串参数的时候会尝试将其转换为数字 </li>
+<li>在只有一个数字参数的时候返回其整数值（例如：+“3” 返回3）</li>
+</ul>
+<h4 id="x-和-x"><a href="#x-和-x" class="headerlink" title="++x 和 x++"></a>++x 和 x++</h4><p>++x 表示x 先自加1在参与运算，而x++表示x先参与运算，再自加1</p>
+<p>例如：a=1; b=a++; 此时 b=1; a=2；</p>
+<p>​            a=1;b=++a; 此时  a=a+1=2; b = a=2;</p>
+<p>​            – 和 ++ 是一样的道理；</p>
+<p>注意：我今天突然忘记了这种写法： a+=2; 代表 a=a+2; 时间久了不写，忘记了。哈哈，不只是+=包括%= -= 都是一样的道理；</p>
+<!--展开更多-->
+<p>注意，还有一种场景：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">let a = 1</span><br><span class="line">console.log( a+++a ) /** 此时打印出结果为：3**/</span><br><span class="line">let a = 1</span><br><span class="line">console.log( a+a++ ) /** 此时打印结果为： 2**/</span><br><span class="line">解释如下：</span><br><span class="line">  +</span><br><span class="line">    /   \</span><br><span class="line">   /     \</span><br><span class="line"> a        a++</span><br><span class="line"></span><br><span class="line">编译器的处理过程：</span><br><span class="line">1. push(a), a入栈(1)</span><br><span class="line">2. push(a++)，即push(1)，之后 a自增变成2</span><br><span class="line">3. result = pop()+pop(), 出栈两个操作数(1,1)相加，得到2</span><br><span class="line"></span><br><span class="line">      +</span><br><span class="line">    /   \</span><br><span class="line">   /     \</span><br><span class="line">  a++     a</span><br><span class="line"></span><br><span class="line">编译器的处理过程：</span><br><span class="line">1. push(a++), 即push(1)，之后 a自增变成2</span><br><span class="line">2. push(a)，即push(2)</span><br><span class="line">3. result = pop()+pop(), 出栈两个操作数(1,2)相加，得到3</span><br></pre></td></tr></table></figure>
+<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p>对于判断语句if（）来说</p>
+<p>看括号中的内容的类型来判断：参考下表：</p>
+<p><img src="../img/js疑惑笔记/boolean1.png" alt></p>
+<p>例如：括号中如果是“”空字符串则为false 其他都为true 包括（“ ”）的。但是当“ ”直接与true作比较的话，会返回false。原因是作比较时，会把布尔类型的值 false 转为数字number 类型 也就是1，然后把“ ”也转化为number 类型也是0,1和0比较自然为false；而在if（）语句中，他是通过 boolean()方法来转化的，所以为true；</p>
+<p>还有，当两个不同类型的变量或表达式作比较时 x和y，参考下表：</p>
+<p>解释：例如 x 为numer y为string 则比较的时候会把Y（string类型）通过toNumber方法转化后作比较</p>
+<p><img src="../img/js疑惑笔记/boolean2.png" alt></p>
+<h4 id="toNumber方法"><a href="#toNumber方法" class="headerlink" title="toNumber方法"></a>toNumber方法</h4><p><img src="../img/js疑惑笔记/number.png" alt></p>
+<p>上图解析：当 toNumber()方法中的参数为undefined时，结果为NaN;一次类推；</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ck987ghox000a4ww1il41ygt7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/16/grid-布局/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">grid 布局</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/20/js运算符疑惑笔记/">js运算符疑惑笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/16/grid-布局/">grid 布局</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/15/水平垂直居中的几种方式/">水平垂直剧中的几种方式</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/14/flex-布局/">flex 布局</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/13/css案例总结/">css案例总结</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
