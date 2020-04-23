@@ -62,6 +62,67 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-js-变量作用域" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/23/js-变量作用域/" class="article-date">
+  <time datetime="2020-04-23T09:49:49.000Z" itemprop="datePublished">2020-04-23</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/23/js-变量作用域/">js 变量作用域</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="函数相关"><a href="#函数相关" class="headerlink" title="函数相关"></a>函数相关</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">console</span>.log(a + b)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> result = sum(<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br></pre></td></tr></table></figure>
+<p>以上代码输出结果为 “undefined”,因为 console.log()本身返回值就是 undefined；</p>
+<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><p>函数名=参数=&gt;函数语句   单个参数，单行语句的情况</p>
+<p>例如： const fn =name =&gt; ‘hello’+name</p>
+<p>name 为参数名称，”hello”+name 为函数语句 =&gt;相当于大花括号</p>
+<p>看下图：</p>
+<p><img src="../img/js作用域/arrow.png" alt></p>
+<h4 id="函数的命名规则"><a href="#函数的命名规则" class="headerlink" title="函数的命名规则"></a>函数的命名规则</h4><ul>
+<li>动词、动宾 sum、hide、show ü printName、sayHello </li>
+<li>返回一个非布尔值 ü getData、getBooks </li>
+<li>设置内容 ü setInfo、setData </li>
+<li>返回一个布尔值 ü canClicked、hasMoney、isEnabled</li>
+</ul>
+<h4 id="变量提升（作用域）"><a href="#变量提升（作用域）" class="headerlink" title="变量提升（作用域）"></a>变量提升（作用域）</h4><p>var 声明前置（变量提升 hoisting）</p>
+<p>即在未定义之前可以调用它，引文js上下文会把后续所有var变量先定义执行，也就是提到前面；</p>
+<p>function 声明前置：同上</p>
+<p><img src="../img/js作用域/hoist.png" alt></p>
+<p>例1中，会正确输出 a,即使它是在使用后声明的，因为，js 上下文会把当前上下文中所有var声明的变量，提到前面声明；即变成：var a; a=3;……  函数体重的b也是一样的</p>
+<p>例子2中，fn()会正常输出，因为函数声明也会前置，fn2会报错，因为 此时，fn2() = fn2. fn2不是函数，执行会报错，也就是说，这个表达式没有没前置声明；</p>
+        
+          <p class="article-more-link">
+            <a href="/2020/04/23/js-变量作用域/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ck9cn89k40006ggw1rcswx2kn" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-js运算符疑惑笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/20/js运算符疑惑笔记/" class="article-date">
@@ -111,7 +172,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ck987ghox000a4ww1il41ygt7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ck9cn89kx000eggw13xq03zxl" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -188,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/16/grid-布局/" data-id="ck987ghos00064ww1naqllsoe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/16/grid-布局/" data-id="ck9cn89ke000cggw1rnzf7en1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -234,7 +295,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/15/水平垂直居中的几种方式/" data-id="ck987ghp7000f4ww1yyp4qc8w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/15/水平垂直居中的几种方式/" data-id="ck9cn89kw000dggw1jius4n1p" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -317,7 +378,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/14/flex-布局/" data-id="ck987ghoq00054ww1970qj8db" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/14/flex-布局/" data-id="ck9cn89k30005ggw1zbps7ohx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -372,7 +433,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/13/css案例总结/" data-id="ck987ghop00044ww1pj84q9xw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/13/css案例总结/" data-id="ck9cn89ln000gggw1c1he5h50" class="article-share-link">Share</a>
       
       
     </footer>
@@ -425,7 +486,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/11/css-float/" data-id="ck987ghok00014ww13tnhhhtd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/11/css-float/" data-id="ck9cn89ju0001ggw1tft800uw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -486,7 +547,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/10/markdown-常用语法/" data-id="ck987ghp0000b4ww1y5iqm000" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/10/markdown-常用语法/" data-id="ck9cn89k90009ggw1716jzvxo" class="article-share-link">Share</a>
       
       
     </footer>
@@ -531,7 +592,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/10/hello-world/" data-id="ck987ghot00074ww117v1r0lp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/10/hello-world/" data-id="ck9cn89k50007ggw1non35goe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -589,52 +650,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/06/css学习笔记/" data-id="ck987ghon00034ww1ktvc5r33" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/06/css学习笔记/" data-id="ck9cn89jx0002ggw1hv2vmund" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js-event" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/08/24/js-event/" class="article-date">
-  <time datetime="2019-08-24T08:29:29.000Z" itemprop="datePublished">2019-08-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/08/24/js-event/">js-event</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="event-对象"><a href="#event-对象" class="headerlink" title="event 对象"></a>event 对象</h2><pre><code>Event 对象代表事件的状态，比如事件在其中发生的元素、键盘按键的状态、鼠标的位置、鼠标按钮的状态。
-
-事件通常与函数结合使用，函数不会在事件发生前被执行！
-可以在函数内部打印查看
-console.log(event)；
-</code></pre>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/24/js-event/" data-id="ck987ghow00094ww1yejy0o0g" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
     </footer>
   </div>
   
@@ -692,6 +710,10 @@ console.log(event)；
       <ul>
         
           <li>
+            <a href="/2020/04/23/js-变量作用域/">js 变量作用域</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/20/js运算符疑惑笔记/">js运算符疑惑笔记</a>
           </li>
         
@@ -705,10 +727,6 @@ console.log(event)；
         
           <li>
             <a href="/2020/04/14/flex-布局/">flex 布局</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/13/css案例总结/">css案例总结</a>
           </li>
         
       </ul>
