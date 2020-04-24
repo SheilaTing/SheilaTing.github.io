@@ -62,6 +62,165 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-js数组字符串相关api" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/24/js数组字符串相关api/" class="article-date">
+  <time datetime="2020-04-24T07:17:44.000Z" itemprop="datePublished">2020-04-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/24/js数组字符串相关api/">js数组字符串相关api</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>写法：</p>
+<ul>
+<li>双引号</li>
+<li>单引号</li>
+<li><code></code>（es6写法）</li>
+</ul>
+<h4 id="长字符串"><a href="#长字符串" class="headerlink" title="长字符串"></a>长字符串</h4><ul>
+<li>可以用+号拼接</li>
+<li>转义掉最后面的换行符</li>
+<li><code></code>长字符串</li>
+</ul>
+<p>例如： let longStr1 = ‘hello ‘+’world’</p>
+<p>let longStr2 =&#96;饥人谷<br>                             培养有灵魂的工程师&#96;  //此时可以包含回车，会正常输出换行，即按照显示的格式输出</p>
+<p>let longStr3 = ‘hello\<br>                                name’   此时，\转义掉该行的换行符</p>
+<!--showmore-->
+<h4 id="字符串模版"><a href="#字符串模版" class="headerlink" title="字符串模版"></a>字符串模版</h4><p>&#96; xxxx${变量}yyyy&#96;</p>
+<p>${变量名} 解析变量</p>
+<p>字符串方法  注意，字符串操作不会修改原来的字符串</p>
+<ul>
+<li><p>str.length</p>
+</li>
+<li><p>str.charAt(下标) 输出该下标位置的字符串</p>
+</li>
+<li><p>str.charCodeAt(下标) 输出该位置的字符串的asii码</p>
+</li>
+<li><p>str.search()  str.search(‘ab’) ;// 输出ab在该字符串中的起始下标</p>
+</li>
+<li><p>str.indexOf 、str.lastIndexOf</p>
+</li>
+<li><p>str.includes(‘el’);  //检验该字符串是否包含 ‘el’ 结果为 true or false</p>
+</li>
+<li><p>str.startsWith(‘he’);  //检验该字符串是否以 el开头，返回布尔值</p>
+</li>
+<li><p>str.endWith(‘hi’); 检验该字符串是否以hi结尾，返回布尔值</p>
+</li>
+<li><p>str.substr(起始下标，长度); //返回新的截取的字符串</p>
+</li>
+<li><p>str.substring(起始下标，结束下标不包含); //同上</p>
+</li>
+<li><p>str.slice(起始下标，结束下标不包含);</p>
+</li>
+<li><p>str.split(分隔符)； //以分隔符分割字符串，返回数组</p>
+</li>
+<li><p>str.padStart(字符串总长度，‘填充符号’);//用指定的填充符号填充字符串到指定的位数，且在前面填充；类似的还有 str.padEnd();</p>
+<h4 id="数组"><a href="#数组" class="headerlink" title="数组"></a>数组</h4><p>数组的定义</p>
+<ol>
+<li>let arr = [‘a’,’n’,1,2];</li>
+<li>let arr = Array(5);   //指定数组的长度</li>
+</ol>
+<h4 id="数组的方法"><a href="#数组的方法" class="headerlink" title="数组的方法"></a>数组的方法</h4><ul>
+<li>arr.pop()  //从数组的尾部弹出一位</li>
+<li>ar.push(); // 从数组的尾部加入一位</li>
+<li>arr.shift(); //从数组的头部移除一位</li>
+<li>arr.unshift(‘要添加的元素’); //从数组的头部添加一位</li>
+</ul>
+<p>slice ()参数： 1.开始索引(插入在前)；2.删除元素的个数；3.插入的新元素，可以写多个 ü 返回：一个由删除元素组成的新数组</p>
+<ul>
+<li>arr.splice(起始下标，删除元素的个数); //从起始下标开始删除指定长度的元素</li>
+<li><p>arr.splice(起始下标,删除元素的个数，新插入的元素); 返回一个由删除元素组成的新数组；</p>
+</li>
+<li><p>arr.concat(要连接的内容);</p>
+</li>
+<li>arr.sort(); //排序 ，默认是比较每个元素的首字母，首个数字，从小到大排列</li>
+<li>arr.sort((a,b)=&gt; a-b); //一般情况下，sort()的默认排序不能满足我们实际的需求，所以我们会扩展sort（）方法，传入一个函数，原理就是使用冒泡排序，最后升序或降序排列</li>
+<li>arr.sort((a,b)=&gt; a&gt;b?1:-1); 而对于字符串类型的元素进行比较时，不能进行减法运算，我们采用比较大小的方式，也可以实现想要的排序效果</li>
+<li>arr.reverse() 逆序排列，注意这是数组的逆序方法，如果想要对字符串执行该操作，需要先把字符串分割为数组，然后排序后再连接为字符串即可</li>
+</ul>
+<h4 id="数组的ES5方法"><a href="#数组的ES5方法" class="headerlink" title="数组的ES5方法"></a>数组的ES5方法</h4><ul>
+<li><p>Array.isArray() 用来判断一个对象是不是数组 返回布尔值</p>
+</li>
+<li><p>Array.indexOf(); 用来查找指定元素的位置，找不到返回-1</p>
+</li>
+<li><p>arr.foreach()   遍历数组，参数为回调函数，回调函数里面的参数是：</p>
+<ul>
+<li>遍历到的对应元素</li>
+<li>元素序号（下标）</li>
+<li>数组本身</li>
+</ul>
+<p><img src="../img/jsArray/foreach.png" alt></p>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>array.every()  所有回调函数都返回true的时候结果才会返回true，否则 返回false</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [4, -2, 1, 9, 0, 5] </span><br><span class="line">let isPositive = arr.every(val =&gt; val &gt; 0) </span><br><span class="line">console.log(isPositive) //数组全是正数吗 false</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>array.some()   只要有一个回调函数都返回true的时候结果就返回true</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">let arr = [4, -2, 1, 9, 0, 5] </span><br><span class="line">arr.some(val =&gt; val &gt; 0) //数组里面有正数吗 true </span><br><span class="line">arr.some(val =&gt; val &lt; 0) //数组里有负数吗 treue</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>array.filter() 过滤出满足条件的元素，构成新数组</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">let arr = [4, -2, -1, 9, 0, 5]</span><br><span class="line">let arr1 = arr.filter(val =&gt; val &gt; 0) //过滤出正数 </span><br><span class="line">console.log(arr1) // [4, 9, 5] </span><br><span class="line">let arr2 = arr.filter(val =&gt; val &lt; 0) //过滤出负数</span><br><span class="line">console.log(arr2) // [-2, -1]</span><br><span class="line">console.log(arr) //[4, -2, -1, 9, 0, 5] 原数组不变</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>array.map() 遍历数组，回调函数返回值组成一个新数组返回，新数 组索引结构和原数组一致，原数组不变,</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">let arr = [1, 4, 3, 9] </span><br><span class="line">let arr1 = arr.map(v =&gt; v**2) </span><br><span class="line">console.log(arr1) //[1, 16, 9, 81]`</span><br><span class="line"></span><br><span class="line">arr.map((item,index,arr) =&gt; &#123;</span><br><span class="line">    return item*10 //新数组为10,20,30,40</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<ul>
+<li><p>array.reduce() </p>
+<p>.reduce(function(v1, v2), initValue) </p>
+<p> 遍历数组，调用回调函数，将数组元素组合成一个值 </p>
+<p> 初始值可选</p>
+<p>当出现参数是个数组，最终得到一个值这种场景，考虑 使用reduce来简化代码</p>
+</li>
+</ul>
+<h4 id="扩展"><a href="#扩展" class="headerlink" title="扩展"></a>扩展</h4><ul>
+<li><p>手动实现一个 reduce（）方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function reduce(arr, fn, initValue) &#123; /*补全*/&#125;</span><br><span class="line">reduce([3, -1, 4, 0], (res, v) =&gt; res + v**2, 0) // 26</span><br><span class="line">//解答</span><br><span class="line">function reduce(arr, fn, initValue)&#123;</span><br><span class="line">var tmpArr = (initValue === undefined ? [] : [initValue]).concat(arr)</span><br><span class="line">while(tmpArr.length &gt; 1)&#123;</span><br><span class="line">tmpArr.splice(0, 2, fn(tmpArr[0], tmpArr[1]))</span><br><span class="line">&#125;</span><br><span class="line">return tmpArr[0]</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>分析：reduce()方法本身特点是传递三个参数，两个要操作的数组的元素和一个默认值，执行过程是，将数组中从头开始前两个经过一个函数的操作后聚合为一个值，然后重复该操作。最终返回一个值。我们手写实现方法时，需要三个参数，要操作的数组（数据源）,初始值，以及逻辑操作的函数；然后考虑，先构建数据源，reduce中，如果有初始值，则初始值在数组的最开始，所以判断如果初始值不为空，则拼接到构建的数组中，再拼接传递的数组。然后，reduce本身进行了什么事情呢，就是将数组中的前两位数经过 函数操作后替换掉对不对，所以我们使用.splice（）函数，最终数组中只剩下一个元素时，返回即可。好神奇。这就是算法最终变为代码的过程。太有意思了！</p>
+</li>
+<li><p>手动实现一个 map() 方法</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function map(arr, fn) &#123; /*补全*/&#125;</span><br><span class="line">map([3, -1, 4, 0], v =&gt; ++v) // [4, 0, 5, 1]</span><br><span class="line">//解答</span><br><span class="line">function map(arr, fn) &#123;</span><br><span class="line">let res = []</span><br><span class="line">for(let v of arr) &#123;</span><br><span class="line">res.push(fn(v))</span><br><span class="line">&#125;</span><br><span class="line">return res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+<li><p>手动实现一个 fileter () 函数</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function filter(arr, fn) &#123; /*补全*/&#125;</span><br><span class="line">filter([3, -1, 4, 0], v =&gt; v&gt;0) // [3, 4]</span><br><span class="line">//解答</span><br><span class="line">function filter(arr, fn) &#123;</span><br><span class="line">let res = []</span><br><span class="line">for(let v of arr) &#123;</span><br><span class="line">if(fn(v)) res.push(v)</span><br><span class="line">&#125;</span><br><span class="line">return res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ck9e2cxv80006l0w1nt1m126j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-js-变量作用域" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/23/js-变量作用域/" class="article-date">
@@ -97,12 +256,6 @@
 <li>设置内容 ü setInfo、setData </li>
 <li>返回一个布尔值 ü canClicked、hasMoney、isEnabled</li>
 </ul>
-<h4 id="变量提升（作用域）"><a href="#变量提升（作用域）" class="headerlink" title="变量提升（作用域）"></a>变量提升（作用域）</h4><p>var 声明前置（变量提升 hoisting）</p>
-<p>即在未定义之前可以调用它，引文js上下文会把后续所有var变量先定义执行，也就是提到前面；</p>
-<p>function 声明前置：同上</p>
-<p><img src="../img/js作用域/hoist.png" alt></p>
-<p>例1中，会正确输出 a,即使它是在使用后声明的，因为，js 上下文会把当前上下文中所有var声明的变量，提到前面声明；即变成：var a; a=3;……  函数体重的b也是一样的</p>
-<p>例子2中，fn()会正常输出，因为函数声明也会前置，fn2会报错，因为 此时，fn2() = fn2. fn2不是函数，执行会报错，也就是说，这个表达式没有没前置声明；</p>
         
           <p class="article-more-link">
             <a href="/2020/04/23/js-变量作用域/#more">Read More</a>
@@ -111,7 +264,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ck9cn89k40006ggw1rcswx2kn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ck9e2cxvd0009l0w13e7ye6yf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -172,7 +325,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ck9cn89kx000eggw13xq03zxl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ck9e2cxvm000fl0w1gx30h256" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -249,7 +402,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/16/grid-布局/" data-id="ck9cn89ke000cggw1rnzf7en1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/16/grid-布局/" data-id="ck9e2cxvj000cl0w1u6gp1rmd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -295,7 +448,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/15/水平垂直居中的几种方式/" data-id="ck9cn89kw000dggw1jius4n1p" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/15/水平垂直居中的几种方式/" data-id="ck9e2cxvl000el0w1kp0qpmca" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -378,7 +531,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/14/flex-布局/" data-id="ck9cn89k30005ggw1zbps7ohx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/14/flex-布局/" data-id="ck9e2cxve000al0w1tc4q01ya" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -433,7 +586,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/13/css案例总结/" data-id="ck9cn89ln000gggw1c1he5h50" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/13/css案例总结/" data-id="ck9e2cxva0007l0w1pbovlab2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -486,7 +639,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/11/css-float/" data-id="ck9cn89ju0001ggw1tft800uw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/11/css-float/" data-id="ck9e2cxun0001l0w1o8jr6jwg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -547,7 +700,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/10/markdown-常用语法/" data-id="ck9cn89k90009ggw1716jzvxo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/10/markdown-常用语法/" data-id="ck9e2cxvh000bl0w1r28q8eyg" class="article-share-link">Share</a>
       
       
     </footer>
@@ -592,65 +745,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/10/hello-world/" data-id="ck9cn89k50007ggw1non35goe" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-css学习笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/06/css学习笔记/" class="article-date">
-  <time datetime="2020-04-06T10:55:30.000Z" itemprop="datePublished">2020-04-06</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/06/css学习笔记/">css学习笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="css引入方式"><a href="#css引入方式" class="headerlink" title="css引入方式"></a>css引入方式</h4><ul>
-<li><p>link方式在html页面中引用</p>
-<p><code>&lt;link rel=&quot;stylesheet&quot; href=&quot;index.css&quot;&gt;</code></p>
-</li>
-<li><p>@import 方式在 style标签或者 css文件中引入，注意在CSS文件中引入时，要在顶部引入（即前面无css语句）且句尾要用分号;结束 否则不生效</p>
-<p>例如：        </p>
-<style>
-@import url("index.css");
-@import url('index.css');
-@import url(index.css);
-@import 'custom.css';
-@import "common.css";
-@import url('landscape.css') screen and (orientation:landscape);
-</style>
-
-</li>
-</ul>
-<h4 id="link方式和-import引入CSS有-什么区别？"><a href="#link方式和-import引入CSS有-什么区别？" class="headerlink" title="link方式和@import引入CSS有 什么区别？"></a>link方式和@import引入CSS有 什么区别？
-        
-          <p class="article-more-link">
-            <a href="/2020/04/06/css学习笔记/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/06/css学习笔记/" data-id="ck9cn89jx0002ggw1hv2vmund" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/10/hello-world/" data-id="ck9e2cxv50005l0w1vlqvrfeq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -710,6 +805,10 @@
       <ul>
         
           <li>
+            <a href="/2020/04/24/js数组字符串相关api/">js数组字符串相关api</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/23/js-变量作用域/">js 变量作用域</a>
           </li>
         
@@ -723,10 +822,6 @@
         
           <li>
             <a href="/2020/04/15/水平垂直居中的几种方式/">水平垂直剧中的几种方式</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/14/flex-布局/">flex 布局</a>
           </li>
         
       </ul>

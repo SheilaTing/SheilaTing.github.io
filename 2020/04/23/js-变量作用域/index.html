@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/04/23/img/js作用域/hoist1.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/23/img/js作用域/递归.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/23/img/js作用域/递归优化.png">
-<meta property="og:updated_time" content="2020-04-23T10:54:10.667Z">
+<meta property="og:updated_time" content="2020-04-23T10:55:36.023Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js 变量作用域">
 <meta name="twitter:description" content="函数相关12345function sum(a, b)&amp;#123;return console.log(a + b)&amp;#125;let result = sum(4, 5)console.log(result) 以上代码输出结果为 “undefined”,因为 console.log()本身返回值就是 undefined； 箭头函数函数名=参数=&amp;gt;函数语句   单个参数，单行语句的情况 例如">
@@ -106,13 +106,13 @@
 <li>设置内容 ü setInfo、setData </li>
 <li>返回一个布尔值 ü canClicked、hasMoney、isEnabled</li>
 </ul>
+<a id="more"></a>
 <h4 id="变量提升（作用域）"><a href="#变量提升（作用域）" class="headerlink" title="变量提升（作用域）"></a>变量提升（作用域）</h4><p>var 声明前置（变量提升 hoisting）</p>
 <p>即在未定义之前可以调用它，引文js上下文会把后续所有var变量先定义执行，也就是提到前面；</p>
 <p>function 声明前置：同上</p>
 <p><img src="../img/js作用域/hoist.png" alt></p>
 <p>例1中，会正确输出 a,即使它是在使用后声明的，因为，js 上下文会把当前上下文中所有var声明的变量，提到前面声明；即变成：var a; a=3;……  函数体重的b也是一样的</p>
 <p>例子2中，fn()会正常输出，因为函数声明也会前置，fn2会报错，因为 此时，fn2() = fn2. fn2不是函数，执行会报错，也就是说，这个表达式没有没前置声明；</p>
-<a id="more"></a>
 <h4 id="作用域链"><a href="#作用域链" class="headerlink" title="作用域链"></a>作用域链</h4><p><strong>- 函数在执行的过程中，先从自己内部找变量</strong></p>
 <p><strong>如果找不到，再从创建当前函数所在的作用域去找，以此网上，直到全局作用域</strong></p>
 <p>看如下案例：</p>
@@ -141,7 +141,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ck9cn89k40006ggw1rcswx2kn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ck9e2cxvd0009l0w13e7ye6yf" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -151,6 +151,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/04/24/js数组字符串相关api/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          js数组字符串相关api
+        
+      </div>
+    </a>
   
   
     <a href="/2020/04/20/js运算符疑惑笔记/" id="article-nav-older" class="article-nav-link-wrap">
@@ -206,6 +215,10 @@
       <ul>
         
           <li>
+            <a href="/2020/04/24/js数组字符串相关api/">js数组字符串相关api</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/23/js-变量作用域/">js 变量作用域</a>
           </li>
         
@@ -219,10 +232,6 @@
         
           <li>
             <a href="/2020/04/15/水平垂直居中的几种方式/">水平垂直剧中的几种方式</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/14/flex-布局/">flex 布局</a>
           </li>
         
       </ul>
