@@ -62,6 +62,55 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-对象与json" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/26/对象与json/" class="article-date">
+  <time datetime="2020-04-26T03:03:02.000Z" itemprop="datePublished">2020-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/26/对象与json/">对象与json</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p>ps:(最近刚学了对象，虽然之前也有了解，可一直模模糊糊，最近使用才发现原来自己对对象的掌握这么不扎实)</p>
+<p>从定义说起：<strong>对象：无序的数据集合，由若干个“键值对”（属性: 值）构成</strong></p>
+<p>对象里面包含：1.属性 2. 方法</p>
+<p><strong>对象的一些操作方法</strong></p>
+<p><strong>Object.keys(对象)</strong>：获取对象中的所有属性数组，注意此处是数组，然后就可以使用数组的方法来操作它。例如 ，arrr.map()  返回新的数组 ,arry.foreach()  arr.filter()返回新数组</p>
+<p>删除属性： delete 对象.属性名或者 delete 对象【’属性名‘】</p>
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个对象</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    name:<span class="string">'jirengu'</span>,  <span class="comment">//主义此处 name属性没有加引号，起始默认是有引号的，js这样写也没错</span></span><br><span class="line">    age:<span class="number">5</span>,</span><br><span class="line">    sayHello:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.lot(<span class="string">`hello <span class="subst">$&#123;<span class="keyword">this</span>.name<span class="string">`)</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    &#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//通过.访问属性</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj.name</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//通过[‘属性名’]  主义此时要加上引号，因为它本身是有引号的，定义时省略了而已</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj['name']</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//通过[属性名] 注意此处没有加引号，不加引号js会把【】中的值解析为一个值来对待</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">let key = 'age';</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj[key] //的值就是5；就是属性age的值</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//使用点操作符增加属性</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj.grade=5; //为obj 增加了一个 grade属性；</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//使用【】符号来增加属性</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj['score']=100;</span></span></span></span><br></pre></td></tr></table></figure>
+<h4 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h4><ul>
+<li>JSON.stringify  用于把一个值变成符合JSON格式的字符串</li>
+<li>JSON.parse  用于把一个符合JSON格式的字符串还原对象</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/26/对象与json/" data-id="ck9gt7bga000cr4w1joqsst63" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-递归优化" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/25/递归优化/" class="article-date">
@@ -95,7 +144,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/25/递归优化/" data-id="ck9f39pmv000i8ww14muvqfc6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/25/递归优化/" data-id="ck9gt7bh2000jr4w1pxrkldev" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
@@ -196,7 +245,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/hexo备份/" data-id="ck9f39pmx000k8ww1r3hx9sr8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/24/hexo备份/" data-id="ck9gt7bhu000lr4w1823tl3gq" class="article-share-link">Share</a>
       
       
     </footer>
@@ -250,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ck9f39pmq000d8ww1lddbxvv6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ck9gt7bgd000er4w1uy03aam2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -303,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ck9f39pmp000c8ww1bg42vxe4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ck9gt7bg9000br4w1leay7jxw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -364,7 +413,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ck9f39pmo000b8ww1vi02bnpg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ck9gt7bgh000hr4w1me0ubtea" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -441,7 +490,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/16/grid-布局/" data-id="ck9f39pmg00068ww16ltnzpgp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/16/grid-布局/" data-id="ck9gt7bg40009r4w1jwrrgo3t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -487,7 +536,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/15/水平垂直居中的几种方式/" data-id="ck9f39pmw000j8ww1u6g3suwk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/15/水平垂直居中的几种方式/" data-id="ck9gt7bgb000dr4w1hzi7oqyd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -570,7 +619,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/14/flex-布局/" data-id="ck9f39pmj00088ww1n24obrhl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/14/flex-布局/" data-id="ck9gt7bfr0003r4w1ujhsqu7i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -625,64 +674,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/13/css案例总结/" data-id="ck9f39pma00038ww19ym5krc6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/13/css案例总结/" data-id="ck9gt7bg10007r4w1vpmv8jou" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-css-float" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/11/css-float/" class="article-date">
-  <time datetime="2020-04-11T06:15:42.000Z" itemprop="datePublished">2020-04-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/11/css-float/">css-float</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="浮动定义"><a href="#浮动定义" class="headerlink" title="浮动定义"></a>浮动定义</h4><p>float 属性能让一个元素放在其容器的左侧或右侧，允许文本和内联元素环绕它。 设置浮动的元素从网页的普通流(normal flow)中脱离，但不是完全脱离</p>
-<p>特性：一个浮动元素会向左或向右移动，直到其外边（outer edge）挨到包含块边沿 或者另一个浮动元素的外边。如果存在行盒，浮动元素的外top（边）会与当前行盒 的top（边）对齐 如果没有足够的水平空间来浮动，它会向下移动，直到位置合适</p>
-<p>因为浮动元素不在普通流内，在浮动盒之前或者之后创建的未定位的（nonpositioned）块盒会竖直排列，就像浮动不存在一样。然而，浮动元素之后的行盒 会进行必要的缩短，为了给浮动元素的margin box让出空间</p>
-<h4 id="浮动元素的特性案例"><a href="#浮动元素的特性案例" class="headerlink" title="浮动元素的特性案例"></a>浮动元素的特性案例</h4><ul>
-<li><p>浮动元素宽度是收缩的</p>
-<p><img src="./eg2.png" alt></p>
-</li>
-<li><p>对周边行内元素的影响</p>
-<p>行内元素依旧可以发现浮动元素，例如文字环绕的实现；但改文字所在的div块级元素不会发现浮动元素，设置背景色依然会覆盖浮动元素；</p>
-<p><img src="./eg1.png" alt></p>
-</li>
-<li><p>浮动元素呈现块级特性</p>
-<p>浮动的行内元素可以设置宽度、高度、内外边距</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/11/css-float/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/11/css-float/" data-id="ck9f39pm600018ww1f1qj09sn" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-
     </footer>
   </div>
   
@@ -694,7 +688,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -708,7 +702,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -718,7 +712,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -740,6 +734,10 @@
       <ul>
         
           <li>
+            <a href="/2020/04/26/对象与json/">对象与json</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/25/递归优化/">递归优化</a>
           </li>
         
@@ -753,10 +751,6 @@
         
           <li>
             <a href="/2020/04/23/js-变量作用域/">js 变量作用域</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/20/js运算符疑惑笔记/">js运算符疑惑笔记</a>
           </li>
         
       </ul>
