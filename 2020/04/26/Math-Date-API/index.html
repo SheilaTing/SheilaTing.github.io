@@ -1,0 +1,267 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>Math Date API | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="Math常用 API Math.floor(number); 向下取整；即取最小的，多的舍去； Math.ceil(number); 向上取整 Math.round(number); 四舍五入 Math.abs(number);  绝对值 Math.max(num1,num2,num3..numx); 取最大值 Math.min();  取最小值  数组的话可以这样写 math.min(…[元素]">
+<meta name="keywords" content="JS">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Math Date API">
+<meta property="og:url" content="http://yoursite.com/2020/04/26/Math-Date-API/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="Math常用 API Math.floor(number); 向下取整；即取最小的，多的舍去； Math.ceil(number); 向上取整 Math.round(number); 四舍五入 Math.abs(number);  绝对值 Math.max(num1,num2,num3..numx); 取最大值 Math.min();  取最小值  数组的话可以这样写 math.min(…[元素]">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-04-26T09:41:05.701Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="Math Date API">
+<meta name="twitter:description" content="Math常用 API Math.floor(number); 向下取整；即取最小的，多的舍去； Math.ceil(number); 向上取整 Math.round(number); 四舍五入 Math.abs(number);  绝对值 Math.max(num1,num2,num3..numx); 取最大值 Math.min();  取最小值  数组的话可以这样写 math.min(…[元素]">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-Math-Date-API" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/26/Math-Date-API/" class="article-date">
+  <time datetime="2020-04-26T08:53:45.000Z" itemprop="datePublished">2020-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      Math Date API
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="Math常用-API"><a href="#Math常用-API" class="headerlink" title="Math常用 API"></a>Math常用 API</h4><ul>
+<li>Math.floor(number); 向下取整；即取最小的，多的舍去；</li>
+<li>Math.ceil(number); 向上取整</li>
+<li>Math.round(number); 四舍五入</li>
+<li>Math.abs(number);  绝对值</li>
+<li>Math.max(num1,num2,num3..numx); 取最大值</li>
+<li>Math.min();  取最小值  数组的话可以这样写 math.min(…[元素])</li>
+</ul>
+<h4 id="Math-random"><a href="#Math-random" class="headerlink" title="Math.random()"></a>Math.random()</h4><p>返回[0, 1)之间的一个伪随机数，包括0，不包括1</p>
+<p>经典使用方式： 写一个函数返回0-100 的随机整数</p>
+<p>分析：random()函数默认返回0-1之间的数字，那我把结果*100放大100倍就好了</p>
+<p>案例2：写一个函数返回长度为 n 的随机字符串，包含a-z,0-9;</p>
+<p>分析：题目中有随机关键字，考虑使用random()函数，可该函数返回的是0-1 之间的数字，要求是一个规定范围的字符串。此时可以考虑，将该字符串的取值范围组成一个数组，然后该数组有长度，然后使用下标取出每一个字符，最后拼接n次成为最后的字符串就可以了。那获取一个0到该数组长度的一个随机数就好了。默认是 0-1的随机，那把结果*数组长度则范围就变为0-数组长度的随机数了；</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">randStr</span>(<span class="params">len</span>)</span>&#123;</span><br><span class="line"> <span class="keyword">const</span> dict = <span class="string">'abcdefghijklmnopqrstuvwxyz0123456789'</span></span><br><span class="line"> <span class="keyword">let</span> res = <span class="string">''</span>;</span><br><span class="line"> <span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;len; i++) &#123;</span><br><span class="line">    res += dict[<span class="built_in">Math</span>.floor(<span class="built_in">Math</span>.random()*dict.length)] <span class="comment">//字符串也是可以用下标访问的，哈哈</span></span><br><span class="line">&#125;</span><br><span class="line"> <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="Number"><a href="#Number" class="headerlink" title="Number"></a>Number</h4><ul>
+<li><p>二进制写法 0b 11 转为十进制就是 每一位*基数（2进制是2）的位权，此例子：1乘2一次方加1乘2的0次方</p>
+</li>
+<li><p>八进制写法 011</p>
+</li>
+<li><p>十六进制写法 0x11</p>
+</li>
+<li><p>大数的表示方法 bigint  例如： let n = 999999999999n;  2n+3n;</p>
+</li>
+<li><p>parseInt(str,radix)   第二个参数代表该数字的进制 </p>
+<p> parseInt(‘11’,2),  表示 2进制的11 代表十进制的多少，答案是3；</p>
+</li>
+</ul>
+<h4 id="DATE-日期函数"><a href="#DATE-日期函数" class="headerlink" title="DATE 日期函数"></a>DATE 日期函数</h4><p>获取当前日期对象  let d = new Date();</p>
+<ul>
+<li>d.getTime() //返回实例对象距离1970年1月1日00:00:00对应的毫秒数</li>
+<li>d.getDate() //返回实例对象对应每个月的几号（从1开始）</li>
+<li>d.getDay() //返回星期，星期日为0，星期一为1，以此类推 </li>
+<li>d.getFullYear() //返回四位的年份 d.getMonth() //返回月份（0表示1月，11表示12月） </li>
+<li>d.getHours() //返回小时(0~23) d.getMilliseconds() //返回毫秒（0-999） </li>
+<li>d.getMinutes() //返回分钟（0-59）</li>
+<li>d.getSeconds() //返回秒（0-59）</li>
+</ul>
+<p>Date.now(); 返回实例对象距离1970年1月1日00:00:00对应的毫秒数 == d.getTime();</p>
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><p>1.去年的今天是周几</p>
+<p>思路分析：可以获取现在距离去年今天的时间差，然后变为一个日期对象，然后再获取相应的DATE；</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">let nowDate = Date.now()</span><br><span class="line">let lastYearTime = Date.now() - 365 * 24 * 60 * 60 * 1000</span><br><span class="line">let lastYearDate = new Date(lastYearTime)</span><br><span class="line">console.log(`去年的今天是周$&#123;lastYearDate.getDay()&#125;`)</span><br><span class="line">//此例中其实可以更严谨，就是去年不一定距离现在是365天，但年份一定是相差一年，所以我们可用今年的年份-1，更严谨</span><br></pre></td></tr></table></figure>
+<p>2.距离元旦（或某一个特定的日期，比如秒杀日期）还剩x天x时x分x秒</p>
+<p>思路分析，也是获取现在和目的时间的时间差，然后将这个时间差换算为相应的天，小时，分钟，秒</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getLeftTime</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">let</span> targetDateTime = <span class="keyword">new</span> <span class="built_in">Date</span>(<span class="string">'2020-01-01 00:00:00'</span>).getTime()</span><br><span class="line"><span class="keyword">let</span> nowDateTime = <span class="built_in">Date</span>.now()</span><br><span class="line"><span class="keyword">let</span> timeBetween = <span class="built_in">Math</span>.abs(nowDateTime - targetDateTime)</span><br><span class="line"><span class="keyword">let</span> day = <span class="built_in">Math</span>.floor(timeBetween/(<span class="number">24</span>*<span class="number">3600</span>*<span class="number">1000</span>)) <span class="comment">//这个用法特别巧妙，得到的商是天</span></span><br><span class="line"><span class="keyword">let</span> left = timeBetween%(<span class="number">24</span>*<span class="number">3600</span>*<span class="number">1000</span>)  <span class="comment">//得到的余数肯定是不满一天的剩余时间，然后在细分</span></span><br><span class="line"><span class="keyword">let</span> hour = <span class="built_in">Math</span>.floor(left/(<span class="number">3600</span>*<span class="number">1000</span>))</span><br><span class="line">left = left%(<span class="number">3600</span>*<span class="number">1000</span>)</span><br><span class="line"><span class="keyword">let</span> minute = <span class="built_in">Math</span>.floor(left/(<span class="number">60</span>*<span class="number">1000</span>))</span><br><span class="line">left = left%(<span class="number">60</span>*<span class="number">1000</span>)</span><br><span class="line"><span class="keyword">let</span> second = <span class="built_in">Math</span>.floor(left/<span class="number">1000</span>)</span><br><span class="line"><span class="keyword">return</span> &#123; day, hour, minute, second &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> obj = getLeftTime()</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`举例元旦还有<span class="subst">$&#123;obj.day&#125;</span>天<span class="subst">$&#123;obj.hour&#125;</span>时<span class="subst">$&#123;obj.minute&#125;</span>分</span></span><br><span class="line"><span class="string"><span class="subst">$&#123;obj.second&#125;</span>秒`</span>)</span><br></pre></td></tr></table></figure>
+<p>3.格式化旧日期   刚刚、3分钟前、2小时前、10天前</p>
+<p>思路分析：传入一个日期，算出当前时间距离这个时间的差，小于1分钟 限时 刚刚，小于1小时限时多少多少分钟，小于一天显示多少多少小时，再多就显示多少多少天之前</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">formatTime</span>(<span class="params">dateStr</span>) </span>&#123;</span><br><span class="line"><span class="keyword">let</span> between = <span class="built_in">parseInt</span>((<span class="built_in">Date</span>.now() - <span class="keyword">new</span></span><br><span class="line"><span class="built_in">Date</span>(dateStr).getTime())/<span class="number">1000</span>)</span><br><span class="line"><span class="keyword">switch</span> (<span class="literal">true</span>) &#123;</span><br><span class="line"><span class="keyword">case</span> between &lt; <span class="number">60</span>:</span><br><span class="line"><span class="keyword">return</span> <span class="string">`刚刚`</span></span><br><span class="line"><span class="keyword">case</span> between &lt; <span class="number">3600</span>:</span><br><span class="line"><span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="built_in">parseInt</span>(between<span class="regexp">/60)&#125;分钟前`</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">case between &lt; 3600*24:</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">return `$&#123;parseInt(between/</span><span class="number">3600</span>)&#125;</span>小时前`</span></span><br><span class="line"><span class="keyword">default</span>:</span><br><span class="line"><span class="keyword">return</span> <span class="string">`<span class="subst">$&#123;<span class="built_in">parseInt</span>(between<span class="regexp">/(3600*24))&#125;天前`</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="regexp">formatTime('2019-12-11 17:33:39')</span></span></span></span><br></pre></td></tr></table></figure>
+<p><strong>完美，结束</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/26/Math-Date-API/" data-id="ck9gv4y0i00010gw15ixnysiu" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/26/对象与json/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">对象与json</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/26/Math-Date-API/">Math Date API</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/26/对象与json/">对象与json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/25/递归优化/">递归优化</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/24/hexo备份/">hexo备份</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/24/js数组字符串相关api/">js数组字符串相关api</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

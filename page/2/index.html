@@ -62,6 +62,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-css案例总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/13/css案例总结/" class="article-date">
+  <time datetime="2020-04-13T07:46:22.000Z" itemprop="datePublished">2020-04-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/13/css案例总结/">css案例总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="第一个小案例"><a href="#第一个小案例" class="headerlink" title="第一个小案例"></a>第一个小案例</h4><p>​    模仿写了一个谷歌搜索的页面，发现自己在布局方面还有许多问题，这么一个简单的页面，我竟然花费了许久还没做完没，汗颜</p>
+<p>第一个问题是：DOM结构的问题，布局很重要，然后就是css 的小细节，比如我再做搜索框的时候，思路是，用一个div 包裹一个 input 然后抹去input 的默认样式，使用div 边框伪造一个input 的边框来显示，然后两头有两个图标，搜索和语音按钮，设置div 的宽高后，设置input宽高各100% 继承div 的宽度和高度，结果发现input 被顶下来了，搞了好久才发现，原因是div 里面还有一个搜索按钮的伪类，当我将搜索按钮设置定位后，它脱离了文档流，自然不占据空间，此时，input 就与div 完没重合！哎，这点小毛病我看了半天没发现。。。。。。</p>
+<p>还有就是盒模型水平居中的问题，其实设置好盒模型的宽度后，设置margin 左右 auto即可，也被我遗忘得一干二净！</p>
+<p>还有，背景图片是不会撑起盒模型元素的高度和宽度的，它只是一个背景而已，盒子里面没有内容，它也不会显示；</p>
+<p>还有，input 的outline 属性是点击它时他的外边框，以前都没注意，或者忘了，哈哈哈</p>
+<p><img src="../img/案例总结/sousuo.png" alt></p>
+<h4 id="第二个小案例"><a href="#第二个小案例" class="headerlink" title="第二个小案例"></a>第二个小案例</h4><p>​    实现效果为，点击A链接弹出弹框和遮罩层，dom结构中给遮罩层加一个div 包裹弹框，然后给div设置遮罩层效果，利用:target 伪元素控制遮罩层的显示和隐藏。</p>
+<p><img src="../img/案例总结/modal.png" alt></p>
+<h4 id="第三个小案例"><a href="#第三个小案例" class="headerlink" title="第三个小案例"></a>第三个小案例</h4><p>​    模仿文字悬浮提示</p>
+<p>DOM结构很重要</p>
+<p>实现效果为 一行文字鼠标悬停时有小框提示，难点在于小三角的定位，情况复杂时还要考虑到元素的 z-index，总之悬浮框的层级要高一些才行，悬浮框在dom结构中被包裹在文字所处的div中，由于后期要对三角做定位，所以要先给文字做个相对定位，到时候三角相对于文字来定位即可，三角可以通过：before 伪元素来实现，利用border的特性，不需要的边设置透明，另一边设置想要的颜色；</p>
+<p><img src="../img/案例总结/tooltip.png" alt></p>
+<h4 id="第四个小案例"><a href="#第四个小案例" class="headerlink" title="第四个小案例"></a>第四个小案例</h4><p>​    实现滚动页面时，页面上的标题被下一个推走或者覆盖的效果，这里使用 positon 的 sticky 属性可轻易实现</p>
+<p>特性 </p>
+<p>一定要设置top  当页面向下滚动时，被视窗顶部拦住，被父级块元素的 下边缘推走</p>
+<p> 如果出现多个sticky，放置在同一容器内，会出现下一个 sticky元素把上一个“覆盖””的效果</p>
+<p> 如果出现多个sticky，放置在并列的多个块级容器内，会 出现下一个sticky元素把上一个“推走”的效果</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/13/css案例总结/" data-id="ck9gv4y0o00050gw1dshuoh00" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-css-float" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/11/css-float/" class="article-date">
@@ -105,7 +158,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/11/css-float/" data-id="ck9gt7bfh0001r4w1l7eddmbw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/11/css-float/" data-id="ck9gv4y0l00030gw1szjn6fbv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -166,7 +219,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/10/markdown-常用语法/" data-id="ck9gt7bgj000ir4w1bqd47dcr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/10/markdown-常用语法/" data-id="ck9gv4y16000f0gw1lv31oiq8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -211,7 +264,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/10/hello-world/" data-id="ck9gt7bft0004r4w1lbw2qc3f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/10/hello-world/" data-id="ck9gv4y0s00080gw19avtxhkw" class="article-share-link">Share</a>
       
       
     </footer>
@@ -269,7 +322,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/06/css学习笔记/" data-id="ck9gt7bfn0002r4w1p399wud9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/06/css学习笔记/" data-id="ck9gv4y0m00040gw1l7lektxs" class="article-share-link">Share</a>
       
       
     </footer>
@@ -310,7 +363,7 @@ console.log(event)；
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/24/js-event/" data-id="ck9gt7bfx0005r4w1dgf0t3u6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/24/js-event/" data-id="ck9gv4y0v000a0gw1tnk9zvuv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -355,7 +408,7 @@ console.log(event)；
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/20/vueRecord/" data-id="ck9gt7bge000fr4w1g2zar2jv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/20/vueRecord/" data-id="ck9gv4y18000h0gw1ca1o46k8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -393,7 +446,7 @@ console.log(event)；
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/31/js-record/" data-id="ck9gt7bfz0006r4w1kis95mxu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/31/js-record/" data-id="ck9gv4y0x000b0gw1jqijhydv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -433,7 +486,7 @@ console.log(event)；
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/23/webpack-externals/" data-id="ck9gt7bgg000gr4w1gbdro5pe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/23/webpack-externals/" data-id="ck9gv4y19000i0gw1aogmmw1z" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -481,48 +534,9 @@ console.log(event)；
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/21/css-note/" data-id="ck9gt7bg20008r4w1l8xqbr9d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/21/css-note/" data-id="ck9gv4y0j00020gw1vzkqidmj" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Css-Record" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/05/Css-Record/" class="article-date">
-  <time datetime="2019-06-05T10:32:12.000Z" itemprop="datePublished">2019-06-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/05/Css-Record/">Css Record</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一点资讯网站"><a href="#一点资讯网站" class="headerlink" title="一点资讯网站"></a>一点资讯网站</h2><h3 id="模仿一点资讯网站页面建站"><a href="#模仿一点资讯网站页面建站" class="headerlink" title="模仿一点资讯网站页面建站"></a>模仿一点资讯网站页面建站</h3><h5 id="本页面使用-H5-编写基本布局，css3调节样式，js-实现事件功能"><a href="#本页面使用-H5-编写基本布局，css3调节样式，js-实现事件功能" class="headerlink" title="本页面使用 H5 编写基本布局，css3调节样式，js 实现事件功能"></a>本页面使用 H5 编写基本布局，css3调节样式，js 实现事件功能</h5><p>​    </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/05/Css-Record/" data-id="ck9gt7bcr0000r4w1um4s55yt" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li></ul>
-
     </footer>
   </div>
   
@@ -548,7 +562,7 @@ console.log(event)；
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -558,7 +572,7 @@ console.log(event)；
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -580,6 +594,10 @@ console.log(event)；
       <ul>
         
           <li>
+            <a href="/2020/04/26/Math-Date-API/">Math Date API</a>
+          </li>
+        
+          <li>
             <a href="/2020/04/26/对象与json/">对象与json</a>
           </li>
         
@@ -593,10 +611,6 @@ console.log(event)；
         
           <li>
             <a href="/2020/04/24/js数组字符串相关api/">js数组字符串相关api</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/23/js-变量作用域/">js 变量作用域</a>
           </li>
         
       </ul>
