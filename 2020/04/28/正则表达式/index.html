@@ -1,0 +1,264 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>正则表达式 | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="创建方式 字面量方式创建  let reg = /+86\d{11}/g 构造函数方式创建  let reg = new RegExp(‘+86\d{11}’, ‘g’) g：global，全文搜索，不添加的话搜索到第一个结果停止搜索  i：ingore case，忽略大小写，默认大小写敏感  m：multiple lines，多行搜索 如果要匹配这些特殊字符，需要转义\  字符串方法12345l">
+<meta name="keywords" content="正则表达式">
+<meta property="og:type" content="article">
+<meta property="og:title" content="正则表达式">
+<meta property="og:url" content="http://yoursite.com/2020/04/28/正则表达式/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="创建方式 字面量方式创建  let reg = /+86\d{11}/g 构造函数方式创建  let reg = new RegExp(‘+86\d{11}’, ‘g’) g：global，全文搜索，不添加的话搜索到第一个结果停止搜索  i：ingore case，忽略大小写，默认大小写敏感  m：multiple lines，多行搜索 如果要匹配这些特殊字符，需要转义\  字符串方法12345l">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2020/04/28/img/正则表达式/预定匹配.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/28/img/正则表达式/量词匹配.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/28/img/正则表达式/边界.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/28/img/正则表达式/案例1.png">
+<meta property="og:image" content="http://yoursite.com/2020/04/28/img/正则表达式/贪婪模式.png">
+<meta property="og:updated_time" content="2020-04-28T03:47:25.325Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="正则表达式">
+<meta name="twitter:description" content="创建方式 字面量方式创建  let reg = /+86\d{11}/g 构造函数方式创建  let reg = new RegExp(‘+86\d{11}’, ‘g’) g：global，全文搜索，不添加的话搜索到第一个结果停止搜索  i：ingore case，忽略大小写，默认大小写敏感  m：multiple lines，多行搜索 如果要匹配这些特殊字符，需要转义\  字符串方法12345l">
+<meta name="twitter:image" content="http://yoursite.com/2020/04/28/img/正则表达式/预定匹配.png">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/28/正则表达式/" class="article-date">
+  <time datetime="2020-04-28T03:12:34.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      正则表达式
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="创建方式"><a href="#创建方式" class="headerlink" title="创建方式"></a>创建方式</h4><ul>
+<li>字面量方式创建  let reg = /+86\d{11}/g</li>
+<li>构造函数方式创建  let reg = new RegExp(‘+86\d{11}’, ‘g’)</li>
+<li>g：global，全文搜索，不添加的话搜索到第一个结果停止搜索 </li>
+<li>i：ingore case，忽略大小写，默认大小写敏感 </li>
+<li>m：multiple lines，多行搜索</li>
+<li>如果要匹配这些特殊字符，需要转义\</li>
+</ul>
+<h4 id="字符串方法"><a href="#字符串方法" class="headerlink" title="字符串方法"></a>字符串方法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">'hello1 jirengu, hello2 world'</span></span><br><span class="line">str.search(<span class="regexp">/hello\d/</span>) <span class="comment">//0</span></span><br><span class="line">str.match(<span class="regexp">/hello\d/g</span>) <span class="comment">//['hello1', 'hello2']</span></span><br><span class="line">str.replace(<span class="regexp">/hello\d/g</span>, <span class="string">'hi'</span>) <span class="comment">// 'hi jirengu, hi world'</span></span><br><span class="line">str.split(<span class="regexp">/\s/</span>) <span class="comment">//["hello", "jirengu,", "hello", "world"]</span></span><br></pre></td></tr></table></figure>
+<h4 id="字符匹配"><a href="#字符匹配" class="headerlink" title="字符匹配"></a>字符匹配</h4><p>范围匹配:</p>
+<ul>
+<li>[abcd] 匹配一个字符，是a b c d中的任意一个 </li>
+<li>[0-9] 匹配一个是0到9的数字 ü [a-zA-Z]匹配一个不限制大小写的字母 </li>
+<li>[^abc] 表示一个不是字符a或b或c的字符</li>
+</ul>
+<h4 id="预定义匹配"><a href="#预定义匹配" class="headerlink" title="预定义匹配"></a>预定义匹配</h4><ul>
+<li><p><strong>.</strong>等价于 [^\r\n]，匹配一个除回车和换行以为的任意字符 </p>
+</li>
+<li><p>\d等价于[0-9]，匹配一个数字字符 </p>
+</li>
+<li><p>\D 等价于[^0-9] 匹配一个非数字字符 </p>
+</li>
+<li><p>\s等价于[空格\t\n\r\v\f]，匹配一个空白字符 </p>
+</li>
+<li><p>\S 等价于[^空格\t\n\r\v\f]，匹配一个非空白字符 </p>
+</li>
+<li><p>\w等价于[a-zA-Z_0-9]，匹配一个字母、数字、下划线 </p>
+</li>
+<li><p>\W 等价于[^a-zA-Z_0-9]，匹配一个非单词字符</p>
+<p><img src="../img/正则表达式/预定匹配.png" alt>            </p>
+</li>
+</ul>
+<h4 id="量词-匹配0个到多个"><a href="#量词-匹配0个到多个" class="headerlink" title="量词  匹配0个到多个"></a>量词  匹配0个到多个</h4><p><img src="../img/正则表达式/量词匹配.png" alt></p>
+<h4 id="边界-以…开头或者以…结尾"><a href="#边界-以…开头或者以…结尾" class="headerlink" title="边界  以…开头或者以…结尾"></a>边界  以…开头或者以…结尾</h4><p><img src="../img/正则表达式/边界.png" alt></p>
+<a id="more"></a>
+<h4 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h4><p>匹配用户输入</p>
+<p><img src="../img/正则表达式/案例1.png" alt></p>
+<h4 id="贪婪模式与非贪婪模式"><a href="#贪婪模式与非贪婪模式" class="headerlink" title="贪婪模式与非贪婪模式"></a>贪婪模式与非贪婪模式</h4><p><img src="../img/正则表达式/贪婪模式.png" alt></p>
+<h4 id="分组-把一些字符作为一个整体"><a href="#分组-把一些字符作为一个整体" class="headerlink" title="分组  把一些字符作为一个整体"></a>分组  把一些字符作为一个整体</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//匹配 hungerrr ，而不是 hungerhungerhunger</span></span><br><span class="line">/hunger&#123;<span class="number">3</span>&#125;/</span><br><span class="line"><span class="comment">//把hunger作为一个整体，匹配 hungerhungerhunger</span></span><br><span class="line">/(hunger)&#123;<span class="number">3</span>&#125;/</span><br><span class="line"><span class="comment">//匹配 “hello world” 和 “hi world”</span></span><br><span class="line">/(hello)|(hi) wolrd/</span><br><span class="line"><span class="comment">//$1代表正则里分组匹配的内容，输出 “hi8 world, hi6 jirengu”</span></span><br><span class="line"><span class="string">"hello8 world, hello6 jirengu"</span>.replace(<span class="regexp">/hello(\d)/g</span>, <span class="string">'hi$1'</span>)</span><br></pre></td></tr></table></figure>
+<p>更详细的用法参考MDN</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ck9jdarmt000gusw1lfa3ey0w" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/26/Math-Date-API/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">Math Date API</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/28/正则表达式/">正则表达式</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/26/Math-Date-API/">Math Date API</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/26/对象与json/">对象与json</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/25/递归优化/">递归优化</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/24/hexo备份/">hexo备份</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
