@@ -20,7 +20,7 @@
 <meta property="og:image" content="http://yoursite.com/2020/04/28/img/正则表达式/边界.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/28/img/正则表达式/案例1.png">
 <meta property="og:image" content="http://yoursite.com/2020/04/28/img/正则表达式/贪婪模式.png">
-<meta property="og:updated_time" content="2020-04-28T03:47:25.325Z">
+<meta property="og:updated_time" content="2020-04-28T04:03:58.045Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="正则表达式">
 <meta name="twitter:description" content="创建方式 字面量方式创建  let reg = /+86\d{11}/g 构造函数方式创建  let reg = new RegExp(‘+86\d{11}’, ‘g’) g：global，全文搜索，不添加的话搜索到第一个结果停止搜索  i：ingore case，忽略大小写，默认大小写敏感  m：multiple lines，多行搜索 如果要匹配这些特殊字符，需要转义\  字符串方法12345l">
@@ -133,11 +133,19 @@
 <h4 id="贪婪模式与非贪婪模式"><a href="#贪婪模式与非贪婪模式" class="headerlink" title="贪婪模式与非贪婪模式"></a>贪婪模式与非贪婪模式</h4><p><img src="../img/正则表达式/贪婪模式.png" alt></p>
 <h4 id="分组-把一些字符作为一个整体"><a href="#分组-把一些字符作为一个整体" class="headerlink" title="分组  把一些字符作为一个整体"></a>分组  把一些字符作为一个整体</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//匹配 hungerrr ，而不是 hungerhungerhunger</span></span><br><span class="line">/hunger&#123;<span class="number">3</span>&#125;/</span><br><span class="line"><span class="comment">//把hunger作为一个整体，匹配 hungerhungerhunger</span></span><br><span class="line">/(hunger)&#123;<span class="number">3</span>&#125;/</span><br><span class="line"><span class="comment">//匹配 “hello world” 和 “hi world”</span></span><br><span class="line">/(hello)|(hi) wolrd/</span><br><span class="line"><span class="comment">//$1代表正则里分组匹配的内容，输出 “hi8 world, hi6 jirengu”</span></span><br><span class="line"><span class="string">"hello8 world, hello6 jirengu"</span>.replace(<span class="regexp">/hello(\d)/g</span>, <span class="string">'hi$1'</span>)</span><br></pre></td></tr></table></figure>
 <p>更详细的用法参考MDN</p>
+<h4 id="案例-1"><a href="#案例-1" class="headerlink" title="案例"></a>案例</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> str = <span class="string">`</span></span><br><span class="line"><span class="string">&lt;div class="container"&gt;</span></span><br><span class="line"><span class="string">  &lt;div class="box"&gt; 我是div &lt;/div&gt;</span></span><br><span class="line"><span class="string">&lt;/div&gt;</span></span><br><span class="line"><span class="string">`</span></span><br><span class="line"><span class="keyword">let</span> str2 = str.replace(<span class="regexp">/(&lt;\/?)div(.*?&gt;)/g</span>,<span class="string">'$1span$2'</span>);</span><br><span class="line"><span class="built_in">console</span>.log(str2) </span><br><span class="line"><span class="comment">/*输出</span></span><br><span class="line"><span class="comment">&lt;span class="container"&gt;</span></span><br><span class="line"><span class="comment">  &lt;span class="box"&gt; 我是div &lt;/span&gt;</span></span><br><span class="line"><span class="comment">&lt;/span&gt;</span></span><br><span class="line"><span class="comment">*/</span></span><br></pre></td></tr></table></figure>
+<h4 id="案例2"><a href="#案例2" class="headerlink" title="案例2"></a>案例2</h4><p>写一个函数 validPassword 用于验证用户输入是否为合法密码。参数为字符串，返回值为布尔值。判断规则如下：</p>
+<ul>
+<li>密码长度6~20位</li>
+<li>密码只能是大小写字母、数字、下划线、$</li>
+<li>大写、小写、数字、下划线、$至少包含两种</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">validPassword</span>(<span class="params">rawInput</span>) </span>&#123;</span><br><span class="line">  <span class="keyword">if</span>(!<span class="regexp">/^[\w$]&#123;6,20&#125;$/</span>.test(rawInput)) <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line">  <span class="keyword">if</span>(<span class="regexp">/(^[a-z]+$)|(^[A-Z]+$)|(^\d+$)|(^_+$)|(^\$+$)/</span>.test(rawInput)) <span class="keyword">return</span>    <span class="literal">false</span></span><br><span class="line">  <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ck9jdarmt000gusw1lfa3ey0w" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ck9jdyzy5000k9cw18llds8zi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
