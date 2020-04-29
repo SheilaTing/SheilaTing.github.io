@@ -1,0 +1,275 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>js 原型链 | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="原型链设计机制一直是大多数前端开发最难理解的部分，据说当初 Brendan Eich 设计之初不想引入类的概念，但是为了将对象联系起来，加入的C++ new的概念，但是new没有办法共享属性，就在构造函数里设置了一个prototype属性，这一设计理念成为了js跟其他面向对象语言不同的地方，同时也埋下了巨大的坑！ 为了解决因为委托机制带来的各种各样的缺点及语法问题，es6之后引入的class，cl">
+<meta property="og:type" content="article">
+<meta property="og:title" content="js 原型链">
+<meta property="og:url" content="http://yoursite.com/2020/04/29/js-原型链/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="原型链设计机制一直是大多数前端开发最难理解的部分，据说当初 Brendan Eich 设计之初不想引入类的概念，但是为了将对象联系起来，加入的C++ new的概念，但是new没有办法共享属性，就在构造函数里设置了一个prototype属性，这一设计理念成为了js跟其他面向对象语言不同的地方，同时也埋下了巨大的坑！ 为了解决因为委托机制带来的各种各样的缺点及语法问题，es6之后引入的class，cl">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-04-29T07:50:18.735Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="js 原型链">
+<meta name="twitter:description" content="原型链设计机制一直是大多数前端开发最难理解的部分，据说当初 Brendan Eich 设计之初不想引入类的概念，但是为了将对象联系起来，加入的C++ new的概念，但是new没有办法共享属性，就在构造函数里设置了一个prototype属性，这一设计理念成为了js跟其他面向对象语言不同的地方，同时也埋下了巨大的坑！ 为了解决因为委托机制带来的各种各样的缺点及语法问题，es6之后引入的class，cl">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-js-原型链" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/29/js-原型链/" class="article-date">
+  <time datetime="2020-04-29T06:25:04.000Z" itemprop="datePublished">2020-04-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      js 原型链
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原型链设计机制一直是大多数前端开发最难理解的部分，据说当初 Brendan Eich 设计之初不想引入类的概念，但是为了将对象联系起来，加入的C++ new的概念，但是new没有办法共享属性，就在构造函数里设置了一个prototype属性，这一设计理念成为了js跟其他面向对象语言不同的地方，同时也埋下了巨大的坑！</p>
+<p>为了解决因为委托机制带来的各种各样的缺点及语法问题，es6之后引入的class，class的实质还是基于原型链封装的语法糖，但是却大大简化的前端开发的代码，也解决了很多历史遗留的问题</p>
+<h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><p>构造函数方式创建</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.color = color</span><br><span class="line"><span class="keyword">this</span>.sayColor = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`汪汪<span class="subst">$&#123;<span class="keyword">this</span>.color&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> dog1 = <span class="keyword">new</span> Dog(<span class="string">'red'</span>)</span><br><span class="line">dog1.sayColor()</span><br><span class="line"><span class="keyword">let</span> dog2 = <span class="keyword">new</span> Dog(<span class="string">'yellow'</span>)</span><br><span class="line">dog2.sayColor()</span><br></pre></td></tr></table></figure>
+<p>new Dog做了哪些事?</p>
+<ul>
+<li>创建一个空对象{}，假设名字是tempObj</li>
+<li>执行Dog函数，执行过程中对 this 操作就是对tempObj 进行操作(使用apply调用构造器函数，this绑定到空对象obj上)</li>
+<li>函数执行完毕后返回刚刚创建的tempObj</li>
+<li>把tempObj赋值给dog1</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">NEW_OBJECT</span>(<span class="params">Foo</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj=&#123;&#125;;</span><br><span class="line">    obj.__proto__=Foo.prototype;</span><br><span class="line">    obj.constructor=Foo;</span><br><span class="line">    Foo.apply(obj,<span class="built_in">arguments</span>)</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="重新认识函数"><a href="#重新认识函数" class="headerlink" title="重新认识函数"></a>重新认识函数</h4><ul>
+<li>所有函数都有一个.prototype属性，对应的是一个空对象（暂且认为）</li>
+<li>当用new 函数 创建对象时，对象都拥有.<strong>proto</strong>属性，都指向该函数 的.prototype</li>
+<li>当使用对象的属性时，先从自有属性找，找不到再从.<strong>proto</strong>里找</li>
+</ul>
+<h4 id="instanceof"><a href="#instanceof" class="headerlink" title="instanceof"></a>instanceof</h4><p>用于检测构造函数的 prototype 属性是否出现在某个 实例对象的原型链上</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">[] <span class="keyword">instanceof</span> <span class="built_in">Array</span> <span class="comment">// true</span></span><br><span class="line">&#123;&#125; <span class="keyword">instanceof</span> <span class="built_in">Object</span> <span class="comment">//true</span></span><br><span class="line">(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;) <span class="keyword">instanceof</span> <span class="built_in">Function</span> <span class="comment">//true</span></span><br><span class="line"><span class="built_in">Object</span> <span class="keyword">instanceof</span> <span class="built_in">Function</span> <span class="comment">// true</span></span><br><span class="line"><span class="comment">//数组是Array函数的实例</span></span><br><span class="line"><span class="comment">// 字面量对象是Object函数的实例</span></span><br><span class="line"><span class="comment">// 函数是Function函数的实例</span></span><br><span class="line"><span class="comment">// Object函数是Function函数的实例</span></span><br></pre></td></tr></table></figure>
+<h4 id="几条经验"><a href="#几条经验" class="headerlink" title="几条经验"></a>几条经验</h4><ul>
+<li>new 一个函数，(即：使用new创建对象)这个函数的 prototype等于创建的对象的 __proto__</li>
+<li>普通的对象是Object函数创建的</li>
+<li>任何函数都是由Function函数创建的</li>
+<li>Function创建了Function</li>
+</ul>
+<h4 id="原型"><a href="#原型" class="headerlink" title="原型"></a>原型</h4><p>​      <strong>每一个对象都有__proto__属性， 但是只有函数对象才有 prototype 属性</strong></p>
+<blockquote>
+<p>几乎所有的 JavaScript 对象都是 <a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object" target="_blank" rel="noopener"><code>Object</code></a> 的实例；一个典型的对象继承了<code>Object.prototype</code>的属性（包括方法），尽管这些属性可能被遮蔽（亦称为覆盖）。但是有时候可能故意创建不具有典型原型链继承的对象，比如通过<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/create" target="_blank" rel="noopener"><code>Object.create(null)</code></a>创建的对象，或者通过<a href="https://developer.mozilla.org/zh-CN/docs/Web/JavaScript/Reference/Global_Objects/Object/setPrototypeOf" target="_blank" rel="noopener"><code>Object.setPrototypeOf</code></a>方法改变原型链。</p>
+</blockquote>
+<p>当我们试图访问一个对象下的某个属性的时候，会在JS引擎触发一个GET的操作，首先会查找这个对象是否存在这个属性，如果没有找的话，则继续在prototype关联的对象上查找，以此类推。如果在后者上也没有找到的话，继续查找的prototype，这一系列的链接就被称为<strong>原型链</strong>。</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Dog</span> </span>&#123;</span><br><span class="line"><span class="keyword">constructor</span>(color) &#123;</span><br><span class="line"><span class="keyword">this</span>.color = color</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> dog1 = <span class="keyword">new</span> Dog(<span class="string">'yellow'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(dog1.toString()) <span class="comment">//"[object Object]"</span></span><br></pre></td></tr></table></figure>
+<ul>
+<li>new Dog创建dog1对象，Dog.prototype === dog1.__proto__ </li>
+<li>dog1.__proto__是个普通对象，是由new Object 创建的， Object.prototype === dog1.__proto__.__proto__ </li>
+<li>dog1.toString === dog1.__proto__.__proto__.toString (在控制台观察dog1就能发现)</li>
+</ul>
+<h4 id="（原型）继承"><a href="#（原型）继承" class="headerlink" title="（原型）继承"></a>（原型）继承</h4><p><strong>四种写法的思考</strong></p>
+<p><strong>1：A.prototype = B.prototype</strong></p>
+<p>这种方法很容易理解，A要继承B原型链属性，直接改写A的Prototype关联到B的prototype，但是，如果在A上执行从B继承过来的某一个属性或方法，例如：A.prototype.myName =…会直接修改B.prototype本身。</p>
+<p><strong>2：A.prototype = new B()</strong></p>
+<p>这种方式会创建关联到B原型上的新对象，但是由于使用构造函数，在B上如果修改状态、主车道其他对象，会影响到A的后代。也就是说要执行 </p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">A.prototype.constructor = A;</span><br><span class="line">这行是把A的constructor重新设为A，不然的话它就会变成B</span><br></pre></td></tr></table></figure>
+<p>作者：李引证<br>链接：<a href="https://www.zhihu.com/question/20801227/answer/16239270" target="_blank" rel="noopener">https://www.zhihu.com/question/20801227/answer/16239270</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<p>1.为啥是 B.prototype = new A(); 而不是 B.prototype = A or B.prototype = A.prototype？</p>
+<p>要实现继承，就必须保证B继承A以后，B所做的修改不能影响到A以及继承自A的其它对象。</p>
+<p>如果B.prototype = A的话，那么着两个对象的引用是完全一致了，这样的话，如果赋值 B.prototype.name=45455；那么A.name就直接变成45455;</p>
+<p>直接把A和继承自A的其它对象全部改了，这根本谈不上继承。</p>
+<p>至于B.prototype = A.prototype也是同理，修改B的原型就会直接把A的原型给污染掉。</p>
+<p>B.prototype = new A();这个方法，是创建了一个新的对象{}，并且继承了A的原型，这是一个新对象，不是和A同一引用，所以不会污染A。</p>
+<p>我们先把B.prototype改成另外一个名字，叫XXX，此时XXX=new A();<br><strong>当你请求XXX. whatever的时候，此时它不存在，将会向上从构造函数，也就是A（）里找</strong></p>
+<p>也就是B.prototype. whatever ==XXX. whatever ==A.prototype.whatever<br>这就顺利的请求到了值，而且不会污染A。</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">B.prototype.constructor = B;</span><br><span class="line">这行是把B的constructor重新设为B，不然的话它就会变成A</span><br></pre></td></tr></table></figure>
+<p><strong>3：A.prototype = Object.create(B.prototype)</strong> (ES5新增)</p>
+<p>Object.create()是个很有意思的函数，用一段简单的polyfill来实现它的功能：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">Object.create = function(o) &#123;</span><br><span class="line">  function F()&#123;&#125;</span><br><span class="line">  F.prototype = o;</span><br><span class="line">  return new F();</span><br><span class="line">&#125;;</span><br><span class="line">//objct.create使用; 把person1当做person2的proto</span><br><span class="line">let person1 = &#123;name: &apos;饥人谷&apos;&#125;</span><br><span class="line">let person2 = Object.create(person1)</span><br></pre></td></tr></table></figure>
+<p>创建一个新对象，用参数作为新对象 的原型__proto__</p>
+<p><strong>4：Object.setPrototypeOf( A.prototype, B.prototype );</strong> (ES6新增)</p>
+<h4 id="实现instanceof"><a href="#实现instanceof" class="headerlink" title="实现instanceof"></a>实现instanceof</h4><p>用于检测构造函数的 prototype 属性 是否出现在某个实例对象的原型链上</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">_instanceof</span>(<span class="params">obj, fn</span>) </span>&#123;</span><br><span class="line"><span class="keyword">let</span> __proto__ = obj.__proto__</span><br><span class="line"><span class="keyword">while</span>(<span class="number">1</span>) &#123;</span><br><span class="line"><span class="keyword">if</span>(__proto__ === <span class="literal">null</span>) <span class="keyword">return</span> <span class="literal">false</span></span><br><span class="line"><span class="keyword">if</span>(__proto__ === fn.prototype) <span class="keyword">return</span> <span class="literal">true</span></span><br><span class="line">__proto__ = __proto__.__proto__</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">let</span> p = <span class="keyword">new</span> People</span><br><span class="line">_instanceof(p, People)</span><br><span class="line">_instanceof(p, <span class="built_in">Object</span>)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ck9l1hyc8000av4w1eeudikgu" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/04/28/定时器/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">定时器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/04/29/js-原型链/">js 原型链</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/28/定时器/">定时器</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/28/正则表达式/">正则表达式</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/26/Math-Date-API/">Math Date API</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/26/对象与json/">对象与json</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
