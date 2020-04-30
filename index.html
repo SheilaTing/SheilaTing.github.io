@@ -86,6 +86,7 @@
       
         <p>原型链设计机制一直是大多数前端开发最难理解的部分，据说当初 Brendan Eich 设计之初不想引入类的概念，但是为了将对象联系起来，加入的C++ new的概念，但是new没有办法共享属性，就在构造函数里设置了一个prototype属性，这一设计理念成为了js跟其他面向对象语言不同的地方，同时也埋下了巨大的坑！</p>
 <p>为了解决因为委托机制带来的各种各样的缺点及语法问题，es6之后引入的class，class的实质还是基于原型链封装的语法糖，但是却大大简化的前端开发的代码，也解决了很多历史遗留的问题</p>
+<p><img src="../img/原型链/图示1.png" alt></p>
 <h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><p>构造函数方式创建</p>
 <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.color = color</span><br><span class="line"><span class="keyword">this</span>.sayColor = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`汪汪<span class="subst">$&#123;<span class="keyword">this</span>.color&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> dog1 = <span class="keyword">new</span> Dog(<span class="string">'red'</span>)</span><br><span class="line">dog1.sayColor()</span><br><span class="line"><span class="keyword">let</span> dog2 = <span class="keyword">new</span> Dog(<span class="string">'yellow'</span>)</span><br><span class="line">dog2.sayColor()</span><br></pre></td></tr></table></figure>
 <p>new Dog做了哪些事?</p>
@@ -104,7 +105,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ck9l1hyc8000av4w1eeudikgu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ck9mo2f30000cisw16gwshth0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -161,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/28/定时器/" data-id="ck9l1hycp000iv4w1g0mhucc6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/28/定时器/" data-id="ck9mo2f3a000kisw1wf8qvznu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -235,7 +236,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ck9l1hycv000kv4w12j7k6gmo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ck9mo2f3b000misw1irnubxq1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
@@ -291,7 +292,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/26/Math-Date-API/" data-id="ck9l1hyc60008v4w17hz2ds7v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/26/Math-Date-API/" data-id="ck9mo2f2k0002isw1khpv1d1k" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
@@ -340,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/26/对象与json/" data-id="ck9l1hycw000lv4w1gtmvw13g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/26/对象与json/" data-id="ck9mo2f3b000lisw1vpc8o9v9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li></ul>
@@ -385,7 +386,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/25/递归优化/" data-id="ck9l1hyd0000nv4w11aa2ioui" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/25/递归优化/" data-id="ck9mo2f3d000oisw1rwa6fubq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
@@ -486,7 +487,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/hexo备份/" data-id="ck9l1hycb000bv4w1z95cwwi3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/24/hexo备份/" data-id="ck9mo2f2v0009isw1glvxh6qr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -540,7 +541,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ck9l1hycg000dv4w1j2yf2lmc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ck9mo2f33000eisw1xkcia04a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -593,7 +594,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ck9l1hyc70009v4w1kqx8g7f9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ck9mo2f31000disw1t6wmjky1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -654,7 +655,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ck9l1hyci000ev4w1do4ym7pc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ck9mo2f35000fisw1ztey5f99" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
