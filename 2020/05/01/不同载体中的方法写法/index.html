@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>不同载体中的方法写法 | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="好烦各种写法在对象中对象属性也可以是一个函数、getter、setter方法。 getter and setter:将对象属性绑定到查询/设置该属性时将被调用的函数 (注意这是函数，但调用时是好像是当做属性来调用似的,在getter中一般返回某个需要的值) 1234567891011121314151617var obj = &amp;#123;	name:&quot;隔壁老王&quot;,   //注意要加逗号分隔，因为下">
+<meta property="og:type" content="article">
+<meta property="og:title" content="不同载体中的方法写法">
+<meta property="og:url" content="http://yoursite.com/2020/05/01/不同载体中的方法写法/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="好烦各种写法在对象中对象属性也可以是一个函数、getter、setter方法。 getter and setter:将对象属性绑定到查询/设置该属性时将被调用的函数 (注意这是函数，但调用时是好像是当做属性来调用似的,在getter中一般返回某个需要的值) 1234567891011121314151617var obj = &amp;#123;	name:&quot;隔壁老王&quot;,   //注意要加逗号分隔，因为下">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-05-01T11:50:13.821Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="不同载体中的方法写法">
+<meta name="twitter:description" content="好烦各种写法在对象中对象属性也可以是一个函数、getter、setter方法。 getter and setter:将对象属性绑定到查询/设置该属性时将被调用的函数 (注意这是函数，但调用时是好像是当做属性来调用似的,在getter中一般返回某个需要的值) 1234567891011121314151617var obj = &amp;#123;	name:&quot;隔壁老王&quot;,   //注意要加逗号分隔，因为下">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-不同载体中的方法写法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/01/不同载体中的方法写法/" class="article-date">
+  <time datetime="2020-05-01T10:34:03.000Z" itemprop="datePublished">2020-05-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      不同载体中的方法写法
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="好烦各种写法"><a href="#好烦各种写法" class="headerlink" title="好烦各种写法"></a>好烦各种写法</h4><h5 id="在对象中"><a href="#在对象中" class="headerlink" title="在对象中"></a>在对象中</h5><p>对象属性也可以是一个<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions" target="_blank" rel="noopener">函数</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get" target="_blank" rel="noopener">getter</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set" target="_blank" rel="noopener">setter</a>方法。</p>
+<p>getter and setter:将对象属性绑定到查询/设置该属性时将被调用的函数 (注意这是函数，但调用时是好像是当做属性来调用似的,在getter中一般返回某个需要的值)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	name:<span class="string">"隔壁老王"</span>,   <span class="comment">//注意要加逗号分隔，因为下面也是对象的属性</span></span><br><span class="line">	age:<span class="number">20</span>, <span class="comment">//注意此处赋值用的是冒号，不是等号</span></span><br><span class="line">	sayHi:functin()&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"Hi,man"</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//es6也可以这样写，省略function</span></span><br><span class="line">	say()&#123;  </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"abc"</span>)</span><br><span class="line">	  &#125;</span><br><span class="line">	get test()&#123;<span class="keyword">return</span> <span class="keyword">this</span>.age&#125;</span><br><span class="line">	set age(val)&#123;<span class="keyword">this</span>.age = val&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">调用时：</span><br><span class="line">注意，大爷的我刚赋值了半天没对，原来是语法错误</span><br><span class="line">调用 get set 时候：obj.test = <span class="number">100</span>  而不是 obj(<span class="number">100</span>),直接当做属性来使用</span><br></pre></td></tr></table></figure>
+<h4 id="在Class中"><a href="#在Class中" class="headerlink" title="在Class中"></a>在Class中</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span></span>&#123;</span><br><span class="line">  name = <span class="string">"test"</span></span><br><span class="line">  <span class="comment">// name:"test"  //注意不要这样写，不对，不要问为啥</span></span><br><span class="line">  test()&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"test"</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//或者这种最原始的写法，不要再发明别的写法了比如说 函数名：function 这种，不对</span></span><br><span class="line">  test=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"test"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="在-constructor中"><a href="#在-constructor中" class="headerlink" title="在 constructor中"></a>在 constructor中</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">constructor</span>()&#123;</span><br><span class="line"> <span class="comment">//一定要加 this 因为this指向当前创建的对象</span></span><br><span class="line">    <span class="keyword">this</span>.test=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"sdfsdfsf"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;<span class="keyword">this</span>.test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;</span><br><span class="line">  <span class="comment">//注意在这里不能用es6写法这样写，不要问为何，因为我也不知道（我还纠结了半天）</span></span><br><span class="line">  <span class="keyword">this</span>.test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">//你可以这样写,但注意这样就直接返回了，后面的代码就不会执行了</span></span><br><span class="line">     <span class="keyword">return</span>&#123;</span><br><span class="line">    test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//或者你可以这样写</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">   <span class="keyword">return</span>&#123;</span><br><span class="line">    test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;,</span><br><span class="line">     tip()&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"aaaaaaaaaaa"</span>)</span><br><span class="line">     &#125;,</span><br><span class="line">      name:<span class="string">"jirengu"</span>  <span class="comment">//注意这里不要用等于号赋值，奶奶的，我又懵逼了半天</span></span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> People();</span><br><span class="line">s.test();</span><br><span class="line">s.tip()</span><br><span class="line"><span class="built_in">console</span>.log(s.name)</span><br><span class="line"><span class="comment">//但是这样写，其实有些麻烦哈，可以考虑使用 Object.assign()来讲内容聚合到this 中，这样也是OK的</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">   <span class="built_in">Object</span>.assign(<span class="keyword">this</span>,&#123;</span><br><span class="line">    test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;,</span><br><span class="line">     tip()&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"aaaaaaaaaaa"</span>)</span><br><span class="line">     &#125;,</span><br><span class="line">      name:<span class="string">"jirengu"</span></span><br><span class="line">   &#125;)</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> People();</span><br><span class="line">s.test();</span><br><span class="line">s.tip()</span><br><span class="line"><span class="built_in">console</span>.log(s.name)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/01/不同载体中的方法写法/" data-id="ck9p6s96w000jokw1201s0bkv" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/05/02/闭包/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          闭包
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/04/29/js-原型链/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">js 原型链</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/02/闭包/">闭包</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/01/不同载体中的方法写法/">不同载体中的方法写法</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/29/js-原型链/">js 原型链</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/28/定时器/">定时器</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/28/正则表达式/">正则表达式</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

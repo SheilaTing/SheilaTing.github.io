@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>闭包 | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="定义闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）闭包的作用一般情况下使用闭包主要是为了 封装数据 隐藏变量，只通过指定接口访问数据 123456789101112131415161718const cache = (()=&amp;gt;&amp;#123;	const">
+<meta property="og:type" content="article">
+<meta property="og:title" content="闭包">
+<meta property="og:url" content="http://yoursite.com/2020/05/02/闭包/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="定义闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）闭包的作用一般情况下使用闭包主要是为了 封装数据 隐藏变量，只通过指定接口访问数据 123456789101112131415161718const cache = (()=&amp;gt;&amp;#123;	const">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-05-02T07:29:05.669Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="闭包">
+<meta name="twitter:description" content="定义闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）闭包的作用一般情况下使用闭包主要是为了 封装数据 隐藏变量，只通过指定接口访问数据 123456789101112131415161718const cache = (()=&amp;gt;&amp;#123;	const">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-闭包" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/02/闭包/" class="article-date">
+  <time datetime="2020-05-02T04:55:33.000Z" itemprop="datePublished">2020-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      闭包
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><h6 id="闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）"><a href="#闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）" class="headerlink" title="闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）"></a>闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）</h6><h4 id="闭包的作用"><a href="#闭包的作用" class="headerlink" title="闭包的作用"></a>闭包的作用</h4><h6 id="一般情况下使用闭包主要是为了"><a href="#一般情况下使用闭包主要是为了" class="headerlink" title="一般情况下使用闭包主要是为了"></a>一般情况下使用闭包主要是为了</h6><ul>
+<li><p>封装数据</p>
+<p>隐藏变量，只通过指定接口访问数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cache = <span class="function">(<span class="params">(</span>)=&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">const</span> store = &#123;&#125;;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		get(key)&#123;</span><br><span class="line">			<span class="keyword">return</span> store[key]</span><br><span class="line">		&#125;,</span><br><span class="line">		set(key,val)&#123;</span><br><span class="line">			store[key] = val</span><br><span class="line">		&#125;,</span><br><span class="line">		remove(key)&#123;</span><br><span class="line">			<span class="keyword">delete</span> store[key]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="comment">//cache = 一个立即执行函数，函数的返回值依然是一个函数，而且引用了函数中的变量</span></span><br><span class="line">cache.set(<span class="string">"name"</span>,<span class="string">"Jack"</span>);</span><br><span class="line">cache.get(<span class="string">'name'</span>);</span><br><span class="line">cache.remove(<span class="string">"name"</span>)</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+</li>
+<li><p>暂存数据</p>
+<h6 id="存储临时变量"><a href="#存储临时变量" class="headerlink" title="存储临时变量"></a>存储临时变量</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">return</span> funtion(b)&#123;</span><br><span class="line">    <span class="keyword">return</span> a+b;</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> sum1 = sum(<span class="number">1</span>) <span class="comment">// 返回里面的函数，此时暂存了 传递的变量a=1</span></span><br><span class="line"><span class="keyword">const</span> sum2 = sum(<span class="number">2</span>) <span class="comment">//  返回里面的函数，此时暂存了 传递的变量 a=2</span></span><br><span class="line"><span class="built_in">console</span>.log(sum1(<span class="number">3</span>)) <span class="comment">//执行 sum1 传递参数b=3 结果为4</span></span><br><span class="line"><span class="built_in">console</span>.log(sum2(<span class="number">3</span>)) <span class="comment">//执行 sum2 传递参数 b=3 结果为6</span></span><br></pre></td></tr></table></figure>
+<h6 id="利用这些特性，我们可以"><a href="#利用这些特性，我们可以" class="headerlink" title="利用这些特性，我们可以"></a>利用这些特性，我们可以</h6><ul>
+<li><p>让对象拥有私有属性（只有在内部可以访问到，通过方法暴露给外界）</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span></span>&#123;</span><br><span class="line"><span class="keyword">constructor</span>()&#123;</span><br><span class="line">  <span class="keyword">let</span> name  <span class="comment">//定义一个局部变量</span></span><br><span class="line">  <span class="comment">//给 this 也就是通过new创建的对象绑定一个getName属性对应的是一个函数</span></span><br><span class="line">  <span class="keyword">this</span>.getName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> name; <span class="comment">//注意这里不要写this.name</span></span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">this</span>.setName=<span class="function"><span class="keyword">function</span>(<span class="params">argument</span>)</span>&#123;</span><br><span class="line">   <span class="comment">//这里也不要写 this.name 因为它会给 this对象增加一个属性name</span></span><br><span class="line">    <span class="comment">// 否则后面调用的时候会调用到(我刚就犯了这个错误，哎)</span></span><br><span class="line">    name = argument  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//这里的方法是写在对象的原型链上的也就是——proto--</span></span><br><span class="line">sayHi()&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">`Hi,<span class="subst">$&#123;<span class="keyword">this</span>.getName()&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> People()</span><br><span class="line">p1.setName(<span class="string">'张三'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(p1.name)  <span class="comment">//找不到 undefined</span></span><br><span class="line">p1.getName()</span><br><span class="line">p1.sayHi()</span><br><span class="line"></span><br><span class="line"><span class="comment">//简化的写法</span></span><br><span class="line"><span class="built_in">Object</span>.assign(<span class="keyword">this</span>, &#123;</span><br><span class="line">setName(newName) &#123;</span><br><span class="line">name = newName</span><br><span class="line">&#125;,</span><br><span class="line">getName() &#123;</span><br><span class="line"><span class="keyword">return</span> name</span><br><span class="line">&#125;</span><br><span class="line">&#125;)  <span class="comment">//将这两个属性方法聚合到this上，写法更聚合，简洁</span></span><br><span class="line"><span class="comment">//es5的写法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">People</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="keyword">var</span> name </span><br><span class="line">   <span class="keyword">this</span>.getName=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="keyword">return</span> name; </span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">this</span>.setName=<span class="function"><span class="keyword">function</span>(<span class="params">argument</span>)</span>&#123;</span><br><span class="line">      name = argument  </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//在原型上增加 sayHi() 方法</span></span><br><span class="line">People.prototype.sayHi=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`Hi,<span class="subst">$&#123;<span class="keyword">this</span>.getName()&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+</li>
+</ul>
+<ul>
+<li><p>高阶函数   调用一个函数返回另外一个函数</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> makeUrl = <span class="function"><span class="params">domain</span> =&gt;</span> path =&gt; <span class="string">`https://<span class="subst">$&#123;domain&#125;</span><span class="subst">$&#123;path&#125;</span>`</span></span><br><span class="line"><span class="keyword">const</span> makeJrgUrl = makeUrl(<span class="string">'jirengu.com'</span>)</span><br><span class="line"><span class="keyword">const</span> makdeXdmlUrl = makeUrl(<span class="string">'xiedaimala.com'</span>)</span><br><span class="line"><span class="keyword">const</span> url1 = makeJrgUrl (<span class="string">'/about'</span>)</span><br><span class="line"><span class="keyword">const</span> url2 = makdeXdmlUrl (<span class="string">'/index'</span>)</span><br><span class="line"><span class="comment">//es5 写法</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeUrl</span>(<span class="params">domain</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">path</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> <span class="string">`https://<span class="subst">$&#123;domain&#125;</span><span class="subst">$&#123;path&#125;</span>`</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+</li>
+</ul>
+<h4 id="常见题目"><a href="#常见题目" class="headerlink" title="常见题目"></a>常见题目</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'clock:'</span> + i )</span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 会输出5个5，因为 settimeout 是会放到任务队列中的，等待主线程的代码执行完毕后才会执行到任务队列中，每次循环都会把定时器放入队列中，而主程序执行后 i = 5,此时执行定时器，输出 5个5</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// 如何输出想要的 0,1,2,3,4呢？</span></span><br><span class="line"><span class="comment">// 分析：我们把每次循环的i都保存下来传递给settimeout函数不就可以了吗，具体如下</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">var</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)&#123;</span><br><span class="line">  (<span class="function"><span class="keyword">function</span>(<span class="params">j</span>)</span>&#123;</span><br><span class="line">    setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'clock:'</span> + j )</span><br><span class="line">  &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;)(i)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//创建一个立即执行函数，传入i,执行，每次都会把i保存起来</span></span><br><span class="line"><span class="comment">//或者采用es6 let</span></span><br><span class="line"><span class="keyword">for</span>(<span class="keyword">let</span> i=<span class="number">0</span>; i&lt;<span class="number">5</span>; i++)&#123;</span><br><span class="line">  setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'clock:'</span> + i )</span><br><span class="line"> &#125;, <span class="number">0</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">makeCounter</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">let</span> count = <span class="number">0</span></span><br><span class="line"><span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="keyword">return</span> ++count</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> counter = makeCounter()</span><br><span class="line"><span class="keyword">let</span> counter2 = makeCounter()</span><br><span class="line"><span class="built_in">console</span>.log( counter() ) <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log( counter() ) <span class="comment">// 2</span></span><br><span class="line"><span class="built_in">console</span>.log( counter2() ) <span class="comment">// 1</span></span><br><span class="line"><span class="built_in">console</span>.log( counter2() ) <span class="comment">// 2</span></span><br></pre></td></tr></table></figure>
+<h4 id="排序"><a href="#排序" class="headerlink" title="排序"></a>排序</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> users = [</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">"Bob"</span>, <span class="attr">age</span>: <span class="number">20</span>, <span class="attr">company</span>: <span class="string">"Baidu"</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">"Cat"</span>, <span class="attr">age</span>: <span class="number">18</span>, <span class="attr">company</span>: <span class="string">"Alibaba"</span> &#125;,</span><br><span class="line">  &#123; <span class="attr">name</span>: <span class="string">"Ann"</span>, <span class="attr">age</span>: <span class="number">19</span>, <span class="attr">company</span>: <span class="string">"Tecent"</span> &#125;</span><br><span class="line">]</span><br><span class="line"><span class="comment">//es6 支持默认值传递参数</span></span><br><span class="line"><span class="keyword">const</span> orderBy = <span class="function">(<span class="params">field, order = <span class="string">'asc'</span></span>) =&gt;</span> (v1, v2) =&gt; &#123;</span><br><span class="line">  <span class="keyword">if</span>(order === <span class="string">'asc'</span>) <span class="keyword">return</span> v1[field] &gt; v2[field] ? <span class="number">1</span>: <span class="number">-1</span> </span><br><span class="line">  <span class="keyword">if</span>(order === <span class="string">'desc'</span>) <span class="keyword">return</span> v1[field] &gt; v2[field] ? <span class="number">-1</span>: <span class="number">1</span> </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log( users.sort(orderBy(<span class="string">'company'</span>, <span class="string">'asc'</span>)) )  <span class="comment">// company字段 以升序(从小到大)排序</span></span><br><span class="line"><span class="built_in">console</span>.log( users.sort(orderBy(<span class="string">'age'</span>, <span class="string">'desc'</span>))  )     <span class="comment">//age 字段以降序(从大到小)排序</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//es5写法  es5 不支持带默认值传递参数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sortByCondition</span>(<span class="params">field,order</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params">v1,v2</span>)</span>&#123;</span><br><span class="line">        <span class="keyword">if</span>(order === <span class="string">'asc'</span>) <span class="keyword">return</span> v1[field] &gt; v2[field] ? <span class="number">1</span>: <span class="number">-1</span> </span><br><span class="line">        <span class="keyword">if</span>(order === <span class="string">'desc'</span>) <span class="keyword">return</span> v1[field] &gt; v2[field] ? <span class="number">-1</span>: <span class="number">1</span> </span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/02/闭包/" data-id="ck9p6s970000nokw1iodk1spk" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/01/不同载体中的方法写法/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">不同载体中的方法写法</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/02/闭包/">闭包</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/01/不同载体中的方法写法/">不同载体中的方法写法</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/29/js-原型链/">js 原型链</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/28/定时器/">定时器</a>
+          </li>
+        
+          <li>
+            <a href="/2020/04/28/正则表达式/">正则表达式</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
