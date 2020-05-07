@@ -62,6 +62,160 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-基础类型引用类型" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/07/基础类型引用类型/" class="article-date">
+  <time datetime="2020-05-07T01:56:33.000Z" itemprop="datePublished">2020-05-07</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/07/基础类型引用类型/">基础类型引用类型</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="js-数据类型"><a href="#js-数据类型" class="headerlink" title="js 数据类型"></a>js 数据类型</h4><h6 id="变量"><a href="#变量" class="headerlink" title="变量"></a>变量</h6><p>内存中能存储值得空间</p>
+<h6 id="js-变量八种数据类型-七种原始类型-一种复合类型"><a href="#js-变量八种数据类型-七种原始类型-一种复合类型" class="headerlink" title="js 变量八种数据类型  七种原始类型 一种复合类型"></a>js 变量八种数据类型  七种原始类型 一种复合类型</h6><ul>
+<li>布尔（Boolean) </li>
+<li>null</li>
+<li>undefined</li>
+<li>Number (整数或者浮点数) 数字大小是有限制 的 -2^53到2^53</li>
+<li>任意精度整数(BigInt)，可以存储和操作大整数 100n</li>
+<li>字符串</li>
+<li>Symbol 创建一个独一无二的值 let key = Symbol()</li>
+<li>除了上面7种以外的都是对象(Object), 比如 狭义的对象、函数、数组..</li>
+</ul>
+<h6 id="使用tpyeof能确定对象的类型"><a href="#使用tpyeof能确定对象的类型" class="headerlink" title="使用tpyeof能确定对象的类型"></a>使用tpyeof能确定对象的类型</h6><p>需要注意的是 • 用typeof测试null得到的是”object”，尽管null是一种单独的类型 • 用typeof测试函数得到的是”function”，尽管函数是对象类型 • 可以用Array.isArray(arr) 来判断是不是数组</p>
+<h4 id="基础类型"><a href="#基础类型" class="headerlink" title="基础类型"></a>基础类型</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//分析输出什么</span></span><br><span class="line"><span class="keyword">let</span> a = <span class="number">3</span></span><br><span class="line"><span class="keyword">let</span> b = a</span><br><span class="line">a = <span class="number">13</span></span><br><span class="line"><span class="built_in">console</span>.log(b)  <span class="comment">// b还是等于3</span></span><br><span class="line"><span class="keyword">let</span> arr1 = [<span class="number">3</span>, <span class="number">1</span>, <span class="number">8</span>]</span><br><span class="line"><span class="keyword">let</span> arr2 = arr1</span><br><span class="line">arr1[<span class="number">0</span>] = <span class="number">13</span></span><br><span class="line"><span class="built_in">console</span>.log(arr2) <span class="comment">//arr2 等于 arr1改变后的结果</span></span><br></pre></td></tr></table></figure>
+<p>分析，看图</p>
+<p><img src="../img/引用类型/内存图1.png" alt></p>
+<p>声明a=3,b=a, 则 a b 各在栈内存中占据两个位置，a=3,把a的值给b 相当于把a的值拷贝了一份给b，所以后面更改a的值，跟b没有半毛钱关系</p>
+<p>再看下面这个数组就不一样了，数组为引用类型对象，栈中放不下所以就放到了堆内存中，而栈中存放的只是这个堆的地址,当把 arr1 赋值给arr2时，只是把中间存储的地址给拷贝了一份给 arr2而已，实际指向的还是同一片堆内存。（今天我写测试的时候又碰到了，发现理解不够深刻，特意回来补笔记），对于引用类型，它赋值的总是一个引用地址，如果想要实现一个对象的复制，需要创建一个新对象，把旧对象中的每一个属性复制给新对象才可以，后面会写数组的深浅拷贝；</p>
+<h6 id="案例"><a href="#案例" class="headerlink" title="案例"></a>案例</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> obj1 = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;</span><br><span class="line"><span class="keyword">let</span> obj2 = &#123;<span class="attr">a</span>: <span class="number">1</span>, <span class="attr">b</span>: <span class="number">2</span>&#125;</span><br><span class="line"><span class="built_in">console</span>.log(obj1 === obj2)  <span class="comment">//输出 fasle </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a, b</span>) </span>&#123; <span class="keyword">return</span> a+b &#125;</span><br><span class="line"><span class="keyword">let</span> sum2 = sum</span><br><span class="line">sum2(<span class="number">3</span>, <span class="number">4</span>) <span class="comment">//正常调用</span></span><br><span class="line"><span class="comment">//分析</span></span><br><span class="line"><span class="comment">// obj1 obj2 各在堆内存中占据一个空间，在栈内存中存储堆的地址，两个地址肯定是不一样的</span></span><br><span class="line"><span class="comment">//函数 sum2 = sum, 因为函数也是引用类型，所以它存储的也是一串地址而已，赋值也就是把地址给了sum2，所以此时两个函数指向同一个堆中的地址，是同一个函数的引用</span></span><br><span class="line"><span class="comment">//函数名就是一个指针，就是一个地址，就是一段代码的引用，说得就是他存储的是一个指向具体函数的地址</span></span><br></pre></td></tr></table></figure>
+<h4 id="参数传递"><a href="#参数传递" class="headerlink" title="参数传递"></a>参数传递</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">inc</span>(<span class="params">n</span>)</span>&#123; </span><br><span class="line">    <span class="comment">//let n = a  </span></span><br><span class="line">    n++ </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> a = <span class="number">10</span> </span><br><span class="line">inc(a)</span><br><span class="line"><span class="built_in">console</span>.log(a)</span><br><span class="line"><span class="comment">// 输出 a = 10; 因为 a 是基础类型，所以当把a 传递给函数 inc时候，相当于在函数内部声明了一个 let  n = a;也就是把 a的值赋值给 n，那 n++ 和 a 有没有关系，a 自然还是 10喽！</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">incObj</span>(<span class="params">obj</span>)</span>&#123; </span><br><span class="line">    <span class="comment">//let obj = o //0x0001</span></span><br><span class="line">    obj.n++ </span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> o = &#123;<span class="attr">n</span>: <span class="number">10</span>&#125; <span class="comment">//o = 0x0001</span></span><br><span class="line">incObj(o) </span><br><span class="line"><span class="built_in">console</span>.log(o)</span><br><span class="line"><span class="comment">//同上，但因为 o 是引用类型，所以是把 o 的地址赋值给了 参数 obj，此时他俩指向的是同一个堆内存，也就是同一个对象，一个改变另一个自然也会改变，所以输出 11；</span></span><br></pre></td></tr></table></figure>
+<h5 id="总结"><a href="#总结" class="headerlink" title="总结"></a>总结</h5><h6 id="应该用三个等号比较的，-基础类型比较的是值，引用类型比较的地址"><a href="#应该用三个等号比较的，-基础类型比较的是值，引用类型比较的地址" class="headerlink" title="应该用三个等号比较的，   基础类型比较的是值，引用类型比较的地址"></a>应该用三个等号比较的，   基础类型比较的是值，引用类型比较的地址</h6><p><img src="../img/引用类型/对比.png" alt></p>
+<h4 id="深浅拷贝"><a href="#深浅拷贝" class="headerlink" title="深浅拷贝"></a>深浅拷贝</h4><h6 id="浅拷贝-当数组中仅有基础类型，可以实现完全拷贝，但如果有引用类型，比如对象，此时就是浅拷贝"><a href="#浅拷贝-当数组中仅有基础类型，可以实现完全拷贝，但如果有引用类型，比如对象，此时就是浅拷贝" class="headerlink" title="浅拷贝 当数组中仅有基础类型，可以实现完全拷贝，但如果有引用类型，比如对象，此时就是浅拷贝"></a>浅拷贝 当数组中仅有基础类型，可以实现完全拷贝，但如果有引用类型，比如对象，此时就是浅拷贝</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//拷贝对象是数组的情况</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shallowCopy</span>(<span class="params">arr</span>)</span>&#123;</span><br><span class="line">  <span class="keyword">let</span> resArr = [];</span><br><span class="line"><span class="comment">//   arr.forEach(item=&gt;&#123;</span></span><br><span class="line"><span class="comment">//     resArr.push(item)</span></span><br><span class="line"><span class="comment">//   &#125;)</span></span><br><span class="line">   <span class="keyword">for</span>(<span class="keyword">let</span> i <span class="keyword">in</span> arr)&#123;</span><br><span class="line">       resArr[i] = arr[i]</span><br><span class="line">   &#125;</span><br><span class="line">  <span class="keyword">return</span> resArr;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//或者更简单</span></span><br><span class="line"><span class="keyword">const</span> shallowCopy = <span class="function"><span class="params">arr</span> =&gt;</span> arr.map(<span class="function"><span class="params">item</span>=&gt;</span>item);</span><br><span class="line"></span><br><span class="line"><span class="comment">//浅拷贝 包含对象的方法</span></span><br><span class="line"><span class="keyword">let</span> arr = [<span class="number">3</span>,<span class="number">4</span>,<span class="number">5</span>,<span class="number">6</span>,[<span class="number">6</span>,<span class="number">7</span>]];</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">shallowCopy</span>(<span class="params">src</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//判断参数是对象还是数组,</span></span><br><span class="line">    <span class="keyword">let</span> result = <span class="built_in">Array</span>.isArray(arr)?[]:&#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> src)&#123;</span><br><span class="line">        result[key] = src[key]; <span class="comment">//数组和对象都可以用【】来取值，赋值</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> result;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(shallowCopy(arr)); <span class="comment">//当arr[6.7]改变时，新数组也会改变，浅拷贝</span></span><br></pre></td></tr></table></figure>
+<h4 id="深拷贝"><a href="#深拷贝" class="headerlink" title="深拷贝"></a>深拷贝</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//层层拷贝，考虑用递归</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">deepCopy</span>(<span class="params">src</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">let</span> result = <span class="built_in">Array</span>.isArray(src)?[]:&#123;&#125;;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> key <span class="keyword">in</span> src)&#123;</span><br><span class="line">        <span class="comment">//判断遍历的值是基础类型还是引用类型,如果是引用类型并且不是null，因为null属于基础类型</span></span><br><span class="line">        <span class="keyword">if</span>(typeOf src[key] ===<span class="string">'object'</span> &amp;&amp; src[key]!==<span class="literal">null</span> )&#123;</span><br><span class="line">            result[key]=deepCopy(src[key]);</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            result[key] = src[key];</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/07/基础类型引用类型/" data-id="ck9w87n8e000gygw18aimx2wv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-外边距合并" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/05/外边距合并/" class="article-date">
+  <time datetime="2020-05-05T05:43:16.000Z" itemprop="datePublished">2020-05-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/05/外边距合并/">外边距合并</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/05/外边距合并/" data-id="ck9w87n8g000iygw1u306p0w3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-dom-相关操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/02/dom-相关操作/" class="article-date">
+  <time datetime="2020-05-02T09:29:26.000Z" itemprop="datePublished">2020-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/02/dom-相关操作/">dom 相关操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h4><p>文档对象模型是HTML的编程接口。用对象和HTML结构一一映射，通过修改对象达到修改HTML节点的目的。</p>
+<p>document 的基本信息</p>
+<ul>
+<li>document.head   获取文档的头部</li>
+<li>document.body</li>
+<li>document.title</li>
+<li>document.location   地址跳转相关操作</li>
+</ul>
+<p>​        document.location.href</p>
+<p>​         document.location.hash</p>
+<p>​         document.location.search</p>
+<p>​         document.location.reload()</p>
+<p>​         document.location.assign(‘<a href="https://jirengucom&#39;)" target="_blank" rel="noopener">https://jirengucom&#39;)</a>;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">url.href = <span class="string">'https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(url.href);      <span class="comment">// https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container</span></span><br><span class="line"><span class="built_in">console</span>.log(url.protocol);  <span class="comment">// https:</span></span><br><span class="line"><span class="built_in">console</span>.log(url.host);      <span class="comment">// developer.mozilla.org</span></span><br><span class="line"><span class="built_in">console</span>.log(url.hostname);  <span class="comment">// developer.mozilla.org</span></span><br><span class="line"><span class="built_in">console</span>.log(url.port);      <span class="comment">// (blank - https assumes port 443)</span></span><br><span class="line"><span class="built_in">console</span>.log(url.pathname);  <span class="comment">// /en-US/search</span></span><br><span class="line"><span class="built_in">console</span>.log(url.search);    <span class="comment">// ?q=URL</span></span><br><span class="line"><span class="built_in">console</span>.log(url.hash);      <span class="comment">// #search-results-close-container</span></span><br><span class="line"><span class="built_in">console</span>.log(url.origin);    <span class="comment">// https://developer.mozilla.org</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2020/05/02/dom-相关操作/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/02/dom-相关操作/" data-id="ck9w87n87000bygw18eamihmj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dom/">dom</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-闭包" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/02/闭包/" class="article-date">
@@ -96,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/02/闭包/" data-id="ck9p6s970000nokw1iodk1spk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/02/闭包/" data-id="ck9w87n9l000uygw1e4l8yerd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -137,7 +291,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/01/不同载体中的方法写法/" data-id="ck9p6s96w000jokw1201s0bkv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/01/不同载体中的方法写法/" data-id="ck9w87n8h000jygw1dvn8actu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -192,7 +346,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ck9p6s961000bokw120re0w0s" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ck9w87n89000cygw19tsnohc3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/28/定时器/" data-id="ck9p6s96x000kokw13msu4ul1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/28/定时器/" data-id="ck9w87n8q000sygw1a1vwkqo3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -323,7 +477,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ck9p6s96y000lokw1ziufkygk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ck9w87n8j000lygw1mbdiaup1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
@@ -379,7 +533,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/26/Math-Date-API/" data-id="ck9p6s95m0001okw1g77kypnf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/26/Math-Date-API/" data-id="ck9w87n8p000rygw14ljx9e16" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
@@ -428,209 +582,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/26/对象与json/" data-id="ck9p6s971000pokw1pl415uy8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/26/对象与json/" data-id="ck9w87n8k000mygw1ba9vkq8h" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-递归优化" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/25/递归优化/" class="article-date">
-  <time datetime="2020-04-25T02:18:19.000Z" itemprop="datePublished">2020-04-25</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/25/递归优化/">递归优化</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="递归实现N的阶乘"><a href="#递归实现N的阶乘" class="headerlink" title="递归实现N的阶乘"></a>递归实现N的阶乘</h4><p>阶乘的概念   假如 n =5;  则 5！= 5*4！ 4！=4*3！ 3!=3*2! 2! = 2*1！ 1！= 1；基本上就是连乘的效果</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n===<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;  <span class="comment">//如果 n 为1 则返回 1的阶乘 结果1</span></span><br><span class="line">     <span class="keyword">return</span> n*(fact(n<span class="number">-1</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//普通方法实现n的阶乘</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = <span class="number">1</span>;  <span class="comment">//最终返回的阶乘结果，之所以是1，是因为阶乘的最小结果就是1;就是1的阶乘</span></span><br><span class="line">    <span class="comment">//然后分析，数字n 肯定是大于0的数字对吧，所以我们要实现的效果就是 1*（n-1）,er在这个过程		//中，n会逐渐递减,所以考虑使用循环来实现 这里使用while循环，当然也可以使用 for</span></span><br><span class="line">    <span class="keyword">while</span>(n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">           res*=n;</span><br><span class="line">           n--;</span><br><span class="line">          &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//for 循环实现方式，同上</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res =<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;n&gt;<span class="number">0</span>;n--)&#123;</span><br><span class="line">        res*=n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fact(<span class="number">5</span>));</span><br></pre></td></tr></table></figure>
-<h4 id="实现斐波那契数列"><a href="#实现斐波那契数列" class="headerlink" title="实现斐波那契数列"></a>实现斐波那契数列</h4>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/25/递归优化/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/25/递归优化/" data-id="ck9p6s971000ookw161lbgcxo" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hexo备份" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/24/hexo备份/" class="article-date">
-  <time datetime="2020-04-24T11:05:12.000Z" itemprop="datePublished">2020-04-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/hexo备份/">hexo备份</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>作者：直上云霄<br>链接：<a href="https://www.zhihu.com/question/21193762/answer/489124966" target="_blank" rel="noopener">https://www.zhihu.com/question/21193762/answer/489124966</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<h2 id="git分支进行多终端工作"><a href="#git分支进行多终端工作" class="headerlink" title="git分支进行多终端工作"></a><strong>git分支进行多终端工作</strong></h2><p>问题来了，如果你现在在自己的笔记本上写的博客，部署在了网站上，那么你在家里用台式机，或者实验室的台式机，发现你电脑里面没有博客的文件，或者要换电脑了，最后不知道怎么移动文件，怎么办？</p>
-<p>在这里我们就可以利用git的分支系统进行多终端工作了，这样每次打开不一样的电脑，只需要进行简单的配置和在github上把文件同步下来，就可以无缝操作了。</p>
-<h2 id="机制"><a href="#机制" class="headerlink" title="机制"></a><strong>机制</strong></h2><p>机制是这样的，由于<code>hexo d</code>上传部署到github的其实是hexo编译后的文件，是用来生成网页的，不包含源文件。</p>
-<p><img src="https://pic3.zhimg.com/50/v2-32ab30d0d28b916a204c03de4ed0fc4f_hd.jpg" alt="img"><img src="https://pic3.zhimg.com/80/v2-32ab30d0d28b916a204c03de4ed0fc4f_720w.jpg" alt="img"></p>
-<p>也就是上传的是在本地目录里自动生成的<code>.deploy_git</code>里面。</p>
-<p>其他文件 ，包括我们写在source 里面的，和配置文件，主题文件，都没有上传到github</p>
-<p><img src="https://pic4.zhimg.com/50/v2-59bb330178a4e010d9818911f789082b_hd.jpg" alt="img"><img src="https://pic4.zhimg.com/80/v2-59bb330178a4e010d9818911f789082b_720w.jpg" alt="img"></p>
-<p>所以可以利用git的分支管理，将源文件上传到github的另一个分支即可。</p>
-<h2 id="上传分支"><a href="#上传分支" class="headerlink" title="上传分支"></a><strong>上传分支</strong></h2><p>首先，先在github上新建一个hexo分支，如图：</p>
-<p><img src="https://pic1.zhimg.com/50/v2-ebb3e05632e85ab036663390305caa1c_hd.jpg" alt="img"><img src="https://pic1.zhimg.com/80/v2-ebb3e05632e85ab036663390305caa1c_720w.jpg" alt="img"></p>
-<p>然后在这个仓库的settings中，选择默认分支为hexo分支（这样每次同步的时候就不用指定分支，比较方便）。</p>
-<p><img src="https://pic2.zhimg.com/50/v2-1899b6219f3787832652813b958b9b3d_hd.jpg" alt="img"><img src="https://pic2.zhimg.com/80/v2-1899b6219f3787832652813b958b9b3d_720w.jpg" alt="img"></p>
-<p>然后在本地的任意目录下，打开git bash，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:ZJUFangzh/ZJUFangzh.github.io.git</span><br></pre></td></tr></table></figure>
-<p>将其克隆到本地，因为默认分支已经设成了hexo，所以clone时只clone了hexo。</p>
-<p>接下来在克隆到本地的<code>ZJUFangzh.github.io</code>中，把除了.git 文件夹外的所有文件都删掉</p>
-<p> 把之前我们写的博客源文件全部复制过来，除了<code>.deploy_git</code>。这里应该说一句，复制过来的源文件应该有一个<code>.gitignore</code>，用来忽略一些不需要的文件，如果没有的话，自己新建一个，在里面写上如下，表示这些类型文件不需要git：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.log</span><br><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy*/</span><br></pre></td></tr></table></figure>
-<p>注意，如果你之前克隆过theme中的主题文件，那么应该把主题文件中的<code>.git</code>文件夹删掉，因为git不能嵌套上传，最好是显示隐藏文件，检查一下有没有，否则上传的时候会出错，导致你的主题文件无法上传，这样你的配置在别的电脑上就用不了了。</p>
-<p>而后</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit –m &quot;add branch&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-<p>这样就上传完了，可以去你的github上看一看hexo分支有没有上传上去，其中<code>node_modules</code>、<code>public</code>、<code>db.json</code>已经被忽略掉了，没有关系，不需要上传的，因为在别的电脑上需要重新输入命令安装 。</p>
-<p><img src="https://pic4.zhimg.com/50/v2-a94330ca825f4debde8ce7ceeb8f8394_hd.jpg" alt="img"><img src="https://pic4.zhimg.com/80/v2-a94330ca825f4debde8ce7ceeb8f8394_720w.jpg" alt="img"></p>
-<p>这样就上传完了。</p>
-<h2 id="更换电脑操作"><a href="#更换电脑操作" class="headerlink" title="更换电脑操作"></a><strong>更换电脑操作</strong></h2><p>一样的，跟之前的环境搭建一样，</p>
-<ul>
-<li>安装git</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
-<ul>
-<li>设置git全局邮箱和用户名</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourgithubname&quot;</span><br><span class="line">git config --global user.email &quot;yourgithubemail&quot;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>设置ssh key</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br><span class="line">#生成后填到github和coding上（有coding平台的话）</span><br><span class="line">#验证是否成功</span><br><span class="line">ssh -T git@github.com</span><br><span class="line">ssh -T git@git.coding.net #(有coding平台的话)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装nodejs</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nodejs</span><br><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装hexo  </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-<p>但是已经不需要初始化了，</p>
-<p>直接在任意文件夹下，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@………………</span><br></pre></td></tr></table></figure>
-<p>然后进入克隆到的文件夹：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd xxx.github.io</span><br><span class="line">npm install</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>生成，部署：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>然后就可以开始写你的新博客了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new newpage</span><br></pre></td></tr></table></figure>
-<p><strong>Tips:</strong></p>
-<ol>
-<li>不要忘了，每次写完最好都把源文件上传一下</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit –m &quot;xxxx&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-<ol>
-<li>如果是在已经编辑过的电脑上，已经有clone文件夹了，那么，每次只要和远端同步一下就行了</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/hexo备份/" data-id="ck9p6s95t0006okw1fx1i4dnj" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js数组字符串相关api" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/24/js数组字符串相关api/" class="article-date">
-  <time datetime="2020-04-24T07:17:44.000Z" itemprop="datePublished">2020-04-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/js数组字符串相关api/">js数组字符串相关api</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>写法：</p>
-<ul>
-<li>双引号</li>
-<li>单引号</li>
-<li><code></code>（es6写法）</li>
-</ul>
-<h4 id="长字符串"><a href="#长字符串" class="headerlink" title="长字符串"></a>长字符串</h4><ul>
-<li>可以用+号拼接</li>
-<li>转义掉最后面的换行符</li>
-<li><code></code>长字符串</li>
-</ul>
-<p>例如： let longStr1 = ‘hello ‘+’world’</p>
-<p>let longStr2 =&#96;饥人谷<br>                             培养有灵魂的工程师&#96;  //此时可以包含回车，会正常输出换行，即按照显示的格式输出</p>
-<p>let longStr3 = ‘hello\<br>                                name’   此时，\转义掉该行的换行符</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/24/js数组字符串相关api/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ck9p6s96v000iokw1me13tj5y" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -656,7 +612,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -666,7 +622,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -688,23 +644,23 @@
       <ul>
         
           <li>
+            <a href="/2020/05/07/基础类型引用类型/">基础类型引用类型</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/05/外边距合并/">外边距合并</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/02/dom-相关操作/">dom 相关操作</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/02/闭包/">闭包</a>
           </li>
         
           <li>
             <a href="/2020/05/01/不同载体中的方法写法/">不同载体中的方法写法</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/29/js-原型链/">js 原型链</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/28/定时器/">定时器</a>
-          </li>
-        
-          <li>
-            <a href="/2020/04/28/正则表达式/">正则表达式</a>
           </li>
         
       </ul>
