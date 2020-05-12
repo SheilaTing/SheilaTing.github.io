@@ -62,6 +62,142 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-flex-布局" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/14/flex-布局/" class="article-date">
+  <time datetime="2020-04-14T03:21:53.000Z" itemprop="datePublished">2020-04-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/14/flex-布局/">flex 布局</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h4><ol>
+<li>主轴</li>
+<li>侧轴</li>
+<li>flex 容器</li>
+<li>flex 子项</li>
+</ol>
+<p><img src="../img/flex1.png" alt></p>
+<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><p>容器相关属性</p>
+<p>display:flex; / inline-flex;  声明使用flex 布局; flex 内部使用flex布局，对外展示块级特性 • inline-flex 内部用flex布局，对外展示内联特性</p>
+<p>flex-direction  定义一个flex 子项排列的方向(水平排列/垂直排列)</p>
+<ul>
+<li><p>row : 默认值，子项水平排列 </p>
+</li>
+<li><p>column: 子项从上到下排列 </p>
+</li>
+<li>row-reverse: 子项水平逆序排列 </li>
+<li>column-reverse: 子项垂直逆序排列</li>
+</ul>
+<p>flex-wrap flex子项默认挤到一行放置，该属性课设置是否折行放置</p>
+<ul>
+<li>no-wrap: 默认值，所有子项放置到一行 </li>
+<li>wrap: 子项会折行放置到多行(从上到下折) •</li>
+<li>wrap-reverse: 子项会折行放置到多行(从下到上折)</li>
+</ul>
+<p>flex-flow 这是flex-direction和 flex-wrap 的合并写法</p>
+<p>justify-content 定义子项沿着主轴的分布方式</p>
+<ul>
+<li>flex-start flex-end center space-between space-around space-evenly</li>
+</ul>
+<p>align-items  定义子项沿着侧轴的分布方式</p>
+<ul>
+<li>flex-start flex-end center stretch baseline</li>
+</ul>
+<p>align-content 与align-items 相同，区别在于在有多行的时候有效 即 flex-wrap wrap 时</p>
+<h4 id="flex子项属性"><a href="#flex子项属性" class="headerlink" title="flex子项属性"></a>flex子项属性</h4><p>order 设置子项在容器中的次序，值为数字，默认为0</p>
+<p>flex-basis 设置子项的占用空间。如果设置了值，则子项占用的空间为设置的值； 如果没设置或者为 auto，那子项的空间为设置的width/height 的值</p>
+<p>flex-grow  用来“瓜分”父项的“剩余空间。</p>
+<p>flex-shrink  用来“吸收”超出的空间。</p>
+<p>flex = flex-grow、flex-shrink、flex-basis的结合。</p>
+<p>align-self  单独设置子项的沿侧轴的位置</p>
+<h4 id="应用场景"><a href="#应用场景" class="headerlink" title="应用场景"></a>应用场景</h4><ul>
+<li>两栏布局</li>
+<li>三栏布局</li>
+<li>水平等分 等</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/14/flex-布局/" data-id="cka3nd7mz0007ucw1fb9mlz8o" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-css案例总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/13/css案例总结/" class="article-date">
+  <time datetime="2020-04-13T07:46:22.000Z" itemprop="datePublished">2020-04-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/13/css案例总结/">css案例总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="第一个小案例"><a href="#第一个小案例" class="headerlink" title="第一个小案例"></a>第一个小案例</h4><p>​    模仿写了一个谷歌搜索的页面，发现自己在布局方面还有许多问题，这么一个简单的页面，我竟然花费了许久还没做完没，汗颜</p>
+<p>第一个问题是：DOM结构的问题，布局很重要，然后就是css 的小细节，比如我再做搜索框的时候，思路是，用一个div 包裹一个 input 然后抹去input 的默认样式，使用div 边框伪造一个input 的边框来显示，然后两头有两个图标，搜索和语音按钮，设置div 的宽高后，设置input宽高各100% 继承div 的宽度和高度，结果发现input 被顶下来了，搞了好久才发现，原因是div 里面还有一个搜索按钮的伪类，当我将搜索按钮设置定位后，它脱离了文档流，自然不占据空间，此时，input 就与div 完没重合！哎，这点小毛病我看了半天没发现。。。。。。</p>
+<p>还有就是盒模型水平居中的问题，其实设置好盒模型的宽度后，设置margin 左右 auto即可，也被我遗忘得一干二净！</p>
+<p>还有，背景图片是不会撑起盒模型元素的高度和宽度的，它只是一个背景而已，盒子里面没有内容，它也不会显示；</p>
+<p>还有，input 的outline 属性是点击它时他的外边框，以前都没注意，或者忘了，哈哈哈</p>
+<p><img src="../img/案例总结/sousuo.png" alt></p>
+<h4 id="第二个小案例"><a href="#第二个小案例" class="headerlink" title="第二个小案例"></a>第二个小案例</h4><p>​    实现效果为，点击A链接弹出弹框和遮罩层，dom结构中给遮罩层加一个div 包裹弹框，然后给div设置遮罩层效果，利用:target 伪元素控制遮罩层的显示和隐藏。</p>
+<p><img src="../img/案例总结/modal.png" alt></p>
+<h4 id="第三个小案例"><a href="#第三个小案例" class="headerlink" title="第三个小案例"></a>第三个小案例</h4><p>​    模仿文字悬浮提示</p>
+<p>DOM结构很重要</p>
+<p>实现效果为 一行文字鼠标悬停时有小框提示，难点在于小三角的定位，情况复杂时还要考虑到元素的 z-index，总之悬浮框的层级要高一些才行，悬浮框在dom结构中被包裹在文字所处的div中，由于后期要对三角做定位，所以要先给文字做个相对定位，到时候三角相对于文字来定位即可，三角可以通过：before 伪元素来实现，利用border的特性，不需要的边设置透明，另一边设置想要的颜色；</p>
+<p><img src="../img/案例总结/tooltip.png" alt></p>
+<h4 id="第四个小案例"><a href="#第四个小案例" class="headerlink" title="第四个小案例"></a>第四个小案例</h4><p>​    实现滚动页面时，页面上的标题被下一个推走或者覆盖的效果，这里使用 positon 的 sticky 属性可轻易实现</p>
+<p>特性 </p>
+<p>一定要设置top  当页面向下滚动时，被视窗顶部拦住，被父级块元素的 下边缘推走</p>
+<p> 如果出现多个sticky，放置在同一容器内，会出现下一个 sticky元素把上一个“覆盖””的效果</p>
+<p> 如果出现多个sticky，放置在并列的多个块级容器内，会 出现下一个sticky元素把上一个“推走”的效果</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/13/css案例总结/" data-id="cka3nd7mu0004ucw1c29ehrkb" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-css-float" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/11/css-float/" class="article-date">
@@ -105,7 +241,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/11/css-float/" data-id="ck9xrvyw90001tow15j7fep65" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/11/css-float/" data-id="cka3nd7k80001ucw12ddsf228" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -166,7 +302,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/10/markdown-常用语法/" data-id="ck9xrvyxy000rtow11m5r4l5k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/10/markdown-常用语法/" data-id="cka3nd7nj000jucw1zvchqbyr" class="article-share-link">Share</a>
       
       
     </footer>
@@ -211,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/10/hello-world/" data-id="ck9xrvywm0009tow17gqtsbd1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/10/hello-world/" data-id="cka3nd7n20009ucw1xp4yfmhz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -269,7 +405,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/06/css学习笔记/" data-id="ck9xrvywf0004tow161gflk66" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/06/css学习笔记/" data-id="cka3nd7ng000iucw1ae4klzdy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -310,7 +446,7 @@ console.log(event)；
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/24/js-event/" data-id="ck9xrvywj0007tow19fwu35rn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/24/js-event/" data-id="cka3nd7n9000cucw1opfq2zez" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -355,7 +491,7 @@ console.log(event)；
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/08/20/vueRecord/" data-id="ck9xrvyxn000itow1xn9d6met" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/08/20/vueRecord/" data-id="cka3nd7no000nucw1hhua2bh6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -393,7 +529,7 @@ console.log(event)；
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/31/js-record/" data-id="ck9xrvywk0008tow1lw2moxgr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/31/js-record/" data-id="cka3nd7na000ducw1mztjh1my" class="article-share-link">Share</a>
       
       
     </footer>
@@ -433,95 +569,10 @@ console.log(event)；
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/23/webpack-externals/" data-id="ck9xrvyxi000htow1izrxkdfe" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2019/07/23/webpack-externals/" data-id="cka3nd7nl000lucw1gy5edbbj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-css-note" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/07/21/css-note/" class="article-date">
-  <time datetime="2019-07-21T04:45:59.000Z" itemprop="datePublished">2019-07-21</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/07/21/css-note/">css note</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <ul>
-<li>css 盒子模型</li>
-<li>box-sizing: content-box|border-box|inherit;</li>
-<li>content-box<br>  这是由 CSS2.1 规定的宽度高度行为。<br>  宽度和高度分别应用到元素的内容框。<br>  在宽度和高度之外绘制元素的内边距和边框。</li>
-<li>border-box<br>  为元素设定的宽度和高度决定了元素的边框盒。<br>  就是说，为元素指定的任何内边距和边框都将在已设定的宽度和高度内进行绘制。<br>  通过从已设定的宽度和高度分别减去边框和内边距才能得到内容的宽度和高度</li>
-<li>inherit    规定应从父元素继承 box-sizing 属性的值。
-        
-          <p class="article-more-link">
-            <a href="/2019/07/21/css-note/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/07/21/css-note/" data-id="ck9xrvywb0002tow19m12odgu" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Css-Record" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2019/06/05/Css-Record/" class="article-date">
-  <time datetime="2019-06-05T10:32:12.000Z" itemprop="datePublished">2019-06-05</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2019/06/05/Css-Record/">Css Record</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h2 id="一点资讯网站"><a href="#一点资讯网站" class="headerlink" title="一点资讯网站"></a>一点资讯网站</h2><h3 id="模仿一点资讯网站页面建站"><a href="#模仿一点资讯网站页面建站" class="headerlink" title="模仿一点资讯网站页面建站"></a>模仿一点资讯网站页面建站</h3><h5 id="本页面使用-H5-编写基本布局，css3调节样式，js-实现事件功能"><a href="#本页面使用-H5-编写基本布局，css3调节样式，js-实现事件功能" class="headerlink" title="本页面使用 H5 编写基本布局，css3调节样式，js 实现事件功能"></a>本页面使用 H5 编写基本布局，css3调节样式，js 实现事件功能</h5><p>​    </p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2019/06/05/Css-Record/" data-id="ck9xrvyve0000tow14akzdac3" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li></ul>
 
     </footer>
   </div>
@@ -548,7 +599,7 @@ console.log(event)；
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -558,7 +609,7 @@ console.log(event)；
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -580,6 +631,14 @@ console.log(event)；
       <ul>
         
           <li>
+            <a href="/2020/05/10/css-定位/">css 定位</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/09/Bom-浏览器对象/">Bom 浏览器对象</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/08/inline-block/">inline-block</a>
           </li>
         
@@ -589,14 +648,6 @@ console.log(event)；
         
           <li>
             <a href="/2020/05/05/外边距合并/">外边距合并</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/02/dom-相关操作/">dom 相关操作</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/02/闭包/">闭包</a>
           </li>
         
       </ul>
