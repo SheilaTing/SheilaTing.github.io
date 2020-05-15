@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>http 缓存控制 | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="node.js 静态服务器12345678910111213141516171819202122// Node.js实现简单 http文件服务器//引入需要的包const http = require(&apos;http&apos;)//文件处理包const fs = require(&apos;fs&apos;)//路径处理包const path = require(&apos;path&apos;)//服务器就是一段一直运行在某个端口的代码http.">
+<meta name="keywords" content="http">
+<meta property="og:type" content="article">
+<meta property="og:title" content="http 缓存控制">
+<meta property="og:url" content="http://yoursite.com/2020/05/15/http-缓存控制/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="node.js 静态服务器12345678910111213141516171819202122// Node.js实现简单 http文件服务器//引入需要的包const http = require(&apos;http&apos;)//文件处理包const fs = require(&apos;fs&apos;)//路径处理包const path = require(&apos;path&apos;)//服务器就是一段一直运行在某个端口的代码http.">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-05-15T06:39:57.767Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="http 缓存控制">
+<meta name="twitter:description" content="node.js 静态服务器12345678910111213141516171819202122// Node.js实现简单 http文件服务器//引入需要的包const http = require(&apos;http&apos;)//文件处理包const fs = require(&apos;fs&apos;)//路径处理包const path = require(&apos;path&apos;)//服务器就是一段一直运行在某个端口的代码http.">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-http-缓存控制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/15/http-缓存控制/" class="article-date">
+  <time datetime="2020-05-15T04:40:42.000Z" itemprop="datePublished">2020-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      http 缓存控制
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="node-js-静态服务器"><a href="#node-js-静态服务器" class="headerlink" title="node.js 静态服务器"></a>node.js 静态服务器</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Node.js实现简单 http文件服务器</span></span><br><span class="line"><span class="comment">//引入需要的包</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="comment">//文件处理包</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="comment">//路径处理包</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//服务器就是一段一直运行在某个端口的代码</span></span><br><span class="line">http.createServer(<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'path:===='</span>+__dirname)</span><br><span class="line">    <span class="comment">//_dirname 就是当前路径</span></span><br><span class="line">    fs.readFile(path.join(__dirname,req.url),(err,data) =&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            res.writeHead(<span class="number">404</span>,<span class="string">'not found'</span>)</span><br><span class="line">            res.end(<span class="string">'oh,not found'</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res.writeHead(<span class="number">200</span>,<span class="string">'ok'</span>)</span><br><span class="line">            res.end(data)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).listen(<span class="number">5000</span>)  <span class="comment">//监听5000 端口</span></span><br></pre></td></tr></table></figure>
+<h4 id="缓存控制"><a href="#缓存控制" class="headerlink" title="缓存控制"></a>缓存控制</h4><h6 id="为了更好的提升用户体验或者说为了节省流量，设置缓存-观看浏览器中的network中sizing字段的值，判断是走缓存还是从服务器请求来的数据。"><a href="#为了更好的提升用户体验或者说为了节省流量，设置缓存-观看浏览器中的network中sizing字段的值，判断是走缓存还是从服务器请求来的数据。" class="headerlink" title="为了更好的提升用户体验或者说为了节省流量，设置缓存 观看浏览器中的network中sizing字段的值，判断是走缓存还是从服务器请求来的数据。"></a>为了更好的提升用户体验或者说为了节省流量，设置缓存 观看浏览器中的network中sizing字段的值，判断是走缓存还是从服务器请求来的数据。</h6><p><strong>eg1 Expire 设置过期时间  res.setHeader(‘Expires’,’”Fri, 15 May 2020 05:00:39 GMT”‘);</strong></p>
+<h6 id="返回数据之前先给浏览器或者客户端返回一个过期时间，它们拿到这个时间后，会存储在本地，每次再请求这个资源时，如果在这个时间内即当前时间小于这个过期时间，就从本地缓存中读取，不再向服务器发请求-这句话会在resposeHeader中设置一个过期时间字段，值是我们设置的值"><a href="#返回数据之前先给浏览器或者客户端返回一个过期时间，它们拿到这个时间后，会存储在本地，每次再请求这个资源时，如果在这个时间内即当前时间小于这个过期时间，就从本地缓存中读取，不再向服务器发请求-这句话会在resposeHeader中设置一个过期时间字段，值是我们设置的值" class="headerlink" title="返回数据之前先给浏览器或者客户端返回一个过期时间，它们拿到这个时间后，会存储在本地，每次再请求这个资源时，如果在这个时间内即当前时间小于这个过期时间，就从本地缓存中读取，不再向服务器发请求,这句话会在resposeHeader中设置一个过期时间字段，值是我们设置的值"></a>返回数据之前先给浏览器或者客户端返回一个过期时间，它们拿到这个时间后，会存储在本地，每次再请求这个资源时，如果在这个时间内即当前时间小于这个过期时间，就从本地缓存中读取，不再向服务器发请求,这句话会在resposeHeader中设置一个过期时间字段，值是我们设置的值</h6><p><strong>eg2 pragma(pragmatic) 设置浏览器或客户端不读取缓存内容每次都向服务器发请求 res.setHeader(‘Pragma’,’no-cache’);</strong></p>
+<h6 id="这种情况下，服务器发给浏览器或客户端内容时，客户端还是会缓存，但它不会从缓存中拿"><a href="#这种情况下，服务器发给浏览器或客户端内容时，客户端还是会缓存，但它不会从缓存中拿" class="headerlink" title="这种情况下，服务器发给浏览器或客户端内容时，客户端还是会缓存，但它不会从缓存中拿"></a>这种情况下，服务器发给浏览器或客户端内容时，客户端还是会缓存，但它不会从缓存中拿</h6><p><strong>如果 expires 和 pragma 同时存在， pragma 优先级较高；</strong></p>
+<p><strong>获取 GMT(格林尼治时间 标准时间)方式  newDate().toGMTString();</strong></p>
+<p><strong>以上为http version 1 中的内容，下面会对以上内容进行补充</strong></p>
+<h6 id="只设置过期时间的话有一个问题，就是客户端的时间是可以随意更改的，如果客户端更改了时间一直小于这个过期时间，那我们是不是就永远也拿不到最新的服务器内容了，所以引出了下面这个字段来控制浏览器缓存时间"><a href="#只设置过期时间的话有一个问题，就是客户端的时间是可以随意更改的，如果客户端更改了时间一直小于这个过期时间，那我们是不是就永远也拿不到最新的服务器内容了，所以引出了下面这个字段来控制浏览器缓存时间" class="headerlink" title="只设置过期时间的话有一个问题，就是客户端的时间是可以随意更改的，如果客户端更改了时间一直小于这个过期时间，那我们是不是就永远也拿不到最新的服务器内容了，所以引出了下面这个字段来控制浏览器缓存时间"></a>只设置过期时间的话有一个问题，就是客户端的时间是可以随意更改的，如果客户端更改了时间一直小于这个过期时间，那我们是不是就永远也拿不到最新的服务器内容了，所以引出了下面这个字段来控制浏览器缓存时间</h6><h4 id="Cache-control-它的值有："><a href="#Cache-control-它的值有：" class="headerlink" title="Cache-control 它的值有："></a>Cache-control 它的值有：</h4><p><strong>eg1 res.setHeader(‘Cache-Control’,’max-age = 10’)</strong></p>
+<h6 id="max-age-表明距离上次请求的时间为10s-即-10s之内你请求这个文件走缓存，之后重新发请求；假如请求了服务器并在a时刻返回响应结果，则在max-age规定的秒数内，浏览器将不会发送对应的请求到服务器，数据由缓存直接返回；超过这一时间段才进一步由服务器决定是返回新数据还是仍由缓存提供"><a href="#max-age-表明距离上次请求的时间为10s-即-10s之内你请求这个文件走缓存，之后重新发请求；假如请求了服务器并在a时刻返回响应结果，则在max-age规定的秒数内，浏览器将不会发送对应的请求到服务器，数据由缓存直接返回；超过这一时间段才进一步由服务器决定是返回新数据还是仍由缓存提供" class="headerlink" title="max-age 表明距离上次请求的时间为10s,即 10s之内你请求这个文件走缓存，之后重新发请求；假如请求了服务器并在a时刻返回响应结果，则在max-age规定的秒数内，浏览器将不会发送对应的请求到服务器，数据由缓存直接返回；超过这一时间段才进一步由服务器决定是返回新数据还是仍由缓存提供"></a>max-age 表明距离上次请求的时间为10s,即 10s之内你请求这个文件走缓存，之后重新发请求；假如请求了服务器并在a时刻返回响应结果，则在max-age规定的秒数内，浏览器将不会发送对应的请求到服务器，数据由缓存直接返回；超过这一时间段才进一步由服务器决定是返回新数据还是仍由缓存提供</h6><p><strong>max-age 和 expire 同时存在的话，max-age 优先级较高</strong></p>
+<p><strong>eg2  res.setHeader(‘Cache-Control’,’no-cache’)</strong></p>
+<h6 id="请求时，浏览器还是会在本地缓存一份，但不会从缓存中取，每次都向服务器发请求要最新的，而最终服务器是否会返回你最新的，看服务器端的处理了，如果服务器端检测到这个文件没有改变，可能会返回客户端一个状态码比如304，告诉客户端，文件内容没变，你从缓存中拿"><a href="#请求时，浏览器还是会在本地缓存一份，但不会从缓存中取，每次都向服务器发请求要最新的，而最终服务器是否会返回你最新的，看服务器端的处理了，如果服务器端检测到这个文件没有改变，可能会返回客户端一个状态码比如304，告诉客户端，文件内容没变，你从缓存中拿" class="headerlink" title="请求时，浏览器还是会在本地缓存一份，但不会从缓存中取，每次都向服务器发请求要最新的，而最终服务器是否会返回你最新的，看服务器端的处理了，如果服务器端检测到这个文件没有改变，可能会返回客户端一个状态码比如304，告诉客户端，文件内容没变，你从缓存中拿"></a>请求时，浏览器还是会在本地缓存一份，但不会从缓存中取，每次都向服务器发请求要最新的，而最终服务器是否会返回你最新的，看服务器端的处理了，如果服务器端检测到这个文件没有改变，可能会返回客户端一个状态码比如304，告诉客户端，文件内容没变，你从缓存中拿</h6><p><strong>eg3   res.setHeader(‘Cache-Control’,’no-store’)**</strong></p>
+<h6 id="请求时，浏览器收到服务器返回的数据，不会再本地缓存一份，所以更无所谓说从本地取了，每次都会请求最新的"><a href="#请求时，浏览器收到服务器返回的数据，不会再本地缓存一份，所以更无所谓说从本地取了，每次都会请求最新的" class="headerlink" title="请求时，浏览器收到服务器返回的数据，不会再本地缓存一份，所以更无所谓说从本地取了，每次都会请求最新的"></a>请求时，浏览器收到服务器返回的数据，不会再本地缓存一份，所以更无所谓说从本地取了，每次都会请求最新的</h6><p><strong>cache-control 的缺陷之处，在于如果服务器中的文件没变，起始就没必要每次都发文件给客户端了，多浪费流量啊，所以引出了 last-modified 服务器端做处理，如果客户端请求的文件内容改变了，再发给客户端</strong></p>
+<a id="more"></a>
+<h4 id="Last-Modified"><a href="#Last-Modified" class="headerlink" title="Last-Modified"></a>Last-Modified</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//引入需要的包</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="comment">//文件处理包</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="comment">//路径处理包</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//服务器就是一段一直运行在某个端口的代码</span></span><br><span class="line">http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'path:===='</span> + __dirname)</span><br><span class="line">    <span class="keyword">let</span> filePath = path.join(__dirname, req.url);</span><br><span class="line">    fs.readFile(path.join(__dirname, req.url), (err, data) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            res.writeHead(<span class="number">404</span>, <span class="string">'not found'</span>)</span><br><span class="line">            res.end(<span class="string">'oh,not found'</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">            <span class="comment">//注意，要设置 no-cache,因为浏览器默认会从缓存找</span></span><br><span class="line">            res.setHeaders(<span class="string">'Cache-Control'</span>,<span class="string">'no-cache'</span>);</span><br><span class="line">            <span class="comment">//Last-Modified </span></span><br><span class="line">            <span class="comment">//判断用户请求的文件是否被修改过，修改过才发给客户端，以index.css为例子</span></span><br><span class="line">            <span class="comment">//localhost:5000/index.css </span></span><br><span class="line">            <span class="keyword">let</span> mtime = <span class="built_in">Date</span>.parse(fs.statSync(filePath).mtime);  <span class="comment">//获取文件的修改时间</span></span><br><span class="line">            <span class="comment">//查看客户端来的请求头上是否有 if-modified-since字段</span></span><br><span class="line">            <span class="keyword">if</span> (!req.headers[<span class="string">'if-modified-since'</span>]) &#123;</span><br><span class="line">                <span class="comment">//没有，说明是第一次请求，将文件修改时间返回给客户端响应头</span></span><br><span class="line">                res.setHeader(<span class="string">'Last-Modified'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>(mtime).toGMTString());</span><br><span class="line">                res.writeHead(<span class="number">200</span>, <span class="string">'ok'</span>)</span><br><span class="line">                res.end(data)</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">         <span class="comment">//如果有,判断现在的时间是否大于上次修改的时间，如果是，更新文件修改时间，并返回最新的</span></span><br><span class="line">                <span class="keyword">let</span> oldTime = <span class="built_in">Date</span>.parse(req.headers[<span class="string">'if-modified-since'</span>])</span><br><span class="line">                <span class="keyword">if</span>(mtime&gt;oldTime)&#123;</span><br><span class="line">                    res.setHeader(<span class="string">'Last-Modified'</span>, <span class="keyword">new</span> <span class="built_in">Date</span>(mtime).toGMTString());</span><br><span class="line">                    res.writeHead(<span class="number">200</span>, <span class="string">'ok'</span>)</span><br><span class="line">                    res.end(data)</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">          <span class="comment">//如果不大于或者等于之前的时间，说明文件未被修改过，返回一个状态码，让浏览器去缓存中取</span></span><br><span class="line">                    res.writeHead(<span class="number">304</span>);</span><br><span class="line">                    res.end();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line"></span><br><span class="line">          <span class="comment">//  res.writeHead(200, 'ok')</span></span><br><span class="line">           <span class="comment">// res.end(data)</span></span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).listen(<span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
+<h6 id="设置-cache-control-为-no-cache-这样浏览器或者客户端每次都会向服务器发请求要最新的数据或文件，这个时候，判断请求头中是否有-if-modified-since-这个字段如果服务器有返回给客户端过-last-modified字段，则后面每次请求都会带上该字段，如果没有，则证明是第一次请求这个文件，服务器获取文件的修改时间，然后返回给浏览器，下次有了该字段，判断该文件的修改时间是否大于传递来的时间，如果大于则证明文件被修改过了，返回给客户端最新的文件，如果不大于，则证明文件未被修改，返回给客户端一个状态码304即可，让客户端取缓存中取数据；"><a href="#设置-cache-control-为-no-cache-这样浏览器或者客户端每次都会向服务器发请求要最新的数据或文件，这个时候，判断请求头中是否有-if-modified-since-这个字段如果服务器有返回给客户端过-last-modified字段，则后面每次请求都会带上该字段，如果没有，则证明是第一次请求这个文件，服务器获取文件的修改时间，然后返回给浏览器，下次有了该字段，判断该文件的修改时间是否大于传递来的时间，如果大于则证明文件被修改过了，返回给客户端最新的文件，如果不大于，则证明文件未被修改，返回给客户端一个状态码304即可，让客户端取缓存中取数据；" class="headerlink" title="设置 cache-control 为 no-cache,这样浏览器或者客户端每次都会向服务器发请求要最新的数据或文件，这个时候，判断请求头中是否有 if-modified-since,这个字段如果服务器有返回给客户端过 last-modified字段，则后面每次请求都会带上该字段，如果没有，则证明是第一次请求这个文件，服务器获取文件的修改时间，然后返回给浏览器，下次有了该字段，判断该文件的修改时间是否大于传递来的时间，如果大于则证明文件被修改过了，返回给客户端最新的文件，如果不大于，则证明文件未被修改，返回给客户端一个状态码304即可，让客户端取缓存中取数据；"></a>设置 cache-control 为 no-cache,这样浏览器或者客户端每次都会向服务器发请求要最新的数据或文件，这个时候，判断请求头中是否有 if-modified-since,这个字段如果服务器有返回给客户端过 last-modified字段，则后面每次请求都会带上该字段，如果没有，则证明是第一次请求这个文件，服务器获取文件的修改时间，然后返回给浏览器，下次有了该字段，判断该文件的修改时间是否大于传递来的时间，如果大于则证明文件被修改过了，返回给客户端最新的文件，如果不大于，则证明文件未被修改，返回给客户端一个状态码304即可，让客户端取缓存中取数据；</h6><p><strong>问题来了，我们上面判断文件是否修改，是根据修改时间来判断的，那如果我只是简单更改了分好号又添加上，时间也会变化，但真正的内容并没有改变，所以严谨一点应该判断文件的内容是否改变</strong></p>
+<h4 id="E-tag-字段"><a href="#E-tag-字段" class="headerlink" title="E-tag 字段"></a>E-tag 字段</h4><p><strong>其实，last-modified,e-tag,只是在浏览器决定不走缓存的时候，向服务器要数据，服务器决定如何给客户端数据的设定，所以测试时要加上 cache-control :nocache ,否则默认会从缓存拿，而你不设置 no strore 的话，每次请求成功都会在客户端缓存一份</strong></p>
+<h6 id="e-tag-这个字段中，其实是设置一个特殊的字符也好，什么也好，只要能够表明文件是否修改的标识符即可，例如，你可以将文件的md5值得-base64编码存储在这个字段中，如果文件变了，这个值也会变，那根据这个来判断是否返回给客户端最新的文件"><a href="#e-tag-这个字段中，其实是设置一个特殊的字符也好，什么也好，只要能够表明文件是否修改的标识符即可，例如，你可以将文件的md5值得-base64编码存储在这个字段中，如果文件变了，这个值也会变，那根据这个来判断是否返回给客户端最新的文件" class="headerlink" title="e-tag 这个字段中，其实是设置一个特殊的字符也好，什么也好，只要能够表明文件是否修改的标识符即可，例如，你可以将文件的md5值得 base64编码存储在这个字段中，如果文件变了，这个值也会变，那根据这个来判断是否返回给客户端最新的文件"></a>e-tag 这个字段中，其实是设置一个特殊的字符也好，什么也好，只要能够表明文件是否修改的标识符即可，例如，你可以将文件的md5值得 base64编码存储在这个字段中，如果文件变了，这个值也会变，那根据这个来判断是否返回给客户端最新的文件</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line">   </span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="comment">//文件处理包</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="comment">//路径处理包</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"><span class="comment">//node.js 加密包</span></span><br><span class="line"><span class="keyword">const</span> crypto = <span class="built_in">require</span>(<span class="string">'crypto'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//服务器就是一段一直运行在某个端口的代码</span></span><br><span class="line">http.createServer(<span class="function">(<span class="params">req, res</span>) =&gt;</span> &#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'path:===='</span> + __dirname)</span><br><span class="line">    <span class="keyword">let</span> filePath = path.join(__dirname, req.url);</span><br><span class="line">    fs.readFile(path.join(__dirname, req.url), (err, data) =&gt; &#123;</span><br><span class="line">        <span class="keyword">if</span> (err) &#123;</span><br><span class="line">            res.writeHead(<span class="number">404</span>, <span class="string">'not found'</span>)</span><br><span class="line">            res.end(<span class="string">'oh,not found'</span>)</span><br><span class="line">        &#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="keyword">let</span> oldEtag = req.headers[<span class="string">'if-none-match'</span>]</span><br><span class="line">            <span class="comment">//如果不存在</span></span><br><span class="line">            <span class="keyword">if</span>(!oldEtag)&#123;</span><br><span class="line">                <span class="keyword">let</span> md5 = crypto.createHash(<span class="string">'md5'</span>)</span><br><span class="line">                res.setHeader(<span class="string">'Etag'</span>,md5.update(data).digest(<span class="string">'base64'</span>))</span><br><span class="line">                res.writeHead(<span class="number">200</span>,<span class="string">'ok'</span>)</span><br><span class="line">                res.end(data)</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                <span class="comment">// 如果存在,获取文件当前的md5值</span></span><br><span class="line">                <span class="keyword">let</span> newEtag = crypto.createHash(<span class="string">'md5'</span>).update(data).digest(<span class="string">'base64'</span>)</span><br><span class="line">                <span class="keyword">if</span>(oldEtag!== newEtag)&#123;</span><br><span class="line">                    <span class="comment">//对比发现不一样返回最新的</span></span><br><span class="line">                    res.setHeader(<span class="string">'Etag'</span>,newEtag);</span><br><span class="line">                    res.writeHead(<span class="number">200</span>,<span class="string">'ok'</span>)</span><br><span class="line">                    res.end(daat)</span><br><span class="line">                &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                    <span class="comment">//一样的话，直接返回状态码，无需返回数据，节省流量</span></span><br><span class="line">                    res.writeHead(<span class="number">304</span>)</span><br><span class="line">                    res.end();</span><br><span class="line">                &#125;</span><br><span class="line">            &#125;</span><br><span class="line">     &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).listen(<span class="number">5000</span>)</span><br></pre></td></tr></table></figure>
+<h4 id="下面说明几种情况："><a href="#下面说明几种情况：" class="headerlink" title="下面说明几种情况："></a>下面说明几种情况：</h4><p>前端层面对刷新缓存的控制，通过改变请求的ur来刷新缓存 每次打包上线把包的名字改掉，url变后，本地没有缓存，自然是请求最新的；</p>
+<p>一、如果单独使用max-age，在缓存有效的时间内浏览器对相同的资源发起请求是得不到更新的、为了解决这个问题，可以在每次编译时给静态文件设置hash值，这样，在浏览器再次对静态资源发起请求时，资源的名称已经修改了，浏览器不会认为是同一资源，也就不会去缓存中寻找，直接去源服务器中获取</p>
+<p>二、如果设置了no-cache，在缓存有效的时间内，浏览器对相同的资源发起请求时，会先去服务器询问资源是否修改过，资源没有修改时，响应304 Not Modified，浏览器得到304响应后，判断缓存可以使用，就会直接使用缓存。如果资源更新过，就返回200，浏览器使用返回的资源。</p>
+<p>当设置了no-cache时，需要有一种验证机制来判断资源是否更新过：</p>
+<ol>
+<li>Last-Modified配合If-Modified-Since或者If-Unmodified-since使用：对比上次修改时间来验证是否使用缓存。步骤是：client第一次对资源发起请求时，server会设置Last-Modified的头信息，当浏览器再次对相同的资源发起请求时，浏览器会设置request的头部(chrome可以使用disable cache来禁止浏览器自动设置，这样每次都会去源服务器获取)，设置If-Modified-Since或者If-Unmodified-since的值为之前接收到的Last-Modified的值，这样，server每次取得头部信息If-Modified-Since或者If-Unmodified-since，与文件的修改时间进行对比，如果相同，就返回304Not Modified，client使用缓存，如果不相同，就返回更新后的资源。</li>
+<li>Etag 数字签名配合If-Match或者If-None-Match使用：一般的数字签名可以对资源的内容进行hash计算，client第一次请求资源时，在server中设置头部信息Etag，值为hash值，当浏览器再次对相同的资源发起请求时，浏览器会设置request的头部，设置If-Match或者If-None-Match的值为之前接收到的Etag的值，这样，server每次取得头部信息If-Match或者If-None-match，与重新计算的hash值进行对比，如果相同，就返回304Not Modified，client使用缓存，如果不相同，就返回更新后的资源。</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/15/http-缓存控制/" data-id="cka7u2oyn000aecw1wu1vcje5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/14/http-TCP/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">http-TCP</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/15/http-缓存控制/">http 缓存控制</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/14/http-TCP/">http-TCP</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/近日案例总结/">近日案例总结</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/js-事件/">js 事件</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/10/css-定位/">css 定位</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
