@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>密码学初探 | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="密码学工具箱信息安全所面临的威胁 概念对称加密 一个密钥加密解密，速度快 DES AES  非对称加密 两个密钥。公钥加密，私钥可解密。速度慢 RSA  举例说明非对称加密的场景两个主人公 Alice Bob ，消息的发送者Alice，消息的接收者Bob 1.Bob 生成密钥对（Bob的公钥，Bob的私钥） 2.Bob将公钥发送给Alice （怎么发的先不管） 3.Alice用Bob的公钥对消息进">
+<meta name="keywords" content="https基础">
+<meta property="og:type" content="article">
+<meta property="og:title" content="密码学初探">
+<meta property="og:url" content="http://yoursite.com/2020/05/15/密码学初探/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="密码学工具箱信息安全所面临的威胁 概念对称加密 一个密钥加密解密，速度快 DES AES  非对称加密 两个密钥。公钥加密，私钥可解密。速度慢 RSA  举例说明非对称加密的场景两个主人公 Alice Bob ，消息的发送者Alice，消息的接收者Bob 1.Bob 生成密钥对（Bob的公钥，Bob的私钥） 2.Bob将公钥发送给Alice （怎么发的先不管） 3.Alice用Bob的公钥对消息进">
+<meta property="og:locale" content="default">
+<meta property="og:image" content="http://yoursite.com/2020/05/15/img/pwd/tool.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/15/img/pwd/hash.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/15/img/pwd/msg.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/15/img/pwd/sign.png">
+<meta property="og:image" content="http://yoursite.com/2020/05/15/img/pwd/certificate.png">
+<meta property="og:updated_time" content="2020-05-16T06:06:35.923Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="密码学初探">
+<meta name="twitter:description" content="密码学工具箱信息安全所面临的威胁 概念对称加密 一个密钥加密解密，速度快 DES AES  非对称加密 两个密钥。公钥加密，私钥可解密。速度慢 RSA  举例说明非对称加密的场景两个主人公 Alice Bob ，消息的发送者Alice，消息的接收者Bob 1.Bob 生成密钥对（Bob的公钥，Bob的私钥） 2.Bob将公钥发送给Alice （怎么发的先不管） 3.Alice用Bob的公钥对消息进">
+<meta name="twitter:image" content="http://yoursite.com/2020/05/15/img/pwd/tool.png">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-密码学初探" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/15/密码学初探/" class="article-date">
+  <time datetime="2020-05-15T10:07:50.000Z" itemprop="datePublished">2020-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      密码学初探
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="密码学工具箱"><a href="#密码学工具箱" class="headerlink" title="密码学工具箱"></a>密码学工具箱</h4><h6 id="信息安全所面临的威胁"><a href="#信息安全所面临的威胁" class="headerlink" title="信息安全所面临的威胁"></a>信息安全所面临的威胁</h6><p><img src="../img/pwd/tool.png" alt></p>
+<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><strong>对称加密</strong></p>
+<h6 id="一个密钥加密解密，速度快"><a href="#一个密钥加密解密，速度快" class="headerlink" title="一个密钥加密解密，速度快"></a>一个密钥加密解密，速度快</h6><ul>
+<li>DES</li>
+<li>AES</li>
+</ul>
+<p><strong>非对称加密</strong></p>
+<h6 id="两个密钥。公钥加密，私钥可解密。速度慢"><a href="#两个密钥。公钥加密，私钥可解密。速度慢" class="headerlink" title="两个密钥。公钥加密，私钥可解密。速度慢"></a>两个密钥。公钥加密，私钥可解密。速度慢</h6><ul>
+<li>RSA</li>
+</ul>
+<h5 id="举例说明非对称加密的场景"><a href="#举例说明非对称加密的场景" class="headerlink" title="举例说明非对称加密的场景"></a>举例说明非对称加密的场景</h5><p>两个主人公 Alice Bob ，消息的发送者Alice，消息的接收者Bob</p>
+<p>1.Bob 生成密钥对（Bob的公钥，Bob的私钥）</p>
+<p>2.Bob将公钥发送给Alice （怎么发的先不管）</p>
+<p>3.Alice用Bob的公钥对消息进行加密，将消息变成密文</p>
+<p>4.Alice 将密文消息发送给Bob</p>
+<p>5.Bob 用自己的私钥对密文进行解密</p>
+<p>问题来了，这样加密消息虽然安全，但非对称加密速度太慢，如果加密一大段消息就更慢了，往下看：</p>
+<p><strong>用对称提高速度，用公钥保护会话密钥 ——- 混合密码系统</strong></p>
+<p>1.发送方用对称密码加密消息（速度快）</p>
+<p>2.再使用接收方的公钥加密会话密钥(上面的加密信息)（非对称加密）此时不加密大段的消息，而是加密一个随机的字符串</p>
+<p>3.接收方接收到后，使用自己的私钥解密对方使用公钥加密的会话密钥，再使用会话密钥解密对称加密的消息即可（此时速度快，又保证了安全性）</p>
+<p><strong>以上解决了数据的机密性问题，即不会被窃取，泄露，比如果被人看到。。。</strong></p>
+<h4 id="单向散列-（hash-哈希）"><a href="#单向散列-（hash-哈希）" class="headerlink" title="单向散列 （hash 哈希）"></a>单向散列 （hash 哈希）</h4><a id="more"></a>
+<h6 id="把一堆数据压缩成固定长度，不能恢复。用于检测数据的完整性。"><a href="#把一堆数据压缩成固定长度，不能恢复。用于检测数据的完整性。" class="headerlink" title="把一堆数据压缩成固定长度，不能恢复。用于检测数据的完整性。"></a>把一堆数据压缩成固定长度，不能恢复。用于检测数据的完整性。</h6><ul>
+<li>MD5</li>
+<li>SHA1,SHA256</li>
+</ul>
+<p><img src="../img/pwd/hash.png" alt></p>
+<p>无论多大的数据经过散列处理之后，总会变成一个32字节的散列值</p>
+<p>我们经常在下载文件时看到链接后面有一串md5值，用处就是说，我们把文件下载下来之后，用MD5工具处理一下这个文件，然后看跟它给的这个值是否一致，如果一致说明是安全的，如果不一致，可能中途被人拦截，做了处理，数据就不完整，不准确；</p>
+<p>当然，最完美的比对方法就是拿两个原始的数据进行比对，但是存在一个问题，这两个原始数据小还好，一会儿就能比对完成，如果数据巨大，几个G，是不是花费的时间就会很久，把它散列处理之后，比较起来就省时多了。</p>
+<h4 id="消息认证码-（验证是否真实）"><a href="#消息认证码-（验证是否真实）" class="headerlink" title="消息认证码  （验证是否真实）"></a>消息认证码  （验证是否真实）</h4><p><strong>散列+共享密钥</strong></p>
+<p><img src="../img/pwd/msg.png" alt></p>
+<p>散列值加共享密钥（接收双方均有）处理的结果的组合体</p>
+<p>应用：</p>
+<p>Alice 向 Bob 发送消息，Alice 使用共享密钥处理消息认证码，得出一个计算后的mac值，发送给Bob,Bob也通过共享密钥计算出一个MAC值，把这两个mac值对比，如果一致，认证成功。</p>
+<p><strong>解决了验证用户的问题，确定这个消息是真正的对方发来的，因为双方的密钥只有双方知道</strong></p>
+<h4 id="数字签名"><a href="#数字签名" class="headerlink" title="数字签名"></a>数字签名</h4><p><img src="../img/pwd/sign.png" alt></p>
+<p>应用：</p>
+<p>就是发送方用自己的私钥加密消息生成数字签名发送给对方，同时把消息的明文也发过去，对方收到后使用发送方的公钥进行解密，如果解密后的消息与对方发送的明文消息一致，说明则签名验证成功，数据是真正的对方发的，因为私钥只有自己才有，别人不可能拿到；</p>
+<p>但问题来了，这个其实也是非对称加密呀，所以消息多的时候，速度自然会变慢</p>
+<p><strong>速度更快的签名   签名就是先散列运算再用自己的私钥加密信息的一个值</strong></p>
+<ol>
+<li><p>发送者 Alice 用单向散列函数计算消息的散列值</p>
+</li>
+<li><p>Alice 用自己的私钥加密这个散列值 得到一个签名（值小，所以就算是非对称加密，速度也会相对快很多）</p>
+</li>
+<li>Alice 将消息和签名发送给Bob</li>
+<li>Bob 收到后，将消息通过散列得到一个散列值，然后用Alice的公钥解密发来的签名，通过解密Bob收到的就是Alice 经过散列处理的消息的散列值，</li>
+<li>Bob 将解密得到的散列值与Alice直接发送的消息的散列值（bob 自己计算得到）对比，如果两者一致则签名验证成功。</li>
+</ol>
+<h4 id="证书"><a href="#证书" class="headerlink" title="证书"></a>证书</h4><p><img src="../img/pwd/certificate.png" alt></p>
+<p>以上所有模型都假设接收方有发送方的公钥，那么这个公钥接收方是怎么得到的呢？这时候，就引出了CA的概念，一个机构，用来发布证书（用自己的私钥公正加密对方的信息，所有人都来CA注册，CA保留对方的公钥，需要的时候，找CA要即可）</p>
+<p>下次如果接收方收到对方的消息，而它不确定这个消息是对方发的（万一被伪造了），这个时候，它可以使用ca那边对方的公钥来解密对方发来的签名，然后对比对方发来的消息的散列值，如果一致，证明是对方，也就是上面的流程！</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/15/密码学初探/" data-id="cka98bo5u000rpkw14tduhfsv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https基础/">https基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/15/http-缓存控制/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">http 缓存控制</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/15/密码学初探/">密码学初探</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/15/http-缓存控制/">http 缓存控制</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/14/http-TCP/">http-TCP</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/近日案例总结/">近日案例总结</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/12/js-事件/">js 事件</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

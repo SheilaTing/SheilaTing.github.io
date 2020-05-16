@@ -15,7 +15,7 @@
 <meta property="og:description" content="字符串写法：  双引号 单引号 （es6写法）  长字符串 可以用+号拼接 转义掉最后面的换行符 长字符串  例如： let longStr1 = ‘hello ‘+’world’ let longStr2 =&amp;#96;饥人谷                             培养有灵魂的工程师&amp;#96;  //此时可以包含回车，会正常输出换行，即按照显示的格式输出 let longStr3">
 <meta property="og:locale" content="default">
 <meta property="og:image" content="http://yoursite.com/2020/04/24/img/jsArray/foreach.png">
-<meta property="og:updated_time" content="2020-04-24T10:50:37.022Z">
+<meta property="og:updated_time" content="2020-05-16T04:08:18.980Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="js数组字符串相关api">
 <meta name="twitter:description" content="字符串写法：  双引号 单引号 （es6写法）  长字符串 可以用+号拼接 转义掉最后面的换行符 长字符串  例如： let longStr1 = ‘hello ‘+’world’ let longStr2 =&amp;#96;饥人谷                             培养有灵魂的工程师&amp;#96;  //此时可以包含回车，会正常输出换行，即按照显示的格式输出 let longStr3">
@@ -211,11 +211,12 @@
 <figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">function filter(arr, fn) &#123; /*补全*/&#125;</span><br><span class="line">filter([3, -1, 4, 0], v =&gt; v&gt;0) // [3, 4]</span><br><span class="line">//解答</span><br><span class="line">function filter(arr, fn) &#123;</span><br><span class="line">let res = []</span><br><span class="line">for(let v of arr) &#123;</span><br><span class="line">if(fn(v)) res.push(v)</span><br><span class="line">&#125;</span><br><span class="line">return res</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
 </li>
 </ul>
+<h4 id="数组的使用"><a href="#数组的使用" class="headerlink" title="数组的使用"></a>数组的使用</h4><h6 id="字符串逆序排列案例"><a href="#字符串逆序排列案例" class="headerlink" title="字符串逆序排列案例"></a>字符串逆序排列案例</h6><h6 id="学习了数组的reverse-方法后，我们可以很轻松的将一个字符串逆序排列，先把字符串使用split方法分割成数组，然后使用reverse-函数即可。那如果不适用这个api，我们可以怎么实现呢？"><a href="#学习了数组的reverse-方法后，我们可以很轻松的将一个字符串逆序排列，先把字符串使用split方法分割成数组，然后使用reverse-函数即可。那如果不适用这个api，我们可以怎么实现呢？" class="headerlink" title="学习了数组的reverse 方法后，我们可以很轻松的将一个字符串逆序排列，先把字符串使用split方法分割成数组，然后使用reverse()函数即可。那如果不适用这个api，我们可以怎么实现呢？"></a>学习了数组的reverse 方法后，我们可以很轻松的将一个字符串逆序排列，先把字符串使用split方法分割成数组，然后使用reverse()函数即可。那如果不适用这个api，我们可以怎么实现呢？</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//原生方法实现字符串逆序排列</span></span><br><span class="line"><span class="comment">//首先分析这个要求，逆序排列字符串，也就是说我们把字符串的头和尾部每一个都交换一下，就可以实现，那我们一共需要交换数组的长度/2次 对吧，没毛病，因为我们每次操作的是两个元素，好了开始写代码</span></span><br><span class="line"><span class="keyword">let</span> str = <span class="string">'hello world'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseStr</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> temp; <span class="comment">// 定义中间变量</span></span><br><span class="line">  <span class="comment">//注意，要先将字符串转换为数组来操作，因为字符串是无法通过下标的方式来修改里面的内容的，数组可以</span></span><br><span class="line">    <span class="keyword">let</span> arr = str.split(<span class="string">''</span>)</span><br><span class="line">  <span class="comment">//使用循环，循环次数为字符串长度/2</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">0</span>;i&lt;<span class="built_in">Math</span>.round(arr.length/<span class="number">2</span>);i++)&#123;</span><br><span class="line">        temp = arr[i];</span><br><span class="line"> <span class="comment">//此时注意最后一个元素的下标的计算方式，是数组长度-1-i,因为 i一直在变化，最后一位也相应的在变化</span></span><br><span class="line">        arr[i] = arr[arr.length <span class="number">-1</span> -i];</span><br><span class="line">        arr[arr.length <span class="number">-1</span> -i] = temp;</span><br><span class="line"> <span class="comment">//当然也可以直接下面一个二维数组搞定交换的这个复杂动作(目前我还没理解，哈哈哈)</span></span><br><span class="line">        <span class="comment">// [arr[i],arr[j]] = [arr[j],arr[i]];</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr.join(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 完成</span></span><br><span class="line"><span class="comment">//下一种方式，更容易理解</span></span><br><span class="line"><span class="comment">//同样也是使用循环的方式，交换值，义两个指针，一个指向数组头部，一个指向数组的尾部，每次执行完相应的操作后，头部下标加一，尾部下标减一，最后两个指针会相遇，当两个指针没碰面之前，我们一直重复这个交换的操作。此时起始的指针一定是小于后面的指针的，好了，开始编码</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">reverseStr1</span>(<span class="params">str</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> arr = str.split(<span class="string">''</span>)</span><br><span class="line">    <span class="comment">//定义两个指针</span></span><br><span class="line">    <span class="keyword">let</span> i = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">let</span> j = arr.length<span class="number">-1</span>;</span><br><span class="line">    <span class="comment">//起始下标小于终止下标之前我们都会做这个交换动作，你细品，即两个指针未碰面之前，起始下标在这个过程中会++ 结束下标会 --</span></span><br><span class="line">    <span class="keyword">while</span>(i&lt;j)&#123;</span><br><span class="line">        [arr[i],arr[j]] = [arr[j],arr[i]];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> arr.join(<span class="string">''</span>)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//完成 完美</span></span><br></pre></td></tr></table></figure>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="cka7u2oz5000jecw13g1fif8e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="cka98bo660011pkw1f5639gb6" class="article-share-link">Share</a>
       
       
     </footer>
@@ -255,7 +256,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -265,7 +266,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -287,6 +288,10 @@
       <ul>
         
           <li>
+            <a href="/2020/05/15/密码学初探/">密码学初探</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/15/http-缓存控制/">http 缓存控制</a>
           </li>
         
@@ -300,10 +305,6 @@
         
           <li>
             <a href="/2020/05/12/js-事件/">js 事件</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/10/css-定位/">css 定位</a>
           </li>
         
       </ul>

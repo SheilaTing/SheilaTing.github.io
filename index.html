@@ -62,6 +62,71 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-密码学初探" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/15/密码学初探/" class="article-date">
+  <time datetime="2020-05-15T10:07:50.000Z" itemprop="datePublished">2020-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/15/密码学初探/">密码学初探</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="密码学工具箱"><a href="#密码学工具箱" class="headerlink" title="密码学工具箱"></a>密码学工具箱</h4><h6 id="信息安全所面临的威胁"><a href="#信息安全所面临的威胁" class="headerlink" title="信息安全所面临的威胁"></a>信息安全所面临的威胁</h6><p><img src="../img/pwd/tool.png" alt></p>
+<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><strong>对称加密</strong></p>
+<h6 id="一个密钥加密解密，速度快"><a href="#一个密钥加密解密，速度快" class="headerlink" title="一个密钥加密解密，速度快"></a>一个密钥加密解密，速度快</h6><ul>
+<li>DES</li>
+<li>AES</li>
+</ul>
+<p><strong>非对称加密</strong></p>
+<h6 id="两个密钥。公钥加密，私钥可解密。速度慢"><a href="#两个密钥。公钥加密，私钥可解密。速度慢" class="headerlink" title="两个密钥。公钥加密，私钥可解密。速度慢"></a>两个密钥。公钥加密，私钥可解密。速度慢</h6><ul>
+<li>RSA</li>
+</ul>
+<h5 id="举例说明非对称加密的场景"><a href="#举例说明非对称加密的场景" class="headerlink" title="举例说明非对称加密的场景"></a>举例说明非对称加密的场景</h5><p>两个主人公 Alice Bob ，消息的发送者Alice，消息的接收者Bob</p>
+<p>1.Bob 生成密钥对（Bob的公钥，Bob的私钥）</p>
+<p>2.Bob将公钥发送给Alice （怎么发的先不管）</p>
+<p>3.Alice用Bob的公钥对消息进行加密，将消息变成密文</p>
+<p>4.Alice 将密文消息发送给Bob</p>
+<p>5.Bob 用自己的私钥对密文进行解密</p>
+<p>问题来了，这样加密消息虽然安全，但非对称加密速度太慢，如果加密一大段消息就更慢了，往下看：</p>
+<p><strong>用对称提高速度，用公钥保护会话密钥 ——- 混合密码系统</strong></p>
+<p>1.发送方用对称密码加密消息（速度快）</p>
+<p>2.再使用接收方的公钥加密会话密钥(上面的加密信息)（非对称加密）此时不加密大段的消息，而是加密一个随机的字符串</p>
+<p>3.接收方接收到后，使用自己的私钥解密对方使用公钥加密的会话密钥，再使用会话密钥解密对称加密的消息即可（此时速度快，又保证了安全性）</p>
+<p><strong>以上解决了数据的机密性问题，即不会被窃取，泄露，比如果被人看到。。。</strong></p>
+<h4 id="单向散列-（hash-哈希）"><a href="#单向散列-（hash-哈希）" class="headerlink" title="单向散列 （hash 哈希）"></a>单向散列 （hash 哈希）</h4>
+        
+          <p class="article-more-link">
+            <a href="/2020/05/15/密码学初探/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/15/密码学初探/" data-id="cka98bo5u000rpkw14tduhfsv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https基础/">https基础</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-http-缓存控制" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/15/http-缓存控制/" class="article-date">
@@ -103,7 +168,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/15/http-缓存控制/" data-id="cka7u2oyn000aecw1wu1vcje5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/15/http-缓存控制/" data-id="cka98bo5c000hpkw18090zztj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
@@ -168,7 +233,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/14/http-TCP/" data-id="cka7u2oyr000becw1wtfcnkv0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/14/http-TCP/" data-id="cka98bo4y000cpkw1jvbfrusx" class="article-share-link">Share</a>
       
       
     </footer>
@@ -210,7 +275,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/12/近日案例总结/" data-id="cka7u2ozq000yecw1vypd17tx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/12/近日案例总结/" data-id="cka98bo60000xpkw1nzyjcnn7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/summary/">summary</a></li></ul>
@@ -282,7 +347,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/12/js-事件/" data-id="cka7u2oz0000gecw10q0whsmb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/12/js-事件/" data-id="cka98bo5a000gpkw1fc6j3jhn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -338,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/10/css-定位/" data-id="cka7u2oyk0008ecw1h3dd9ioc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/10/css-定位/" data-id="cka98bo4b0004pkw1oa3n89t3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -412,7 +477,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/09/Bom-浏览器对象/" data-id="cka7u2oye0004ecw165uqd1su" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/09/Bom-浏览器对象/" data-id="cka98bo3w0002pkw1a0xdy9xx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bom/">bom</a></li></ul>
@@ -488,7 +553,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/08/inline-block/" data-id="cka7u2oz1000hecw1hzu2tmay" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/08/inline-block/" data-id="cka98bo57000fpkw16k2bsbl7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -548,7 +613,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/07/基础类型引用类型/" data-id="cka7u2ozj000tecw1oqraljfi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/07/基础类型引用类型/" data-id="cka98bo5r000qpkw1vmsswy7y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -618,66 +683,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/05/外边距合并/" data-id="cka7u2ozi000secw17ikthhp1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/05/外边距合并/" data-id="cka98bo5y000vpkw1etkq8pet" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-dom-相关操作" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/02/dom-相关操作/" class="article-date">
-  <time datetime="2020-05-02T09:29:26.000Z" itemprop="datePublished">2020-05-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/02/dom-相关操作/">dom 相关操作</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h4><p>文档对象模型是HTML的编程接口。用对象和HTML结构一一映射，通过修改对象达到修改HTML节点的目的。</p>
-<p>document 的基本信息</p>
-<ul>
-<li>document.head   获取文档的头部</li>
-<li>document.body</li>
-<li>document.title</li>
-<li>document.location   地址跳转相关操作</li>
-</ul>
-<p>​        document.location.href</p>
-<p>​         document.location.hash</p>
-<p>​         document.location.search</p>
-<p>​         document.location.reload()</p>
-<p>​         document.location.assign(‘<a href="https://jirengucom&#39;)" target="_blank" rel="noopener">https://jirengucom&#39;)</a>;</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">url.href = <span class="string">'https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(url.href);      <span class="comment">// https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container</span></span><br><span class="line"><span class="built_in">console</span>.log(url.protocol);  <span class="comment">// https:</span></span><br><span class="line"><span class="built_in">console</span>.log(url.host);      <span class="comment">// developer.mozilla.org</span></span><br><span class="line"><span class="built_in">console</span>.log(url.hostname);  <span class="comment">// developer.mozilla.org</span></span><br><span class="line"><span class="built_in">console</span>.log(url.port);      <span class="comment">// (blank - https assumes port 443)</span></span><br><span class="line"><span class="built_in">console</span>.log(url.pathname);  <span class="comment">// /en-US/search</span></span><br><span class="line"><span class="built_in">console</span>.log(url.search);    <span class="comment">// ?q=URL</span></span><br><span class="line"><span class="built_in">console</span>.log(url.hash);      <span class="comment">// #search-results-close-container</span></span><br><span class="line"><span class="built_in">console</span>.log(url.origin);    <span class="comment">// https://developer.mozilla.org</span></span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/02/dom-相关操作/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/02/dom-相关操作/" data-id="cka7u2oyy000fecw1kf7qxqrh" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dom/">dom</a></li></ul>
 
     </footer>
   </div>
@@ -704,7 +713,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -714,7 +723,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -736,6 +745,10 @@
       <ul>
         
           <li>
+            <a href="/2020/05/15/密码学初探/">密码学初探</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/15/http-缓存控制/">http 缓存控制</a>
           </li>
         
@@ -749,10 +762,6 @@
         
           <li>
             <a href="/2020/05/12/js-事件/">js 事件</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/10/css-定位/">css 定位</a>
           </li>
         
       </ul>
