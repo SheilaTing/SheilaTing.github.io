@@ -17,7 +17,13 @@
 <meta property="og:image" content="http://yoursite.com/2020/05/14/img/http/tcp-request.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/14/img/http/request01.png">
 <meta property="og:image" content="http://yoursite.com/2020/05/14/img/http/report.png">
-<meta property="og:updated_time" content="2020-05-16T07:02:40.665Z">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1090617/201802/1090617-20180225205151424-227704907.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1090617/201802/1090617-20180225211250427-305880476.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1090617/201802/1090617-20180225211616653-1269363528.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1090617/201802/1090617-20180225211855634-541362260.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1090617/201802/1090617-20180225213621277-297070017.png">
+<meta property="og:image" content="https://images2018.cnblogs.com/blog/1090617/201802/1090617-20180225213836463-1534510001.png">
+<meta property="og:updated_time" content="2020-05-17T02:37:02.702Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="http-TCP">
 <meta name="twitter:description" content="osi开放式系统互联通信参考模型（open system intercnnection reference model）;应用层 （Application Layer）提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如：http,https,ftp,telnet,ssh,smtp,pop3等表示层 (Presentation Layer)把数据转换为能与接收者的系统格式兼容并适合传输的">
@@ -145,12 +151,78 @@
 <p>为了这种情况： B向A发送 FIN = 1 的释放连接请求，但这个报文丢失了， A没有接到不会发送确认信息， B 超时会重传，这时A在 WAIT_TIME 还能够接收到这个请求，这时再回复一个确认就行了。（A收到 FIN = 1 的请求后 WAIT_TIME会重新记时）</p>
 <p>————————————————<br>另外服务器B存在一个保活状态，即如果A突然故障死机了，那B那边的连接资源什么时候能释放呢？ 就是保活时间到了后，B会发送探测信息， 以决定是否释放连接</p>
 <p><strong>【注意】中断连接端可以是Client端，也可以是Server端。</strong></p>
-<p>假设Client端发起中断连接请求，也就是发送FIN报文。Server端接到FIN报文后，意思是说”我Client端没有数据要发给你了”，但是如果你还有数据没有发送完成，则不必急着关闭Socket，可以继续发送数据。所以你先发送ACK，”告诉Client端，你的请求我收到了，但是我还没准备好，请继续你等我的消息”。这个时候Client端就进入FIN_WAIT状态，继续等待Server端的FIN报文。当Server端确定数据已发送完成，则向Client端发送FIN报文，”告诉Client端，好了，我这边数据发完了，准备好关闭连接了”。Client端收到FIN报文后，”就知道可以关闭连接了，但是他还是不相信网络，怕Server端不知道要关闭，所以发送ACK后进入TIME_WAIT状态，如果Server端没有收到ACK则可以重传。“，Server端收到ACK后，”就知道可以断开连接了”。Client端等待了2MSL后依然没有收到回复，则证明Server端已正常关闭，那好，我Client端也可以关闭连接了。Ok，TCP连接就这样关闭了！<br>————————————————<br>版权声明：本文为CSDN博主「Bonnie-帮你」的原创文章，遵循CC 4.0 BY-SA版权协议，转载请附上原文出处链接及本声明。<br>原文链接：<a href="https://blog.csdn.net/daocaoren1543169565/article/details/80535949" target="_blank" rel="noopener">https://blog.csdn.net/daocaoren1543169565/article/details/80535949</a></p>
+<p>假设Client端发起中断连接请求，也就是发送FIN报文。Server端接到FIN报文后，意思是说”我Client端没有数据要发给你了”，但是如果你还有数据没有发送完成，则不必急着关闭Socket，可以继续发送数据。所以你先发送ACK，”告诉Client端，你的请求我收到了，但是我还没准备好，请继续你等我的消息”。这个时候Client端就进入FIN_WAIT状态，继续等待Server端的FIN报文。当Server端确定数据已发送完成，则向Client端发送FIN报文，”告诉Client端，好了，我这边数据发完了，准备好关闭连接了”。Client端收到FIN报文后，”就知道可以关闭连接了，但是他还是不相信网络，怕Server端不知道要关闭，所以发送ACK后进入TIME_WAIT状态，如果Server端没有收到ACK则可以重传。“，Server端收到ACK后，”就知道可以断开连接了”。Client端等待了2MSL后依然没有收到回复，则证明Server端已正常关闭，那好，我Client端也可以关闭连接了。Ok，TCP连接就这样关闭了！</p>
+<h4 id="补充"><a href="#补充" class="headerlink" title="补充"></a>补充</h4><p><a href="https://www.cnblogs.com/qdhxhz/p/8468913.html" target="_blank" rel="noopener">https://www.cnblogs.com/qdhxhz/p/8468913.html</a>  http参考</p>
+<p> 1.HTTP协议，即<strong>超文本传输协议</strong>(Hypertext transfer protocol)。是一种详细规定了<strong>浏览器和万维网(WWW = World Wide Web)服务器</strong>之间互相通信的规则，通过因特网传送万维网文档的数据传送协议。</p>
+<p>   2.HTTP协议作为TCP/IP模型中应用层的协议也不例外。HTTP协议通常承载于TCP协议之上，有时也承载于TLS或SSL协议层之上，这个时候，就成了我们常说的HTTPS。如下图：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1090617/201802/1090617-20180225205151424-227704907.png" alt="img"></p>
+<p>  3.HTTP是一个<strong>应用层协议</strong>，由请求和响应构成，是一个标准的客户端服务器模型。HTTP是一个<strong>无状态</strong>的协议。</p>
+<p>  4.HTTP默认的端口号为<strong>80</strong>，HTTPS的端口号为<strong>443</strong>。</p>
+<p>  5.浏览网页是HTTP的主要应用，但是这并不代表HTTP就只能应用于网页的浏览。HTTP是一种协议，只要通信的双方都遵守这个协议，HTTP就能有用武之地。比如咱们常用的QQ，迅雷这些软件，都会使用HTTP协议(还包括其他的协议)。</p>
+<h2 id="二-HTTP特点"><a href="#二-HTTP特点" class="headerlink" title="二.HTTP特点"></a>二.HTTP特点</h2><p>  1、<strong>简单快速</strong>：客户向服务器请求服务时，只需传送<strong>请求方法</strong>和<strong>路径</strong>。由于HTTP协议简单，使得HTTP服务器的程序规模小，因而通信速度很快。</p>
+<p>  2、<strong>灵活</strong>：HTTP允许<strong>传输任意类型的数据对象</strong>。正在传输的类型由Content-Type加以标记。</p>
+<p>  3、<strong>HTTP 0.9和1.0使用非持续连接</strong>：限制每次连接只处理一个请求，服务器处理完客户的请求，并收到客户的应答后，即断开连接。<strong>HTTP 1.1使用持续连接</strong>：不必为每个web对象创建一个新的连接，一个连接可以传送多个对象，采用这种方式可以节省传输时间。</p>
+<p>  4、<strong>无状态</strong>：HTTP协议是<strong>无状态，无连接协议</strong>。<strong>无状态是指协议对于事务处理没有记忆能力</strong>。缺少状态意味着如果后续处理需要前面的信息，则它必须重传，这样可能导致每次连接传送的数据量增大。另一方面，在服务器不需要先前信息时它的应答就较快。</p>
+<ol>
+<li>协议对于事务处理没有记忆能力【事物处理】【记忆能力】</li>
+<li>对同一个url请求没有上下文关系【上下文关系】</li>
+<li>每次的请求都是独立的，它的执行情况和结果与前面的请求和之后的请求是无直接关系的，它不会受前面的请求应答情况直接影响，也不会直接影响后面的请求应答情况【无直接联系】【受直接影响】</li>
+<li>服务器中没有保存客户端的状态，客户端必须每次带上自己的状态去请求服务器【状态</li>
+<li>每一个访问都是无连接，服务器挨个处理访问队列里的访问，处理完一个就关闭连接，这事儿就完了，然后处理下一个新的</li>
+<li><p>无连接的含义是限制每次连接只处理一个请求。服务器处理完客户的请求，并收到客户的应答后，即断开连接</p>
+<p>5、<strong>支持B/S及C/S模式。</strong></p>
+</li>
+</ol>
+<h2 id="三-HTTP工作流程"><a href="#三-HTTP工作流程" class="headerlink" title="三.HTTP工作流程"></a>三.HTTP工作流程</h2><p>   一次HTTP操作称为一个事务，其工作过程可分为四步：</p>
+<p>  1.首先客户机与服务器需要建立连接。只要单击某个超级链接，HTTP的工作开始。<br>  2.建立连接后，客户机发送一个请求给服务器，请求方式的格式为：统一资源标识符（URL）、协议版本号，后边是MIME信息包括请求修饰符、客户机信息和可能的内容。<br>  3.服务器接到请求后，给予相应的响应信息，其格式为一个状态行，包括信息的协议版本号、一个成功或错误的代码，后边是MIME信息包括服务器信息、实体信息和可能的内容。<br> 4.客户端接收服务器所返回的信息通过浏览器显示在用户的显示屏上，然后客户机与服务器断开连接。<br> 如果在以上过程中的某一步出现错误，那么产生错误的信息将返回到客户端，有显示屏输出。对于用户来说，这些过程是由HTTP自己完成的，用户只要用鼠标点击，等待信息显示就可以了。</p>
+<h2 id="四-HTTP之请求消息Request"><a href="#四-HTTP之请求消息Request" class="headerlink" title="四.HTTP之请求消息Request"></a>四.HTTP之请求消息Request</h2><p>  客户端发送一个HTTP请求到服务器的请求消息包括以下格式：</p>
+<p>  <strong>请求行</strong>、<strong>请求头部</strong>、<strong>空行</strong>和<strong>请求数据</strong>四个部分组成。</p>
+<p><strong>(1)Get请求例子</strong></p>
+<p><img src="https://images2018.cnblogs.com/blog/1090617/201802/1090617-20180225211250427-305880476.png" alt="img"></p>
+<h5 id="第一部分：请求行，用来说明请求类型-要访问的资源以及所使用的HTTP版本"><a href="#第一部分：请求行，用来说明请求类型-要访问的资源以及所使用的HTTP版本" class="headerlink" title="第一部分：请求行，用来说明请求类型,要访问的资源以及所使用的HTTP版本."></a>第一部分：请求行，用来说明请求类型,要访问的资源以及所使用的HTTP版本.</h5><p>GET说明请求类型为GET,[/562f25980001b1b106000338.jpg]为要访问的资源，该行的最后一部分说明使用的是HTTP1.1版本。</p>
+<h5 id="第二部分：请求头部，紧接着请求行（即第一行）之后的部分，用来说明服务器要使用的附加信息"><a href="#第二部分：请求头部，紧接着请求行（即第一行）之后的部分，用来说明服务器要使用的附加信息" class="headerlink" title="第二部分：请求头部，紧接着请求行（即第一行）之后的部分，用来说明服务器要使用的附加信息"></a>第二部分：请求头部，紧接着请求行（即第一行）之后的部分，用来说明服务器要使用的附加信息</h5><p>从第二行起为请求头部，HOST将指出请求的目的地.User-Agent,服务器端和客户端脚本都能访问它,它是浏览器类型检测逻辑的重要基础.该信息由你的浏览器来定义,并且在每个请求中自动发送等等</p>
+<h5 id="第三部分：空行，请求头部后面的空行是必须的"><a href="#第三部分：空行，请求头部后面的空行是必须的" class="headerlink" title="第三部分：空行，请求头部后面的空行是必须的"></a>第三部分：空行，请求头部后面的空行是必须的</h5><p>即使第四部分的请求数据为空，也必须有空行。</p>
+<h5 id="第四部分：请求数据也叫主体，可以添加任意的其他数据。"><a href="#第四部分：请求数据也叫主体，可以添加任意的其他数据。" class="headerlink" title="第四部分：请求数据也叫主体，可以添加任意的其他数据。"></a>第四部分：请求数据也叫主体，可以添加任意的其他数据。</h5><p>这个例子的请求数据为空。</p>
+<p><strong>POST请求例子</strong></p>
+<p> <img src="https://images2018.cnblogs.com/blog/1090617/201802/1090617-20180225211616653-1269363528.png" alt="img"></p>
+<p>第一部分：请求行，第一行明了是post请求，以及http1.1版本。<br>第二部分：请求头部，第二行至第六行。<br>第三部分：空行，第七行的空行。<br>第四部分：请求数据，第八行。</p>
+<h2 id="五-HTTP之响应消息Response"><a href="#五-HTTP之响应消息Response" class="headerlink" title="五.HTTP之响应消息Response"></a>五.HTTP之响应消息Response</h2><p>一般情况下，服务器接收并处理客户端发过来的请求后会返回一个HTTP的响应消息。</p>
+<p>HTTP响应也由四个部分组成，分别是：<strong>状态行</strong>、<strong>消息报头</strong>、<strong>空行</strong>和<strong>响应正文</strong>。</p>
+<p> <img src="https://images2018.cnblogs.com/blog/1090617/201802/1090617-20180225211855634-541362260.png" alt="img"></p>
+<h5 id="第一部分：状态行，由HTTP协议版本号，-状态码，-状态消息-三部分组成。"><a href="#第一部分：状态行，由HTTP协议版本号，-状态码，-状态消息-三部分组成。" class="headerlink" title="第一部分：状态行，由HTTP协议版本号， 状态码， 状态消息 三部分组成。"></a>第一部分：状态行，由HTTP协议版本号， 状态码， 状态消息 三部分组成。</h5><p>第一行为状态行，（HTTP/1.1）表明HTTP版本为1.1版本，状态码为200，状态消息为（ok）</p>
+<h5 id="第二部分：消息报头，用来说明客户端要使用的一些附加信息"><a href="#第二部分：消息报头，用来说明客户端要使用的一些附加信息" class="headerlink" title="第二部分：消息报头，用来说明客户端要使用的一些附加信息"></a>第二部分：消息报头，用来说明客户端要使用的一些附加信息</h5><p>第二行和第三行和第四行为消息报头，<br>Date:生成响应的日期和时间；Content-Type:指定了MIME类型的HTML(text/html),编码类型是ISO-8859-1</p>
+<h5 id="第三部分：空行，消息报头后面的空行是必须的"><a href="#第三部分：空行，消息报头后面的空行是必须的" class="headerlink" title="第三部分：空行，消息报头后面的空行是必须的"></a>第三部分：空行，消息报头后面的空行是必须的</h5><h5 id="第四部分：响应正文，服务器返回给客户端的文本信息。"><a href="#第四部分：响应正文，服务器返回给客户端的文本信息。" class="headerlink" title="第四部分：响应正文，服务器返回给客户端的文本信息。"></a>第四部分：响应正文，服务器返回给客户端的文本信息。</h5><p>空行后面的html部分为响应正文。</p>
+<h2 id="6-HTTP之状态码"><a href="#6-HTTP之状态码" class="headerlink" title="6.HTTP之状态码"></a>6.HTTP之状态码</h2><p>状态代码有<strong>三位数字</strong>组成，第一个数字定义了响应的类别，共分五种类别:</p>
+<p>1xx：<strong>指示信息–表示请求已接收，继续处理</strong></p>
+<p>2xx：<strong>成功–表示请求已被成功接收、理解、接受</strong></p>
+<p>3xx：<strong>重定向–要完成请求必须进行更进一步的操作</strong></p>
+<p>4xx：<strong>客户端错误–请求有语法错误或请求无法实现</strong></p>
+<p>5xx：<strong>服务器端错误–服务器未能实现合法的请求</strong></p>
+<p>常见状态码：</p>
+<p><img src="https://images2018.cnblogs.com/blog/1090617/201802/1090617-20180225213621277-297070017.png" alt="img"></p>
+<h2 id="7-HTTP请求方法"><a href="#7-HTTP请求方法" class="headerlink" title="7.HTTP请求方法"></a>7.HTTP请求方法</h2><p>根据HTTP标准，HTTP请求可以使用多种请求方法。<br><strong>HTTP1.0</strong>定义了三种请求方法： <strong>GET, POST</strong> 和 <strong>HEAD</strong>方法。<br><strong>HTTP1.1</strong>新增了五种请求方法：<strong>OPTIONS, PUT, DELETE, TRACE 和 CONNECT</strong> 方法。</p>
+<p><img src="https://images2018.cnblogs.com/blog/1090617/201802/1090617-20180225213836463-1534510001.png" alt="img"></p>
+<h2 id="8-HTTP工作原理"><a href="#8-HTTP工作原理" class="headerlink" title="8.HTTP工作原理"></a>8.HTTP工作原理</h2><p>​    HTTP协议定义Web客户端如何从Web服务器请求Web页面，以及服务器如何把Web页面传送给客户端。HTTP协议采用了<strong>请求/响应模型</strong>。客户端向服务器发送一个请求报文，请求报文包含请求的方法、URL、协议版本、请求头部和请求数据。服务器以一个状态行作为响应，响应的内容包括协议的版本、成功或者错误代码、服务器信息、响应头部和响应数据。</p>
+<p>以下是 HTTP 请求/响应的步骤：</p>
+<p><strong>1、客户端连接到Web服务器</strong></p>
+<p>一个HTTP客户端，通常是浏览器，与Web服务器的HTTP端口（默认为80）建立一个TCP套接字连接。例如，<a href="http://www.oakcms.cn./" target="_blank" rel="noopener">http://www.oakcms.cn。</a></p>
+<p><strong>2、发送HTTP请求</strong></p>
+<p>通过TCP套接字，客户端向Web服务器发送一个文本的请求报文，一个请求报文由请求行、请求头部、空行和请求数据4部分组成。</p>
+<p><strong>3、服务器接受请求并返回HTTP响应</strong></p>
+<p>Web服务器解析请求，定位请求资源。服务器将资源复本写到TCP套接字，由客户端读取。一个响应由状态行、响应头部、空行和响应数据4部分组成。</p>
+<p><strong>4、释放连接<a href="http://www.jianshu.com/p/ef892323e68f" target="_blank" rel="noopener">TCP连接</a></strong></p>
+<p>若connection 模式为close，则服务器主动关闭<a href="http://www.jianshu.com/p/ef892323e68f" target="_blank" rel="noopener">TCP连接</a>，客户端被动关闭连接，释放<a href="http://www.jianshu.com/p/ef892323e68f" target="_blank" rel="noopener">TCP连接</a>;若connection 模式为keepalive，则该连接会保持一段时间，在该时间内可以继续接收请求;</p>
+<p><strong>5、客户端浏览器解析HTML内容</strong></p>
+<p>客户端浏览器首先解析状态行，查看表明请求是否成功的状态代码。然后解析每一个响应头，响应头告知以下为若干字节的HTML文档和文档的字符集。客户端浏览器读取响应数据HTML，根据HTML的语法对其进行格式化，并在浏览器窗口中显示。</p>
+<h2 id="9-GET和POST的区别"><a href="#9-GET和POST的区别" class="headerlink" title="9.GET和POST的区别"></a>9.GET和POST的区别</h2><p>   1、GET提交的数据会放在URL之后，以?分割URL和传输数据，参数之间以&amp;相连，如EditPosts.aspx?name=test1&amp;id=123456. POST方法是把提交的数据放在HTTP包的Body中.</p>
+<p>   2、GET提交的数据大小有限制（因为浏览器对URL的长度有限制），而POST方法提交的数据没有限制.</p>
+<p>   3、GET方式需要使用Request.QueryString来取得变量的值，而POST方式通过Request.Form来获取变量的值。</p>
+<p>   4、GET方式提交数据，会带来安全问题，比如一个登录页面，通过GET方式提交数据时，用户名和密码将出现在URL上，如果页面可以被缓存或者其他人可以访问这台机器，就可以从历史记录获得该用户的账号和密码.</p>
 
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/14/http-TCP/" data-id="cka9akyfa00080sw1mwrj24d8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/14/http-TCP/" data-id="ckaav1uph0017zow1pgltn8ce" class="article-share-link">Share</a>
       
       
     </footer>
@@ -200,7 +272,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 10px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -222,6 +294,10 @@
       <ul>
         
           <li>
+            <a href="/2020/05/17/http-session-cookie-token/">http-session-cookie-token</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/16/https/">https</a>
           </li>
         
@@ -235,10 +311,6 @@
         
           <li>
             <a href="/2020/05/14/http-TCP/">http-TCP</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/12/近日案例总结/">近日案例总结</a>
           </li>
         
       </ul>
