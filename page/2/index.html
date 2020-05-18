@@ -62,6 +62,82 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-inline-block" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/08/inline-block/" class="article-date">
+  <time datetime="2020-05-08T04:31:23.000Z" itemprop="datePublished">2020-05-08</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/08/inline-block/">inline-block</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="块级盒子特点"><a href="#块级盒子特点" class="headerlink" title="块级盒子特点"></a>块级盒子特点</h5><ul>
+<li>盒子会在水平方向上扩展并占据父容器在该方向上的所有可用空间()</li>
+<li>每个盒子都会换到新行 （独占一行）</li>
+<li>width 和 height 属性有效</li>
+<li>内边距（padding）, 外边距（margin） 和 边框（border） 会将其他元素从当 前盒子周围推开（也就是说如果它是一个子元素，它会撑开父容器，前提是父容器没有设置高度，设置了背景色可以观察到）</li>
+<li>可通过 display 属性改变显示类型</li>
+</ul>
+<h5 id="行级盒子"><a href="#行级盒子" class="headerlink" title="行级盒子"></a>行级盒子</h5><ul>
+<li>盒子不会产生换行</li>
+<li>width 和 height 属性将不起作用。</li>
+<li>内边距、外边距以及边框会被应用但是不会把其他处于 inline 状态的盒子推开（它如果是个子元素，你给它设置了内边距，父容器也不会被撑开，前提是父容器没有设置高度，设置了背景色可以观察到，如果想让它撑开可以设置 display:inline-block）</li>
+<li>可通过 display 属性改变显示类型</li>
+</ul>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>设置<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>个人<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>我的<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">.box &#123;</span><br><span class="line">  background:#ccc;</span><br><span class="line">&#125;</span><br><span class="line">span&#123;</span><br><span class="line">  padding:10px;</span><br><span class="line">  background:blue;</span><br><span class="line">  cursor:pointer;</span><br><span class="line">  display:inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h5 id="display-inline-block-行内盒模型-（既有块级盒子的属性（宽高）又有行内元素的特点-没有换行）"><a href="#display-inline-block-行内盒模型-（既有块级盒子的属性（宽高）又有行内元素的特点-没有换行）" class="headerlink" title="display:inline-block 行内盒模型 （既有块级盒子的属性（宽高）又有行内元素的特点 没有换行）"></a>display:inline-block 行内盒模型 （既有块级盒子的属性（宽高）又有行内元素的特点 没有换行）</h5><h6 id="对行内元素设置padding-会对背景色产生效果，但它不会撑开父容器，而会溢出"><a href="#对行内元素设置padding-会对背景色产生效果，但它不会撑开父容器，而会溢出" class="headerlink" title="对行内元素设置padding,会对背景色产生效果，但它不会撑开父容器，而会溢出"></a>对行内元素设置padding,会对背景色产生效果，但它不会撑开父容器，而会溢出</h6><p>此时发现，</p>
+<p><img src="../img/inline-block/gap.png" alt></p>
+<p>选项卡之间有缝隙，这个缝隙是哪里来的呢？行内元素时没有外边距合并这一说的；</p>
+<p>缝隙产生的原因？</p>
+<ul>
+<li>TAB、 LF、 FF、 CR、 SPACE 都是空白字符 </li>
+<li>多个连续的空白字符会合并成一个空格，而空格也占据 一个字符的空间 </li>
+<li>white-space 属性可以修改合并规则</li>
+</ul>
+<h6 id="white-space-规定段落中的文本不进行换行"><a href="#white-space-规定段落中的文本不进行换行" class="headerlink" title="white-space 规定段落中的文本不进行换行"></a>white-space 规定段落中的文本不进行换行</h6><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;</span><br><span class="line">  <span class="attribute">white-space</span>: nowrap</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
+<p>这是由于编辑器中这些字符的原因，我们在编辑器中写代码是有一定的缩进和换行的，这些缩进和换行符也占据一定的空间，展示在页面上就是这个缝隙；而对于块级元素来说，它本身就占据一行，所以它是否换行并不会产生这个缝隙；而对于行内元素，它本身并不占据一整行的空间，就算设置了Inline-block也只是可以设置宽高，所以如果你换行的话，那它就和换行符号在一行，自然就有了缝隙。看下图</p>
+<p><img src="../img/inline-block/gap1.png" alt></p>
+<p>场景：我想让三个panel 平均占据在一行</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>设置<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>个人<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">background</span>:<span class="selector-id">#ccc</span>;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined">span&#123;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">background</span><span class="selector-pseudo">:blue</span>;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">cursor</span><span class="selector-pseudo">:pointer</span>;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">display</span><span class="selector-pseudo">:inline-block</span>;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">width</span><span class="selector-pseudo">:33.3</span>%;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p><img src="../img/inline-block/gap2.png" alt></p>
+<p>发现由于我们书写时换行导致它中间有缝隙，而折行了，我们可以把空白字符都删除掉，把代码写成这样  ,但显然这并不符合我们的编码习惯，代码变得非常不易读</p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>设置<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>个人<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<p>那如何解决呢？</p>
+<ul>
+<li>通过设置font-size解决 </li>
+<li>通过更改布局方式来解决，比如使用float、flex、grid布局</li>
+</ul>
+<p>这些空白字符和换行符，最终也是文字存储在我们的文件中，那我们就可以控制它的字体大小，我们把父容器字体大小设置为0，那是不是所有的文字内容都看不到了，那我们再单独设置我们要展示的文字内容大小即可；因为这个案例我们的背景色是由它的paddin撑开的；它本身没有宽高，所以没了字体后会看不到；真神奇</p>
+<p><img src="../img/inline-block/gap3.png" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/08/inline-block/" data-id="ckaca628x000h2ww1kplg57b7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-基础类型引用类型" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/07/基础类型引用类型/" class="article-date">
@@ -110,7 +186,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/07/基础类型引用类型/" data-id="ckaav1up7000yzow16hscxmdt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/07/基础类型引用类型/" data-id="ckaca629e000v2ww1vaxrlhne" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -180,7 +256,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/05/外边距合并/" data-id="ckaav1upb0011zow1db87jzyg" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/05/外边距合并/" data-id="ckaca629j000y2ww177e74053" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -236,7 +312,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/02/dom-相关操作/" data-id="ckaav1ukx000jzow1osinj6nk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/02/dom-相关操作/" data-id="ckaca628w000g2ww1hjhnxxn5" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dom/">dom</a></li></ul>
@@ -282,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/02/闭包/" data-id="ckaav1uph0018zow1zdljl202" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/02/闭包/" data-id="ckaca629o00112ww1upv4e70q" class="article-share-link">Share</a>
       
       
     </footer>
@@ -323,7 +399,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/01/不同载体中的方法写法/" data-id="ckaav1up4000wzow1s6m2puhv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/01/不同载体中的方法写法/" data-id="ckaca629a000r2ww1idi533kv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -378,7 +454,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ckaav1ul0000mzow1icf1fiqq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ckaca6290000j2ww1f4z1lsb9" class="article-share-link">Share</a>
       
       
     </footer>
@@ -435,7 +511,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/28/定时器/" data-id="ckaav1up5000xzow1c97ny5za" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/28/定时器/" data-id="ckaca629g000w2ww170at0i9f" class="article-share-link">Share</a>
       
       
     </footer>
@@ -509,7 +585,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ckaav1upd0013zow1h528daww" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ckaca629q00132ww1vc1v9a3r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
@@ -565,59 +641,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/26/Math-Date-API/" data-id="ckaav1ujp0009zow16dyus6ze" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/26/Math-Date-API/" data-id="ckaca628f00042ww16l8i5u33" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-对象与json" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/26/对象与json/" class="article-date">
-  <time datetime="2020-04-26T03:03:02.000Z" itemprop="datePublished">2020-04-26</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/26/对象与json/">对象与json</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p>ps:(最近刚学了对象，虽然之前也有了解，可一直模模糊糊，最近使用才发现原来自己对对象的掌握这么不扎实)</p>
-<p>从定义说起：<strong>对象：无序的数据集合，由若干个“键值对”（属性: 值）构成</strong></p>
-<p>对象里面包含：1.属性 2. 方法</p>
-<p><strong>对象的一些操作方法</strong></p>
-<p><strong>Object.keys(对象)</strong>：获取对象中的所有属性数组，注意此处是数组，然后就可以使用数组的方法来操作它。例如 ，arrr.map()  返回新的数组 ,arry.foreach()  arr.filter()返回新数组</p>
-<p>删除属性： delete 对象.属性名或者 delete 对象【’属性名‘】</p>
-<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个对象</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    name:<span class="string">'jirengu'</span>,  <span class="comment">//主义此处 name属性没有加引号，起始默认是有引号的，js这样写也没错</span></span><br><span class="line">    age:<span class="number">5</span>,</span><br><span class="line">    sayHello:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.lot(<span class="string">`hello <span class="subst">$&#123;<span class="keyword">this</span>.name<span class="string">`)</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    &#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//通过.访问属性</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj.name</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//通过[‘属性名’]  主义此时要加上引号，因为它本身是有引号的，定义时省略了而已</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj['name']</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//通过[属性名] 注意此处没有加引号，不加引号js会把【】中的值解析为一个值来对待</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">let key = 'age';</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj[key] //的值就是5；就是属性age的值</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//使用点操作符增加属性</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj.grade=5; //为obj 增加了一个 grade属性；</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//使用【】符号来增加属性</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj['score']=100;</span></span></span></span><br></pre></td></tr></table></figure>
-<h4 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h4><ul>
-<li>JSON.stringify  用于把一个值变成符合JSON格式的字符串</li>
-<li>JSON.parse  用于把一个符合JSON格式的字符串还原对象</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/26/对象与json/" data-id="ckaav1up8000zzow1ube43xq2" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li></ul>
 
     </footer>
   </div>
@@ -630,7 +657,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -644,7 +671,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -654,7 +681,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -676,6 +703,10 @@
       <ul>
         
           <li>
+            <a href="/2020/05/18/ajax/">ajax</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/17/http-session-cookie-token/">http-session-cookie-token</a>
           </li>
         
@@ -689,10 +720,6 @@
         
           <li>
             <a href="/2020/05/15/http-缓存控制/">http 缓存控制</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/14/http-TCP/">http-TCP</a>
           </li>
         
       </ul>

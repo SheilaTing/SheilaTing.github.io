@@ -1,0 +1,278 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>ajax | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="与后端交互的方式1. Form 表单提交2. AJAX3. WebSocket  可以由服务端主动发起我们如何向服务器发送请求？ 用 form 可以发请求，但是会刷新页面或新开页面 用 a 可以发 get 请求，但是也会刷新页面或新开页面 用 img 可以发 get 请求，但是只能以图片的形式展示 用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示 用 script">
+<meta name="keywords" content="ajax">
+<meta property="og:type" content="article">
+<meta property="og:title" content="ajax">
+<meta property="og:url" content="http://yoursite.com/2020/05/18/ajax/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="与后端交互的方式1. Form 表单提交2. AJAX3. WebSocket  可以由服务端主动发起我们如何向服务器发送请求？ 用 form 可以发请求，但是会刷新页面或新开页面 用 a 可以发 get 请求，但是也会刷新页面或新开页面 用 img 可以发 get 请求，但是只能以图片的形式展示 用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示 用 script">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-05-18T09:22:30.660Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="ajax">
+<meta name="twitter:description" content="与后端交互的方式1. Form 表单提交2. AJAX3. WebSocket  可以由服务端主动发起我们如何向服务器发送请求？ 用 form 可以发请求，但是会刷新页面或新开页面 用 a 可以发 get 请求，但是也会刷新页面或新开页面 用 img 可以发 get 请求，但是只能以图片的形式展示 用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示 用 script">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-ajax" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/18/ajax/" class="article-date">
+  <time datetime="2020-05-18T08:23:21.000Z" itemprop="datePublished">2020-05-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      ajax
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="与后端交互的方式"><a href="#与后端交互的方式" class="headerlink" title="与后端交互的方式"></a>与后端交互的方式</h4><h6 id="1-Form-表单提交"><a href="#1-Form-表单提交" class="headerlink" title="1. Form 表单提交"></a>1. Form 表单提交</h6><h6 id="2-AJAX"><a href="#2-AJAX" class="headerlink" title="2. AJAX"></a>2. AJAX</h6><h6 id="3-WebSocket-可以由服务端主动发起"><a href="#3-WebSocket-可以由服务端主动发起" class="headerlink" title="3. WebSocket  可以由服务端主动发起"></a>3. WebSocket  可以由服务端主动发起</h6><h2 id="我们如何向服务器发送请求？"><a href="#我们如何向服务器发送请求？" class="headerlink" title="我们如何向服务器发送请求？"></a><strong>我们如何向服务器发送请求？</strong></h2><ol>
+<li>用 form 可以发请求，但是会刷新页面或新开页面</li>
+<li>用 a 可以发 get 请求，但是也会刷新页面或新开页面</li>
+<li>用 img 可以发 get 请求，但是只能以图片的形式展示</li>
+<li>用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示</li>
+<li>用 script 可以发 get 请求，但是只能以脚本的形式运行</li>
+</ol>
+<p>有没有什么方式，可以使用get、post、put、delete 请求都行，并且用任意的方式返回给浏览器展示？</p>
+<p><strong>当然有，这个就是AJAX。</strong></p>
+<p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）</p>
+<p>Jesse James Garrett 讲同时满足以下技术取名叫做AJAX:<strong>异步的 JavaScript 和 XML。</strong></p>
+<ol>
+<li>使用 XMLHttpRequest 发请求</li>
+<li>服务器返回 XML 格式的字符串 (当然现在基本上都是用json来传递数据了)</li>
+<li>JS 解析 XML，并更新局部页面</li>
+</ol>
+<p>ajax使用内置的XMLHttpRequest 和 fetch 对象，实现和服 务端进行数据交互</p>
+<p><strong>发送请求四步走</strong></p>
+<ul>
+<li>创建 xmlhttprequest对象</li>
+<li>配置参数（请求携带的参数，参数类型等）</li>
+<li>绑定事件 （请求的事件处理）</li>
+<li>发送请求 （send()）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>, url, <span class="literal">true</span>)</span><br><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">xhr.send()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 完整例子 GET 请求，参数在url中拼接</span></span><br><span class="line"><span class="keyword">let</span> url = <span class="string">'http://rap2api.taobao.org/app/mock/244238/weather?city=北京'</span></span><br><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>, url, <span class="literal">true</span>)</span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">if</span>(xhr.readyState === <span class="number">4</span>) &#123; <span class="comment">// xhr.DONE === 4 也可</span></span><br><span class="line"><span class="keyword">if</span>((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(xhr.responseText))</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'服务器异常'</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">// 可选</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'服务器异常'</span>)</span><br><span class="line">&#125;</span><br><span class="line">xhr.send()</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="keyword">let</span> url = <span class="string">'http://rap2api.taobao.org/app/mock/244238/weather?city=北京'</span> </span><br><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>, url, <span class="literal">true</span>)</span><br><span class="line"><span class="comment">// onload 就不用了再判断状态了</span></span><br><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">if</span>((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line"><span class="built_in">console</span>.log(xhr.response)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'数据异常'</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.responseType = <span class="string">'json'</span> <span class="comment">//兼容性稍微差一些</span></span><br><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'服务器异常'</span>)</span><br><span class="line">&#125;</span><br><span class="line">xhr.send()</span><br></pre></td></tr></table></figure>
+<a id="more"></a>
+<h4 id="POST请求"><a href="#POST请求" class="headerlink" title="POST请求"></a>POST请求</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="string">'http://rap2api.taobao.org/app/mock/244238/login'</span> <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.timeout = <span class="number">3000</span> <span class="comment">//可选，设置请求超时时间</span></span><br><span class="line">xhr.open(<span class="string">'POST'</span>, url, <span class="literal">true</span>)</span><br><span class="line"><span class="comment">//设置参数类型</span></span><br><span class="line">xhr.setRequestHeader(<span class="string">'Content-type'</span>, <span class="string">'application/x-www-form-urlencoded'</span>)</span><br><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">if</span>((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(xhr.responseText))</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'响应异常'</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.ontimeout = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123; <span class="built_in">console</span>.log(<span class="string">'请求超时'</span>) &#125;</span><br><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="built_in">console</span>.log(<span class="string">'服务器异常'</span>) &#125;</span><br><span class="line">xhr.send(<span class="string">'username=hunger&amp;password=12345678'</span>) <span class="comment">//发送请求的时候携带请求参数</span></span><br></pre></td></tr></table></figure>
+<h4 id="封装"><a href="#封装" class="headerlink" title="封装"></a>封装</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> request = <span class="function">(<span class="params">url, params, onsuccess, onerror</span>) =&gt;</span> &#123;</span><br><span class="line">    url = url + <span class="string">'?'</span> + <span class="built_in">Object</span>.entries(params).map(<span class="function"><span class="params">arr</span> =&gt;</span> arr[<span class="number">0</span>] + <span class="string">'='</span> + 		 arr[<span class="number">1</span>]).join(<span class="string">'&amp;'</span>)</span><br><span class="line">    <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">    xhr.open(<span class="string">'GET'</span>, url, <span class="literal">true</span>) <span class="comment">// 异步写法，最后一个参数是true</span></span><br><span class="line">    xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(xhr.status === <span class="number">200</span> || xhr.status === <span class="number">304</span>) &#123;</span><br><span class="line">    onsuccess(<span class="built_in">JSON</span>.parse(xhr.responseText))</span><br><span class="line">	&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">			onerror()</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">    xhr.onerror = onerror</span><br><span class="line">    xhr.send()</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用</span></span><br><span class="line">    request(<span class="string">'http://rap2api.taobao.org/app/mock/244238/weathe'</span>, &#123;<span class="attr">city</span>: <span class="string">'杭州'</span>&#125;, data =&gt; &#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'请求成功'</span>)</span><br><span class="line">        <span class="built_in">console</span>.log(data)</span><br><span class="line">	&#125;, () =&gt; &#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">'接口异常'</span>)</span><br><span class="line">&#125;</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<h4 id="Post请求编码方式-告诉服务器请求参数的编码方式"><a href="#Post请求编码方式-告诉服务器请求参数的编码方式" class="headerlink" title="Post请求编码方式 告诉服务器请求参数的编码方式"></a>Post请求编码方式 告诉服务器请求参数的编码方式</h4><h6 id="application-x-www-form-urlencoded-参数变成-key1-value1-amp-key2-value2-的形式"><a href="#application-x-www-form-urlencoded-参数变成-key1-value1-amp-key2-value2-的形式" class="headerlink" title="application/x-www-form-urlencoded 参数变成 key1=value1&amp;key2=value2 的形式"></a>application/x-www-form-urlencoded 参数变成 key1=value1&amp;key2=value2 的形式</h6><h6 id="multipart-form-data-一般上传文件时使用"><a href="#multipart-form-data-一般上传文件时使用" class="headerlink" title="multipart/form-data  一般上传文件时使用"></a>multipart/form-data  一般上传文件时使用</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> formData = <span class="keyword">new</span> FormData()</span><br><span class="line">formData.append(<span class="string">'username'</span>, <span class="string">'abcdefg'</span>)</span><br><span class="line">formData.append(<span class="string">'password'</span>, <span class="string">'123456'</span>)</span><br><span class="line"><span class="keyword">let</span> url = <span class="string">'http://rap2api.taobao.org/app/mock/244238/register'</span> <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'POST'</span>, url, <span class="literal">true</span>)</span><br><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">if</span>(xhr.status === <span class="number">200</span> || xhr.status === <span class="number">304</span>) &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(xhr.responseText))</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'接口异常'</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.send(formData )  <span class="comment">//使用formdata传递参数</span></span><br></pre></td></tr></table></figure>
+<h4 id="表单验证"><a href="#表单验证" class="headerlink" title="表单验证"></a>表单验证</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> $ = <span class="function"><span class="params">s</span> =&gt;</span> <span class="built_in">document</span>.querySelector(s)</span><br><span class="line"><span class="keyword">const</span> $submit = $(<span class="string">'[type=submit]'</span>)</span><br><span class="line"><span class="keyword">const</span> $form = $(<span class="string">'form'</span>)</span><br><span class="line"><span class="keyword">const</span> $msg = $(<span class="string">'#msg'</span>)</span><br><span class="line"><span class="keyword">let</span> url = <span class="string">'http://rap2api.taobao.org/app/mock/244238/register'</span></span><br><span class="line"><span class="comment">//这里不直接给button绑定事件，而是给form表单绑定，反正会冒泡到表单上的</span></span><br><span class="line">$form.onsubmit = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">e.preventDefault()</span><br><span class="line"><span class="comment">//这里校验，这里传递表单数据时，直接传递了表单对象</span></span><br><span class="line"><span class="keyword">let</span> formData = <span class="keyword">new</span> FormData($form)</span><br><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'POST'</span>, url, <span class="literal">true</span>)</span><br><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">if</span>(xhr.status === <span class="number">200</span> || xhr.status === <span class="number">304</span>) &#123;</span><br><span class="line"><span class="keyword">let</span> data = <span class="built_in">JSON</span>.parse(xhr.responseText)</span><br><span class="line">$msg.innerText = data.msg</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line">$msg.innerText = <span class="string">'接口异常'</span> &#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.send(formData )</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="fetch"><a href="#fetch" class="headerlink" title="fetch"></a>fetch</h4><p>简单使用，get请求</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> url = <span class="string">'http://api.jirengu.com/getWeather.php?city=北京'</span> fetch(url).then(<span class="function"><span class="params">response</span> =&gt;</span> response.json() )</span><br><span class="line">.then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line"><span class="built_in">document</span>.body.innerText = data.results[<span class="number">0</span>].weather_data[<span class="number">0</span>].weather</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>复杂使用 post 请求</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> data = &#123; <span class="attr">username</span>: <span class="string">'example'</span> &#125;;</span><br><span class="line"></span><br><span class="line">fetch(<span class="string">'https://example.com/profile'</span>, &#123;</span><br><span class="line">  method: <span class="string">'POST'</span>, <span class="comment">// or 'PUT'</span></span><br><span class="line">  headers: &#123;</span><br><span class="line">    <span class="string">'Content-Type'</span>: <span class="string">'application/json'</span>,</span><br><span class="line">  &#125;,<span class="comment">// 'Content-Type': 'application/x-www-form-urlencoded',</span></span><br><span class="line">  body: <span class="built_in">JSON</span>.stringify(data), <span class="comment">//body data type must match "Content-Type" header</span></span><br><span class="line">&#125;)</span><br><span class="line">.then(<span class="function"><span class="params">response</span> =&gt;</span> response.json())</span><br><span class="line">.then(<span class="function"><span class="params">data</span> =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.log(<span class="string">'Success:'</span>, data);</span><br><span class="line">&#125;)</span><br><span class="line">.catch(<span class="function">(<span class="params">error</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="built_in">console</span>.error(<span class="string">'Error:'</span>, error);</span><br><span class="line">&#125;);</span><br></pre></td></tr></table></figure>
+<h4 id="双工通信"><a href="#双工通信" class="headerlink" title="双工通信"></a>双工通信</h4><p><strong>Ajax轮询</strong></p>
+<p>每隔固定时间发一次请求</p>
+<ul>
+<li>发请求，立即响应，返回空</li>
+<li>发请求，立即响应，返回新数据</li>
+</ul>
+<p>长轮询(Comet)</p>
+<p>客户端 </p>
+<ul>
+<li><p>发请求，等待响应 </p>
+</li>
+<li><p>当响应时，再次发请求</p>
+</li>
+</ul>
+<p>服务器端</p>
+<ul>
+<li>请求到来，如果没新数据，则不发</li>
+<li>当有新数据，需要通知客户端，再响应</li>
+</ul>
+<p>实际场景</p>
+<p>ajax轮询实现的简易聊天室</p>
+<p><a href="https://github.com/jirengu/chat-xhr-poll" target="_blank" rel="noopener">https://github.com/jirengu/chat-xhr-poll</a></p>
+<p>ajax长轮询(comet)实现的简易聊天室</p>
+<p><a href="https://github.com/jirengu/chat-comet" target="_blank" rel="noopener">https://github.com/jirengu/chat-comet</a></p>
+<p>websocket 简易聊天室</p>
+<p><a href="https://github.com/jirengu/chat-websocket" target="_blank" rel="noopener">https://github.com/jirengu/chat-websocket</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/18/ajax/" data-id="ckaca627a00002ww1o6ut5azv" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/">ajax</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/05/17/http-session-cookie-token/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">http-session-cookie-token</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/05/18/ajax/">ajax</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/17/http-session-cookie-token/">http-session-cookie-token</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/16/https/">https</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/15/密码学初探/">密码学初探</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/15/http-缓存控制/">http 缓存控制</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
