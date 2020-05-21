@@ -62,6 +62,67 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-promise" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/20/promise/" class="article-date">
+  <time datetime="2020-05-20T06:59:31.000Z" itemprop="datePublished">2020-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/20/promise/">promise</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>()接受两个函数参数对象 此时状态为 pending，resolve 和 reject </span><br><span class="line">执行resolve()后 promise的状态变为 已执行（fullfilled） 代表成功执行</span><br><span class="line">执行reject() 代表执行失败 failed</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span>&#123;</span><br><span class="line">    reject(<span class="string">"拒绝"</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">value</span> =&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//代表promise函数执行成功后的回调，value为执行后得到的数据</span></span><br><span class="line">&#125;,reason =&gt;&#123;</span><br><span class="line">    <span class="comment">//执行失败后执行的函数</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="JS任务优先级"><a href="#JS任务优先级" class="headerlink" title="JS任务优先级"></a>JS任务优先级</h4><p>代码执行优先级从上到下一次执行</p>
+<ul>
+<li>同步代码块 </li>
+<li>微任务队列<ul>
+<li>promise 的 then() 会放入微任务队列执行（在执行完 resolve后返回状态后放入微任务队列）</li>
+</ul>
+</li>
+<li>宏任务队列<ul>
+<li>setTimeOut 会放入宏任务队列执行</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	 <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">            setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                resolve(); <span class="comment">// 生成微任务放入微任务队列</span></span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">"settimeout"</span>);</span><br><span class="line">            &#125;, <span class="number">0</span>); <span class="comment">// 宏任务</span></span><br><span class="line">        &#125;).then(<span class="function"><span class="params">value</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'成功'</span>))</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"案例"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出顺序为 "案例" 》 "settimeout" 》 "成功"</span></span><br></pre></td></tr></table></figure>
+<h4 id="then-层层传递"><a href="#then-层层传递" class="headerlink" title="then 层层传递"></a>then 层层传递</h4><h6 id="promise-then-也是一个-promise"><a href="#promise-then-也是一个-promise" class="headerlink" title="promise.then() 也是一个 promise"></a>promise.then() 也是一个 promise</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// resolve("一瓶可乐")  resolve 和 reject 一次只能返回一种结果，不可能又成功又失败</span></span><br><span class="line">    reject(<span class="string">"涨价了"</span>);</span><br><span class="line">&#125;).then()  <span class="comment">//此处不处理，结果会向下传递</span></span><br><span class="line">.then(<span class="literal">null</span>,err=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"失败的原因"</span>+err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolv, reject</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="comment">//resolve("fullfilled")</span></span><br><span class="line">          reject(<span class="string">"rejected"</span>)</span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> p2 = p1.then(</span><br><span class="line">          value =&gt; <span class="built_in">console</span>.log(value),</span><br><span class="line">          reason =&gt; <span class="built_in">console</span>.log(reason)</span><br><span class="line">          ).then(</span><br><span class="line">              a=&gt; <span class="built_in">console</span>.log(<span class="string">"成功"</span>),</span><br><span class="line">              b =&gt; <span class="built_in">console</span>.log(b)</span><br><span class="line">          )</span><br><span class="line">      </span><br><span class="line">      <span class="built_in">console</span>.log(p2) <span class="comment">//会发现它是一个 promise对象</span></span><br><span class="line">      </span><br><span class="line">      <span class="comment">// .then() 本身返回的也是一个 promise对象 p2也是一个promise，所以它也有相应的.then()函数</span></span><br><span class="line">      <span class="comment">//此刻p1的结果为 rejected,所以p1.then会捕获到 reason 输出 rejected,而p2,我们没有显示的指定它是成功还是失败，默认是成功的，所以会监听到 成功 （此刻我们不能打印 a 的值，因为我们没有设置 例如使用 resolve（值） 或者 return（值））</span></span><br></pre></td></tr></table></figure>
+<h5 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(成功)&#123;</span><br><span class="line">			resolve(data)</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			reject(reason)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn(arg).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">reason</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(reason)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//复杂案例 也就是使用 Promise 封装 ajax 的请求过程    </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getIp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">                xhr.open(<span class="string">'GET'</span>,</span><br><span class="line">                    <span class="string">'http://rap2.taobao.org:38080/app/mock/245421/getIp'</span>, <span class="literal">true</span>)</span><br><span class="line">                xhr.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">var</span> retJson = <span class="built_in">JSON</span>.parse(xhr.responseText)</span><br><span class="line">                    resolve(retJson.ip)</span><br><span class="line">                &#125;</span><br><span class="line">                xhr.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    reject(<span class="string">'获取IP失败'</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                xhr.send()</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">return</span> promise</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> getCityFromIp = <span class="function"><span class="params">ip</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">                xhr.open(<span class="string">'GET'</span>,</span><br><span class="line">                    <span class="string">'http://rap2.taobao.org:38080/app/mock/245421/getCity?ip='</span> + ip, <span class="literal">true</span>)</span><br><span class="line">                xhr.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                    resolve(<span class="built_in">JSON</span>.parse(xhr.responseText).city)</span><br><span class="line">                &#125;</span><br><span class="line">                xhr.onerror = <span class="function"><span class="params">()</span> =&gt;</span> reject(<span class="string">'获取city失败'</span>)</span><br><span class="line">                xhr.send()</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Promise-封装-ajax-请求（上面也是）"><a href="#Promise-封装-ajax-请求（上面也是）" class="headerlink" title="Promise 封装 ajax 请求（上面也是）"></a>Promise 封装 ajax 请求（上面也是）</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;).then()   <span class="comment">//一般这样写，promise会立即执行，并在then()中做后续处理</span></span><br><span class="line"><span class="comment">//封装 ajax 这里只定义 promise 请求，未对请求结果做处理，在调用时处理</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRquest();</span><br><span class="line">        xhr.open(<span class="string">'GET'</span>,url);</span><br><span class="line">        xhr.send();</span><br><span class="line">        xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.status == <span class="number">200</span>)&#123;</span><br><span class="line">                resolve(<span class="built_in">JSON</span>.parse(<span class="keyword">this</span>.response))</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                reject(<span class="string">'请求失败'</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            reject(<span class="keyword">this</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用时候使用.then()处理请求的返回结果</span></span><br><span class="line"><span class="comment">//第一个ajax 请求</span></span><br><span class="line">ajax(<span class="string">'getUser?参数...'</span>).then(</span><br><span class="line">						user =&gt;&#123;</span><br><span class="line">                            <span class="keyword">return</span> ajax(<span class="string">`getCourse?id=`</span>+user.id)</span><br><span class="line">                           <span class="comment">// consoel.log('user 是请求得到的结果')</span></span><br><span class="line">                        &#125;,</span><br><span class="line">    					reason =&gt;&#123;</span><br><span class="line">                            <span class="comment">//可以在此处单独处理getname 请求的错误信息</span></span><br><span class="line">                            consoel.log(<span class="string">'失败的原因reason'</span>)</span><br><span class="line">                        &#125;</span><br><span class="line">					).then(</span><br><span class="line">						course =&gt;&#123;</span><br><span class="line">                            <span class="built_in">console</span>.log(<span class="string">'course 是根据上面一步的请求的user.id获取到的结果'</span>)</span><br><span class="line">                        &#125;</span><br><span class="line">						).chtch(<span class="function"><span class="params">error</span> =&gt;</span>&#123;</span><br><span class="line">   								<span class="built_in">console</span>.log(<span class="string">'在此处做统一的错误处理'</span>)</span><br><span class="line">					&#125;)</span><br><span class="line"></span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="comment">//未使用 promise 之前 封装的 ajax 方法</span></span><br><span class="line"><span class="comment">//四个参数，请求url, 请求参数，请求成功的处理，请求失败的处理</span></span><br><span class="line"> <span class="keyword">const</span> request = <span class="function">(<span class="params">url,params,onsuccess,onerror</span>) =&gt;</span>&#123;</span><br><span class="line">     <span class="comment">//get 方式拼接参数 url 字符串 将传递的对象参数拆分后拼接</span></span><br><span class="line">     url = url+<span class="string">'?'</span>+<span class="built_in">Object</span>.entries(params).map(<span class="function"><span class="params">param</span> =&gt;</span> arr[<span class="number">0</span>]+<span class="string">'='</span>+arr[<span class="number">1</span>]).join(<span class="string">'&amp;'</span>);</span><br><span class="line">     <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRquest()</span><br><span class="line">     xhr.open(<span class="string">'GET'</span>,url,<span class="literal">true</span>); <span class="comment">// 第三个参数是否使用异步</span></span><br><span class="line">     xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(xhr.status == <span class="number">200</span> || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line">             <span class="comment">//请求成功执行  onsuccess函数</span></span><br><span class="line">             onsuccess(<span class="built_in">JSON</span>.parse(xhr.responseText))</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             <span class="comment">//请求失败执行 onerror函数</span></span><br><span class="line">             onerror()</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">//xhr有默认的 error方法，把我们自定义的赋值给它</span></span><br><span class="line">     xhr.onerror = onerror</span><br><span class="line">     xhr.send()</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"> <span class="comment">//调用</span></span><br><span class="line"> request(<span class="string">'url'</span>,&#123;<span class="attr">param</span>:<span class="string">'rel'</span>&#125;,</span><br><span class="line">        	data=&gt;&#123;</span><br><span class="line">     			consoel.log(<span class="string">'请求成功'</span>)</span><br><span class="line">    			 consoel.log(data)</span><br><span class="line"> 			&#125;,</span><br><span class="line">         ()=&gt;&#123;</span><br><span class="line">     			consoel.log(<span class="string">'异常'</span>)</span><br><span class="line">			 &#125;</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2020/05/20/promise/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/20/promise/" data-id="ckagg7obk000qr0w1p6e9t8sm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promise/">promise</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-mock数据" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/19/mock数据/" class="article-date">
@@ -101,7 +162,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/19/mock数据/" data-id="ckadstnus000p2kw1wlu1d157" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/19/mock数据/" data-id="ckagg7oc30015r0w1sopwx6r1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mock/">mock</a></li></ul>
@@ -168,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/18/ajax/" data-id="ckadstntu00032kw1pub6bvgr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/18/ajax/" data-id="ckagg7oag0002r0w12cug75wk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/">ajax</a></li></ul>
@@ -274,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/17/http-session-cookie-token/" data-id="ckadstnur000o2kw1kithfymw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/17/http-session-cookie-token/" data-id="ckagg7obg000nr0w1evn8hbpv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
@@ -454,7 +515,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/16/https/" data-id="ckadstnup000m2kw162i0nc4k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/16/https/" data-id="ckagg7ob6000er0w18vflwxvk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -517,7 +578,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/15/密码学初探/" data-id="ckadstnve00132kw1x8tsjuaz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/15/密码学初探/" data-id="ckagg7oby0010r0w1gdd8kzsy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https基础/">https基础</a></li></ul>
@@ -570,7 +631,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/15/http-缓存控制/" data-id="ckadstnum000j2kw1a0k747pa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/15/http-缓存控制/" data-id="ckagg7ob7000fr0w1iq8t9mgi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
@@ -637,7 +698,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/14/http-TCP/" data-id="ckadstnuh000f2kw1xo6zbb6g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/14/http-TCP/" data-id="ckagg7oay000br0w1wojqx5cu" class="article-share-link">Share</a>
       
       
     </footer>
@@ -679,7 +740,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/12/近日案例总结/" data-id="ckadstnvh00142kw1tfpyv9v9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/12/近日案例总结/" data-id="ckagg7oc20014r0w1lk3ue005" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/summary/">summary</a></li></ul>
@@ -751,63 +812,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/12/js-事件/" data-id="ckadstnun000k2kw1sgwehwx0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-css-定位" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/10/css-定位/" class="article-date">
-  <time datetime="2020-05-10T05:50:22.000Z" itemprop="datePublished">2020-05-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/10/css-定位/">css 定位</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="为什么需要定位"><a href="#为什么需要定位" class="headerlink" title="为什么需要定位"></a>为什么需要定位</h4><h6 id="这两天在用css写一个叉号的时候，用到了定位，当时懵逼了好长时间，才想明白，有必要对定位再做一次笔记和回顾了"><a href="#这两天在用css写一个叉号的时候，用到了定位，当时懵逼了好长时间，才想明白，有必要对定位再做一次笔记和回顾了" class="headerlink" title="这两天在用css写一个叉号的时候，用到了定位，当时懵逼了好长时间，才想明白，有必要对定位再做一次笔记和回顾了"></a>这两天在用css写一个叉号的时候，用到了定位，当时懵逼了好长时间，才想明白，有必要对定位再做一次笔记和回顾了</h6><ul>
-<li>改变元素的位置</li>
-<li>让元素重叠放置任意位置 （写叉号用到的）</li>
-<li>让元素固定在窗口固定位置</li>
-</ul>
-<h4 id="涉及的属性"><a href="#涉及的属性" class="headerlink" title="涉及的属性"></a>涉及的属性</h4><ul>
-<li>position：static、relative、absolute、fixed、stick</li>
-<li>top、left、right、bottom</li>
-<li>z-index</li>
-</ul>
-<h5 id="static"><a href="#static" class="headerlink" title="static"></a>static</h5><p>该关键字指定元素使用正常的布局行为，即元素在文档常规流中当前的布局位置。</p>
-<p>此时top，right，bottom,left, 和 z-index 属性无效，也就是它没有定位</p>
-<p>之所以有这个属性，是为了给定位元素取消定位属性而设置的</p>
-<h5 id="relative"><a href="#relative" class="headerlink" title="relative"></a>relative</h5><p>相对定位</p>
-<p>未脱离普通流，它依然占据空间，设置背景色可以看出来</p>
-<p>元素本身在普通流中的位置并未发生变化，只是视觉上变化</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/10/css-定位/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/10/css-定位/" data-id="ckadstnu100082kw1dnawsadm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/12/js-事件/" data-id="ckagg7oba000ir0w1b7f04rz1" class="article-share-link">Share</a>
       
       
     </footer>
@@ -835,7 +840,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -845,7 +850,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -867,6 +872,10 @@
       <ul>
         
           <li>
+            <a href="/2020/05/20/promise/">promise</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/19/mock数据/">mock数据</a>
           </li>
         
@@ -880,10 +889,6 @@
         
           <li>
             <a href="/2020/05/16/https/">https</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/15/密码学初探/">密码学初探</a>
           </li>
         
       </ul>
