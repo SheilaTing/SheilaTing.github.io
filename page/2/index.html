@@ -62,6 +62,76 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-js-事件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/12/js-事件/" class="article-date">
+  <time datetime="2020-05-12T08:29:17.000Z" itemprop="datePublished">2020-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/12/js-事件/">js 事件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>常用事件</p>
+<p>鼠标事件、键盘事件、拖放事件、媒体事件、进度事件、存储事件，更新事件等</p>
+<p>单击，双击，鼠标放置，表单内容发生变化，拖拽，页面滚动。。。。。</p>
+<h4 id="dom事件流"><a href="#dom事件流" class="headerlink" title="dom事件流"></a>dom事件流</h4><p>三个阶段</p>
+<ul>
+<li>事件捕获阶段</li>
+<li>处于目标阶段</li>
+<li>事件冒泡阶段</li>
+</ul>
+<h4 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h4><p>当事件发生时执行的函数</p>
+<p>三种绑定方式</p>
+<ol>
+<li>在html 中绑定</li>
+<li>给dom元素的 onclick 赋值</li>
+<li>调用dom的 addEventlistener函数</li>
+</ol>
+<h6 id="addEventListener"><a href="#addEventListener" class="headerlink" title="addEventListener"></a>addEventListener</h6><p>target.addEventListener(type, listener, options)</p>
+<ul>
+<li>type:事件类型</li>
+<li>listener:事件处理方法</li>
+<li>options: 默认全是false {capture:是否捕获阶段监听，once:只监听一次，passive:是否忽略 preventDefault}</li>
+</ul>
+<p>target.addEventListener(type, listener, useCapture)</p>
+<p>useCapture: 可选，true表示在捕获阶段调用listener，false表示冒泡阶段处理</p>
+<p>target.removeEventListener</p>
+<ul>
+<li>target.removeEventListener(‘click’, handler)</li>
+<li>target.removeEventListener(‘click’, handler, true)</li>
+</ul>
+<h4 id="冒泡与捕获"><a href="#冒泡与捕获" class="headerlink" title="冒泡与捕获"></a>冒泡与捕获</h4>
+        
+          <p class="article-more-link">
+            <a href="/2020/05/12/js-事件/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/12/js-事件/" data-id="ckahx2vg3000l50w1djsel05j" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-css-定位" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/10/css-定位/" class="article-date">
@@ -108,7 +178,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/10/css-定位/" data-id="ckagg7oak0004r0w1prk3mzxi" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/10/css-定位/" data-id="ckahx2vfl000950w1zyebkxv7" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,7 +252,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/09/Bom-浏览器对象/" data-id="ckagg7oao0006r0w1m6913yrp" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/09/Bom-浏览器对象/" data-id="ckahx2vds000150w196lopfzq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bom/">bom</a></li></ul>
@@ -258,7 +328,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/08/inline-block/" data-id="ckagg7ob9000hr0w11re1xxsj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/08/inline-block/" data-id="ckahx2vg2000k50w14pv211sw" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -318,7 +388,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/07/基础类型引用类型/" data-id="ckagg7obq000vr0w1mb8ct3i5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/07/基础类型引用类型/" data-id="ckahx2vgj001050w1pis4dd71" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -388,7 +458,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/05/外边距合并/" data-id="ckagg7obu000xr0w14131i7wo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/05/外边距合并/" data-id="ckahx2vgi000z50w15eylmzm3" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -444,7 +514,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/02/dom-相关操作/" data-id="ckagg7ob0000cr0w18fn4nwi1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/02/dom-相关操作/" data-id="ckahx2vfx000f50w1p7hjmu6a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dom/">dom</a></li></ul>
@@ -490,7 +560,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/02/闭包/" data-id="ckagg7oc40016r0w1l3d1ennk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/02/闭包/" data-id="ckahx2vhq001b50w175ohgrcy" class="article-share-link">Share</a>
       
       
     </footer>
@@ -531,7 +601,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/01/不同载体中的方法写法/" data-id="ckagg7obn000tr0w1sm1rd6b1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/01/不同载体中的方法写法/" data-id="ckahx2vgh000y50w1x69d55kj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -586,64 +656,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ckagg7obb000jr0w1axtwa9e8" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-定时器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/28/定时器/" class="article-date">
-  <time datetime="2020-04-28T07:21:40.000Z" itemprop="datePublished">2020-04-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/28/定时器/">定时器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="关于堆和栈（作为内存区域来说）"><a href="#关于堆和栈（作为内存区域来说）" class="headerlink" title="关于堆和栈（作为内存区域来说）"></a>关于堆和栈（作为内存区域来说）</h4><ul>
-<li>堆（heap）：存放object、array、function等不确定内存大小的数据存储；</li>
-<li>栈（stack）：存放基本数据类型以及引用数据类型指向堆中的数据的指针，具有具体大小的数据结构，存取速度快；</li>
-</ul>
-<h4 id="调用栈（作为一种代码运行机制）"><a href="#调用栈（作为一种代码运行机制）" class="headerlink" title="调用栈（作为一种代码运行机制）"></a>调用栈（作为一种代码运行机制）</h4><h4 id="事件循环机制（event-loop）"><a href="#事件循环机制（event-loop）" class="headerlink" title="事件循环机制（event loop）"></a>事件循环机制（event loop）</h4><p>参考：<a href="https://www.jianshu.com/p/12b9f73c5a4f#" target="_blank" rel="noopener">js事件循环机制</a></p>
-<ul>
-<li>存在整个javascript脚本执行期间</li>
-<li>作用：将任务队列的中可以执行的函数压入调用栈中</li>
-</ul>
-<h3 id="任务队列（task-queue）"><a href="#任务队列（task-queue）" class="headerlink" title="任务队列（task queue）"></a>任务队列（task queue）</h3><ol>
-<li>宏任务（macro task）：在新标准中叫task<ul>
-<li>宏任务主要包括：script(整体代码), setTimeout, setInterval, setImmediate, I/O, UI rendering</li>
-</ul>
-</li>
-<li>微任务（micro task）：在新标准中叫jobs</li>
-<li>微任务主要包括：process.nextTick, Promise, Object.observe(已废弃), MutationObserver(html5新特性)</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/28/定时器/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/28/定时器/" data-id="ckagg7obv000yr0w12g94ajhq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ckahx2vgc000t50w1mpuyzs06" class="article-share-link">Share</a>
       
       
     </footer>
@@ -703,6 +716,10 @@
       <ul>
         
           <li>
+            <a href="/2020/05/22/跨域/">跨域</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/20/promise/">promise</a>
           </li>
         
@@ -716,10 +733,6 @@
         
           <li>
             <a href="/2020/05/17/http-session-cookie-token/">http-session-cookie-token</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/16/https/">https</a>
           </li>
         
       </ul>
