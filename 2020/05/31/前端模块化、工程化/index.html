@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>前端模块化、工程化 | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="模块化实现模块化的原始方法 模块化就是同一功能的代码放在一个模块中，应用需要这个功能，引入即可优点  解决包的依赖管理 命名冲突 代码可读性 代码复用性  把代码放在一个对象内，看起来更聚合123456789const app = &amp;#123;    init()&amp;#123;        this.bind()    &amp;#125;,    bind()&amp;#123;&amp;#125;,    rende">
+<meta name="keywords" content="工程化">
+<meta property="og:type" content="article">
+<meta property="og:title" content="前端模块化、工程化">
+<meta property="og:url" content="http://yoursite.com/2020/05/31/前端模块化、工程化/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="模块化实现模块化的原始方法 模块化就是同一功能的代码放在一个模块中，应用需要这个功能，引入即可优点  解决包的依赖管理 命名冲突 代码可读性 代码复用性  把代码放在一个对象内，看起来更聚合123456789const app = &amp;#123;    init()&amp;#123;        this.bind()    &amp;#125;,    bind()&amp;#123;&amp;#125;,    rende">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-01T04:36:38.187Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="前端模块化、工程化">
+<meta name="twitter:description" content="模块化实现模块化的原始方法 模块化就是同一功能的代码放在一个模块中，应用需要这个功能，引入即可优点  解决包的依赖管理 命名冲突 代码可读性 代码复用性  把代码放在一个对象内，看起来更聚合123456789const app = &amp;#123;    init()&amp;#123;        this.bind()    &amp;#125;,    bind()&amp;#123;&amp;#125;,    rende">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-前端模块化、工程化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/31/前端模块化、工程化/" class="article-date">
+  <time datetime="2020-05-31T12:02:37.000Z" itemprop="datePublished">2020-05-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      前端模块化、工程化
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h4><p><em>实现模块化的原始方法</em></p>
+<h6 id="模块化就是同一功能的代码放在一个模块中，应用需要这个功能，引入即可"><a href="#模块化就是同一功能的代码放在一个模块中，应用需要这个功能，引入即可" class="headerlink" title="模块化就是同一功能的代码放在一个模块中，应用需要这个功能，引入即可"></a>模块化就是同一功能的代码放在一个模块中，应用需要这个功能，引入即可</h6><p><strong>优点</strong></p>
+<ol>
+<li>解决包的依赖管理</li>
+<li>命名冲突</li>
+<li>代码可读性</li>
+<li>代码复用性</li>
+</ol>
+<h6 id="把代码放在一个对象内，看起来更聚合"><a href="#把代码放在一个对象内，看起来更聚合" class="headerlink" title="把代码放在一个对象内，看起来更聚合"></a>把代码放在一个对象内，看起来更聚合</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = &#123;</span><br><span class="line">    init()&#123;</span><br><span class="line">        <span class="keyword">this</span>.bind()</span><br><span class="line">    &#125;,</span><br><span class="line">    bind()&#123;&#125;,</span><br><span class="line">    render()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.init()</span><br></pre></td></tr></table></figure>
+<h6 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> <span class="keyword">let</span> $btn = <span class="built_in">document</span>.querySelector(<span class="string">'.btn'</span>)</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> bind()</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">bind</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> $btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> render()</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'render'</span>)</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> &#123; init &#125;</span><br><span class="line"> &#125;)()</span><br><span class="line"> app.init()</span><br></pre></td></tr></table></figure>
+<p><strong>CommonJS 规范</strong></p>
+<h6 id="使用-require-方法，在需要某个模块的时候把它到处，在需要的地方引入即可，但浏览器本身是不能识别该关键字的，所以我们需要一些打包工具，帮助我们把代码打包成浏览器可以识别的文件"><a href="#使用-require-方法，在需要某个模块的时候把它到处，在需要的地方引入即可，但浏览器本身是不能识别该关键字的，所以我们需要一些打包工具，帮助我们把代码打包成浏览器可以识别的文件" class="headerlink" title="使用 require 方法，在需要某个模块的时候把它到处，在需要的地方引入即可，但浏览器本身是不能识别该关键字的，所以我们需要一些打包工具，帮助我们把代码打包成浏览器可以识别的文件"></a>使用 require 方法，在需要某个模块的时候把它到处，在需要的地方引入即可，但浏览器本身是不能识别该关键字的，所以我们需要一些打包工具，帮助我们把代码打包成浏览器可以识别的文件</h6><p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//test.js</span><br><span class="line">function sum()&#123;</span><br><span class="line">	return &apos;test&apos;</span><br><span class="line">&#125;</span><br><span class="line">module.exports.sum = sum</span><br><span class="line"></span><br><span class="line">//index.js  引入</span><br><span class="line">const &#123;test&#125; = require(&apos;./test&apos;)</span><br><span class="line">//使用  此时 test就是引入的一个sum 函数</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+<!--showmore-->
+<p><strong>Parcel.js</strong>   (官网查看它的详细用法)</p>
+<h4 id="ES6-的模块-Module-概念"><a href="#ES6-的模块-Module-概念" class="headerlink" title="ES6 的模块 Module 概念"></a>ES6 的模块 Module 概念</h4><h6 id="与-commonjs-不同，es6-导出与引入使用关键字-import-export"><a href="#与-commonjs-不同，es6-导出与引入使用关键字-import-export" class="headerlink" title="与 commonjs 不同，es6 导出与引入使用关键字 import,export"></a>与 commonjs 不同，es6 导出与引入使用关键字 import,export</h6><p>导出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//test.js</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">'test'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name)</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Toast</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> &#123;name,sayName,Toast&#125;  <span class="comment">//导出三个对象 分别是普通变量，函数，和类对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//main.js 引入,引入时注意 变量名要与导出的一致，否则会找不到</span></span><br><span class="line"><span class="keyword">import</span> &#123;name,sayName,Toast&#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line"><span class="built_in">console</span>.log(name)</span><br><span class="line">sayName()</span><br><span class="line"><span class="keyword">new</span> Toast()</span><br><span class="line">-----------------------------------------------------------------------------------------</span><br><span class="line"><span class="comment">//导出默认</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Toast</span></span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Toast</span><br><span class="line"></span><br><span class="line"><span class="comment">//引入</span></span><br><span class="line"><span class="keyword">import</span> myToast(名字随意取) <span class="keyword">from</span> <span class="string">'./main.js'</span>  <span class="comment">//仅限于默认导出，名字可以随意取</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> myToast</span><br><span class="line">-----------------------------------------------------------------------------------------</span><br><span class="line">    <span class="comment">//多次使用 export 导出</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">let</span> nem = <span class="string">'test'</span>  <span class="comment">//导出变量</span></span><br><span class="line">    <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;&#125;  <span class="comment">//导出函数</span></span><br><span class="line">	<span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Toast</span></span>&#123;&#125;  <span class="comment">//导出类</span></span><br><span class="line">	<span class="comment">//注意多次导出要把变量或者函数的声明一起导出才可以</span></span><br><span class="line"><span class="comment">//不可以这样写</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">'test'</span></span><br><span class="line"><span class="keyword">export</span> name; <span class="comment">//错误</span></span><br><span class="line"><span class="keyword">export</span> &#123;name&#125; <span class="comment">//正确    日常使用一定要注意</span></span><br></pre></td></tr></table></figure>
+<h4 id="ES6-import-与-commonjs-require-区别"><a href="#ES6-import-与-commonjs-require-区别" class="headerlink" title="ES6 import 与 commonjs require 区别"></a>ES6 import 与 commonjs require 区别</h4><h6 id="ES6-import-是静态解析-值的拷⻉"><a href="#ES6-import-是静态解析-值的拷⻉" class="headerlink" title="ES6 import 是静态解析  值的拷⻉"></a>ES6 import 是静态解析  值的拷⻉</h6><h6 id="CommonJS-require-运⾏时加载-值的引用"><a href="#CommonJS-require-运⾏时加载-值的引用" class="headerlink" title="CommonJS require 运⾏时加载 值的引用"></a>CommonJS require 运⾏时加载 值的引用</h6><p>详情参见 阮一峰ES6教程</p>
+<h4 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h4><h6 id="要想在Node-js中使⽤ES6-Module"><a href="#要想在Node-js中使⽤ES6-Module" class="headerlink" title="要想在Node.js中使⽤ES6 Module"></a>要想在Node.js中使⽤ES6 Module</h6><p>版本 &gt; v13.2 ， 在package.json⾥加 {“type”: “module” } 即可支持使用 import</p>
+<h6 id="浏览器中使用-ES6Module"><a href="#浏览器中使用-ES6Module" class="headerlink" title="浏览器中使用 ES6Module"></a>浏览器中使用 ES6Module</h6><p><script type="module" src="./main.js"><br>    特性新，IE和部分⼿机浏览器不兼容<br>    ⽬前使⽤打包器：Webapck、Rollup、Parcel，配合Babel将 es6语法转换为 es5</p>
+<p><strong>当然，在打包工具的帮助下我们也可以使用 es6 的 module</strong></p>
+<h4 id="⼯程化"><a href="#⼯程化" class="headerlink" title="⼯程化"></a>⼯程化</h4><h6 id="NPM-Scripts-实现⼯程化"><a href="#NPM-Scripts-实现⼯程化" class="headerlink" title="NPM Scripts 实现⼯程化"></a>NPM Scripts 实现⼯程化</h6><p>package.json 文件中的 scripts 模块中的指令可以通过  npm run 命令，来执行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line"> <span class="string">"start"</span>: <span class="string">"parcel index.html"</span>,</span><br><span class="line"> <span class="string">"dev"</span>: <span class="string">"parcel index.html"</span>,</span><br><span class="line"> <span class="string">"build"</span>: <span class="string">"rm -rf dist &amp;&amp; parcel build index.html"</span></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">npm start   执行  parcel index.html</span><br><span class="line">npm run dev   ....</span><br><span class="line">npm run build ......</span><br></pre></td></tr></table></figure>
+<h4 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h4><h6 id="JS-组件化-new-一个对象，例如-dialog组件"><a href="#JS-组件化-new-一个对象，例如-dialog组件" class="headerlink" title="JS 组件化  new 一个对象，例如 dialog组件"></a>JS 组件化  new 一个对象，例如 dialog组件</h6><h6 id="资源组件化"><a href="#资源组件化" class="headerlink" title="资源组件化"></a>资源组件化</h6><p>每个组件包含模板、样式、逻辑，是功能完备 的结构单元</p>
+<h4 id="重构项目"><a href="#重构项目" class="headerlink" title="重构项目"></a>重构项目</h4><h4 id="一般来说，项目结构如下"><a href="#一般来说，项目结构如下" class="headerlink" title="一般来说，项目结构如下"></a>一般来说，项目结构如下</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">- src</span><br><span class="line"> |-- pages <span class="comment">//多个⻚⾯</span></span><br><span class="line">     |-- index <span class="comment">//⾸⻚</span></span><br><span class="line">         |-- index.html</span><br><span class="line">         |-- main.css <span class="comment">//当前⻚⾯的样式</span></span><br><span class="line">         |-- main.js <span class="comment">//当前⻚⾯的功能</span></span><br><span class="line"> |-- components <span class="comment">//组件</span></span><br><span class="line">     |-- toast</span><br><span class="line">         |-- main.css</span><br><span class="line">         |-- main.js</span><br><span class="line"> |-- <span class="keyword">static</span> <span class="comment">//静态资源，主要是图⽚</span></span><br><span class="line"> 	|-- logo.png</span><br><span class="line"> |-- stylesheets <span class="comment">//基础样式或者公共样式</span></span><br><span class="line"> 	|-- base.css</span><br><span class="line"> |-- utils <span class="comment">//通⽤的库函数</span></span><br><span class="line">	 |-- util.js</span><br><span class="line"> |-- fonts <span class="comment">//字体或者字体图标</span></span><br></pre></td></tr></table></figure>
+</script></p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/31/前端模块化、工程化/" data-id="ckaw0jn7r0019zkw13d47am4x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工程化/">工程化</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/01/node-js-commonJs规范/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          node.js commonJs规范
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/05/22/跨域/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">跨域</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/01/node-js-commonJs规范/">node.js commonJs规范</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/31/前端模块化、工程化/">前端模块化、工程化</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/22/跨域/">跨域</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/20/promise/">promise</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/19/mock数据/">mock数据</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

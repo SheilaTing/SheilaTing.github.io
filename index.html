@@ -62,6 +62,145 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-node-js-commonJs规范" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/01/node-js-commonJs规范/" class="article-date">
+  <time datetime="2020-06-01T03:28:42.000Z" itemprop="datePublished">2020-06-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/01/node-js-commonJs规范/">node.js commonJs规范</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>基于 Chrome V8 引擎的 javascript 运行环境。</p>
+<p>可用于开发网站后台，开发本地工具，应用，特点是：事件驱动，非阻塞式IO模型，强大的生态NPM</p>
+<h4 id="服务器端概念"><a href="#服务器端概念" class="headerlink" title="服务器端概念"></a>服务器端概念</h4><p><strong>计算密集型  最好用 C C++ 来实现</strong></p>
+<h6 id="大量的计算，小号CPU-资源，例如对视频进行解码，加密解密操作"><a href="#大量的计算，小号CPU-资源，例如对视频进行解码，加密解密操作" class="headerlink" title="大量的计算，小号CPU 资源，例如对视频进行解码，加密解密操作"></a>大量的计算，小号CPU 资源，例如对视频进行解码，加密解密操作</h6><p><strong>IO密集型 node.js 适合 io密集型应用</strong>  </p>
+<h6 id="网络、磁盘读写频繁，例如上传下载等功能，包括读写数据库"><a href="#网络、磁盘读写频繁，例如上传下载等功能，包括读写数据库" class="headerlink" title="网络、磁盘读写频繁，例如上传下载等功能，包括读写数据库"></a>网络、磁盘读写频繁，例如上传下载等功能，包括读写数据库</h6><h4 id="使用"><a href="#使用" class="headerlink" title="使用"></a>使用</h4><h6 id="登录-nodejs-官网下载安装"><a href="#登录-nodejs-官网下载安装" class="headerlink" title="登录 nodejs 官网下载安装"></a>登录 nodejs 官网下载安装</h6><p><strong>使用node.js 内置模块</strong>  </p>
+<h6 id="node-js-内置了许多处理模块，例如文件处理模块-filesystem-路径处理模块path，http模块等"><a href="#node-js-内置了许多处理模块，例如文件处理模块-filesystem-路径处理模块path，http模块等" class="headerlink" title="node.js 内置了许多处理模块，例如文件处理模块 filesystem,路径处理模块path，http模块等"></a>node.js 内置了许多处理模块，例如文件处理模块 filesystem,路径处理模块path，http模块等</h6><p>使用如下</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//使用 require 关键字引入 文件处理模块</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line">fs.readFile(<span class="string">'path'</span>,<span class="string">'编码'</span>，callback(err,str)&#123;&#125;)</span><br><span class="line"><span class="comment">//具体使用查看 api</span></span><br></pre></td></tr></table></figure>
+<p><strong>使用本地模块</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 引入 util.js 后缀可以省略</span></span><br><span class="line"><span class="keyword">const</span> util = <span class="built_in">require</span>(<span class="string">'./util'</span>)</span><br><span class="line">使用： util.fact(<span class="number">5</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//util.js</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">   <span class="keyword">if</span>(n===<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span></span><br><span class="line">    <span class="keyword">return</span>  n*fact(n<span class="number">-1</span>)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>使用第三方模块</strong></p>
+<p>node.js 有强大的生态系统 npm，上面有许多开发者上传的自己写的各种工具包，如果我们有需要可以从上面下载下来，作为第三方的模块来使用</p>
+<h6 id="npm-install-模块"><a href="#npm-install-模块" class="headerlink" title="npm install 模块"></a>npm install 模块</h6><h4 id="CommonJs-规范"><a href="#CommonJs-规范" class="headerlink" title="CommonJs 规范"></a>CommonJs 规范</h4><h6 id="一个文件是一个模块"><a href="#一个文件是一个模块" class="headerlink" title="一个文件是一个模块"></a>一个文件是一个模块</h6><pre><code>文件中变量、函数、类都是私有的
+</code></pre><h6 id="每个模块内部，module-代表当前模块"><a href="#每个模块内部，module-代表当前模块" class="headerlink" title="每个模块内部，module 代表当前模块"></a>每个模块内部，module 代表当前模块</h6><p>​         module.exports 是对外的接口。加载某个模块，其实是加载该模块的 module.exports</p>
+<h6 id="注意-module-exports-与直接使⽤-exports的差异"><a href="#注意-module-exports-与直接使⽤-exports的差异" class="headerlink" title="注意 module.exports 与直接使⽤ exports的差异"></a>注意 module.exports 与直接使⽤ exports的差异</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a.js</span></span><br><span class="line"> <span class="keyword">let</span> num =<span class="number">1</span></span><br><span class="line"> <span class="keyword">const</span> add = <span class="function"><span class="params">()</span>=&gt;</span>++num</span><br><span class="line"> <span class="built_in">module</span>.exports.num = num</span><br><span class="line"> <span class="built_in">module</span>.exports.add = add   <span class="built_in">module</span>.exports 可以把它当成一个对象</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//b.js</span></span><br><span class="line"> <span class="keyword">let</span> obj = <span class="built_in">require</span>(<span class="string">'./a.js'</span>)  <span class="comment">//obj 对象就是你export 出来的 module.exports</span></span><br><span class="line"> <span class="built_in">console</span>.log(obj.num)  <span class="comment">// 普通变量</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.add())  <span class="comment">//函数</span></span><br></pre></td></tr></table></figure>
+<h4 id="exports-与-module-exports的区别"><a href="#exports-与-module-exports的区别" class="headerlink" title="exports 与 module.exports的区别"></a>exports 与 module.exports的区别</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//c.js</span></span><br><span class="line"><span class="comment">// 你可以理解为有这么一句话  exports = module.exports</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [...arguments].reduce(<span class="function">(<span class="params">v1,v2</span>)=&gt;</span> v1+v2)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = sum  <span class="comment">//正确</span></span><br><span class="line"><span class="comment">// exports = sum   错误的写法</span></span><br><span class="line"><span class="comment">// exports.sum = sum 正确</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//d.js</span></span><br><span class="line"><span class="keyword">const</span> sum = <span class="built_in">require</span>(<span class="string">'./c'</span>)  <span class="comment">//名称可以随意取</span></span><br><span class="line">consoel.log(sum(<span class="number">3</span>,<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
+<h4 id="npm-常用命令"><a href="#npm-常用命令" class="headerlink" title="npm 常用命令"></a>npm 常用命令</h4><p>• npm init   在当前目录下，初始化一个package.json</p>
+<p>• npm install </p>
+<p>​    ✓ npm install -g http-server    全局安装 http-server</p>
+<p>​    ✓ npm install –save axios        将依赖保存在package.json 中的dependency中</p>
+<p>​     ✓ npm install -S axios                 同上</p>
+<p>​    ✓ npm install –save-dev webpack     将依赖保存在 devdependency中</p>
+<p>​    ✓ npm install -D webpack   </p>
+<p>​    ✓ npm install </p>
+<p>• npm uninstall  </p>
+<p>• npm start</p>
+<p> • npm run </p>
+<p> • npm config –help </p>
+<p>• npm login </p>
+<p>• npm publish</p>
+<p>• npx <commond>    安装的第三方工具，需要在命令行中执行时，需要使用npx</commond></p>
+<h6 id="npx-想要解决的主要问题，就是调用项目内部安装的模块。比如，项目内部安装了测试工具-Mocha"><a href="#npx-想要解决的主要问题，就是调用项目内部安装的模块。比如，项目内部安装了测试工具-Mocha" class="headerlink" title="npx 想要解决的主要问题，就是调用项目内部安装的模块。比如，项目内部安装了测试工具 Mocha"></a>npx 想要解决的主要问题，就是调用项目内部安装的模块。比如，项目内部安装了测试工具 <a href="http://www.ruanyifeng.com/blog/2015/12/a-mocha-tutorial-of-examples.html" target="_blank" rel="noopener">Mocha</a></h6><p>一般来说，调用 Mocha ，只能在项目脚本和 package.json 的<a href="http://www.ruanyifeng.com/blog/2016/10/npm_scripts.html" target="_blank" rel="noopener"><code>scripts</code></a>字段里面， 如果想在命令行下调用，必须像下面这样。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 项目的根目录下执行</span></span><br><span class="line">$ node-modules/.bin/mocha --version</span><br></pre></td></tr></table></figure>
+<p>npx 就是想解决这个问题，让项目内部安装的模块用起来更方便，只要像下面这样调用就行了</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ npx mocha --version</span><br></pre></td></tr></table></figure>
+<p>npx 的原理很简单，就是运行的时候，会到<code>node_modules/.bin</code>路径和环境变量<code>$PATH</code>里面，检查命令是否存在。</p>
+<p>由于 npx 会检查环境变量<code>$PATH</code>，所以系统命令也可以调用。</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment"># 等同于 ls</span></span><br><span class="line">$ npx ls</span><br></pre></td></tr></table></figure>
+<p>参考 阮一峰的网络日志</p>
+<h4 id="yarn"><a href="#yarn" class="headerlink" title="yarn"></a>yarn</h4><h6 id="yarn-也是一个包管理器，起初是为了解决npm下载速度慢的情况，但现在可以直接使用npm"><a href="#yarn-也是一个包管理器，起初是为了解决npm下载速度慢的情况，但现在可以直接使用npm" class="headerlink" title="yarn 也是一个包管理器，起初是为了解决npm下载速度慢的情况，但现在可以直接使用npm"></a>yarn 也是一个包管理器，起初是为了解决npm下载速度慢的情况，但现在可以直接使用npm</h6>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/01/node-js-commonJs规范/" data-id="ckaw0jn79000rzkw1nl3krlzm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-前端模块化、工程化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/31/前端模块化、工程化/" class="article-date">
+  <time datetime="2020-05-31T12:02:37.000Z" itemprop="datePublished">2020-05-31</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/31/前端模块化、工程化/">前端模块化、工程化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="模块化"><a href="#模块化" class="headerlink" title="模块化"></a>模块化</h4><p><em>实现模块化的原始方法</em></p>
+<h6 id="模块化就是同一功能的代码放在一个模块中，应用需要这个功能，引入即可"><a href="#模块化就是同一功能的代码放在一个模块中，应用需要这个功能，引入即可" class="headerlink" title="模块化就是同一功能的代码放在一个模块中，应用需要这个功能，引入即可"></a>模块化就是同一功能的代码放在一个模块中，应用需要这个功能，引入即可</h6><p><strong>优点</strong></p>
+<ol>
+<li>解决包的依赖管理</li>
+<li>命名冲突</li>
+<li>代码可读性</li>
+<li>代码复用性</li>
+</ol>
+<h6 id="把代码放在一个对象内，看起来更聚合"><a href="#把代码放在一个对象内，看起来更聚合" class="headerlink" title="把代码放在一个对象内，看起来更聚合"></a>把代码放在一个对象内，看起来更聚合</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = &#123;</span><br><span class="line">    init()&#123;</span><br><span class="line">        <span class="keyword">this</span>.bind()</span><br><span class="line">    &#125;,</span><br><span class="line">    bind()&#123;&#125;,</span><br><span class="line">    render()&#123;&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">app.init()</span><br></pre></td></tr></table></figure>
+<h6 id="立即执行函数"><a href="#立即执行函数" class="headerlink" title="立即执行函数"></a>立即执行函数</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> app = (<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> <span class="keyword">let</span> $btn = <span class="built_in">document</span>.querySelector(<span class="string">'.btn'</span>)</span><br><span class="line"></span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">init</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> bind()</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">bind</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> $btn.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> render()</span><br><span class="line"> &#125;</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"> <span class="built_in">console</span>.log(<span class="string">'render'</span>)</span><br><span class="line"> &#125;</span><br><span class="line"> <span class="keyword">return</span> &#123; init &#125;</span><br><span class="line"> &#125;)()</span><br><span class="line"> app.init()</span><br></pre></td></tr></table></figure>
+<p><strong>CommonJS 规范</strong></p>
+<h6 id="使用-require-方法，在需要某个模块的时候把它到处，在需要的地方引入即可，但浏览器本身是不能识别该关键字的，所以我们需要一些打包工具，帮助我们把代码打包成浏览器可以识别的文件"><a href="#使用-require-方法，在需要某个模块的时候把它到处，在需要的地方引入即可，但浏览器本身是不能识别该关键字的，所以我们需要一些打包工具，帮助我们把代码打包成浏览器可以识别的文件" class="headerlink" title="使用 require 方法，在需要某个模块的时候把它到处，在需要的地方引入即可，但浏览器本身是不能识别该关键字的，所以我们需要一些打包工具，帮助我们把代码打包成浏览器可以识别的文件"></a>使用 require 方法，在需要某个模块的时候把它到处，在需要的地方引入即可，但浏览器本身是不能识别该关键字的，所以我们需要一些打包工具，帮助我们把代码打包成浏览器可以识别的文件</h6><p>例如：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">//test.js</span><br><span class="line">function sum()&#123;</span><br><span class="line">	return &apos;test&apos;</span><br><span class="line">&#125;</span><br><span class="line">module.exports.sum = sum</span><br><span class="line"></span><br><span class="line">//index.js  引入</span><br><span class="line">const &#123;test&#125; = require(&apos;./test&apos;)</span><br><span class="line">//使用  此时 test就是引入的一个sum 函数</span><br><span class="line">test()</span><br></pre></td></tr></table></figure>
+<!--showmore-->
+<p><strong>Parcel.js</strong>   (官网查看它的详细用法)</p>
+<h4 id="ES6-的模块-Module-概念"><a href="#ES6-的模块-Module-概念" class="headerlink" title="ES6 的模块 Module 概念"></a>ES6 的模块 Module 概念</h4><h6 id="与-commonjs-不同，es6-导出与引入使用关键字-import-export"><a href="#与-commonjs-不同，es6-导出与引入使用关键字-import-export" class="headerlink" title="与 commonjs 不同，es6 导出与引入使用关键字 import,export"></a>与 commonjs 不同，es6 导出与引入使用关键字 import,export</h6><p>导出</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//test.js</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">'test'</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sayName</span>(<span class="params">name</span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(name)</span><br><span class="line">&#125;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Toast</span> </span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> &#123;name,sayName,Toast&#125;  <span class="comment">//导出三个对象 分别是普通变量，函数，和类对象</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//main.js 引入,引入时注意 变量名要与导出的一致，否则会找不到</span></span><br><span class="line"><span class="keyword">import</span> &#123;name,sayName,Toast&#125; <span class="keyword">from</span> <span class="string">'./test.js'</span></span><br><span class="line"><span class="comment">//使用</span></span><br><span class="line"><span class="built_in">console</span>.log(name)</span><br><span class="line">sayName()</span><br><span class="line"><span class="keyword">new</span> Toast()</span><br><span class="line">-----------------------------------------------------------------------------------------</span><br><span class="line"><span class="comment">//导出默认</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Toast</span></span>&#123;&#125;</span><br><span class="line"><span class="keyword">export</span> <span class="keyword">default</span> Toast</span><br><span class="line"></span><br><span class="line"><span class="comment">//引入</span></span><br><span class="line"><span class="keyword">import</span> myToast(名字随意取) <span class="keyword">from</span> <span class="string">'./main.js'</span>  <span class="comment">//仅限于默认导出，名字可以随意取</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> myToast</span><br><span class="line">-----------------------------------------------------------------------------------------</span><br><span class="line">    <span class="comment">//多次使用 export 导出</span></span><br><span class="line">    </span><br><span class="line">    <span class="keyword">export</span> <span class="keyword">let</span> nem = <span class="string">'test'</span>  <span class="comment">//导出变量</span></span><br><span class="line">    <span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">test</span>(<span class="params"></span>)</span>&#123;&#125;  <span class="comment">//导出函数</span></span><br><span class="line">	<span class="keyword">export</span> <span class="class"><span class="keyword">class</span> <span class="title">Toast</span></span>&#123;&#125;  <span class="comment">//导出类</span></span><br><span class="line">	<span class="comment">//注意多次导出要把变量或者函数的声明一起导出才可以</span></span><br><span class="line"><span class="comment">//不可以这样写</span></span><br><span class="line"><span class="keyword">let</span> name = <span class="string">'test'</span></span><br><span class="line"><span class="keyword">export</span> name; <span class="comment">//错误</span></span><br><span class="line"><span class="keyword">export</span> &#123;name&#125; <span class="comment">//正确    日常使用一定要注意</span></span><br></pre></td></tr></table></figure>
+<h4 id="ES6-import-与-commonjs-require-区别"><a href="#ES6-import-与-commonjs-require-区别" class="headerlink" title="ES6 import 与 commonjs require 区别"></a>ES6 import 与 commonjs require 区别</h4><h6 id="ES6-import-是静态解析-值的拷⻉"><a href="#ES6-import-是静态解析-值的拷⻉" class="headerlink" title="ES6 import 是静态解析  值的拷⻉"></a>ES6 import 是静态解析  值的拷⻉</h6><h6 id="CommonJS-require-运⾏时加载-值的引用"><a href="#CommonJS-require-运⾏时加载-值的引用" class="headerlink" title="CommonJS require 运⾏时加载 值的引用"></a>CommonJS require 运⾏时加载 值的引用</h6><p>详情参见 阮一峰ES6教程</p>
+<h4 id="未来"><a href="#未来" class="headerlink" title="未来"></a>未来</h4><h6 id="要想在Node-js中使⽤ES6-Module"><a href="#要想在Node-js中使⽤ES6-Module" class="headerlink" title="要想在Node.js中使⽤ES6 Module"></a>要想在Node.js中使⽤ES6 Module</h6><p>版本 &gt; v13.2 ， 在package.json⾥加 {“type”: “module” } 即可支持使用 import</p>
+<h6 id="浏览器中使用-ES6Module"><a href="#浏览器中使用-ES6Module" class="headerlink" title="浏览器中使用 ES6Module"></a>浏览器中使用 ES6Module</h6><p><script type="module" src="./main.js"><br>    特性新，IE和部分⼿机浏览器不兼容<br>    ⽬前使⽤打包器：Webapck、Rollup、Parcel，配合Babel将 es6语法转换为 es5</p>
+<p><strong>当然，在打包工具的帮助下我们也可以使用 es6 的 module</strong></p>
+<h4 id="⼯程化"><a href="#⼯程化" class="headerlink" title="⼯程化"></a>⼯程化</h4><h6 id="NPM-Scripts-实现⼯程化"><a href="#NPM-Scripts-实现⼯程化" class="headerlink" title="NPM Scripts 实现⼯程化"></a>NPM Scripts 实现⼯程化</h6><p>package.json 文件中的 scripts 模块中的指令可以通过  npm run 命令，来执行</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line"> <span class="string">"start"</span>: <span class="string">"parcel index.html"</span>,</span><br><span class="line"> <span class="string">"dev"</span>: <span class="string">"parcel index.html"</span>,</span><br><span class="line"> <span class="string">"build"</span>: <span class="string">"rm -rf dist &amp;&amp; parcel build index.html"</span></span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line">npm start   执行  parcel index.html</span><br><span class="line">npm run dev   ....</span><br><span class="line">npm run build ......</span><br></pre></td></tr></table></figure>
+<h4 id="组件化"><a href="#组件化" class="headerlink" title="组件化"></a>组件化</h4><h6 id="JS-组件化-new-一个对象，例如-dialog组件"><a href="#JS-组件化-new-一个对象，例如-dialog组件" class="headerlink" title="JS 组件化  new 一个对象，例如 dialog组件"></a>JS 组件化  new 一个对象，例如 dialog组件</h6><h6 id="资源组件化"><a href="#资源组件化" class="headerlink" title="资源组件化"></a>资源组件化</h6><p>每个组件包含模板、样式、逻辑，是功能完备 的结构单元</p>
+<h4 id="重构项目"><a href="#重构项目" class="headerlink" title="重构项目"></a>重构项目</h4><h4 id="一般来说，项目结构如下"><a href="#一般来说，项目结构如下" class="headerlink" title="一般来说，项目结构如下"></a>一般来说，项目结构如下</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">- src</span><br><span class="line"> |-- pages <span class="comment">//多个⻚⾯</span></span><br><span class="line">     |-- index <span class="comment">//⾸⻚</span></span><br><span class="line">         |-- index.html</span><br><span class="line">         |-- main.css <span class="comment">//当前⻚⾯的样式</span></span><br><span class="line">         |-- main.js <span class="comment">//当前⻚⾯的功能</span></span><br><span class="line"> |-- components <span class="comment">//组件</span></span><br><span class="line">     |-- toast</span><br><span class="line">         |-- main.css</span><br><span class="line">         |-- main.js</span><br><span class="line"> |-- <span class="keyword">static</span> <span class="comment">//静态资源，主要是图⽚</span></span><br><span class="line"> 	|-- logo.png</span><br><span class="line"> |-- stylesheets <span class="comment">//基础样式或者公共样式</span></span><br><span class="line"> 	|-- base.css</span><br><span class="line"> |-- utils <span class="comment">//通⽤的库函数</span></span><br><span class="line">	 |-- util.js</span><br><span class="line"> |-- fonts <span class="comment">//字体或者字体图标</span></span><br></pre></td></tr></table></figure>
+</script></p>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/31/前端模块化、工程化/" data-id="ckaw0jn7r0019zkw13d47am4x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工程化/">工程化</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-跨域" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/22/跨域/" class="article-date">
@@ -109,7 +248,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/22/跨域/" data-id="ckahx2vgl001350w15y9wgugf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/22/跨域/" data-id="ckaw0jn7p0017zkw1xh9jeiu0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -168,7 +307,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/20/promise/" data-id="ckahx2vgg000x50w14m4kaknd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/20/promise/" data-id="ckaw0jn7a000szkw1f6fckx9r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promise/">promise</a></li></ul>
@@ -219,7 +358,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/19/mock数据/" data-id="ckahx2vga000r50w1c852g0d4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/19/mock数据/" data-id="ckaw0jn7e000vzkw1z4yrjx08" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mock/">mock</a></li></ul>
@@ -286,7 +425,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/18/ajax/" data-id="ckahx2vfb000450w1sjpiu6d9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/18/ajax/" data-id="ckaw0jn660004zkw1nrm35m2t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/">ajax</a></li></ul>
@@ -392,7 +531,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/17/http-session-cookie-token/" data-id="ckahx2vg7000p50w132v03xrm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/17/http-session-cookie-token/" data-id="ckaw0jn6y000jzkw1h79d0iqi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
@@ -572,7 +711,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/16/https/" data-id="ckahx2vfz000h50w18xuqsb2b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/16/https/" data-id="ckaw0jn6t000gzkw130f9obi3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -635,7 +774,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/15/密码学初探/" data-id="ckahx2vgl001250w1eqo0iatx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/15/密码学初探/" data-id="ckaw0jn7j0010zkw1mw95boh7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https基础/">https基础</a></li></ul>
@@ -688,119 +827,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/15/http-缓存控制/" data-id="ckahx2vfy000g50w1t1pkb1gs" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/15/http-缓存控制/" data-id="ckaw0jn6s000fzkw13421l2is" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-http-TCP" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/14/http-TCP/" class="article-date">
-  <time datetime="2020-05-14T04:47:30.000Z" itemprop="datePublished">2020-05-14</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/14/http-TCP/">http-TCP</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="osi"><a href="#osi" class="headerlink" title="osi"></a>osi</h4><h6 id="开放式系统互联通信参考模型（open-system-intercnnection-reference-model）"><a href="#开放式系统互联通信参考模型（open-system-intercnnection-reference-model）" class="headerlink" title="开放式系统互联通信参考模型（open system intercnnection reference model）;"></a>开放式系统互联通信参考模型（open system intercnnection reference model）;</h6><h5 id="应用层-（Application-Layer）"><a href="#应用层-（Application-Layer）" class="headerlink" title="应用层 （Application Layer）"></a>应用层 （Application Layer）</h5><h6 id="提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如：http-https-ftp-telnet-ssh-smtp-pop3等"><a href="#提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如：http-https-ftp-telnet-ssh-smtp-pop3等" class="headerlink" title="提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如：http,https,ftp,telnet,ssh,smtp,pop3等"></a>提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如：http,https,ftp,telnet,ssh,smtp,pop3等</h6><h5 id="表示层-Presentation-Layer"><a href="#表示层-Presentation-Layer" class="headerlink" title="表示层 (Presentation Layer)"></a>表示层 (Presentation Layer)</h5><h6 id="把数据转换为能与接收者的系统格式兼容并适合传输的格式"><a href="#把数据转换为能与接收者的系统格式兼容并适合传输的格式" class="headerlink" title="把数据转换为能与接收者的系统格式兼容并适合传输的格式"></a>把数据转换为能与接收者的系统格式兼容并适合传输的格式</h6><h5 id="会话层-（Session-Layer）"><a href="#会话层-（Session-Layer）" class="headerlink" title="会话层 （Session Layer）"></a>会话层 （Session Layer）</h5><h6 id="负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接"><a href="#负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接" class="headerlink" title="负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接"></a>负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接</h6><h5 id="传输层-（Transport-Layer）"><a href="#传输层-（Transport-Layer）" class="headerlink" title="传输层 （Transport Layer）"></a>传输层 （Transport Layer）</h5><h6 id="把传输表头（th）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如TCP、UDP等。"><a href="#把传输表头（th）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如TCP、UDP等。" class="headerlink" title="把传输表头（th）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如TCP、UDP等。"></a>把传输表头（th）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如TCP、UDP等。</h6><h5 id="网络层-（Network-Layer）"><a href="#网络层-（Network-Layer）" class="headerlink" title="网络层 （Network Layer）"></a>网络层 （Network Layer）</h5><h6 id="数据链路层（Data-Link-Layer）-负责网络寻址，错误侦测和改错。当表头和表尾被加至数据包时，会形成帧。数据链表头（DLH）是包含了物理地址和错误帧测以及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如：以太网，无线局域网（wifi）和通用分组无线服务GPRS-等；"><a href="#数据链路层（Data-Link-Layer）-负责网络寻址，错误侦测和改错。当表头和表尾被加至数据包时，会形成帧。数据链表头（DLH）是包含了物理地址和错误帧测以及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如：以太网，无线局域网（wifi）和通用分组无线服务GPRS-等；" class="headerlink" title="数据链路层（Data Link Layer） 负责网络寻址，错误侦测和改错。当表头和表尾被加至数据包时，会形成帧。数据链表头（DLH）是包含了物理地址和错误帧测以及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如：以太网，无线局域网（wifi）和通用分组无线服务GPRS 等；"></a>数据链路层（Data Link Layer） 负责网络寻址，错误侦测和改错。当表头和表尾被加至数据包时，会形成帧。数据链表头（DLH）是包含了物理地址和错误帧测以及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如：以太网，无线局域网（wifi）和通用分组无线服务GPRS 等；</h6><h5 id="物理层-（Physical-Layer）"><a href="#物理层-（Physical-Layer）" class="headerlink" title="物理层 （Physical Layer）"></a>物理层 （Physical Layer）</h5><h6 id="在局部局域网上传送数据帧-（data-frame）-它负责管理计算机通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机适配器等；"><a href="#在局部局域网上传送数据帧-（data-frame）-它负责管理计算机通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机适配器等；" class="headerlink" title="在局部局域网上传送数据帧 （data frame）,它负责管理计算机通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机适配器等；"></a>在局部局域网上传送数据帧 （data frame）,它负责管理计算机通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机适配器等；</h6><h4 id="TCP-IP四层模型"><a href="#TCP-IP四层模型" class="headerlink" title="TCP/IP四层模型"></a>TCP/IP四层模型</h4><h5 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h5><p>应用层是大多数普通与网络相关的程序为了通过网络与其他程序通信所使用的层。这个层的处理过程是应用特有的；数据从网络相关的程序以这种应用内部使用的格式进行传送，然后被编码成标准协议的格式。每一个应用层协议一般都会使用到传输层协议TCP和UDP协议之一：</p>
-<p>运行在TCP协议上的协议：</p>
-<p>下面这些协议相当于不同的管家（各自负责各自的职责，可以这样理解）</p>
-<ol>
-<li>HTTP（80端口），主要用于普通浏览。</li>
-<li>HTTPS（443端口）,HTTP协议的安全版本。</li>
-<li>FTP（20和21端口），由名知义，用于文件传输。</li>
-<li>POP3（110端口），收邮件用。</li>
-<li>SMTP（25端口），用来发送电子邮件。</li>
-<li>SSH（22端口），用于加密安全登陆用。</li>
-</ol>
-<p>运行在UDP协议上的协议：</p>
-<ol>
-<li>DHCP（67端口，动态主机配置协议），动态配置IP地址。</li>
-</ol>
-<p>其他：</p>
-<ol>
-<li>DNS（Domain Name Service，域名服务），用于完成地址查找，邮件转发等工作（运行在TCP和UDP协议上）。</li>
-<li>SNMP（Simple Network Management Protocol，简单网络管理协议），用于网络信息的收集和网络管理。</li>
-<li>ARP（Address Resolution Protocol，地址解析协议），用于动态解析以太网硬件的地址。</li>
-</ol>
-<h5 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h5><p>解决诸如端到端可靠性（数据是否已经到达目的地？）和保证数据按照正确的顺序到达这样的问题。TCP、UDP都是传输层协议。</p>
-<h5 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h5><p>解决在一个单一网络上传输数据包的问题。IP协议是网络层协议。</p>
-<h5 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h5><p>它是数据包从一个设备的网络层传输到另外一个设备的网络层的方法。这个过程能够在网卡的软件驱动程序中控制或者专用芯片中控制。这将完成如添加报头准备发送、通过实体介质实际发送这样一些数据链路功能。另一端，链路层将完成数据帧接收、去除报头并且将接收到的包传到网络层。</p>
-<h4 id="通俗解释"><a href="#通俗解释" class="headerlink" title="通俗解释"></a>通俗解释</h4><p><strong>应用层协议 http协议定义了包的结构，定义了报文的格式（写信的格式），     tcp 传输层协议（管家与管家通信说我要寄信了） 进行握手，连接通信三步，断开通信 四步    网络层协议（邮差），确定ip地址，方便传输 数据链路层（邮筒）底层协议 驱动程序</strong></p>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/14/http-TCP/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/14/http-TCP/" data-id="ckahx2vfw000e50w1c54wbpxn" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-近日案例总结" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/12/近日案例总结/" class="article-date">
-  <time datetime="2020-05-12T09:21:50.000Z" itemprop="datePublished">2020-05-12</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/12/近日案例总结/">近日案例总结</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h5><h6 id="最近在跟着老师视频写案例，发现了自己很多不足，但同时这也是我学到的东西，哈哈哈，那就总结下吧"><a href="#最近在跟着老师视频写案例，发现了自己很多不足，但同时这也是我学到的东西，哈哈哈，那就总结下吧" class="headerlink" title="最近在跟着老师视频写案例，发现了自己很多不足，但同时这也是我学到的东西，哈哈哈，那就总结下吧"></a>最近在跟着老师视频写案例，发现了自己很多不足，但同时这也是我学到的东西，哈哈哈，那就总结下吧</h6><p>抛开CSS先不说哈，这个css功力肯定是要花时间和案例去练习的；当然所有的编程都需要去动手实践练习哈！</p>
-<p>在写一些组件的时候，老师会从这个组件的实现流程上入手，先不管其他细节，先把这个框架，流程大致跑下来，搭建一些空壳子，空函数，至于里面怎么实现，回过头来再说，我觉得特别好，因为我之前写东西，都是先想好一切，或者关键部分才开始动手，可实际上你根本不可能在一开始就把所有东西都想明白的，要先动手。最近的知识都是对以前学习知识的复习，巩固。</p>
-<p>一些经验：比如在写模态框的时候，我们点击页面按钮弹出对话框，同时模态框遮罩页面，一般控制元素的显示和隐藏都是通过css的，而一般情况下，我们可能会想到使用display:none，显示的时候设置为display:block； 但实际应用中，前端应该更友好的展示，比如加上一些小效果，渐隐的效果，加上一些动画什么的，所以，在写这个的时候，我们在控制元素出现的时候一是要控制模态框的样式，模态框我们一开始设置它的透明度为0，显示时在设置透明度为1，再加上一些动画，transition,这样对用户体验来讲，真的更加友好了。而对于模态框，我们想要做出一个从上到下滑下来的感觉，我们设置它默认在y轴上偏离出浏览器窗口，transform translateY() ，然后显示时，加上动画，在把位置偏移回来，这样动效就有了。</p>
-<h6 id="动效不执行的原因"><a href="#动效不执行的原因" class="headerlink" title="动效不执行的原因"></a>动效不执行的原因</h6><p>浏览器会对js代码进行优化，有时候我们会写这样的代码，让这个元素出现后，然后消失，两行代码或者两个方法依次执行，但浏览器会优化执行，可能会导致我们添加的一些动画效果无法展示出来，此时可以考虑使用setTimeout 定时器，写在这个函数中的内容是会放到队列中的，等待主线任务执行后才开始执行，这样浏览器就不会把它们优化执行，可以达到我们想要的效果。</p>
-<h6 id="this指向的问题"><a href="#this指向的问题" class="headerlink" title="this指向的问题"></a>this指向的问题</h6><p>在事件中，this指的是调用当前函数的对象，如果此时你想使用全局的this,这个组件对象的这个this，可把this使用一个变量暂存起来，然后在使用。或者使用bind()方法在调用的时候绑定当前作用域的this。    </p>
-<p>暂时先这些吧，想到再写</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/12/近日案例总结/" data-id="ckahx2vgo001650w15ikzgtx6" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/summary/">summary</a></li></ul>
 
     </footer>
   </div>
@@ -827,7 +857,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -837,7 +867,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -846,7 +876,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
     </div>
   </div>
 
@@ -859,6 +889,14 @@
       <ul>
         
           <li>
+            <a href="/2020/06/01/node-js-commonJs规范/">node.js commonJs规范</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/31/前端模块化、工程化/">前端模块化、工程化</a>
+          </li>
+        
+          <li>
             <a href="/2020/05/22/跨域/">跨域</a>
           </li>
         
@@ -868,14 +906,6 @@
         
           <li>
             <a href="/2020/05/19/mock数据/">mock数据</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/18/ajax/">ajax</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/17/http-session-cookie-token/">http-session-cookie-token</a>
           </li>
         
       </ul>
