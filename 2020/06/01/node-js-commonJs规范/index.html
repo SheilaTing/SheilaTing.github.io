@@ -15,7 +15,7 @@
 <meta property="og:site_name" content="SheilaTing 的博客呀">
 <meta property="og:description" content="定义基于 Chrome V8 引擎的 javascript 运行环境。 可用于开发网站后台，开发本地工具，应用，特点是：事件驱动，非阻塞式IO模型，强大的生态NPM 服务器端概念计算密集型  最好用 C C++ 来实现 大量的计算，小号CPU 资源，例如对视频进行解码，加密解密操作IO密集型 node.js 适合 io密集型应用   网络、磁盘读写频繁，例如上传下载等功能，包括读写数据库使用登录">
 <meta property="og:locale" content="default">
-<meta property="og:updated_time" content="2020-06-01T04:48:09.997Z">
+<meta property="og:updated_time" content="2020-06-01T10:03:48.386Z">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:title" content="node.js commonJs规范">
 <meta name="twitter:description" content="定义基于 Chrome V8 引擎的 javascript 运行环境。 可用于开发网站后台，开发本地工具，应用，特点是：事件驱动，非阻塞式IO模型，强大的生态NPM 服务器端概念计算密集型  最好用 C C++ 来实现 大量的计算，小号CPU 资源，例如对视频进行解码，加密解密操作IO密集型 node.js 适合 io密集型应用   网络、磁盘读写频繁，例如上传下载等功能，包括读写数据库使用登录">
@@ -100,9 +100,9 @@
 <p>node.js 有强大的生态系统 npm，上面有许多开发者上传的自己写的各种工具包，如果我们有需要可以从上面下载下来，作为第三方的模块来使用</p>
 <h6 id="npm-install-模块"><a href="#npm-install-模块" class="headerlink" title="npm install 模块"></a>npm install 模块</h6><h4 id="CommonJs-规范"><a href="#CommonJs-规范" class="headerlink" title="CommonJs 规范"></a>CommonJs 规范</h4><h6 id="一个文件是一个模块"><a href="#一个文件是一个模块" class="headerlink" title="一个文件是一个模块"></a>一个文件是一个模块</h6><pre><code>文件中变量、函数、类都是私有的
 </code></pre><h6 id="每个模块内部，module-代表当前模块"><a href="#每个模块内部，module-代表当前模块" class="headerlink" title="每个模块内部，module 代表当前模块"></a>每个模块内部，module 代表当前模块</h6><p>​         module.exports 是对外的接口。加载某个模块，其实是加载该模块的 module.exports</p>
-<h6 id="注意-module-exports-与直接使⽤-exports的差异"><a href="#注意-module-exports-与直接使⽤-exports的差异" class="headerlink" title="注意 module.exports 与直接使⽤ exports的差异"></a>注意 module.exports 与直接使⽤ exports的差异</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a.js</span></span><br><span class="line"> <span class="keyword">let</span> num =<span class="number">1</span></span><br><span class="line"> <span class="keyword">const</span> add = <span class="function"><span class="params">()</span>=&gt;</span>++num</span><br><span class="line"> <span class="built_in">module</span>.exports.num = num</span><br><span class="line"> <span class="built_in">module</span>.exports.add = add   <span class="built_in">module</span>.exports 可以把它当成一个对象</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//b.js</span></span><br><span class="line"> <span class="keyword">let</span> obj = <span class="built_in">require</span>(<span class="string">'./a.js'</span>)  <span class="comment">//obj 对象就是你export 出来的 module.exports</span></span><br><span class="line"> <span class="built_in">console</span>.log(obj.num)  <span class="comment">// 普通变量</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.add())  <span class="comment">//函数</span></span><br></pre></td></tr></table></figure>
+<h6 id="注意-module-exports-与直接使⽤-exports的差异"><a href="#注意-module-exports-与直接使⽤-exports的差异" class="headerlink" title="注意 module.exports 与直接使⽤ exports的差异"></a>注意 module.exports 与直接使⽤ exports的差异</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//a.js</span></span><br><span class="line"> <span class="keyword">let</span> num =<span class="number">1</span></span><br><span class="line"> <span class="keyword">const</span> add = <span class="function"><span class="params">()</span>=&gt;</span>++num</span><br><span class="line"> <span class="built_in">module</span>.exports.num = num</span><br><span class="line"> <span class="built_in">module</span>.exports.add = add   <span class="built_in">module</span>.exports 可以把它当成一个对象</span><br><span class="line"> </span><br><span class="line"> <span class="comment">//b.js</span></span><br><span class="line"> <span class="keyword">let</span> obj = <span class="built_in">require</span>(<span class="string">'./a.js'</span>)  <span class="comment">//obj 对象就是你export 出来的 module.exports</span></span><br><span class="line"> <span class="built_in">console</span>.log(obj.num)  <span class="comment">// 普通变量</span></span><br><span class="line"><span class="built_in">console</span>.log(obj.add())  <span class="comment">//函数</span></span><br><span class="line"></span><br><span class="line"><span class="comment">//module.exports 也可以这样用</span></span><br><span class="line"><span class="comment">// test.js</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    sum:<span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [...arguments].reduce(<span class="function">(<span class="params">v1,v2</span>)=&gt;</span>v1+v2)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//引入使用也是一样的,记住你 export 出来的是什么引入的就是什么,module.exports 就是module 的一个属性</span></span><br><span class="line"><span class="keyword">const</span> m = <span class="built_in">require</span>(<span class="string">'./test.js'</span>)</span><br><span class="line">m.sum(<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line"><span class="comment">//补充例子  n.js	</span></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    sum:<span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">return</span> [...arguments].reduce(<span class="function">(<span class="params">v1,v2</span>)=&gt;</span> v1+v2)</span><br><span class="line">    &#125;,</span><br><span class="line">    name:<span class="string">'zhangsan'</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//引入</span></span><br><span class="line"><span class="keyword">const</span> m = <span class="built_in">require</span>(<span class="string">'./n.js'</span>)</span><br><span class="line">n.sum(<span class="number">4</span>,<span class="number">5</span>)</span><br><span class="line">n.name</span><br></pre></td></tr></table></figure>
 <h4 id="exports-与-module-exports的区别"><a href="#exports-与-module-exports的区别" class="headerlink" title="exports 与 module.exports的区别"></a>exports 与 module.exports的区别</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//c.js</span></span><br><span class="line"><span class="comment">// 你可以理解为有这么一句话  exports = module.exports</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> [...arguments].reduce(<span class="function">(<span class="params">v1,v2</span>)=&gt;</span> v1+v2)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = sum  <span class="comment">//正确</span></span><br><span class="line"><span class="comment">// exports = sum   错误的写法</span></span><br><span class="line"><span class="comment">// exports.sum = sum 正确</span></span><br><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//d.js</span></span><br><span class="line"><span class="keyword">const</span> sum = <span class="built_in">require</span>(<span class="string">'./c'</span>)  <span class="comment">//名称可以随意取</span></span><br><span class="line">consoel.log(sum(<span class="number">3</span>,<span class="number">4</span>))</span><br></pre></td></tr></table></figure>
-<h4 id="npm-常用命令"><a href="#npm-常用命令" class="headerlink" title="npm 常用命令"></a>npm 常用命令</h4><p>• npm init   在当前目录下，初始化一个package.json</p>
+<h4 id="npm-常用命令"><a href="#npm-常用命令" class="headerlink" title="npm 常用命令"></a>npm 常用命令</h4><p>• npm init   在当前目录下，初始化一个package.json  npm init -y 按照默认生成</p>
 <p>• npm install </p>
 <p>​    ✓ npm install -g http-server    全局安装 http-server</p>
 <p>​    ✓ npm install –save axios        将依赖保存在package.json 中的dependency中</p>
@@ -129,7 +129,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/01/node-js-commonJs规范/" data-id="ckaw0jn79000rzkw1nl3krlzm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/01/node-js-commonJs规范/" data-id="ckaxpisa2001atww1y6tw68eu" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
@@ -139,6 +139,15 @@
   
     
 <nav id="article-nav">
+  
+    <a href="/2020/06/01/webpack-笔记/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          webpack 笔记
+        
+      </div>
+    </a>
   
   
     <a href="/2020/05/31/前端模块化、工程化/" id="article-nav-older" class="article-nav-link-wrap">
@@ -172,7 +181,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -194,6 +203,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/01/webpack-笔记/">webpack 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/01/node-js-commonJs规范/">node.js commonJs规范</a>
           </li>
         
@@ -207,10 +220,6 @@
         
           <li>
             <a href="/2020/05/20/promise/">promise</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/19/mock数据/">mock数据</a>
           </li>
         
       </ul>

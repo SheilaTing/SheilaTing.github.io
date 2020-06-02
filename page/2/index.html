@@ -62,6 +62,59 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-http-缓存控制" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/15/http-缓存控制/" class="article-date">
+  <time datetime="2020-05-15T04:40:42.000Z" itemprop="datePublished">2020-05-15</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/15/http-缓存控制/">http 缓存控制</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="node-js-静态服务器"><a href="#node-js-静态服务器" class="headerlink" title="node.js 静态服务器"></a>node.js 静态服务器</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Node.js实现简单 http文件服务器</span></span><br><span class="line"><span class="comment">//引入需要的包</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="comment">//文件处理包</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="comment">//路径处理包</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//服务器就是一段一直运行在某个端口的代码</span></span><br><span class="line">http.createServer(<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'path:===='</span>+__dirname)</span><br><span class="line">    <span class="comment">//_dirname 就是当前路径</span></span><br><span class="line">    fs.readFile(path.join(__dirname,req.url),(err,data) =&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            res.writeHead(<span class="number">404</span>,<span class="string">'not found'</span>)</span><br><span class="line">            res.end(<span class="string">'oh,not found'</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res.writeHead(<span class="number">200</span>,<span class="string">'ok'</span>)</span><br><span class="line">            res.end(data)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).listen(<span class="number">5000</span>)  <span class="comment">//监听5000 端口</span></span><br></pre></td></tr></table></figure>
+<h4 id="缓存控制"><a href="#缓存控制" class="headerlink" title="缓存控制"></a>缓存控制</h4><h6 id="为了更好的提升用户体验或者说为了节省流量，设置缓存-观看浏览器中的network中sizing字段的值，判断是走缓存还是从服务器请求来的数据。"><a href="#为了更好的提升用户体验或者说为了节省流量，设置缓存-观看浏览器中的network中sizing字段的值，判断是走缓存还是从服务器请求来的数据。" class="headerlink" title="为了更好的提升用户体验或者说为了节省流量，设置缓存 观看浏览器中的network中sizing字段的值，判断是走缓存还是从服务器请求来的数据。"></a>为了更好的提升用户体验或者说为了节省流量，设置缓存 观看浏览器中的network中sizing字段的值，判断是走缓存还是从服务器请求来的数据。</h6><p><strong>eg1 Expire 设置过期时间  res.setHeader(‘Expires’,’”Fri, 15 May 2020 05:00:39 GMT”‘);</strong></p>
+<h6 id="返回数据之前先给浏览器或者客户端返回一个过期时间，它们拿到这个时间后，会存储在本地，每次再请求这个资源时，如果在这个时间内即当前时间小于这个过期时间，就从本地缓存中读取，不再向服务器发请求-这句话会在resposeHeader中设置一个过期时间字段，值是我们设置的值"><a href="#返回数据之前先给浏览器或者客户端返回一个过期时间，它们拿到这个时间后，会存储在本地，每次再请求这个资源时，如果在这个时间内即当前时间小于这个过期时间，就从本地缓存中读取，不再向服务器发请求-这句话会在resposeHeader中设置一个过期时间字段，值是我们设置的值" class="headerlink" title="返回数据之前先给浏览器或者客户端返回一个过期时间，它们拿到这个时间后，会存储在本地，每次再请求这个资源时，如果在这个时间内即当前时间小于这个过期时间，就从本地缓存中读取，不再向服务器发请求,这句话会在resposeHeader中设置一个过期时间字段，值是我们设置的值"></a>返回数据之前先给浏览器或者客户端返回一个过期时间，它们拿到这个时间后，会存储在本地，每次再请求这个资源时，如果在这个时间内即当前时间小于这个过期时间，就从本地缓存中读取，不再向服务器发请求,这句话会在resposeHeader中设置一个过期时间字段，值是我们设置的值</h6><p><strong>eg2 pragma(pragmatic) 设置浏览器或客户端不读取缓存内容每次都向服务器发请求 res.setHeader(‘Pragma’,’no-cache’);</strong></p>
+<h6 id="这种情况下，服务器发给浏览器或客户端内容时，客户端还是会缓存，但它不会从缓存中拿"><a href="#这种情况下，服务器发给浏览器或客户端内容时，客户端还是会缓存，但它不会从缓存中拿" class="headerlink" title="这种情况下，服务器发给浏览器或客户端内容时，客户端还是会缓存，但它不会从缓存中拿"></a>这种情况下，服务器发给浏览器或客户端内容时，客户端还是会缓存，但它不会从缓存中拿</h6><p><strong>如果 expires 和 pragma 同时存在， pragma 优先级较高；</strong></p>
+<p><strong>获取 GMT(格林尼治时间 标准时间)方式  newDate().toGMTString();</strong></p>
+<p><strong>以上为http version 1 中的内容，下面会对以上内容进行补充</strong></p>
+<h6 id="只设置过期时间的话有一个问题，就是客户端的时间是可以随意更改的，如果客户端更改了时间一直小于这个过期时间，那我们是不是就永远也拿不到最新的服务器内容了，所以引出了下面这个字段来控制浏览器缓存时间"><a href="#只设置过期时间的话有一个问题，就是客户端的时间是可以随意更改的，如果客户端更改了时间一直小于这个过期时间，那我们是不是就永远也拿不到最新的服务器内容了，所以引出了下面这个字段来控制浏览器缓存时间" class="headerlink" title="只设置过期时间的话有一个问题，就是客户端的时间是可以随意更改的，如果客户端更改了时间一直小于这个过期时间，那我们是不是就永远也拿不到最新的服务器内容了，所以引出了下面这个字段来控制浏览器缓存时间"></a>只设置过期时间的话有一个问题，就是客户端的时间是可以随意更改的，如果客户端更改了时间一直小于这个过期时间，那我们是不是就永远也拿不到最新的服务器内容了，所以引出了下面这个字段来控制浏览器缓存时间</h6><h4 id="Cache-control-它的值有："><a href="#Cache-control-它的值有：" class="headerlink" title="Cache-control 它的值有："></a>Cache-control 它的值有：</h4><p><strong>eg1 res.setHeader(‘Cache-Control’,’max-age = 10’)</strong></p>
+<h6 id="max-age-表明距离上次请求的时间为10s-即-10s之内你请求这个文件走缓存，之后重新发请求；假如请求了服务器并在a时刻返回响应结果，则在max-age规定的秒数内，浏览器将不会发送对应的请求到服务器，数据由缓存直接返回；超过这一时间段才进一步由服务器决定是返回新数据还是仍由缓存提供"><a href="#max-age-表明距离上次请求的时间为10s-即-10s之内你请求这个文件走缓存，之后重新发请求；假如请求了服务器并在a时刻返回响应结果，则在max-age规定的秒数内，浏览器将不会发送对应的请求到服务器，数据由缓存直接返回；超过这一时间段才进一步由服务器决定是返回新数据还是仍由缓存提供" class="headerlink" title="max-age 表明距离上次请求的时间为10s,即 10s之内你请求这个文件走缓存，之后重新发请求；假如请求了服务器并在a时刻返回响应结果，则在max-age规定的秒数内，浏览器将不会发送对应的请求到服务器，数据由缓存直接返回；超过这一时间段才进一步由服务器决定是返回新数据还是仍由缓存提供"></a>max-age 表明距离上次请求的时间为10s,即 10s之内你请求这个文件走缓存，之后重新发请求；假如请求了服务器并在a时刻返回响应结果，则在max-age规定的秒数内，浏览器将不会发送对应的请求到服务器，数据由缓存直接返回；超过这一时间段才进一步由服务器决定是返回新数据还是仍由缓存提供</h6><p><strong>max-age 和 expire 同时存在的话，max-age 优先级较高</strong></p>
+<p><strong>eg2  res.setHeader(‘Cache-Control’,’no-cache’)</strong></p>
+<h6 id="请求时，浏览器还是会在本地缓存一份，但不会从缓存中取，每次都向服务器发请求要最新的，而最终服务器是否会返回你最新的，看服务器端的处理了，如果服务器端检测到这个文件没有改变，可能会返回客户端一个状态码比如304，告诉客户端，文件内容没变，你从缓存中拿"><a href="#请求时，浏览器还是会在本地缓存一份，但不会从缓存中取，每次都向服务器发请求要最新的，而最终服务器是否会返回你最新的，看服务器端的处理了，如果服务器端检测到这个文件没有改变，可能会返回客户端一个状态码比如304，告诉客户端，文件内容没变，你从缓存中拿" class="headerlink" title="请求时，浏览器还是会在本地缓存一份，但不会从缓存中取，每次都向服务器发请求要最新的，而最终服务器是否会返回你最新的，看服务器端的处理了，如果服务器端检测到这个文件没有改变，可能会返回客户端一个状态码比如304，告诉客户端，文件内容没变，你从缓存中拿"></a>请求时，浏览器还是会在本地缓存一份，但不会从缓存中取，每次都向服务器发请求要最新的，而最终服务器是否会返回你最新的，看服务器端的处理了，如果服务器端检测到这个文件没有改变，可能会返回客户端一个状态码比如304，告诉客户端，文件内容没变，你从缓存中拿</h6><p><strong>eg3   res.setHeader(‘Cache-Control’,’no-store’)**</strong></p>
+<h6 id="请求时，浏览器收到服务器返回的数据，不会再本地缓存一份，所以更无所谓说从本地取了，每次都会请求最新的"><a href="#请求时，浏览器收到服务器返回的数据，不会再本地缓存一份，所以更无所谓说从本地取了，每次都会请求最新的" class="headerlink" title="请求时，浏览器收到服务器返回的数据，不会再本地缓存一份，所以更无所谓说从本地取了，每次都会请求最新的"></a>请求时，浏览器收到服务器返回的数据，不会再本地缓存一份，所以更无所谓说从本地取了，每次都会请求最新的</h6><p><strong>cache-control 的缺陷之处，在于如果服务器中的文件没变，起始就没必要每次都发文件给客户端了，多浪费流量啊，所以引出了 last-modified 服务器端做处理，如果客户端请求的文件内容改变了，再发给客户端</strong></p>
+        
+          <p class="article-more-link">
+            <a href="/2020/05/15/http-缓存控制/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/15/http-缓存控制/" data-id="ckaxpis74000ftww17bpcau59" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-http-TCP" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/14/http-TCP/" class="article-date">
@@ -117,7 +170,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/14/http-TCP/" data-id="ckaw0jn6p000ezkw135frd7uy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/14/http-TCP/" data-id="ckaxpis6v000ctww1bccetv38" class="article-share-link">Share</a>
       
       
     </footer>
@@ -159,7 +212,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/12/近日案例总结/" data-id="ckaw0jn7o0016zkw14vjv6f10" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/12/近日案例总结/" data-id="ckaxpis9x0015tww1i4gb5y29" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/summary/">summary</a></li></ul>
@@ -231,7 +284,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/12/js-事件/" data-id="ckaw0jn70000kzkw1qah0w9xf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/12/js-事件/" data-id="ckaxpis8m000itww1hvw1saps" class="article-share-link">Share</a>
       
       
     </footer>
@@ -287,7 +340,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/10/css-定位/" data-id="ckaw0jn6d0007zkw1zpsmzvde" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/10/css-定位/" data-id="ckaxpis6m0006tww1ohryawk0" class="article-share-link">Share</a>
       
       
     </footer>
@@ -361,7 +414,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/09/Bom-浏览器对象/" data-id="ckaw0jn5s0001zkw1awdfidt9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/09/Bom-浏览器对象/" data-id="ckaxpis6c0001tww1hd4txo7u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bom/">bom</a></li></ul>
@@ -437,7 +490,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/08/inline-block/" data-id="ckaw0jn6w000izkw1fdou4c0t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/08/inline-block/" data-id="ckaxpis8n000jtww1m8fm4zck" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -497,7 +550,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/07/基础类型引用类型/" data-id="ckaw0jn7m0014zkw19cpioq3k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/07/基础类型引用类型/" data-id="ckaxpis9t0011tww1jculxgji" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -567,7 +620,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/05/外边距合并/" data-id="ckaw0jn7h000yzkw1hel4snf7" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/05/外边距合并/" data-id="ckaxpis9p000ytww1aw57wbli" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -623,55 +676,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/02/dom-相关操作/" data-id="ckaw0jn6o000dzkw1aj2au9l5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/02/dom-相关操作/" data-id="ckaxpis6q0009tww1rs5pk9ep" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dom/">dom</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-闭包" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/02/闭包/" class="article-date">
-  <time datetime="2020-05-02T04:55:33.000Z" itemprop="datePublished">2020-05-02</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/02/闭包/">闭包</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><h6 id="闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）"><a href="#闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）" class="headerlink" title="闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）"></a>闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）</h6><h4 id="闭包的作用"><a href="#闭包的作用" class="headerlink" title="闭包的作用"></a>闭包的作用</h4><h6 id="一般情况下使用闭包主要是为了"><a href="#一般情况下使用闭包主要是为了" class="headerlink" title="一般情况下使用闭包主要是为了"></a>一般情况下使用闭包主要是为了</h6><ul>
-<li><p>封装数据</p>
-<p>隐藏变量，只通过指定接口访问数据</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cache = <span class="function">(<span class="params">(</span>)=&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">const</span> store = &#123;&#125;;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		get(key)&#123;</span><br><span class="line">			<span class="keyword">return</span> store[key]</span><br><span class="line">		&#125;,</span><br><span class="line">		set(key,val)&#123;</span><br><span class="line">			store[key] = val</span><br><span class="line">		&#125;,</span><br><span class="line">		remove(key)&#123;</span><br><span class="line">			<span class="keyword">delete</span> store[key]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="comment">//cache = 一个立即执行函数，函数的返回值依然是一个函数，而且引用了函数中的变量</span></span><br><span class="line">cache.set(<span class="string">"name"</span>,<span class="string">"Jack"</span>);</span><br><span class="line">cache.get(<span class="string">'name'</span>);</span><br><span class="line">cache.remove(<span class="string">"name"</span>)</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/02/闭包/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/02/闭包/" data-id="ckaw0jn7q0018zkw13ediis5d" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -707,7 +716,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 10px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -729,6 +738,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/01/webpack-笔记/">webpack 笔记</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/01/node-js-commonJs规范/">node.js commonJs规范</a>
           </li>
         
@@ -742,10 +755,6 @@
         
           <li>
             <a href="/2020/05/20/promise/">promise</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/19/mock数据/">mock数据</a>
           </li>
         
       </ul>

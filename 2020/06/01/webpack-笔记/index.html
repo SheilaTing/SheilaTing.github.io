@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>webpack 笔记 | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="定义静态模块打包器根据文档学习资源管理使用 webpack 命令时，可以指定webpack的配置文件，webpack –config webpack.config.js,该命令可以简写为 webpack，它会默认去找这个名称的配置文件1234&quot;scripts&quot;: &amp;#123;    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;amp;&amp;amp; exit">
+<meta name="keywords" content="webpack">
+<meta property="og:type" content="article">
+<meta property="og:title" content="webpack 笔记">
+<meta property="og:url" content="http://yoursite.com/2020/06/01/webpack-笔记/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="定义静态模块打包器根据文档学习资源管理使用 webpack 命令时，可以指定webpack的配置文件，webpack –config webpack.config.js,该命令可以简写为 webpack，它会默认去找这个名称的配置文件1234&quot;scripts&quot;: &amp;#123;    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;amp;&amp;amp; exit">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-02T09:13:08.319Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="webpack 笔记">
+<meta name="twitter:description" content="定义静态模块打包器根据文档学习资源管理使用 webpack 命令时，可以指定webpack的配置文件，webpack –config webpack.config.js,该命令可以简写为 webpack，它会默认去找这个名称的配置文件1234&quot;scripts&quot;: &amp;#123;    &quot;test&quot;: &quot;echo \&quot;Error: no test specified\&quot; &amp;amp;&amp;amp; exit">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-webpack-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/01/webpack-笔记/" class="article-date">
+  <time datetime="2020-06-01T07:25:41.000Z" itemprop="datePublished">2020-06-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      webpack 笔记
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><h6 id="静态模块打包器"><a href="#静态模块打包器" class="headerlink" title="静态模块打包器"></a>静态模块打包器</h6><h6 id="根据文档学习"><a href="#根据文档学习" class="headerlink" title="根据文档学习"></a>根据文档学习</h6><h4 id="资源管理"><a href="#资源管理" class="headerlink" title="资源管理"></a>资源管理</h4><h6 id="使用-webpack-命令时，可以指定webpack的配置文件，webpack-–config-webpack-config-js-该命令可以简写为-webpack，它会默认去找这个名称的配置文件"><a href="#使用-webpack-命令时，可以指定webpack的配置文件，webpack-–config-webpack-config-js-该命令可以简写为-webpack，它会默认去找这个名称的配置文件" class="headerlink" title="使用 webpack 命令时，可以指定webpack的配置文件，webpack –config webpack.config.js,该命令可以简写为 webpack，它会默认去找这个名称的配置文件"></a>使用 webpack 命令时，可以指定webpack的配置文件，webpack –config webpack.config.js,该命令可以简写为 webpack，它会默认去找这个名称的配置文件</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,</span><br><span class="line">     <span class="string">"build"</span>:<span class="string">"webpack"</span>  </span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p><strong>webpack.config.js 部分内容</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:<span class="string">'./src/index.js'</span>,</span><br><span class="line">    output:&#123;</span><br><span class="line">        filename:<span class="string">'bundle.js'</span>,  <span class="comment">//指定打包后的文件名称,在入口html中引入即可</span></span><br><span class="line">        path:path.resolve(__dirname,<span class="string">'dist'</span>)   <span class="comment">//文件路径</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="有一个概念你必须清楚的就是-我们的项目目录，分为-src-源代码目录，供开发人员开发使用，而dist目录是打包后的目录，供上线使用，这个里面的文件经过压缩处理，体积小，而且把我们模块化编写的代码打包成浏览器可以识别的代码。"><a href="#有一个概念你必须清楚的就是-我们的项目目录，分为-src-源代码目录，供开发人员开发使用，而dist目录是打包后的目录，供上线使用，这个里面的文件经过压缩处理，体积小，而且把我们模块化编写的代码打包成浏览器可以识别的代码。" class="headerlink" title="有一个概念你必须清楚的就是,我们的项目目录，分为 src 源代码目录，供开发人员开发使用，而dist目录是打包后的目录，供上线使用，这个里面的文件经过压缩处理，体积小，而且把我们模块化编写的代码打包成浏览器可以识别的代码。"></a>有一个概念你必须清楚的就是,我们的项目目录，分为 src 源代码目录，供开发人员开发使用，而dist目录是打包后的目录，供上线使用，这个里面的文件经过压缩处理，体积小，而且把我们模块化编写的代码打包成浏览器可以识别的代码。</h6><h4 id="管理输出"><a href="#管理输出" class="headerlink" title="管理输出"></a>管理输出</h4><h4 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h4><p><strong>inline-source-map</strong></p>
+<h6 id="webpack-config-js-中-配置-dev-tool-inline-source-map-作用是对源码和打包后的代码做一个映射，这样出错后，点击相应的文件能定位到源代码，方便开发人员"><a href="#webpack-config-js-中-配置-dev-tool-inline-source-map-作用是对源码和打包后的代码做一个映射，这样出错后，点击相应的文件能定位到源代码，方便开发人员" class="headerlink" title="webpack.config.js 中 配置 dev-tool:inline-source-map,作用是对源码和打包后的代码做一个映射，这样出错后，点击相应的文件能定位到源代码，方便开发人员"></a>webpack.config.js 中 配置 dev-tool:inline-source-map,作用是对源码和打包后的代码做一个映射，这样出错后，点击相应的文件能定位到源代码，方便开发人员</h6><hr>
+<h4 id="HMR-（hot-module-replacement）-模块热更新）（仅限开发环境使用）"><a href="#HMR-（hot-module-replacement）-模块热更新）（仅限开发环境使用）" class="headerlink" title="HMR （hot module replacement） 模块热更新）（仅限开发环境使用）"></a>HMR （hot module replacement） 模块热更新）（仅限开发环境使用）</h4><p>它允许在运行时更新各种模块，而无需进行完全刷新，即只变动你修改的地方，其他的代码还保留之前的状态。</p>
+<p>启用这个功能需要配合 webpack-dev-server 一起使用。</p>
+<h6 id="使用这个功能的时候，如果想要对某一个模块进行热更新，需要在入口文件中加入一些代码："><a href="#使用这个功能的时候，如果想要对某一个模块进行热更新，需要在入口文件中加入一些代码：" class="headerlink" title="使用这个功能的时候，如果想要对某一个模块进行热更新，需要在入口文件中加入一些代码："></a>使用这个功能的时候，如果想要对某一个模块进行热更新，需要在入口文件中加入一些代码：</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//在要热更细的模块中</span></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">module</span>.hot)&#123;  <span class="comment">//判断是否开启了热更新</span></span><br><span class="line"><span class="comment">//热更新功能接受print.js的变动的更新,即只刷新print.js 中的变动，其他代码状态不会被刷新</span></span><br><span class="line"><span class="comment">// 例如，入口文件中有一个变量i,每次执行都会++，你会发现当接受print.js的热更新后，入口文件中的 i还是会从它上次执行的地方开始++，而不是从初始值（例如1）开始；这就是热更新</span></span><br><span class="line">	<span class="built_in">module</span>.hot.accept(<span class="string">'./print.js'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="comment">//回调函数</span></span><br><span class="line">		</span><br><span class="line">	&#125;),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Tree-shaking"><a href="#Tree-shaking" class="headerlink" title="Tree shaking"></a>Tree shaking</h4><h6 id="你可以将应用程序想象成一棵树。绿色表示实际用到的源码和-library，是树上活的树叶。灰色表示无用的代码，是秋天树上枯萎的树叶。为了除去死去的树叶，你必须摇动这棵树，使它们落下。"><a href="#你可以将应用程序想象成一棵树。绿色表示实际用到的源码和-library，是树上活的树叶。灰色表示无用的代码，是秋天树上枯萎的树叶。为了除去死去的树叶，你必须摇动这棵树，使它们落下。" class="headerlink" title="你可以将应用程序想象成一棵树。绿色表示实际用到的源码和 library，是树上活的树叶。灰色表示无用的代码，是秋天树上枯萎的树叶。为了除去死去的树叶，你必须摇动这棵树，使它们落下。"></a>你可以将应用程序想象成一棵树。绿色表示实际用到的源码和 library，是树上活的树叶。灰色表示无用的代码，是秋天树上枯萎的树叶。为了除去死去的树叶，你必须摇动这棵树，使它们落下。</h6><p>结论： 在生产环境下，加入  mode: “production” 就会自动将无用的代码给去除，减小体积，提高效率</p>
+<p>例如，在a.js 中有export 出了两个函数，但只被引用了一个函数，但打包后，你会发现打包后的代码中依旧是包含未使用的函数的，加入这个配置后，就会只引入使用的这个函数；binggo</p>
+<h4 id="生产环境"><a href="#生产环境" class="headerlink" title="生产环境"></a>生产环境</h4><h6 id="开发环境-development-和生产环境-production-的构建目标差异很大。在开发环境中，我们需要具有强大的、具有实时重新加载-live-reloading-或热模块替换-hot-module-replacement-能力的-source-map-和-localhost-server。而在生产环境中，我们的目标则转向于关注更小的-bundle，更轻量的-source-map，以及更优化的资源，以改善加载时间。由于要遵循逻辑分离，我们通常建议为每个环境编写彼此独立的-webpack-配置"><a href="#开发环境-development-和生产环境-production-的构建目标差异很大。在开发环境中，我们需要具有强大的、具有实时重新加载-live-reloading-或热模块替换-hot-module-replacement-能力的-source-map-和-localhost-server。而在生产环境中，我们的目标则转向于关注更小的-bundle，更轻量的-source-map，以及更优化的资源，以改善加载时间。由于要遵循逻辑分离，我们通常建议为每个环境编写彼此独立的-webpack-配置" class="headerlink" title="开发环境(development)和生产环境(production)的构建目标差异很大。在开发环境中，我们需要具有强大的、具有实时重新加载(live reloading)或热模块替换(hot module replacement)能力的 source map 和 localhost server。而在生产环境中，我们的目标则转向于关注更小的 bundle，更轻量的 source map，以及更优化的资源，以改善加载时间。由于要遵循逻辑分离，我们通常建议为每个环境编写彼此独立的 webpack 配置"></a><em>开发环境(development)</em>和<em>生产环境(production)</em>的构建目标差异很大。在<em>开发环境</em>中，我们需要具有强大的、具有实时重新加载(live reloading)或热模块替换(hot module replacement)能力的 source map 和 localhost server。而在<em>生产环境</em>中，我们的目标则转向于关注更小的 bundle，更轻量的 source map，以及更优化的资源，以改善加载时间。由于要遵循逻辑分离，我们通常建议为每个环境编写<strong>彼此独立的 webpack 配置</strong></h6><p>使用参考官方文档</p>
+<p>思路：拆分 webpack.config.js</p>
+<p>开发环境：webpack-dev.js</p>
+<p>生产环境： webpack-prod.js</p>
+<p>common.js ：包含生产和开发环境都需要的公共的一些配置</p>
+<p>下载一个 merge 包，用来根据不同的环境  —- 开发环境（或者生产环境）的js 和 common.js 合并</p>
+<p>在package.js scripts 中设置脚本，</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例如</span></span><br><span class="line">scripts:&#123;</span><br><span class="line">    <span class="string">"start"</span>:<span class="string">"webpack-dev-server --open --config webpack.dev.js"</span> , <span class="comment">//启动 webpackserver 并且是通过开发环境的配置文件启动的</span></span><br><span class="line">    <span class="string">"build"</span>:<span class="string">"webpack --config webpack.prod.js"</span>  <span class="comment">//生产环境的配置文件，生产环境是不需要启动webpackserver的，所以就是这样喽</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="指定环境"><a href="#指定环境" class="headerlink" title="指定环境"></a>指定环境</h4><p>任何位于 <code>/src</code> 的本地代码都可以关联到 process.env.NODE_ENV 环境变量，所以以下检查也是有效的</p>
+<p>配置环境的步骤如下：</p>
+<p>在相应的webpack配置文件中写上，例如在dev.js 中写 development</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> webpack.DefinePlugin(&#123;</span><br><span class="line">            <span class="string">'process.env.NODE_ENV'</span>:<span class="built_in">JSON</span>.stringify(<span class="string">'development'</span>)</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+<p>这样，你执行 该文件的话，就会获得当前配置的环境名称，然后做判断，例如打印日志什么的</p>
+<p>在 src下的文件中都可以访问到该 类似全局变量的这个环境配置</p>
+<h4 id="代码分离-好处就是可以把共有的东西抽离出来"><a href="#代码分离-好处就是可以把共有的东西抽离出来" class="headerlink" title="代码分离 好处就是可以把共有的东西抽离出来"></a>代码分离 好处就是可以把共有的东西抽离出来</h4><h6 id="代码分离就是可以把不同的文件打包到不同的bundle-js中，例如之前配置的-多个-entry-以及output"><a href="#代码分离就是可以把不同的文件打包到不同的bundle-js中，例如之前配置的-多个-entry-以及output" class="headerlink" title="代码分离就是可以把不同的文件打包到不同的bundle.js中，例如之前配置的 多个 entry,以及output"></a>代码分离就是可以把不同的文件打包到不同的bundle.js中，例如之前配置的 多个 entry,以及output</h6><p>如果入口 chunks 之间包含重复的模块，那些重复模块都会被引入到各个 bundle 中</p>
+<p>但这种方式需要我们手动配置太麻烦，而且还会有一个问题，例如这两个入口文件中都引用了jquery,那么最终生成的两个 bundle.js 中都会包含 jquery,这样无疑文件体积会大很多，怎么解决呢，就是把共有的juqery 提取出来，其他模块需要，引入即可。</p>
+<p>具体解决方案：CommonsChunkPlugin</p>
+<p>这个插件可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk</p>
+<p>使用步骤见官网文档</p>
+<p><strong>动态导入</strong></p>
+<h6 id="就是在使用到它的时候在引入，例如有一个功能组件需要我们登陆后操作，那么我们在登录之前可以不用加载该模块，等用到的时候再导入"><a href="#就是在使用到它的时候在引入，例如有一个功能组件需要我们登陆后操作，那么我们在登录之前可以不用加载该模块，等用到的时候再导入" class="headerlink" title="就是在使用到它的时候在引入，例如有一个功能组件需要我们登陆后操作，那么我们在登录之前可以不用加载该模块，等用到的时候再导入"></a>就是在使用到它的时候在引入，例如有一个功能组件需要我们登陆后操作，那么我们在登录之前可以不用加载该模块，等用到的时候再导入</h6><p>这时候，我们不用指定多个入口，配置好后，通过动态引入这个公用的库，它会自动生成一个公用的js</p>
+<p>使用 import 函数 promise 风格的函数</p>
+<p>参见官网</p>
+<h4 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h4><p><strong>webpack 为何需要多个入口文件和输出文件？</strong></p>
+<h6 id="答：项目中肯定不止一个html页面，a页面需要引入a-js，b-js，c-js-在入口文件中require-a页面需要的js文件即可。"><a href="#答：项目中肯定不止一个html页面，a页面需要引入a-js，b-js，c-js-在入口文件中require-a页面需要的js文件即可。" class="headerlink" title="答：项目中肯定不止一个html页面，a页面需要引入a.js，b.js，c.js 在入口文件中require a页面需要的js文件即可。"></a>答：项目中肯定不止一个html页面，a页面需要引入a.js，b.js，c.js 在入口文件中require a页面需要的js文件即可。</h6><h6 id="b页面需要引入d-js-，e-js-，f-js-，如果不能设置多个入口文件和多个编译输出文件的话就需要在入口文件中引入全部6个js文件，并编译到一个输出文件，这岂不是违背了模块管理工具的初衷呢？"><a href="#b页面需要引入d-js-，e-js-，f-js-，如果不能设置多个入口文件和多个编译输出文件的话就需要在入口文件中引入全部6个js文件，并编译到一个输出文件，这岂不是违背了模块管理工具的初衷呢？" class="headerlink" title="b页面需要引入d.js ，e.js ，f.js ，如果不能设置多个入口文件和多个编译输出文件的话就需要在入口文件中引入全部6个js文件，并编译到一个输出文件，这岂不是违背了模块管理工具的初衷呢？"></a>b页面需要引入d.js ，e.js ，f.js ，如果不能设置多个入口文件和多个编译输出文件的话就需要在入口文件中引入全部6个js文件，并编译到一个输出文件，这岂不是违背了模块管理工具的初衷呢？</h6><h6 id="这就像是不同的模块需要不同的js一样"><a href="#这就像是不同的模块需要不同的js一样" class="headerlink" title="这就像是不同的模块需要不同的js一样"></a>这就像是不同的模块需要不同的js一样</h6>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/01/webpack-笔记/" data-id="ckaxpis92000utww1s0t7f9wj" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/01/node-js-commonJs规范/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">node.js commonJs规范</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/01/webpack-笔记/">webpack 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/node-js-commonJs规范/">node.js commonJs规范</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/31/前端模块化、工程化/">前端模块化、工程化</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/22/跨域/">跨域</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/20/promise/">promise</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
