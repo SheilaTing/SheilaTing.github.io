@@ -1,0 +1,257 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>react 生命周期等 | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="生命周期![ ](../img/react/cycle.png) 这个图好糊呀  反正记住 这主要的额三个就行了生命周期完整版如下  挂载时 constructor() render()  componentDidMount()   更新时 shouldComponentUpdate()  组件中数据更新时，return true 才会渲染 render() componentDidMount()">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react 生命周期等">
+<meta property="og:url" content="http://yoursite.com/2020/06/09/react-生命周期等/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="生命周期![ ](../img/react/cycle.png) 这个图好糊呀  反正记住 这主要的额三个就行了生命周期完整版如下  挂载时 constructor() render()  componentDidMount()   更新时 shouldComponentUpdate()  组件中数据更新时，return true 才会渲染 render() componentDidMount()">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-09T07:50:39.890Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react 生命周期等">
+<meta name="twitter:description" content="生命周期![ ](../img/react/cycle.png) 这个图好糊呀  反正记住 这主要的额三个就行了生命周期完整版如下  挂载时 constructor() render()  componentDidMount()   更新时 shouldComponentUpdate()  组件中数据更新时，return true 才会渲染 render() componentDidMount()">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-react-生命周期等" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/09/react-生命周期等/" class="article-date">
+  <time datetime="2020-06-09T07:11:53.000Z" itemprop="datePublished">2020-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      react 生命周期等
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p>![</p>
+<p>](../img/react/cycle.png)</p>
+<h6 id="这个图好糊呀-反正记住-这主要的额三个就行了"><a href="#这个图好糊呀-反正记住-这主要的额三个就行了" class="headerlink" title="这个图好糊呀  反正记住 这主要的额三个就行了"></a>这个图好糊呀  反正记住 这主要的额三个就行了</h6><p><strong>生命周期完整版如下</strong></p>
+<ul>
+<li>挂载时<ul>
+<li>constructor()</li>
+<li>render() </li>
+<li>componentDidMount()</li>
+</ul>
+</li>
+<li>更新时<ul>
+<li>shouldComponentUpdate()  组件中数据更新时，return true 才会渲染</li>
+<li>render()</li>
+<li>componentDidMount()</li>
+</ul>
+</li>
+<li>卸载时<ul>
+<li>componentWillUnmount()</li>
+</ul>
+</li>
+<li>错误处理<ul>
+<li>componentDidCatch()</li>
+</ul>
+</li>
+</ul>
+<p><strong>comonentWillMount、componentWillUpdate、componentWillReceiveProps 已过时废弃</strong></p>
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><p>列表循环必须加key属性 </p>
+<p> key属性对应的值尽量是独⼀⽆⼆的 </p>
+<p>不要⽤列表序号做为key属性的值，除⾮万不得已</p>
+<h6 id="key-是用来在渲染页面时做-diff-算法的，一般选择一个独一无二的值，不推荐使用数据的下标-0-1-2……-因为在做diff时候，会把key拿出来跟上次的对比，（如果有就直接拿出来用）如果那数组中的下标都是-0-1-2-3-4-5-无论数组中的内容怎么变化，所以这样就达不到对比的效果了，都会更新-例如原来数组-1-2-3-新数组-0-1-2-3-原来-1的下标为0key-0-现在-1的-key-为1，这就起不到diff-的作用了，相当于白加，它还会用它默认的算法来对比。"><a href="#key-是用来在渲染页面时做-diff-算法的，一般选择一个独一无二的值，不推荐使用数据的下标-0-1-2……-因为在做diff时候，会把key拿出来跟上次的对比，（如果有就直接拿出来用）如果那数组中的下标都是-0-1-2-3-4-5-无论数组中的内容怎么变化，所以这样就达不到对比的效果了，都会更新-例如原来数组-1-2-3-新数组-0-1-2-3-原来-1的下标为0key-0-现在-1的-key-为1，这就起不到diff-的作用了，相当于白加，它还会用它默认的算法来对比。" class="headerlink" title="key 是用来在渲染页面时做 diff 算法的，一般选择一个独一无二的值，不推荐使用数据的下标 0,1,2…… 因为在做diff时候，会把key拿出来跟上次的对比，（如果有就直接拿出来用）如果那数组中的下标都是 0,1,2,3,4,5 无论数组中的内容怎么变化，所以这样就达不到对比的效果了，都会更新 例如原来数组 1,2,3 新数组 0,1,2,3 原来 1的下标为0key=0 现在 1的 key 为1，这就起不到diff 的作用了，相当于白加，它还会用它默认的算法来对比。"></a>key 是用来在渲染页面时做 diff 算法的，一般选择一个独一无二的值，不推荐使用数据的下标 0,1,2…… 因为在做diff时候，会把key拿出来跟上次的对比，（如果有就直接拿出来用）如果那数组中的下标都是 0,1,2,3,4,5 无论数组中的内容怎么变化，所以这样就达不到对比的效果了，都会更新 例如原来数组 1,2,3 新数组 0,1,2,3 原来 1的下标为0key=0 现在 1的 key 为1，这就起不到diff 的作用了，相当于白加，它还会用它默认的算法来对比。</h6><h4 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h4><p><strong>受控组件</strong></p>
+<p>state做为唯⼀数据驱动源，且⽤户对表单的操作需要反馈到 state</p>
+<p>特点：表单的value由state决定，监听表单变化后从event获取新 value重新设置state</p>
+<h4 id="setState-同步与异步"><a href="#setState-同步与异步" class="headerlink" title="setState 同步与异步"></a>setState 同步与异步</h4><h2 id="为什么setState有异步更新？"><a href="#为什么setState有异步更新？" class="headerlink" title="为什么setState有异步更新？"></a>为什么setState有异步更新？</h2><p>React在执行setState之后，要执行render、diff、更新DOM等一系列操作，性能开销是比较大的。加入异步更新、更新合并等策略能优化性能。</p>
+<h2 id="什么时候异步更新，什么时候同步更新"><a href="#什么时候异步更新，什么时候同步更新" class="headerlink" title="什么时候异步更新，什么时候同步更新"></a>什么时候异步更新，什么时候同步更新</h2><p>组件里等事件处理程序，如 <code>onClick={this.handleClick}</code> 里面等setState是异步更新。声明生命周期函数里等setState也是异步更新。如果需要多次更新需要用异步设置等语法，如</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.setState(<span class="function">(<span class="params">state, props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count + props.count &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>如setTimeout里，对原生绑定如 addEventListener 里，都是同步更新。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">"#btn"</span>).onclick=<span class="function"><span class="params">()</span>=&gt;</span>&#123;.....setState(...)&#125;</span><br><span class="line">                                                          </span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;<span class="keyword">this</span>.setState(...),<span class="keyword">this</span>,setState(...)&#125;,<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="异步更新在效果上有什么表现"><a href="#异步更新在效果上有什么表现" class="headerlink" title="异步更新在效果上有什么表现"></a>异步更新在效果上有什么表现</h2><p>表现为更新合并，上次更新未生效。也就是如果你执行了两次 setState 它只会执行一次，因为它自己做了优化</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/09/react-生命周期等/" data-id="ckb7mn2k0000rzkw1tathuebm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/06/手写-react/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">手写 react</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 13.33px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/09/react-生命周期等/">react 生命周期等</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/06/手写-react/">手写 react</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/webpack-笔记/">webpack 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/node-js-commonJs规范/">node.js commonJs规范</a>
+          </li>
+        
+          <li>
+            <a href="/2020/05/31/前端模块化、工程化/">前端模块化、工程化</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

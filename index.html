@@ -62,6 +62,162 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-react-生命周期等" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/09/react-生命周期等/" class="article-date">
+  <time datetime="2020-06-09T07:11:53.000Z" itemprop="datePublished">2020-06-09</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/09/react-生命周期等/">react 生命周期等</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p>![</p>
+<p>](../img/react/cycle.png)</p>
+<h6 id="这个图好糊呀-反正记住-这主要的额三个就行了"><a href="#这个图好糊呀-反正记住-这主要的额三个就行了" class="headerlink" title="这个图好糊呀  反正记住 这主要的额三个就行了"></a>这个图好糊呀  反正记住 这主要的额三个就行了</h6><p><strong>生命周期完整版如下</strong></p>
+<ul>
+<li>挂载时<ul>
+<li>constructor()</li>
+<li>render() </li>
+<li>componentDidMount()</li>
+</ul>
+</li>
+<li>更新时<ul>
+<li>shouldComponentUpdate()  组件中数据更新时，return true 才会渲染</li>
+<li>render()</li>
+<li>componentDidMount()</li>
+</ul>
+</li>
+<li>卸载时<ul>
+<li>componentWillUnmount()</li>
+</ul>
+</li>
+<li>错误处理<ul>
+<li>componentDidCatch()</li>
+</ul>
+</li>
+</ul>
+<p><strong>comonentWillMount、componentWillUpdate、componentWillReceiveProps 已过时废弃</strong></p>
+<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><p>列表循环必须加key属性 </p>
+<p> key属性对应的值尽量是独⼀⽆⼆的 </p>
+<p>不要⽤列表序号做为key属性的值，除⾮万不得已</p>
+<h6 id="key-是用来在渲染页面时做-diff-算法的，一般选择一个独一无二的值，不推荐使用数据的下标-0-1-2……-因为在做diff时候，会把key拿出来跟上次的对比，（如果有就直接拿出来用）如果那数组中的下标都是-0-1-2-3-4-5-无论数组中的内容怎么变化，所以这样就达不到对比的效果了，都会更新-例如原来数组-1-2-3-新数组-0-1-2-3-原来-1的下标为0key-0-现在-1的-key-为1，这就起不到diff-的作用了，相当于白加，它还会用它默认的算法来对比。"><a href="#key-是用来在渲染页面时做-diff-算法的，一般选择一个独一无二的值，不推荐使用数据的下标-0-1-2……-因为在做diff时候，会把key拿出来跟上次的对比，（如果有就直接拿出来用）如果那数组中的下标都是-0-1-2-3-4-5-无论数组中的内容怎么变化，所以这样就达不到对比的效果了，都会更新-例如原来数组-1-2-3-新数组-0-1-2-3-原来-1的下标为0key-0-现在-1的-key-为1，这就起不到diff-的作用了，相当于白加，它还会用它默认的算法来对比。" class="headerlink" title="key 是用来在渲染页面时做 diff 算法的，一般选择一个独一无二的值，不推荐使用数据的下标 0,1,2…… 因为在做diff时候，会把key拿出来跟上次的对比，（如果有就直接拿出来用）如果那数组中的下标都是 0,1,2,3,4,5 无论数组中的内容怎么变化，所以这样就达不到对比的效果了，都会更新 例如原来数组 1,2,3 新数组 0,1,2,3 原来 1的下标为0key=0 现在 1的 key 为1，这就起不到diff 的作用了，相当于白加，它还会用它默认的算法来对比。"></a>key 是用来在渲染页面时做 diff 算法的，一般选择一个独一无二的值，不推荐使用数据的下标 0,1,2…… 因为在做diff时候，会把key拿出来跟上次的对比，（如果有就直接拿出来用）如果那数组中的下标都是 0,1,2,3,4,5 无论数组中的内容怎么变化，所以这样就达不到对比的效果了，都会更新 例如原来数组 1,2,3 新数组 0,1,2,3 原来 1的下标为0key=0 现在 1的 key 为1，这就起不到diff 的作用了，相当于白加，它还会用它默认的算法来对比。</h6><h4 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h4><p><strong>受控组件</strong></p>
+<p>state做为唯⼀数据驱动源，且⽤户对表单的操作需要反馈到 state</p>
+<p>特点：表单的value由state决定，监听表单变化后从event获取新 value重新设置state</p>
+<h4 id="setState-同步与异步"><a href="#setState-同步与异步" class="headerlink" title="setState 同步与异步"></a>setState 同步与异步</h4><h2 id="为什么setState有异步更新？"><a href="#为什么setState有异步更新？" class="headerlink" title="为什么setState有异步更新？"></a>为什么setState有异步更新？</h2><p>React在执行setState之后，要执行render、diff、更新DOM等一系列操作，性能开销是比较大的。加入异步更新、更新合并等策略能优化性能。</p>
+<h2 id="什么时候异步更新，什么时候同步更新"><a href="#什么时候异步更新，什么时候同步更新" class="headerlink" title="什么时候异步更新，什么时候同步更新"></a>什么时候异步更新，什么时候同步更新</h2><p>组件里等事件处理程序，如 <code>onClick={this.handleClick}</code> 里面等setState是异步更新。声明生命周期函数里等setState也是异步更新。如果需要多次更新需要用异步设置等语法，如</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.setState(<span class="function">(<span class="params">state, props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count + props.count &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<p>如setTimeout里，对原生绑定如 addEventListener 里，都是同步更新。</p>
+<p>例如：</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">"#btn"</span>).onclick=<span class="function"><span class="params">()</span>=&gt;</span>&#123;.....setState(...)&#125;</span><br><span class="line">                                                          </span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;<span class="keyword">this</span>.setState(...),<span class="keyword">this</span>,setState(...)&#125;,<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<h2 id="异步更新在效果上有什么表现"><a href="#异步更新在效果上有什么表现" class="headerlink" title="异步更新在效果上有什么表现"></a>异步更新在效果上有什么表现</h2><p>表现为更新合并，上次更新未生效。也就是如果你执行了两次 setState 它只会执行一次，因为它自己做了优化</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/09/react-生命周期等/" data-id="ckb7mn2k0000rzkw1tathuebm" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-手写-react" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/06/手写-react/" class="article-date">
+  <time datetime="2020-06-06T08:07:31.000Z" itemprop="datePublished">2020-06-06</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/06/手写-react/">手写 react</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="JSX"><a href="#JSX" class="headerlink" title="JSX"></a>JSX</h4><h6 id="javascript-语法扩展，用于形象描述一段DOM结构"><a href="#javascript-语法扩展，用于形象描述一段DOM结构" class="headerlink" title="javascript 语法扩展，用于形象描述一段DOM结构"></a>javascript 语法扩展，用于形象描述一段DOM结构</h6><p>例如:</p>
+<figure class="highlight jsx"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> element = <span class="xml"><span class="tag">&lt;<span class="name">h1</span> <span class="attr">className</span>=<span class="string">"hello"</span>&gt;</span>Hello World<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span></span><br><span class="line">      <span class="comment">// 这就是一行 jsx 代码</span></span><br></pre></td></tr></table></figure>
+<h6 id="React-推荐使用JSX-但是很明显这么一行JSX-代码是无法在浏览器中运行的。那么我们使用-babel-打包工具来处理我们的代码，babel-会把jsx-转换为-React-createElement-tag-attr-children-那么显然这样的代码运行也会出错，因为我们并没有定义React对象，更没有createElement-方法，所以为了运行不报错，我们需要定义一个-React-对象，并创建一个-createElement-方法-而babel-帮助我们给这个方法提供了三个参数，这三个参数与页面上的jsx-代码一一对应，也就babel把我们页面上的jsx-代码转换为了这三个参数；这三个参数分别是-jsx-代码的-标签（顶级标签）-以及标签上的属性，还有标签里面的内容（一个数组）"><a href="#React-推荐使用JSX-但是很明显这么一行JSX-代码是无法在浏览器中运行的。那么我们使用-babel-打包工具来处理我们的代码，babel-会把jsx-转换为-React-createElement-tag-attr-children-那么显然这样的代码运行也会出错，因为我们并没有定义React对象，更没有createElement-方法，所以为了运行不报错，我们需要定义一个-React-对象，并创建一个-createElement-方法-而babel-帮助我们给这个方法提供了三个参数，这三个参数与页面上的jsx-代码一一对应，也就babel把我们页面上的jsx-代码转换为了这三个参数；这三个参数分别是-jsx-代码的-标签（顶级标签）-以及标签上的属性，还有标签里面的内容（一个数组）" class="headerlink" title="React 推荐使用JSX,但是很明显这么一行JSX 代码是无法在浏览器中运行的。那么我们使用 babel 打包工具来处理我们的代码，babel 会把jsx 转换为 React.createElement(tag,attr,children);那么显然这样的代码运行也会出错，因为我们并没有定义React对象，更没有createElement 方法，所以为了运行不报错，我们需要定义一个 React 对象，并创建一个 createElement 方法,而babel 帮助我们给这个方法提供了三个参数，这三个参数与页面上的jsx 代码一一对应，也就babel把我们页面上的jsx 代码转换为了这三个参数；这三个参数分别是 jsx 代码的 标签（顶级标签）, 以及标签上的属性，还有标签里面的内容（一个数组）;"></a>React 推荐使用JSX,但是很明显这么一行JSX 代码是无法在浏览器中运行的。那么我们使用 babel 打包工具来处理我们的代码，babel 会把jsx 转换为 React.createElement(tag,attr,children);那么显然这样的代码运行也会出错，因为我们并没有定义React对象，更没有createElement 方法，所以为了运行不报错，我们需要定义一个 React 对象，并创建一个 createElement 方法,而babel 帮助我们给这个方法提供了三个参数，这三个参数与页面上的jsx 代码一一对应，也就babel把我们页面上的jsx 代码转换为了这三个参数；这三个参数分别是 jsx 代码的 标签（顶级标签）, 以及标签上的属性，还有标签里面的内容（一个数组）;</h6><h6 id="那我们拿到这三个参数之后，自定义-createElement-方法把这三个参数作为一个对象返回。拿到这个对象后，我们是不是就可以通过某些方法来构造标准的html代码了。手写React-核心就在这块。"><a href="#那我们拿到这三个参数之后，自定义-createElement-方法把这三个参数作为一个对象返回。拿到这个对象后，我们是不是就可以通过某些方法来构造标准的html代码了。手写React-核心就在这块。" class="headerlink" title="那我们拿到这三个参数之后，自定义 createElement 方法把这三个参数作为一个对象返回。拿到这个对象后，我们是不是就可以通过某些方法来构造标准的html代码了。手写React 核心就在这块。"></a>那我们拿到这三个参数之后，自定义 createElement 方法把这三个参数作为一个对象返回。拿到这个对象后，我们是不是就可以通过某些方法来构造标准的html代码了。手写React 核心就在这块。</h6><p> webpack config.js 中配置了 js 或者 jsx文件，会使用 babel 来加载</p>
+<p> babel 会把代码转换为 let div = React.createElement(tag,attr,childrenNode)</p>
+<p> 如果 createElement 方法不返回，那么 consoel.log(div) 就是 undefined</p>
+<p> 所以 我们把 babel 帮我们生成的这个方法的三个参数，这三个参数分别对应我们 html 的 标签，属性，和内容（以及标签嵌套的字标签）</p>
+<p> 所以我们把这些内容返回出去，那么 div 就可以接收到这三个参数，做进一步处理</p>
+<p> 就变成 let div = { tag,attr,child }</p>
+<p>那么很显然如果我们直接打开生成的 index.html 会报错找不到 React,所以，我们需要定义一个 React</p>
+<p> webpack config.js 中配置了 js 或者 jsx文件，会使用 babel 来加载</p>
+<p> babel 会把代码转换为 let div = React.createElement(tag,attr,childrenNode)</p>
+<p> 如果 createElement 方法不返回，那么 consoel.log(div) 就是 undefined</p>
+<p> 所以 我们把 babel 帮我们生成的这个方法的三个参数，这三个参数分别对应我们 html 的 标签，属性，和内容（以及标签嵌套的字标签）</p>
+<p> 所以我们把这些内容返回出去，那么 div 就可以接收到这三个参数，做进一步处理</p>
+<p> 就变成 let div = { tag,attr,child }</p>
+<p> 那么很显然如果我们直接打开生成的 index.html 会报错找不到 React,所以，我们需要定义一个 React</p>
+<p>现在 这个 div 通过 babel 以及 react.createElment 方法已经成为了一个 携带 tag,attr,children 的对象</p>
+<p>那么我们就可以通过这三个对象，将这个div 像html 一样展示在浏览器中</p>
+<p>具体就是，我们定义一个方法，把这个div 以及document.body 传递进去，经过处理</p>
+<p>拿到 dom 也就是我们这个 div对象后，我们取出里面的 tag</p>
+<p>判断dom 的类型,当这个对象没有被标签包裹时，它是一个 string 字符串，可以打印出来看看</p>
+<p>如果是字符串，那么直接创建一个 textnode</p>
+<p>当有标签包裹时，它是一个 object</p>
+<p>处理 属性 传递 节点 和 vdom 上的属性。。。。。。</p>
+<p><strong>## 实现自定义标签的渲染</strong></p>
+<p> 前面我们通过 babel 已经实现了将 普通的 jsx 转换为 React.createElement(tag,attr,children) </p>
+<p> 然后拿到这个生成的虚拟dom,通过定义的 React.render() 方法将tag,attr,children 以标准的 html 的形式展示到了页面上</p>
+<p> 那么下一步我们如果想在页面上展示自己定义的标签需要怎么做呢？也就是不是html 内置的这些标签，而是自定义的一些语义化的标签模块</p>
+<p> 例如 <app></app> <menue></menue> ……</p>
+<p> 根据 babel 的知识，我们知道，它会把这样的标签内容渲染称为 React.createElement(App,attr,children)</p>
+<p> 注意这里的 App 不带引号，也就是说它不是一个html 标签，而是一个变量。如果我们直接把它放入页面势必会报错，因为我们没有定义 App</p>
+<p> 这个对象，所以我们要定义这个对象 App </p>
+<p> 定义好这个对象之后，为了实现内容的渲染，我们可以在 App 对象中定义一个 render() 方法，返回我们要渲染的 html 或者 jsx;</p>
+<p> 这样在我们执行 ReactDom.render() 方法时，如果遇到了这样自定义的标签，那么我们就可以 new 一个我们定义好的 APP 对象，然后调用这个对象的 render() 方法 返回一个 html或者 jsx dom,然后我们在解析这个 返回值 不就可以实现了吗</p>
+<p> 好了，开始写。。。。。。</p>
+<p> 在设置好 state 对象的值后，如果想要有效果需要重新渲染页面，具体就是拿到这个state 所在的组件对象，然后根据新的state 创建新的dom,然后做一下替换即可</p>
+<p> 接下来我们要实现一个函数式的组件，也就是es3 的写法的函数 function 组件名,我来重新捋一遍哈,如果是我们自定义的标签而非是 html 标签，babel 会帮助我们转换为 React.createElement(tag,attr,children),这样的形式，那么这个 tag 就是一个变量，而非一个 html 字符串标签，我们需要定义这个 变量对象否则运行就会报错</p>
+<p> 前面我们使用es6的方法定义了class 对象，那如果我们使用 es3 function 方法定义呢?那我们上面写的逻辑是获取该组件上的 render() 方法获取我们的 jsx dom,现在改为 function 写法，里面不能再嵌套方法了，只能使用.prototype 的方式添加这个函数，而我们也没有定义这个方法，该如果获取到这个 render 里面的内容呢?</p>
+<p> 思路哈： 当我们监测到要渲染的是一个 function 的时候，我们来判断这个对象是一个 function 还是一个 class，根据我们 class 的写法，我们是让这个组件继承了 React.component 这个对象的，那也就意味着 class 对象的 prototype == React.component 对吧, 而 function 方法写的则不会有，所以可以根据这个来判断</p>
+<p> 我们可以定义一个处理这个对象的方法，传递这个 tag 标签，返回一个 class 对象(后续逻辑需要)</p>
+<p> 那么如果是 class 方式写的，就直接 new 这个对象即可，如果是 function 方法写的，我们需要构造一个render() 方法，并且赋值给一个class，最后 new 这个 class,这样就解决啦,好啦，开写</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/06/手写-react/" data-id="ckb7mn2l20017zkw1u9sx6y54" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-webpack-笔记" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/01/webpack-笔记/" class="article-date">
@@ -137,7 +293,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/01/webpack-笔记/" data-id="ckb0kthsy000vg8w1b3cz9e94" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/01/webpack-笔记/" data-id="ckb7mn2k6000wzkw1yjl5dntj" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -213,7 +369,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/01/node-js-commonJs规范/" data-id="ckb0kthsv000sg8w1023wsrg6" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/01/node-js-commonJs规范/" data-id="ckb7mn2jv000pzkw1bkhvsxoq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
@@ -276,7 +432,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/31/前端模块化、工程化/" data-id="ckb0ktht0000xg8w168axkfwq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/31/前端模块化、工程化/" data-id="ckb7mn2ky0014zkw185cya04v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工程化/">工程化</a></li></ul>
@@ -335,7 +491,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/22/跨域/" data-id="ckb0kthtd001ag8w1cax5nkr0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/22/跨域/" data-id="ckb7mn2la001czkw11fobgja2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -394,7 +550,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/20/promise/" data-id="ckb0kthsw000ug8w14euxfv62" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/20/promise/" data-id="ckb7mn2k5000vzkw1n8cyd3se" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promise/">promise</a></li></ul>
@@ -445,7 +601,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/19/mock数据/" data-id="ckb0kthss000qg8w18m7ufs5e" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/19/mock数据/" data-id="ckb7mn2jx000qzkw192h90znn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mock/">mock</a></li></ul>
@@ -512,7 +668,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/18/ajax/" data-id="ckb0kths00005g8w1p1o2olii" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/18/ajax/" data-id="ckb7mn2kt0011zkw1uhk5kjzt" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/">ajax</a></li></ul>
@@ -618,253 +774,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/17/http-session-cookie-token/" data-id="ckb0kthsn000lg8w13clsleck" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/17/http-session-cookie-token/" data-id="ckb7mn2jd000hzkw12ac0fykg" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-https" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/16/https/" class="article-date">
-  <time datetime="2020-05-16T06:09:44.000Z" itemprop="datePublished">2020-05-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/16/https/">https</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h3 id="http通信存在的问题-HyperText-Transfer-Protocol，超文本传输协议"><a href="#http通信存在的问题-HyperText-Transfer-Protocol，超文本传输协议" class="headerlink" title="http通信存在的问题 HyperText Transfer Protocol，超文本传输协议"></a>http通信存在的问题 <strong>HyperText Transfer Protocol，超文本传输协议</strong></h3><ul>
-<li>容易被监听 <ul>
-<li>http通信都是明文，数据在客户端与服务器通信过程中，任何一点都可能被劫持。比如，发送了银行卡号和密码，hacker劫取到数据，就能看到卡号和密码，这是很危险的</li>
-</ul>
-</li>
-<li>被伪装 <ul>
-<li>http通信时，无法保证通行双方是合法的，通信方可能是伪装的。比如你请求<a href="http://www.taobao.com,你怎么知道返回的数据就是来自淘宝，中间人可能返回数据伪装成淘宝。" target="_blank" rel="noopener">www.taobao.com,你怎么知道返回的数据就是来自淘宝，中间人可能返回数据伪装成淘宝。</a></li>
-</ul>
-</li>
-<li>被篡改 <ul>
-<li>hacker中间篡改数据后，接收方并不知道数据已经被更改</li>
-</ul>
-</li>
-</ul>
-<h4 id="http-明文通信的理解"><a href="#http-明文通信的理解" class="headerlink" title="http 明文通信的理解"></a>http 明文通信的理解</h4><p>明文传输是指在传输时没有加密，直接将用户数据发送到网络上。至于你传输的是文字、图片还是你自己加密的消息，http协议都不做加密处理。相对的是https，无论你交给它什么数据，即使是你的加密消息，https还是会再做一次加密。</p>
-<p>对于实施中间人攻击的攻击者，使用http协议，攻击者可以分辨传输的是图片、文字还是被加密的信息；而https的中间人攻击只能拿到一串加密的数据，很难分辨传输的是什么内容。</p>
-<p>所谓明文传输是说通讯本身不提供加密的功能。<br>你自己加密过的数据在这里也是当明文来看的，否则任何传输都不是明文传输了。就算不能传二进制数据我们也可以把二进制数据转化为字母数字来传输的。</p>
-<h3 id="共享密钥加密和公开密钥加密"><a href="#共享密钥加密和公开密钥加密" class="headerlink" title="共享密钥加密和公开密钥加密"></a>共享密钥加密和公开密钥加密</h3><p>后续内容的需要，这里插播一段共享密钥加密和公开密钥加密</p>
-<ul>
-<li>共享密钥加密 <ul>
-<li>共享密钥的加密密钥和解密密钥是相同的，所以又称为对称密钥</li>
-</ul>
-</li>
-<li>公开密钥加密 <ul>
-<li>加密算法是公开的，密钥是保密的。公开密钥分为私有密钥和公有密钥，公有密钥是公开的，任何人(客户端)都可以获取，客户端使用公有密钥加密数据，服务端用私有密钥解密数据。</li>
-</ul>
-</li>
-<li>异同 <ul>
-<li>共享密钥加密与公开密钥加密相比，加解密处理速度快，但公开密钥更适应互联网下使用</li>
-</ul>
-</li>
-</ul>
-<h3 id="https解决的问题"><a href="#https解决的问题" class="headerlink" title="https解决的问题"></a>https解决的问题</h3><p>https很好的解决了http的三个缺点（被监听、被篡改、被伪装），https不是一种新的协议，它是http+SSL(TLS)的结合体，SSL是一种独立协议，所以其它协议比如smtp等也可以跟ssl结合。https改变了通信方式，它由以前的http—–&gt;tcp，改为http——&gt;SSL—–&gt;tcp；https采用了共享密钥加密+公开密钥加密的方式</p>
-<ul>
-<li>防监听 <ul>
-<li>数据是加密的，所以监听得到的数据是密文，hacker看不懂。</li>
-</ul>
-</li>
-<li>防伪装 <ul>
-<li>伪装分为客户端伪装和服务器伪装，通信双方携带证书，证书相当于身份证，有证书就认为合法，没有证书就认为非法，证书由第三方颁布，很难伪造</li>
-</ul>
-</li>
-<li>防篡改 <ul>
-<li>https对数据做了摘要，篡改数据会被感知到。hacker即使从中改了数据也白搭。</li>
-</ul>
-</li>
-</ul>
-<h3 id="https连接过程"><a href="#https连接过程" class="headerlink" title="https连接过程"></a>https连接过程</h3><p><strong>HTTPS（全称：HyperText Transfer Protocol over Secure Socket Layer），可以理解为HTTP+SSL/TLS， 即 HTTP 下加入 SSL 层，HTTPS 的安全基础是 SSL，因此加密的详细内容就需要 SSL，用于安全的 HTTP 数据传输。</strong></p>
-<ul>
-<li>客户端发送请求到服务器端</li>
-<li>服务器端返回证书和公开密钥，公开密钥作为证书的一部分而存在(此时公钥也在里面，其实这个就是为了安全的得到对方发公钥，CA使用 ca 自己的私钥进行加密的，所以客户端如果收到这个证书会用CA的公钥取解密，验证这个证书的真实性，证书的其他内容都可以被篡改，但是，证书的签名是ca用自己的私钥加散列处理的，没有人能够伪造得了，所以数据的可靠性提高了)</li>
-<li>客户端验证证书和公开密钥的有效性，如果有效，则生成共享密钥并使用公开密钥加密发送到服务器端</li>
-<li>服务器端使用私有密钥解密数据，并使用收到的共享密钥加密数据，发送到客户端</li>
-<li>客户端使用共享密钥解密数据</li>
-<li>SSL加密建立………</li>
-</ul>
-<h4 id="客户端认证的通信的过程"><a href="#客户端认证的通信的过程" class="headerlink" title="客户端认证的通信的过程"></a>客户端认证的通信的过程</h4><ul>
-<li>客户端需要认证的过程跟服务器端需要认证的过程基本相同，并且少了最开始的两步。这种情况都是证书存储在客户端，并且应用场景比较少，一般金融才使用，比如支付宝、银行客户端都需要安装证书</li>
-</ul>
-<h3 id="后续的问题"><a href="#后续的问题" class="headerlink" title="后续的问题"></a>后续的问题</h3><ul>
-<li><ul>
-<li>怎样保证公开密钥的有效性 <ul>
-<li>你也许会想到，怎么保证客户端收到的公开密钥是合法的，不是伪造的，证书很好的完成了这个任务。证书由权威的第三方机构颁发，并且对公开密钥做了签名。</li>
-</ul>
-</li>
-<li>https的缺点 <ul>
-<li>https保证了通信的安全，但带来了加密解密消耗计算机cpu资源的问题 ，不过，有专门的https加解密硬件服务器</li>
-</ul>
-</li>
-<li>各大互联网公司，百度、淘宝、支付宝、知乎都使用https协议，为什么？ <ul>
-<li>支付宝涉及到金融，所以出于安全考虑采用https这个，可以理解，为什么百度、知乎等也采用这种方式？为了防止运营商劫持！http通信时，运营商在数据中插入各种广告，用户看到后，怒火发到互联网公司，其实这些坏事都是运营商(移动、联通、电信)干的,用了https，运营商就没法插播广告篡改数据了。</li>
-</ul>
-</li>
-</ul>
-</li>
-</ul>
-<p>4.比较完整的过程：</p>
-<p><strong>1. 客户端发起HTTPS请求</strong></p>
-<p>　　这个没什么好说的，就是用户在浏览器里输入一个https网址，然后连接到server的443端口。</p>
-<p>　　<strong>2. 服务端的配置</strong></p>
-<p>　　采用HTTPS协议的服务器必须要有一套数字证书，可以自己制作，也可以向组织申请。区别就是自己颁发的证书需要客户端验证通过，才可以继续访问，而使用受信任的公司申请的证书则不会弹出提示页面(startssl就是个不错的选择，有1年的免费服务)。这套证书其实就是一对公钥和私钥。如果对公钥和私钥不太理解，可以想象成一把钥匙和一个锁头，只是全世界只有你一个人有这把钥匙，你可以把锁头给别人，别人可以用这个锁把重要的东西锁起来，然后发给你，因为只有你一个人有这把钥匙，所以只有你才能看到被这把锁锁起来的东西。</p>
-<p>　　<strong>3. 传送证书</strong></p>
-<p>　　这个证书其实就是公钥，只是包含了很多信息，如证书的颁发机构，过期时间等等。</p>
-<p>　　<strong>4. 客户端解析证书</strong></p>
-<p>　　这部分工作是有客户端的TLS来完成的，首先会验证公钥是否有效，比如颁发机构，过期时间等等，如果发现异常，则会弹出一个警告框，提示证书存在问题。如果证书没有问题，那么就生成一个随机值。然后用证书对该随机值进行加密。就好像上面说的，把随机值用锁头锁起来，这样除非有钥匙，不然看不到被锁住的内容。</p>
-<p>　　<strong>5. 传送加密信息</strong></p>
-<p>　　这部分传送的是用证书加密后的随机值，目的就是让服务端得到这个随机值，以后客户端和服务端的通信就可以通过这个随机值来进行加密解密了。</p>
-<p>　　<strong>6. 服务段解密信息</strong></p>
-<p>　　服务端用私钥解密后，得到了客户端传过来的随机值(私钥)，然后把内容通过该值进行对称加密。所谓对称加密就是，将信息和私钥通过某种算法混合在一起，这样除非知道私钥，不然无法获取内容，而正好客户端和服务端都知道这个私钥，所以只要加密算法够彪悍，私钥够复杂，数据就够安全。</p>
-<p>　　<strong>7. 传输加密后的信息</strong></p>
-<p>　　这部分信息是服务段用私钥加密后的信息，可以在客户端被还原。</p>
-<p>　　<strong>8. 客户端解密信息</strong></p>
-<p>　　客户端用之前生成的私钥解密服务段传过来的信息，于是获取了解密后的内容。整个过程第三方即使监听到了数据，也束手无策。</p>
-<p>5.总结整个过程：</p>
-<p>1.服务器向CA机构获取证书（假设这个证书伪造不了），当浏览器首次请求服务器的时候，服务器返回证书给浏览器。（证书包含：公钥+申请者与颁发者的相关信息+签名）</p>
-<p>2.浏览器得到证书后，开始验证证书的相关信息，证书有效（没过期等）。（验证过程，比较复杂，详见上文）。</p>
-<p>3.验证完证书后，如果证书有效，客户端是生成一个随机数，然后用证书中的公钥进行加密，加密后，发送给服务器，服务器用私钥进行解密，得到随机数。之后双方便开始用该随机数作为钥匙，对要传递的数据进行加密、解密。</p>
-<h4 id="小故事"><a href="#小故事" class="headerlink" title="小故事"></a>小故事</h4><p>故事的主人公是Bob，他有三个好朋友Pat、Doug和Susan。Bob经常跟他们写信，因为他的信是明文传输的，在传递过程可能被人截获偷窥，也可能被人截获然后又篡改了，更有可能别人伪装成Bob本人跟他的好朋友通信，总之是不安全的。他很苦恼，经过一番苦苦探索，诶，他发现计算机安全学里有一种叫非对称加密算法的东东，好像可以帮助他解决这个问题</p>
-<p><strong>说明：非对称加密算法（RSA）是内容加密的一类算法，它有两个秘钥：公钥与私钥。公钥是公开的钥匙，所有人都可以知道，私钥是保密的，只有持有者知道。通过公钥加密的内容，只能通过私钥解开。非对称加密算法的安全性很高，但是因为计算量庞大，比较消耗性能。</strong></p>
-<p>好了，来看看Bob是怎么应用非对称加密算法与他的好朋友通信的：</p>
-<p>1、首先Bob弄到了两把钥匙：公钥和私钥。</p>
-<p><img src="http://img.mp.itc.cn/upload/20170613/a5c6a09bf86244aaa7334162a972a9fa_th.jpg" alt="img"></p>
-<p>2、Bob自己保留下了私钥，把公钥复制成三份送给了他的三个好朋友Pat、Doug和Susan。</p>
-<p><img src="http://img.mp.itc.cn/upload/20170613/22a5fa80d9744671a8791b34b7c9bcb6_th.jpg" alt="img"></p>
-<p>3、此时，Bob总算可以安心地和他的好朋友愉快地通信了。比如Susan要和他讨论关于去哪吃午饭的事情，Susan就可以先把自己的内容（明文）首先用Bob送给他的公钥做一次加密，然后把加密的内容传送给Bob。Bob收到信后，再用自己的私钥解开信的内容。</p>
-<p><img src="http://img.mp.itc.cn/upload/20170613/9052aa6610c0474ab3c1d76ff2493846_th.jpg" alt="img"></p>
-<p><strong>说明</strong>：这其实是计算机安全学里<strong>加密</strong>的概念，加密的目的是为了不让别人看到传送的内容，加密的手段是通过一定的加密算法及约定的密钥进行的（比如上述用了非对称加密算法以及Bob的公钥），而解密则需要相关的解密算法及约定的秘钥（如上述用了非对称加密算法和Bob自己的私钥），可以看出加密是可逆的（可解密的）。</p>
-<p>4、Bob看完信后，决定给Susan回一封信。为了防止信的内容被篡改（或者别人伪装成他的身份跟Susan通信），他决定先对信的内容用hash算法做一次处理，得到一个字符串哈希值，Bob又用自己的私钥对哈希值做了一次加密得到一个签名，然后把签名和信（明文的）一起发送给Susan。</p>
-<p><img src="http://img.mp.itc.cn/upload/20170613/d17cf74b7e984f0d84ff77d4be596838_th.jpg" alt="img"></p>
-<p><img src="http://img.mp.itc.cn/upload/20170613/3cdfce04d0c7429bbadade7c2e3c94ba.jpg" alt="img"></p>
-<p><img src="http://img.mp.itc.cn/upload/20170613/3032507804044955aaa73b453f5aa4b7_th.jpg" alt="img"></p>
-<p><strong>说明</strong>：Bob的内容实质是明文传输的，所以这个过程是可以被人截获和窥探的，但是Bob不担心被人窥探，他担心的是内容被人篡改或者有人冒充自己跟Susan通信。这里其实涉及到了计算机安全学中的<strong>认证</strong>概念，Bob要向Susan证明通信的对方是Bob本人，另外也需要确保自己的内容是完整的。</p>
-<p>5、Susan接收到了Bob的信，首先用Bob给的公钥对签名作了解密处理，得到了哈希值A，然后Susan用了同样的Hash算法对信的内容作了一次哈希处理，得到另外一个哈希值B，对比A和B，如果这两个值是相同的，那么可以确认信就是Bob本人写的，并且内容没有被篡改过。</p>
-<p><img src="http://img.mp.itc.cn/upload/20170613/87fb6488c97d42a2b80a73c3377f0a74_th.jpg" alt="img"></p>
-<p><strong>说明</strong>：4跟5其实构成了一次完整的通过<strong>数字签名</strong>进行认证的过程。数字签名的过程简述为：发送方通过不可逆算法对内容text1进行处理（哈希），得到的结果值hash1，然后用私钥加密hash1得到结果值encry1。对方接收text1和encry1，用公钥解密encry1得到hash1，然后用text1进行同等的不可逆处理得到hash2，对hash1和hash2进行对比即可认证发送方。</p>
-<p>6、此时，另外一种比较复杂出现了，Bob是通过网络把公钥寄送给他的三个好朋友的，有一个不怀好意的家伙Jerry截获了Bob给Doug的公钥。Jerry开始伪装成Bob跟Doug通信，Doug感觉通信的对象不像是Bob，但是他又无法确认。</p>
-<p><img src="http://img.mp.itc.cn/upload/20170613/0d4eea71c9df4ebeb214be8eb64fcad0_th.jpg" alt="img"></p>
-<p>7、Bob最终发现了自己的公钥被Jerry截获了，他感觉自己的公钥通过网络传输给自己的小伙伴似乎也是不安全的，不怀好意的家伙可以截获这个明文传输的公钥。为此他想到了去第三方权威机构“证书中心”（certificate authority，简称CA）做认证。证书中心用自己的私钥对Bob的公钥和其它信息做了一次加密。这样Bob通过网络将数字证书传递给他的小伙伴后，小伙伴们先用CA给的公钥解密证书，这样就可以安全获取Bob的公钥了。</p>
-<p><img src="http://img.mp.itc.cn/upload/20170613/8c75b00d301f470a9f9645b5fe21ab77_th.jpg" alt="img"></p>
-<p>这时候有人会问 CA机构的公钥又是什么呢，既然是公钥，为什么小偷没有呢？</p>
-<p>其实CA的公钥所有人都可以有，但是私钥你不会有啊，也就是说这个证书使用ca的私钥进行加密的，别人伪造不了的，https中如果你想与服务端通信，那么服务端会返回给你这个证书，你可以使用CA的公钥对这个证书的真实性进行验证，这个证书中包含服务器的公钥，以及机构的签名，过期时间等，你用ca公钥解密后，对比这个值和CA的签名是否一致即可判断这个证书的真假，真的你使用，假的，自然拒绝与它通信。</p>
-<h4 id="SSL-TLS-协议握手细节"><a href="#SSL-TLS-协议握手细节" class="headerlink" title="SSL/TLS 协议握手细节"></a>SSL/TLS 协议握手细节</h4><p><strong>https是需要加密的，那么问题来了，在tcp/ip这么多层上（应用层，传输层，网络层）加在哪一层上好呢？</strong></p>
-<p><strong>应用层协议 http协议定义了包的结构，定义了报文的格式（写信的格式），     tcp 传输层协议（管家与管家通信说我要寄信了） 进行握手，连接通信三步，断开通信 四步    网络层协议（邮差），确定ip地址，方便传输 数据链路层（邮筒）底层协议 驱动程序</strong></p>
-<hr>
-<h2 id="SSL-TLS协议流程"><a href="#SSL-TLS协议流程" class="headerlink" title="SSL/TLS协议流程"></a>SSL/TLS协议流程</h2><ol>
-<li>浏览器将自己支持的一套加密算法发给服务器，同时发一个浏览器随机数。</li>
-<li>服务器向浏览器发送选择的加密算法、服务器生成的随机数、服务器数字证书。</li>
-<li>浏览器收到证书后对证书的CA签名进行验证，如果验证通过，会从证书中拿到服务器的公钥。</li>
-<li>浏览器对浏览器随机数+服务器随机数进行处理，生成预备主密码。</li>
-<li>浏览器用服务器的公钥对预备主密码进行加密，发给服务器。</li>
-<li>服务器收到后使用自己的私钥解密出预备主密钥。</li>
-<li>浏览器和服务器分别使用预备主密钥和两个随机数，生成共享主密钥</li>
-<li>二者使用共享主密钥，使用对称加密算法加密数据。</li>
-</ol>
-<p>每次https请求，都需要使用上面的流程握手协商吗？</p>
-<ul>
-<li><p>答：第一次协商主密钥后，后面的请求就使用主密钥进行对称加密通信，不需要再协商。通过会话id来识别。</p>
-</li>
-<li><p><a href="https://zhuanlan.zhihu.com/p/31880655" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/31880655</a>  https协议参考</p>
-<p>SSL/TLS协议是一个安全套件，加在应用层和传输层之间的。可以用在不同的协议上，进行数据加密，例如http. pop3,smtp等</p>
-</li>
-</ul>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/16/https/" data-id="ckb0kthsg000fg8w1c2ce0rz7" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-密码学初探" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/15/密码学初探/" class="article-date">
-  <time datetime="2020-05-15T10:07:50.000Z" itemprop="datePublished">2020-05-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/15/密码学初探/">密码学初探</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="密码学工具箱"><a href="#密码学工具箱" class="headerlink" title="密码学工具箱"></a>密码学工具箱</h4><h6 id="信息安全所面临的威胁"><a href="#信息安全所面临的威胁" class="headerlink" title="信息安全所面临的威胁"></a>信息安全所面临的威胁</h6><p><img src="../img/pwd/tool.png" alt></p>
-<h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><p><strong>对称加密</strong></p>
-<h6 id="一个密钥加密解密，速度快"><a href="#一个密钥加密解密，速度快" class="headerlink" title="一个密钥加密解密，速度快"></a>一个密钥加密解密，速度快</h6><ul>
-<li>DES</li>
-<li>AES</li>
-</ul>
-<p><strong>非对称加密</strong></p>
-<h6 id="两个密钥。公钥加密，私钥可解密。速度慢"><a href="#两个密钥。公钥加密，私钥可解密。速度慢" class="headerlink" title="两个密钥。公钥加密，私钥可解密。速度慢"></a>两个密钥。公钥加密，私钥可解密。速度慢</h6><ul>
-<li>RSA</li>
-</ul>
-<h5 id="举例说明非对称加密的场景"><a href="#举例说明非对称加密的场景" class="headerlink" title="举例说明非对称加密的场景"></a>举例说明非对称加密的场景</h5><p>两个主人公 Alice Bob ，消息的发送者Alice，消息的接收者Bob</p>
-<p>1.Bob 生成密钥对（Bob的公钥，Bob的私钥）</p>
-<p>2.Bob将公钥发送给Alice （怎么发的先不管）</p>
-<p>3.Alice用Bob的公钥对消息进行加密，将消息变成密文</p>
-<p>4.Alice 将密文消息发送给Bob</p>
-<p>5.Bob 用自己的私钥对密文进行解密</p>
-<p>问题来了，这样加密消息虽然安全，但非对称加密速度太慢，如果加密一大段消息就更慢了，往下看：</p>
-<p><strong>用对称提高速度，用公钥保护会话密钥 ——- 混合密码系统</strong></p>
-<p>1.发送方用对称密码加密消息（速度快）</p>
-<p>2.再使用接收方的公钥加密会话密钥(上面的加密信息)（非对称加密）此时不加密大段的消息，而是加密一个随机的字符串</p>
-<p>3.接收方接收到后，使用自己的私钥解密对方使用公钥加密的会话密钥，再使用会话密钥解密对称加密的消息即可（此时速度快，又保证了安全性）</p>
-<p><strong>以上解决了数据的机密性问题，即不会被窃取，泄露，比如果被人看到。。。</strong></p>
-<h4 id="单向散列-（hash-哈希）"><a href="#单向散列-（hash-哈希）" class="headerlink" title="单向散列 （hash 哈希）"></a>单向散列 （hash 哈希）</h4>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/15/密码学初探/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/15/密码学初探/" data-id="ckb0ktht70013g8w14fog5z25" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https基础/">https基础</a></li></ul>
 
     </footer>
   </div>
@@ -891,7 +804,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -901,7 +814,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 13.33px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -923,6 +836,14 @@
       <ul>
         
           <li>
+            <a href="/2020/06/09/react-生命周期等/">react 生命周期等</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/06/手写-react/">手写 react</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/01/webpack-笔记/">webpack 笔记</a>
           </li>
         
@@ -932,14 +853,6 @@
         
           <li>
             <a href="/2020/05/31/前端模块化、工程化/">前端模块化、工程化</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/22/跨域/">跨域</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/20/promise/">promise</a>
           </li>
         
       </ul>

@@ -62,6 +62,132 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-外边距合并" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/05/外边距合并/" class="article-date">
+  <time datetime="2020-05-05T05:43:16.000Z" itemprop="datePublished">2020-05-05</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/05/外边距合并/">外边距合并</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="盒模型"><a href="#盒模型" class="headerlink" title="盒模型"></a>盒模型</h4><h6 id="标准盒模型"><a href="#标准盒模型" class="headerlink" title="标准盒模型"></a>标准盒模型</h6><p>设置的width 和 height 指的是Content,margin不计入实际大小，但会影响盒子实际占用空间</p>
+<h5 id="IE盒模型"><a href="#IE盒模型" class="headerlink" title="IE盒模型"></a>IE盒模型</h5><p>设置的width和height包含内边距和边框</p>
+<p>想让页面所有的盒子都使用 ie 盒模型 分析下面哪种写法更好</p>
+<figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line">*&#123;</span><br><span class="line">    <span class="comment">/* 默认是 content-box */</span></span><br><span class="line">	<span class="attribute">box-sizing</span>:border-box;   </span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="selector-tag">html</span>&#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>:border-box;</span><br><span class="line">&#125;</span><br><span class="line">*,*<span class="selector-pseudo">::before</span>, *<span class="selector-pseudo">::after</span> &#123;</span><br><span class="line">    <span class="attribute">box-sizing</span>:inherit;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">/* 下面这种写法更好，我们给html设置 box-sizing,这个属性是可继承的属性，html是最顶点的标签，下面所有的标签都可以继承它的可继承属性，这样写的好处是，当我们想要改变下面某个层级的样式时，我们直接给这个层级的最高层改变即可，它下面的子元素会继承父类的样式 */</span></span><br></pre></td></tr></table></figure>
+<h4 id="样式继承"><a href="#样式继承" class="headerlink" title="样式继承"></a>样式继承</h4><h5 id="常见继承属性"><a href="#常见继承属性" class="headerlink" title="常见继承属性"></a>常见继承属性</h5><p><strong>color、 font-size、font-family、line-height</strong></p>
+<h5 id="非继承属性"><a href="#非继承属性" class="headerlink" title="非继承属性"></a>非继承属性</h5><p><strong>border、background、margin、padding、display</strong></p>
+<p>这个链接查看属性是否可继承</p>
+<p><a href="https://www.w3.org/TR/CSS21/propidx.html" target="_blank" rel="noopener">https://www.w3.org/TR/CSS21/propidx.html</a></p>
+<h6 id="控制继承"><a href="#控制继承" class="headerlink" title="控制继承"></a>控制继承</h6><p>inherit 使用继承自父级的样式</p>
+<p>initial  使用该属性的initial value（该默认值不是前面讲过的浏 览器默认值 user agent stylesheet）</p>
+<p>上面那个链接可以查看属性的默认值</p>
+<p>unset  如果是继承属性则继承父级，如果是非继承属性就用 initial value</p>
+<p>margin-left:auto 会实现居右的效果，因为左侧是auto的；</p>
+<h4 id="宽度-100"><a href="#宽度-100" class="headerlink" title="宽度 100%"></a>宽度 100%</h4><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">/* width: 100%代表什么意思？*/</span></span><br><span class="line"><span class="comment">/* height: 100% 怎么用？*/</span></span><br><span class="line">这是一个相对的概念，相对于父容器内容的高度或者宽度 注意是内容不加内边距和边框，设置自己 内容 的宽度或者高度与父容器的 内容 的宽度和高度一样，撑满父容器；注意仅仅是内容，不包括边框和<span class="selector-tag">padding</span>,如果有<span class="selector-tag">padding</span>和<span class="selector-tag">border</span> 会超出父容器；父容器一定要设置了宽度和高度，子容器才可以这样写。</span><br></pre></td></tr></table></figure>
+<h4 id="外边距概念-border、background、margin、padding、display"><a href="#外边距概念-border、background、margin、padding、display" class="headerlink" title="外边距概念 border、background、margin、padding、display"></a>外边距概念 border、background、margin、padding、display</h4><p><strong>外边距合并指的是，当两个垂直外边距相遇时，它们将形成一个外边距。</strong></p>
+<p><strong>合并后的外边距的高度等于两个发生合并的外边距的高度中的较大者。</strong></p>
+<p>块级元素的上外边距和下外边距有时 会合并（或折叠）为一个外边距，其 大小取其中的最大者 • 浮动元素和绝对定位元素的外边距不 会折叠</p>
+<p>相邻元素  相邻的两个块级元素之间的外边距会折叠</p>
+<p>父子元素  如果在父元素与其第一个子元素之间不存在边框、内边距、 行内内容，也没有创建块格式化上下文、或者清除浮动将两者的 margin-top 分开，父子外边距会折叠</p>
+<p>空的块级元素  如果一个块级元素中不包含任何内容，并且在其 margin-top 与 margin-bottom 之间没有边框、内边距、行内内容、 height、min-height 将两者分开，则该元素的上下外边距会 折叠</p>
+<p><strong>只有块级元素，上下边距会合并，左右并不会</strong></p>
+<h5 id="如果参与折叠的外边距中包含负值，折叠后的外边距的值为最大的正边距与最-小的负边距（即绝对值最大的负边距）的和。-如果所有参与折叠的外边距都为负，折叠后的外边距的值为最小的负边距的值。-这一规则适用于相邻元素和嵌套元素。"><a href="#如果参与折叠的外边距中包含负值，折叠后的外边距的值为最大的正边距与最-小的负边距（即绝对值最大的负边距）的和。-如果所有参与折叠的外边距都为负，折叠后的外边距的值为最小的负边距的值。-这一规则适用于相邻元素和嵌套元素。" class="headerlink" title="如果参与折叠的外边距中包含负值，折叠后的外边距的值为最大的正边距与最 小的负边距（即绝对值最大的负边距）的和。 如果所有参与折叠的外边距都为负，折叠后的外边距的值为最小的负边距的值。 这一规则适用于相邻元素和嵌套元素。"></a>如果参与折叠的外边距中包含负值，折叠后的外边距的值为最大的正边距与最 小的负边距（即绝对值最大的负边距）的和。 如果所有参与折叠的外边距都为负，折叠后的外边距的值为最小的负边距的值。 这一规则适用于相邻元素和嵌套元素。</h5><h6 id="有哪些方法可以阻止合并？"><a href="#有哪些方法可以阻止合并？" class="headerlink" title="有哪些方法可以阻止合并？"></a>有哪些方法可以阻止合并？</h6><ol>
+<li><p>加border </p>
+</li>
+<li><p>加padding </p>
+</li>
+<li>创建块级格式化上下文</li>
+<li>改变盒子特性（如浮动、绝对定位、改变display）</li>
+</ol>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">   <span class="tag">&lt;<span class="name">h1</span> <span class="attr">class</span>=<span class="string">"son"</span>&gt;</span>son<span class="tag">&lt;/<span class="name">h1</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">.box&#123;</span><br><span class="line">  width:400px;</span><br><span class="line">  background:red;</span><br><span class="line">  height:50px;</span><br><span class="line">&#125;</span><br><span class="line">.son&#123;</span><br><span class="line">  background:yellow;</span><br><span class="line">  height:100%;</span><br><span class="line">  width:200px;</span><br><span class="line">&#125;</span><br><span class="line">效果如下图</span><br></pre></td></tr></table></figure>
+<p><img src="../img/边距合并/合并1.png" alt></p>
+<p><img src="../img/边距合并/合并2.png" alt></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/05/外边距合并/" data-id="ckb7mn2k7000xzkw17cs7hhs1" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-dom-相关操作" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/02/dom-相关操作/" class="article-date">
+  <time datetime="2020-05-02T09:29:26.000Z" itemprop="datePublished">2020-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/02/dom-相关操作/">dom 相关操作</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="DOM"><a href="#DOM" class="headerlink" title="DOM"></a>DOM</h4><p>文档对象模型是HTML的编程接口。用对象和HTML结构一一映射，通过修改对象达到修改HTML节点的目的。</p>
+<p>document 的基本信息</p>
+<ul>
+<li>document.head   获取文档的头部</li>
+<li>document.body</li>
+<li>document.title</li>
+<li>document.location   地址跳转相关操作</li>
+</ul>
+<p>​        document.location.href</p>
+<p>​         document.location.hash</p>
+<p>​         document.location.search</p>
+<p>​         document.location.reload()</p>
+<p>​         document.location.assign(‘<a href="https://jirengucom&#39;)" target="_blank" rel="noopener">https://jirengucom&#39;)</a>;</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> url = <span class="built_in">document</span>.createElement(<span class="string">'a'</span>);</span><br><span class="line">url.href = <span class="string">'https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container'</span>;</span><br><span class="line"><span class="built_in">console</span>.log(url.href);      <span class="comment">// https://developer.mozilla.org/en-US/search?q=URL#search-results-close-container</span></span><br><span class="line"><span class="built_in">console</span>.log(url.protocol);  <span class="comment">// https:</span></span><br><span class="line"><span class="built_in">console</span>.log(url.host);      <span class="comment">// developer.mozilla.org</span></span><br><span class="line"><span class="built_in">console</span>.log(url.hostname);  <span class="comment">// developer.mozilla.org</span></span><br><span class="line"><span class="built_in">console</span>.log(url.port);      <span class="comment">// (blank - https assumes port 443)</span></span><br><span class="line"><span class="built_in">console</span>.log(url.pathname);  <span class="comment">// /en-US/search</span></span><br><span class="line"><span class="built_in">console</span>.log(url.search);    <span class="comment">// ?q=URL</span></span><br><span class="line"><span class="built_in">console</span>.log(url.hash);      <span class="comment">// #search-results-close-container</span></span><br><span class="line"><span class="built_in">console</span>.log(url.origin);    <span class="comment">// https://developer.mozilla.org</span></span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2020/05/02/dom-相关操作/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/02/dom-相关操作/" data-id="ckb7mn2iy000dzkw1td193zh3" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dom/">dom</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-闭包" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/02/闭包/" class="article-date">
@@ -96,7 +222,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/02/闭包/" data-id="ckb0kthtb0018g8w1m5o8slh0" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/02/闭包/" data-id="ckb7mn2l9001bzkw1a2jene5n" class="article-share-link">Share</a>
       
       
     </footer>
@@ -137,7 +263,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/01/不同载体中的方法写法/" data-id="ckb0kthsz000wg8w1n3yvqddy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/01/不同载体中的方法写法/" data-id="ckb7mn2k8000yzkw1u2xgqppb" class="article-share-link">Share</a>
       
       
     </footer>
@@ -192,7 +318,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ckb0ktht1000yg8w1pq9oo3kd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ckb7mn2jk000jzkw15k6op94a" class="article-share-link">Share</a>
       
       
     </footer>
@@ -249,7 +375,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/28/定时器/" data-id="ckb0ktht60012g8w1adv5o55l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/28/定时器/" data-id="ckb7mn2kw0013zkw16qxul2i4" class="article-share-link">Share</a>
       
       
     </footer>
@@ -323,7 +449,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ckb0ktht80014g8w100lzytgw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ckb7mn2l40019zkw1h8dydnp4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
@@ -379,7 +505,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/26/Math-Date-API/" data-id="ckb0kthrv0002g8w12p3y2dim" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/26/Math-Date-API/" data-id="ckb7mn2ho0004zkw1pdrfoek9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
@@ -428,7 +554,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/26/对象与json/" data-id="ckb0kthtc0019g8w1eg9nknko" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/26/对象与json/" data-id="ckb7mn2kz0015zkw13cn3zh2a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li></ul>
@@ -473,164 +599,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/25/递归优化/" data-id="ckb0kthtb0017g8w1m0qehwx2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/25/递归优化/" data-id="ckb7mn2l30018zkw1w3xv1fk6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hexo备份" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/24/hexo备份/" class="article-date">
-  <time datetime="2020-04-24T11:05:12.000Z" itemprop="datePublished">2020-04-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/hexo备份/">hexo备份</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>作者：直上云霄<br>链接：<a href="https://www.zhihu.com/question/21193762/answer/489124966" target="_blank" rel="noopener">https://www.zhihu.com/question/21193762/answer/489124966</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
-<h2 id="git分支进行多终端工作"><a href="#git分支进行多终端工作" class="headerlink" title="git分支进行多终端工作"></a><strong>git分支进行多终端工作</strong></h2><p>问题来了，如果你现在在自己的笔记本上写的博客，部署在了网站上，那么你在家里用台式机，或者实验室的台式机，发现你电脑里面没有博客的文件，或者要换电脑了，最后不知道怎么移动文件，怎么办？</p>
-<p>在这里我们就可以利用git的分支系统进行多终端工作了，这样每次打开不一样的电脑，只需要进行简单的配置和在github上把文件同步下来，就可以无缝操作了。</p>
-<h2 id="机制"><a href="#机制" class="headerlink" title="机制"></a><strong>机制</strong></h2><p>机制是这样的，由于<code>hexo d</code>上传部署到github的其实是hexo编译后的文件，是用来生成网页的，不包含源文件。</p>
-<p><img src="https://pic3.zhimg.com/50/v2-32ab30d0d28b916a204c03de4ed0fc4f_hd.jpg" alt="img"><img src="https://pic3.zhimg.com/80/v2-32ab30d0d28b916a204c03de4ed0fc4f_720w.jpg" alt="img"></p>
-<p>也就是上传的是在本地目录里自动生成的<code>.deploy_git</code>里面。</p>
-<p>其他文件 ，包括我们写在source 里面的，和配置文件，主题文件，都没有上传到github</p>
-<p><img src="https://pic4.zhimg.com/50/v2-59bb330178a4e010d9818911f789082b_hd.jpg" alt="img"><img src="https://pic4.zhimg.com/80/v2-59bb330178a4e010d9818911f789082b_720w.jpg" alt="img"></p>
-<p>所以可以利用git的分支管理，将源文件上传到github的另一个分支即可。</p>
-<h2 id="上传分支"><a href="#上传分支" class="headerlink" title="上传分支"></a><strong>上传分支</strong></h2><p>首先，先在github上新建一个hexo分支，如图：</p>
-<p><img src="https://pic1.zhimg.com/50/v2-ebb3e05632e85ab036663390305caa1c_hd.jpg" alt="img"><img src="https://pic1.zhimg.com/80/v2-ebb3e05632e85ab036663390305caa1c_720w.jpg" alt="img"></p>
-<p>然后在这个仓库的settings中，选择默认分支为hexo分支（这样每次同步的时候就不用指定分支，比较方便）。</p>
-<p><img src="https://pic2.zhimg.com/50/v2-1899b6219f3787832652813b958b9b3d_hd.jpg" alt="img"><img src="https://pic2.zhimg.com/80/v2-1899b6219f3787832652813b958b9b3d_720w.jpg" alt="img"></p>
-<p>然后在本地的任意目录下，打开git bash，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:ZJUFangzh/ZJUFangzh.github.io.git</span><br></pre></td></tr></table></figure>
-<p>将其克隆到本地，因为默认分支已经设成了hexo，所以clone时只clone了hexo。</p>
-<p>接下来在克隆到本地的<code>ZJUFangzh.github.io</code>中，把除了.git 文件夹外的所有文件都删掉</p>
-<p> 把之前我们写的博客源文件全部复制过来，除了<code>.deploy_git</code>。这里应该说一句，复制过来的源文件应该有一个<code>.gitignore</code>，用来忽略一些不需要的文件，如果没有的话，自己新建一个，在里面写上如下，表示这些类型文件不需要git：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.log</span><br><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy*/</span><br></pre></td></tr></table></figure>
-<p>注意，如果你之前克隆过theme中的主题文件，那么应该把主题文件中的<code>.git</code>文件夹删掉，因为git不能嵌套上传，最好是显示隐藏文件，检查一下有没有，否则上传的时候会出错，导致你的主题文件无法上传，这样你的配置在别的电脑上就用不了了。</p>
-<p>而后</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit –m &quot;add branch&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-<p>这样就上传完了，可以去你的github上看一看hexo分支有没有上传上去，其中<code>node_modules</code>、<code>public</code>、<code>db.json</code>已经被忽略掉了，没有关系，不需要上传的，因为在别的电脑上需要重新输入命令安装 。</p>
-<p><img src="https://pic4.zhimg.com/50/v2-a94330ca825f4debde8ce7ceeb8f8394_hd.jpg" alt="img"><img src="https://pic4.zhimg.com/80/v2-a94330ca825f4debde8ce7ceeb8f8394_720w.jpg" alt="img"></p>
-<p>这样就上传完了。</p>
-<h2 id="更换电脑操作"><a href="#更换电脑操作" class="headerlink" title="更换电脑操作"></a><strong>更换电脑操作</strong></h2><p>一样的，跟之前的环境搭建一样，</p>
-<ul>
-<li>安装git</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
-<ul>
-<li>设置git全局邮箱和用户名</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourgithubname&quot;</span><br><span class="line">git config --global user.email &quot;yourgithubemail&quot;</span><br></pre></td></tr></table></figure>
-<ul>
-<li>设置ssh key</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br><span class="line">#生成后填到github和coding上（有coding平台的话）</span><br><span class="line">#验证是否成功</span><br><span class="line">ssh -T git@github.com</span><br><span class="line">ssh -T git@git.coding.net #(有coding平台的话)</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装nodejs</li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nodejs</span><br><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure>
-<ul>
-<li>安装hexo  </li>
-</ul>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
-<p>但是已经不需要初始化了，</p>
-<p>直接在任意文件夹下，</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@………………</span><br></pre></td></tr></table></figure>
-<p>然后进入克隆到的文件夹：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd xxx.github.io</span><br><span class="line">npm install</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
-<p>生成，部署：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
-<p>然后就可以开始写你的新博客了</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new newpage</span><br></pre></td></tr></table></figure>
-<p><strong>Tips:</strong></p>
-<ol>
-<li>不要忘了，每次写完最好都把源文件上传一下</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit –m &quot;xxxx&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
-<ol>
-<li>如果是在已经编辑过的电脑上，已经有clone文件夹了，那么，每次只要和远端同步一下就行了</li>
-</ol>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/hexo备份/" data-id="ckb0kthsd000dg8w1tvks0i7o" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js数组字符串相关api" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/24/js数组字符串相关api/" class="article-date">
-  <time datetime="2020-04-24T07:17:44.000Z" itemprop="datePublished">2020-04-24</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/24/js数组字符串相关api/">js数组字符串相关api</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="字符串"><a href="#字符串" class="headerlink" title="字符串"></a>字符串</h4><p>写法：</p>
-<ul>
-<li>双引号</li>
-<li>单引号</li>
-<li><code></code>（es6写法）</li>
-</ul>
-<h4 id="长字符串"><a href="#长字符串" class="headerlink" title="长字符串"></a>长字符串</h4><ul>
-<li>可以用+号拼接</li>
-<li>转义掉最后面的换行符</li>
-<li><code></code>长字符串</li>
-</ul>
-<p>例如： let longStr1 = ‘hello ‘+’world’</p>
-<p>let longStr2 =&#96;饥人谷<br>                             培养有灵魂的工程师&#96;  //此时可以包含回车，会正常输出换行，即按照显示的格式输出</p>
-<p>let longStr3 = ‘hello\<br>                                name’   此时，\转义掉该行的换行符</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/24/js数组字符串相关api/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ckb0kthso000mg8w1u159ku4b" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -656,7 +629,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -666,7 +639,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 13.33px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -688,6 +661,14 @@
       <ul>
         
           <li>
+            <a href="/2020/06/09/react-生命周期等/">react 生命周期等</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/06/手写-react/">手写 react</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/01/webpack-笔记/">webpack 笔记</a>
           </li>
         
@@ -697,14 +678,6 @@
         
           <li>
             <a href="/2020/05/31/前端模块化、工程化/">前端模块化、工程化</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/22/跨域/">跨域</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/20/promise/">promise</a>
           </li>
         
       </ul>
