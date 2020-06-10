@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>react-高阶 | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="代码分割动态加载js 或者组件文件1234567//点击按钮才会动态引入文件，不会再刚加载时就引入 handleClick=()=&amp;gt;&amp;#123;        import (&apos;./advance/math&apos;).then((math)=&amp;gt;&amp;#123;            //使用 引入来的 js 文件中的功能          this.setState(&amp;#123;res:math">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-高阶">
+<meta property="og:url" content="http://yoursite.com/2020/06/10/react-高阶/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="代码分割动态加载js 或者组件文件1234567//点击按钮才会动态引入文件，不会再刚加载时就引入 handleClick=()=&amp;gt;&amp;#123;        import (&apos;./advance/math&apos;).then((math)=&amp;gt;&amp;#123;            //使用 引入来的 js 文件中的功能          this.setState(&amp;#123;res:math">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-10T09:42:28.802Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react-高阶">
+<meta name="twitter:description" content="代码分割动态加载js 或者组件文件1234567//点击按钮才会动态引入文件，不会再刚加载时就引入 handleClick=()=&amp;gt;&amp;#123;        import (&apos;./advance/math&apos;).then((math)=&amp;gt;&amp;#123;            //使用 引入来的 js 文件中的功能          this.setState(&amp;#123;res:math">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-react-高阶" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/10/react-高阶/" class="article-date">
+  <time datetime="2020-06-10T08:33:42.000Z" itemprop="datePublished">2020-06-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      react-高阶
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h4><h6 id="动态加载js-或者组件文件"><a href="#动态加载js-或者组件文件" class="headerlink" title="动态加载js 或者组件文件"></a>动态加载js 或者组件文件</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击按钮才会动态引入文件，不会再刚加载时就引入 </span></span><br><span class="line">handleClick=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">import</span> (<span class="string">'./advance/math'</span>).then(<span class="function">(<span class="params">math</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="comment">//使用 引入来的 js 文件中的功能</span></span><br><span class="line">          <span class="keyword">this</span>.setState(&#123;<span class="attr">res</span>:math.add(<span class="number">3</span>,<span class="number">4</span>)&#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h6 id="懒加载-可以做到优雅降级，在引入文件未完全加载进来时，可以在页面展示一些预处理页面，例如Loading-等，使用时需要-suspense-标签包裹"><a href="#懒加载-可以做到优雅降级，在引入文件未完全加载进来时，可以在页面展示一些预处理页面，例如Loading-等，使用时需要-suspense-标签包裹" class="headerlink" title="懒加载 可以做到优雅降级，在引入文件未完全加载进来时，可以在页面展示一些预处理页面，例如Loading 等，使用时需要 suspense 标签包裹"></a>懒加载 可以做到优雅降级，在引入文件未完全加载进来时，可以在页面展示一些预处理页面，例如Loading 等，使用时需要 suspense 标签包裹</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Button = React.lazy(<span class="function"><span class="params">()</span>=&gt;</span> <span class="keyword">import</span>(<span class="string">'./Button'</span>));</span><br><span class="line"></span><br><span class="line"> &lt;Suspense fallback = &#123;&lt;div&gt;Loading......&lt;<span class="regexp">/div&gt;&#125;&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Button/</span>&gt;</span><br><span class="line"> &lt;<span class="regexp">/Suspense&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Fragments</strong></p>
+<h6 id="react-要求我们的组件中的jsx-只能拥有一个顶级标签，为了解决这个问题我们可以使用一个空标签或者-Fragment-标签包裹（这个标签不会再页面上展示，仅起到语法作用）"><a href="#react-要求我们的组件中的jsx-只能拥有一个顶级标签，为了解决这个问题我们可以使用一个空标签或者-Fragment-标签包裹（这个标签不会再页面上展示，仅起到语法作用）" class="headerlink" title="react 要求我们的组件中的jsx 只能拥有一个顶级标签，为了解决这个问题我们可以使用一个空标签或者 Fragment 标签包裹（这个标签不会再页面上展示，仅起到语法作用）"></a>react 要求我们的组件中的jsx 只能拥有一个顶级标签，为了解决这个问题我们可以使用一个空标签或者 Fragment 标签包裹（这个标签不会再页面上展示，仅起到语法作用）</h6><h4 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> 组件写法  注意 <span class="title">function</span> 方式的组件不用继承 <span class="title">component</span>,手写 <span class="title">react</span>时候想想是怎么处理的，使我们手动给它创造了一个 <span class="title">class</span></span></span><br><span class="line"><span class="function"><span class="title">function</span> 组件名称(<span class="params">props</span>)</span>&#123;</span><br><span class="line">	......</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">也可以写成,一样的</span><br><span class="line"><span class="keyword">const</span> 组件名 = <span class="function"><span class="params">props</span> =&gt;</span> &#123;......&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="react-传递数据，父组件向子组件传值通过-props-属性，层层传递"><a href="#react-传递数据，父组件向子组件传值通过-props-属性，层层传递" class="headerlink" title="react 传递数据，父组件向子组件传值通过 props 属性，层层传递"></a>react 传递数据，父组件向子组件传值通过 props 属性，层层传递</h6><h6 id="层层传递-如果层级太多，代码冗余"><a href="#层层传递-如果层级太多，代码冗余" class="headerlink" title="层层传递 如果层级太多，代码冗余"></a>层层传递 如果层级太多，代码冗余</h6><p>context 传递方式</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ThemeContext = React.createContext();</span><br><span class="line"><span class="comment">// 在传递的组件地方 使用 这个标签 themeContext.provider 包裹 提供要传递的 value</span></span><br><span class="line">&lt;ThemeCOntext.Provider value=<span class="string">"传递的内容"</span>&gt;</span><br><span class="line"> &lt;组件/&gt;   <span class="comment">// 组件本身呢里面也包含组件a,b,c，d,我们要把这个值传递到 d上面，那么我们就在 d 中接收</span></span><br><span class="line"> &lt;<span class="regexp">/ThemeContenxt.Provider&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 在接收的组件内部定义 一个静态属性 等于这个标签对象，直接使用 this.context 获取</span></span><br><span class="line"><span class="regexp">在 d中 定义 static abc = ThemeContext</span></span><br><span class="line"><span class="regexp">使用 this.context 获取到传递过来的内容</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 注意，如果是用 function 方式写的，有一点不同之处在于，接收方无需定义 静态属性指向这个标签，直接 在 return 中使用 &lt;ThemeContext.Consumer&gt;&#123;val=&gt;(包裹这个组件的内容并且这是一个回调箭头函数,val 就是传递来的对象)&#125;&lt;/</span>Th&gt;eContext.Consumer&gt;  例如：</span><br><span class="line"><span class="keyword">const</span> Button = <span class="function">(<span class="params">props</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">    	&lt;Theme.context.consumer&gt;</span><br><span class="line">        &#123;val=&gt;(<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">         	val.a,val.c......</span></span><br><span class="line"><span class="xml">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">        &#125;</span><br><span class="line">        &lt;<span class="regexp">/Theme.context.consumer&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="数据传递"><a href="#数据传递" class="headerlink" title="数据传递"></a>数据传递</h4><h6 id="子组件向父组件传值"><a href="#子组件向父组件传值" class="headerlink" title="子组件向父组件传值"></a>子组件向父组件传值</h6><h6 id="当子组件中的数据发生变化时，调用父组件中的方法来改变，这种方式的前提是父子组件的数据源都来自于-state-中。例如："><a href="#当子组件中的数据发生变化时，调用父组件中的方法来改变，这种方式的前提是父子组件的数据源都来自于-state-中。例如：" class="headerlink" title="当子组件中的数据发生变化时，调用父组件中的方法来改变，这种方式的前提是父子组件的数据源都来自于 state 中。例如："></a>当子组件中的数据发生变化时，调用父组件中的方法来改变，这种方式的前提是父子组件的数据源都来自于 state 中。例如：</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 父组件</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    	&lt;div&gt;</span><br><span class="line">         	&lt;Son value=&#123;<span class="keyword">this</span>.state.son&#125; onChange=<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;<span class="keyword">this</span>.setState(&#123;<span class="attr">first</span>:e.target.value&#125;)&#125;/&gt;</span><br><span class="line">			&lt;p&gt;son : &#123;<span class="keyword">this</span>.state.son&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">         &lt;/</span>div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//first 组件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">first</span>(<span class="params">props</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    	&lt;input value = &#123;props.value&#125; onChange=&#123;props.onChange&#125;&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 刚开始子组件的值是父组件通过 props 传递来的，当子组件的值发生改变时调用传递来的onchange方法，也就是父组件的 oncahnge,这个方法将子组件现在的值更新到 state 中，然后父组件中更新，又传递给子组件，达到了父组件也更新的目的</span></span><br></pre></td></tr></table></figure>
+<h4 id="错误边界"><a href="#错误边界" class="headerlink" title="错误边界"></a>错误边界</h4><h4 id="非受控组件与Refs"><a href="#非受控组件与Refs" class="headerlink" title="非受控组件与Refs"></a>非受控组件与Refs</h4><p>如何获取要操作的这个 dom?</p>
+<p><strong>第一步：</strong> 在组件内部创建一个 React.createRef() 对象，绑定到当前组件上，也就是赋值给 this.属性（在构造函数中），然后下次就可以通过 this.属性获取到这个对象了，然后在 render() 中，一般都在这里返回 dom 的，我们在需要操控的dom上加上 ref = {this.属性}</p>
+<p>在需要时，就能通过 this.属性.current.  什么什么 —–  获取到这个对象了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/10/react-高阶/" data-id="ckb968fjw000xzkw1ubmurexc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/09/react-生命周期等/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">react 生命周期等</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 17.5px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/10/react-高阶/">react-高阶</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/09/react-生命周期等/">react 生命周期等</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/06/手写-react/">手写 react</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/webpack-笔记/">webpack 笔记</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/node-js-commonJs规范/">node.js commonJs规范</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

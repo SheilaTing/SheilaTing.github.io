@@ -62,6 +62,51 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-递归优化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/25/递归优化/" class="article-date">
+  <time datetime="2020-04-25T02:18:19.000Z" itemprop="datePublished">2020-04-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/25/递归优化/">递归优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="递归实现N的阶乘"><a href="#递归实现N的阶乘" class="headerlink" title="递归实现N的阶乘"></a>递归实现N的阶乘</h4><p>阶乘的概念   假如 n =5;  则 5！= 5*4！ 4！=4*3！ 3!=3*2! 2! = 2*1！ 1！= 1；基本上就是连乘的效果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n===<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;  <span class="comment">//如果 n 为1 则返回 1的阶乘 结果1</span></span><br><span class="line">     <span class="keyword">return</span> n*(fact(n<span class="number">-1</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//普通方法实现n的阶乘</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = <span class="number">1</span>;  <span class="comment">//最终返回的阶乘结果，之所以是1，是因为阶乘的最小结果就是1;就是1的阶乘</span></span><br><span class="line">    <span class="comment">//然后分析，数字n 肯定是大于0的数字对吧，所以我们要实现的效果就是 1*（n-1）,er在这个过程		//中，n会逐渐递减,所以考虑使用循环来实现 这里使用while循环，当然也可以使用 for</span></span><br><span class="line">    <span class="keyword">while</span>(n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">           res*=n;</span><br><span class="line">           n--;</span><br><span class="line">          &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//for 循环实现方式，同上</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res =<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;n&gt;<span class="number">0</span>;n--)&#123;</span><br><span class="line">        res*=n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fact(<span class="number">5</span>));</span><br></pre></td></tr></table></figure>
+<h4 id="实现斐波那契数列"><a href="#实现斐波那契数列" class="headerlink" title="实现斐波那契数列"></a>实现斐波那契数列</h4>
+        
+          <p class="article-more-link">
+            <a href="/2020/04/25/递归优化/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/25/递归优化/" data-id="ckb968fn3001gzkw11d4m7x9x" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-hexo备份" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/24/hexo备份/" class="article-date">
@@ -151,7 +196,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/hexo备份/" data-id="ckb7mn2hz000bzkw129ie4kmx" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/24/hexo备份/" data-id="ckb968fjj000nzkw1heoliknj" class="article-share-link">Share</a>
       
       
     </footer>
@@ -205,7 +250,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ckb7mn2jp000kzkw1vlcb8zbb" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ckb968fjq000szkw1yzrp24oc" class="article-share-link">Share</a>
       
       
     </footer>
@@ -258,7 +303,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ckb7mn2jt000nzkw1w122ks4i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ckb968fjt000uzkw13fao6nys" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -319,7 +364,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ckb7mn2js000mzkw1y20zruim" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ckb968fjm000qzkw1z9duw7ib" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -396,7 +441,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/16/grid-布局/" data-id="ckb7mn2hr0006zkw19hupdni8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/16/grid-布局/" data-id="ckb968fj5000dzkw10oe1mgg1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -442,7 +487,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/15/水平垂直居中的几种方式/" data-id="ckb7mn2l10016zkw1f4djte63" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/15/水平垂直居中的几种方式/" data-id="ckb968flb001ezkw1ite934p4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -525,7 +570,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/14/flex-布局/" data-id="ckb7mn2hw0009zkw1wiybyc22" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/14/flex-布局/" data-id="ckb968fiz000azkw1c2wbzi7t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -580,7 +625,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/13/css案例总结/" data-id="ckb7mn2hm0003zkw1ewm9mqm5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/13/css案例总结/" data-id="ckb968fj1000bzkw19sscgufv" class="article-share-link">Share</a>
       
       
     </footer>
@@ -633,70 +678,11 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/11/css-float/" data-id="ckb7mn2hj0001zkw1qj7kcs7c" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/11/css-float/" data-id="ckb968fi30004zkw1zobaq05j" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
 
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-markdown-常用语法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/10/markdown-常用语法/" class="article-date">
-  <time datetime="2020-04-10T12:46:01.000Z" itemprop="datePublished">2020-04-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/markdown-常用语法/">markdown 常用语法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment"># 这是一级标题</span></span><br><span class="line">&gt; <span class="comment">## 这是二级标题</span></span><br><span class="line">&gt; <span class="comment">### 这是三级标题</span></span><br><span class="line">&gt; <span class="comment">#### 这是四级标题</span></span><br><span class="line">&gt; <span class="comment">##### 这是五级标题</span></span><br><span class="line">&gt; <span class="comment">###### 这是六级标题</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h4 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h4><blockquote>
-<p>要加粗的文字左右分别用两个*号包起来</p>
-<p>要倾斜的文字左右分别用一个*号包起来</p>
-<p>要倾斜和加粗的文字左右分别用三个*号包起来</p>
-<p>要加删除线的文字左右分别用两个~~号包起来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; **这是加粗的文字**</span><br><span class="line">&gt; *这是倾斜的文字*`</span><br><span class="line">&gt; ***这是斜体加粗的文字***</span><br><span class="line">&gt; ~~这是加删除线的文字~~</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><blockquote>
-<p>在引用的文字前加&gt;即可。引用也可以嵌套，如加两个&gt;&gt;三个&gt;&gt;&gt;</p>
-</blockquote>
-<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h4><blockquote>
-<p>三个或者三个以上的 - 或者 * 都可以。</p>
-</blockquote>
-<h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; ![图片alt](图片地址 <span class="string">''</span>图片title<span class="string">''</span>)</span><br><span class="line">&gt; </span><br><span class="line">&gt; 图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">&gt; 图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/10/markdown-常用语法/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/10/markdown-常用语法/" data-id="ckb7mn2jr000lzkw1shq90c9g" class="article-share-link">Share</a>
-      
-      
     </footer>
   </div>
   
@@ -732,7 +718,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 13.33px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 17.5px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -754,6 +740,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/10/react-高阶/">react-高阶</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/09/react-生命周期等/">react 生命周期等</a>
           </li>
         
@@ -767,10 +757,6 @@
         
           <li>
             <a href="/2020/06/01/node-js-commonJs规范/">node.js commonJs规范</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/31/前端模块化、工程化/">前端模块化、工程化</a>
           </li>
         
       </ul>

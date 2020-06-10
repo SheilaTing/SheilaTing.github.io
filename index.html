@@ -62,6 +62,54 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-react-高阶" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/10/react-高阶/" class="article-date">
+  <time datetime="2020-06-10T08:33:42.000Z" itemprop="datePublished">2020-06-10</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/10/react-高阶/">react-高阶</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h4><h6 id="动态加载js-或者组件文件"><a href="#动态加载js-或者组件文件" class="headerlink" title="动态加载js 或者组件文件"></a>动态加载js 或者组件文件</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击按钮才会动态引入文件，不会再刚加载时就引入 </span></span><br><span class="line">handleClick=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">import</span> (<span class="string">'./advance/math'</span>).then(<span class="function">(<span class="params">math</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="comment">//使用 引入来的 js 文件中的功能</span></span><br><span class="line">          <span class="keyword">this</span>.setState(&#123;<span class="attr">res</span>:math.add(<span class="number">3</span>,<span class="number">4</span>)&#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<h6 id="懒加载-可以做到优雅降级，在引入文件未完全加载进来时，可以在页面展示一些预处理页面，例如Loading-等，使用时需要-suspense-标签包裹"><a href="#懒加载-可以做到优雅降级，在引入文件未完全加载进来时，可以在页面展示一些预处理页面，例如Loading-等，使用时需要-suspense-标签包裹" class="headerlink" title="懒加载 可以做到优雅降级，在引入文件未完全加载进来时，可以在页面展示一些预处理页面，例如Loading 等，使用时需要 suspense 标签包裹"></a>懒加载 可以做到优雅降级，在引入文件未完全加载进来时，可以在页面展示一些预处理页面，例如Loading 等，使用时需要 suspense 标签包裹</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Button = React.lazy(<span class="function"><span class="params">()</span>=&gt;</span> <span class="keyword">import</span>(<span class="string">'./Button'</span>));</span><br><span class="line"></span><br><span class="line"> &lt;Suspense fallback = &#123;&lt;div&gt;Loading......&lt;<span class="regexp">/div&gt;&#125;&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Button/</span>&gt;</span><br><span class="line"> &lt;<span class="regexp">/Suspense&gt;</span></span><br></pre></td></tr></table></figure>
+<p><strong>Fragments</strong></p>
+<h6 id="react-要求我们的组件中的jsx-只能拥有一个顶级标签，为了解决这个问题我们可以使用一个空标签或者-Fragment-标签包裹（这个标签不会再页面上展示，仅起到语法作用）"><a href="#react-要求我们的组件中的jsx-只能拥有一个顶级标签，为了解决这个问题我们可以使用一个空标签或者-Fragment-标签包裹（这个标签不会再页面上展示，仅起到语法作用）" class="headerlink" title="react 要求我们的组件中的jsx 只能拥有一个顶级标签，为了解决这个问题我们可以使用一个空标签或者 Fragment 标签包裹（这个标签不会再页面上展示，仅起到语法作用）"></a>react 要求我们的组件中的jsx 只能拥有一个顶级标签，为了解决这个问题我们可以使用一个空标签或者 Fragment 标签包裹（这个标签不会再页面上展示，仅起到语法作用）</h6><h4 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> 组件写法  注意 <span class="title">function</span> 方式的组件不用继承 <span class="title">component</span>,手写 <span class="title">react</span>时候想想是怎么处理的，使我们手动给它创造了一个 <span class="title">class</span></span></span><br><span class="line"><span class="function"><span class="title">function</span> 组件名称(<span class="params">props</span>)</span>&#123;</span><br><span class="line">	......</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">也可以写成,一样的</span><br><span class="line"><span class="keyword">const</span> 组件名 = <span class="function"><span class="params">props</span> =&gt;</span> &#123;......&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="react-传递数据，父组件向子组件传值通过-props-属性，层层传递"><a href="#react-传递数据，父组件向子组件传值通过-props-属性，层层传递" class="headerlink" title="react 传递数据，父组件向子组件传值通过 props 属性，层层传递"></a>react 传递数据，父组件向子组件传值通过 props 属性，层层传递</h6><h6 id="层层传递-如果层级太多，代码冗余"><a href="#层层传递-如果层级太多，代码冗余" class="headerlink" title="层层传递 如果层级太多，代码冗余"></a>层层传递 如果层级太多，代码冗余</h6><p>context 传递方式</p>
+ <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ThemeContext = React.createContext();</span><br><span class="line"><span class="comment">// 在传递的组件地方 使用 这个标签 themeContext.provider 包裹 提供要传递的 value</span></span><br><span class="line">&lt;ThemeCOntext.Provider value=<span class="string">"传递的内容"</span>&gt;</span><br><span class="line"> &lt;组件/&gt;   <span class="comment">// 组件本身呢里面也包含组件a,b,c，d,我们要把这个值传递到 d上面，那么我们就在 d 中接收</span></span><br><span class="line"> &lt;<span class="regexp">/ThemeContenxt.Provider&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 在接收的组件内部定义 一个静态属性 等于这个标签对象，直接使用 this.context 获取</span></span><br><span class="line"><span class="regexp">在 d中 定义 static abc = ThemeContext</span></span><br><span class="line"><span class="regexp">使用 this.context 获取到传递过来的内容</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 注意，如果是用 function 方式写的，有一点不同之处在于，接收方无需定义 静态属性指向这个标签，直接 在 return 中使用 &lt;ThemeContext.Consumer&gt;&#123;val=&gt;(包裹这个组件的内容并且这是一个回调箭头函数,val 就是传递来的对象)&#125;&lt;/</span>Th&gt;eContext.Consumer&gt;  例如：</span><br><span class="line"><span class="keyword">const</span> Button = <span class="function">(<span class="params">props</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">    	&lt;Theme.context.consumer&gt;</span><br><span class="line">        &#123;val=&gt;(<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">         	val.a,val.c......</span></span><br><span class="line"><span class="xml">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">        &#125;</span><br><span class="line">        &lt;<span class="regexp">/Theme.context.consumer&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
+<h4 id="数据传递"><a href="#数据传递" class="headerlink" title="数据传递"></a>数据传递</h4><h6 id="子组件向父组件传值"><a href="#子组件向父组件传值" class="headerlink" title="子组件向父组件传值"></a>子组件向父组件传值</h6><h6 id="当子组件中的数据发生变化时，调用父组件中的方法来改变，这种方式的前提是父子组件的数据源都来自于-state-中。例如："><a href="#当子组件中的数据发生变化时，调用父组件中的方法来改变，这种方式的前提是父子组件的数据源都来自于-state-中。例如：" class="headerlink" title="当子组件中的数据发生变化时，调用父组件中的方法来改变，这种方式的前提是父子组件的数据源都来自于 state 中。例如："></a>当子组件中的数据发生变化时，调用父组件中的方法来改变，这种方式的前提是父子组件的数据源都来自于 state 中。例如：</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 父组件</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    	&lt;div&gt;</span><br><span class="line">         	&lt;Son value=&#123;<span class="keyword">this</span>.state.son&#125; onChange=<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;<span class="keyword">this</span>.setState(&#123;<span class="attr">first</span>:e.target.value&#125;)&#125;/&gt;</span><br><span class="line">			&lt;p&gt;son : &#123;<span class="keyword">this</span>.state.son&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">         &lt;/</span>div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//first 组件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">first</span>(<span class="params">props</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    	&lt;input value = &#123;props.value&#125; onChange=&#123;props.onChange&#125;&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 刚开始子组件的值是父组件通过 props 传递来的，当子组件的值发生改变时调用传递来的onchange方法，也就是父组件的 oncahnge,这个方法将子组件现在的值更新到 state 中，然后父组件中更新，又传递给子组件，达到了父组件也更新的目的</span></span><br></pre></td></tr></table></figure>
+<h4 id="错误边界"><a href="#错误边界" class="headerlink" title="错误边界"></a>错误边界</h4><h4 id="非受控组件与Refs"><a href="#非受控组件与Refs" class="headerlink" title="非受控组件与Refs"></a>非受控组件与Refs</h4><p>如何获取要操作的这个 dom?</p>
+<p><strong>第一步：</strong> 在组件内部创建一个 React.createRef() 对象，绑定到当前组件上，也就是赋值给 this.属性（在构造函数中），然后下次就可以通过 this.属性获取到这个对象了，然后在 render() 中，一般都在这里返回 dom 的，我们在需要操控的dom上加上 ref = {this.属性}</p>
+<p>在需要时，就能通过 this.属性.current.  什么什么 —–  获取到这个对象了</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/10/react-高阶/" data-id="ckb968fjw000xzkw1ubmurexc" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-react-生命周期等" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/09/react-生命周期等/" class="article-date">
@@ -127,7 +175,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/09/react-生命周期等/" data-id="ckb7mn2k0000rzkw1tathuebm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/09/react-生命周期等/" data-id="ckb968fjy000zzkw1xkakkxjy" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
@@ -206,7 +254,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/06/手写-react/" data-id="ckb7mn2l20017zkw1u9sx6y54" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/06/手写-react/" data-id="ckb968fl40018zkw1o79nr3x2" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
@@ -293,7 +341,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/01/webpack-笔记/" data-id="ckb7mn2k6000wzkw1yjl5dntj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/01/webpack-笔记/" data-id="ckb968fk10012zkw1ksfiblba" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -369,7 +417,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/01/node-js-commonJs规范/" data-id="ckb7mn2jv000pzkw1bkhvsxoq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/01/node-js-commonJs规范/" data-id="ckb968fjv000wzkw10l1os90t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
@@ -432,7 +480,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/31/前端模块化、工程化/" data-id="ckb7mn2ky0014zkw185cya04v" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/31/前端模块化、工程化/" data-id="ckb968fk20013zkw1bxt5xh11" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工程化/">工程化</a></li></ul>
@@ -491,7 +539,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/22/跨域/" data-id="ckb7mn2la001czkw11fobgja2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/22/跨域/" data-id="ckb968flc001fzkw1x7imazhe" class="article-share-link">Share</a>
       
       
     </footer>
@@ -550,7 +598,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/20/promise/" data-id="ckb7mn2k5000vzkw1n8cyd3se" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/20/promise/" data-id="ckb968fk00011zkw13iof9zle" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promise/">promise</a></li></ul>
@@ -601,7 +649,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/19/mock数据/" data-id="ckb7mn2jx000qzkw192h90znn" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/19/mock数据/" data-id="ckb968fjx000yzkw1zyl6tq4i" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mock/">mock</a></li></ul>
@@ -668,116 +716,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/18/ajax/" data-id="ckb7mn2kt0011zkw1uhk5kjzt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/18/ajax/" data-id="ckb968fi20003zkw1qbfoavos" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/">ajax</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-http-session-cookie-token" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/17/http-session-cookie-token/" class="article-date">
-  <time datetime="2020-05-17T07:56:00.000Z" itemprop="datePublished">2020-05-17</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/17/http-session-cookie-token/">http-session-cookie-token</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="http-无状态"><a href="#http-无状态" class="headerlink" title="http 无状态"></a>http 无状态</h4><h6 id="HTTP无状态协议，是指协议对于交互性场景没有记忆能力。无登录状态，即服务器不知道某个用户是否已登录过了-所以每次都要在交互场景-会话-中请求中带上上一次的请求信息，如账号、密码。明明只需要在-login接口中，才需要对比数据库中的账号密码和客户端传的是否一致来确定合法性。这下在添加购物车中也需要再一次的进行同样的重复且没有必要的操作，即降低了响应速度，又对用户不友好（因为每次都需要填账号，密码）"><a href="#HTTP无状态协议，是指协议对于交互性场景没有记忆能力。无登录状态，即服务器不知道某个用户是否已登录过了-所以每次都要在交互场景-会话-中请求中带上上一次的请求信息，如账号、密码。明明只需要在-login接口中，才需要对比数据库中的账号密码和客户端传的是否一致来确定合法性。这下在添加购物车中也需要再一次的进行同样的重复且没有必要的操作，即降低了响应速度，又对用户不友好（因为每次都需要填账号，密码）" class="headerlink" title="HTTP无状态协议，是指协议对于交互性场景没有记忆能力。无登录状态，即服务器不知道某个用户是否已登录过了,所以每次都要在交互场景(会话)中请求中带上上一次的请求信息，如账号、密码。明明只需要在/login接口中，才需要对比数据库中的账号密码和客户端传的是否一致来确定合法性。这下在添加购物车中也需要再一次的进行同样的重复且没有必要的操作，即降低了响应速度，又对用户不友好（因为每次都需要填账号，密码）"></a>HTTP无状态协议，是指协议对于交互性场景没有记忆能力。无登录状态，即服务器不知道某个用户是否已登录过了,所以每次都要在交互场景(会话)中请求中带上上一次的请求信息，如账号、密码。明明只需要在/login接口中，才需要对比数据库中的账号密码和客户端传的是否一致来确定合法性。这下在添加购物车中也需要再一次的进行同样的重复且没有必要的操作，即降低了响应速度，又对用户不友好（因为每次都需要填账号，密码）</h6><p>此时的服务器只处理用户发来的请求，并没有记录用户的登录状态，所以在某些需要登录操作的场景下，显得尤为不足</p>
-<p>每次的请求都是独立的，它的执行情况和结果与前面的请求和之后的请求是无直接关系的，它不会受前面的请求应答情况直接影响，也不会直接影响后面的请求应答情况【无直接联系】【受直接影响】</p>
-<p><strong>一种常见的对状态的误解：</strong></p>
-<ol>
-<li>有人在解释HTTP的无状态时，把它跟有连接对立，说是两种方式，也就是如果想不无状态，就必须有连接，但其实不然</li>
-<li>有连接和无连接以及之后的Keep-Alive都是指TCP连接</li>
-<li>有状态和无状态可以指TCP也可以指HTTP</li>
-<li>TCP一直有状态，HTTP一直无状态，但是应用为了有状态，就给HTTP加了cookie和session机制，让使用http的应用也能有状态，但http还是无状态</li>
-</ol>
-<p>开始TCP是有连接，后来TCP无连接，再后来也就是现在TCP是Keep-Alive，有点像有连接</p>
-<h4 id="解决"><a href="#解决" class="headerlink" title="解决"></a>解决</h4><p>为了帮助服务器存储客户端状态，我们引入了cookie 和 session</p>
-<p><strong>Cookie</strong></p>
-<p>Cookie实际上是一小段的文本信息。客户端请求服务器，如果服务器需要记录该用户状态，就使用response向客户端浏览器颁发一个Cookie。客户端浏览器会把Cookie保存起来。当浏览器再请求该网站时，<strong><em>浏览器把请求的网址连同该Cookie一同提交给服务器\</em></strong>。服务器检查该Cookie，以此来辨认用户状态。服务器还可以根据需要修改Cookie的内容</p>
-<h2 id="Cookie的不可跨域名性"><a href="#Cookie的不可跨域名性" class="headerlink" title="Cookie的不可跨域名性"></a>Cookie的不可跨域名性</h2><p> 很多网站都会使用Cookie。例如，Google会向客户端颁发Cookie，Baidu也会向客户端颁发Cookie。那浏览器访问Google会不会也携带上Baidu颁发的Cookie呢？或者Google能不能修改Baidu颁发的Cookie呢？</p>
-<p>答案是否定的。Cookie具有不可跨域名性。根据Cookie规范，浏览器访问Google只会携带Google的Cookie，而不会携带Baidu的Cookie。Google也只能操作Google的Cookie，而不能操作Baidu的Cookie。</p>
-<p>Cookie在客户端是由浏览器来管理的。浏览器能够保证Google只会操作Google的Cookie而不会操作Baidu的Cookie，从而保证用户的隐私安全。浏览器判断一个网站是否能操作另一个网站Cookie的依据是域名。Google与Baidu的域名不一样，因此Google不能操作Baidu的Cookie</p>
-<p>实例</p>
-<h6 id="1-在登录网站的时候选择记住密码，此时服务器会返回给浏览器一个set-cookie字段"><a href="#1-在登录网站的时候选择记住密码，此时服务器会返回给浏览器一个set-cookie字段" class="headerlink" title="1.在登录网站的时候选择记住密码，此时服务器会返回给浏览器一个set-cookie字段"></a>1.在登录网站的时候选择记住密码，此时服务器会返回给浏览器一个set-cookie字段</h6><h6 id="2-查看Chrome-浏览器中的cookie设置会发现刚刚服务器返回给我们的cookie"><a href="#2-查看Chrome-浏览器中的cookie设置会发现刚刚服务器返回给我们的cookie" class="headerlink" title="2.查看Chrome 浏览器中的cookie设置会发现刚刚服务器返回给我们的cookie"></a>2.查看Chrome 浏览器中的cookie设置会发现刚刚服务器返回给我们的cookie</h6><h6 id="3-观察服务器返回的cookie-发现和浏览器存储的是一致的"><a href="#3-观察服务器返回的cookie-发现和浏览器存储的是一致的" class="headerlink" title="3.观察服务器返回的cookie 发现和浏览器存储的是一致的"></a>3.观察服务器返回的cookie 发现和浏览器存储的是一致的</h6><h6 id="4-再次访问这个网站，发现不需要输入密码即可登录，此时观察请求头中的信息里面，浏览器把我们本地存储的cookie字段一并发送给了服务器"><a href="#4-再次访问这个网站，发现不需要输入密码即可登录，此时观察请求头中的信息里面，浏览器把我们本地存储的cookie字段一并发送给了服务器" class="headerlink" title="4.再次访问这个网站，发现不需要输入密码即可登录，此时观察请求头中的信息里面，浏览器把我们本地存储的cookie字段一并发送给了服务器"></a>4.再次访问这个网站，发现不需要输入密码即可登录，此时观察请求头中的信息里面，浏览器把我们本地存储的cookie字段一并发送给了服务器</h6><h2 id="Cookie-保存登录信息有多种方案"><a href="#Cookie-保存登录信息有多种方案" class="headerlink" title="Cookie 保存登录信息有多种方案"></a><strong>Cookie 保存登录信息有多种方案</strong></h2><ul>
-<li>方案一：最直接的是把用户名与密码都保持到Cookie中，下次访问时检查Cookie中的用户名与密码，与数据库比较。这是一种比较危险的选择，一般不把密码等重要信息保存到Cookie中。</li>
-<li>方案二：是把密码加密后保存到Cookie中，下次访问时解密并与数据库比较。这种方案略微安全一些。如果不希望保存密码，还可以把登录的时间戳保存到Cookie与数据库中，到时只验证用户名与登录时间戳就可以了。</li>
-<li>方案三：只在登录时查询一次数据库，以后访问验证登录信息时不再查询数据库。实现方式是把账号按照一定的规则加密后，连同账号一块保存到Cookie中。下次访问时只需要判断账号的加密规则是否正确即可。</li>
-</ul>
-<h4 id="cookie的属性"><a href="#cookie的属性" class="headerlink" title="cookie的属性"></a>cookie的属性</h4><p>一般cookie所具有的属性，包括：</p>
-<p>Domain：域，表示当前cookie所属于哪个域或子域下面。（上面说了 cookie不可跨域，也就是每个网站只能使用自己网站的cookie,不会发生错乱的情况）</p>
-<p>对于服务器返回的Set-Cookie中，如果没有指定Domain的值，那么其Domain的值是默认为当前所提交的http的请求所对应的主域名的。比如访问 <a href="http://www.example.com，返回一个cookie，没有指名domain值，那么其为值为默认的www.example.com。" target="_blank" rel="noopener">http://www.example.com，返回一个cookie，没有指名domain值，那么其为值为默认的www.example.com。</a></p>
-<p>Path：表示cookie的所属路径。</p>
-<p>Expire time/Max-age：表示了cookie的有效期。expire的值，是一个时间，过了这个时间，该cookie就失效了。或者是用max-age指定当前cookie是在多长时间之后而失效。如果服务器返回的一个cookie，没有指定其expire time，那么表明此cookie有效期只是当前的session，即是session cookie，当前session会话结束后，就过期了。对应的，当关闭（浏览器中）该页面的时候，此cookie就应该被浏览器所删除了。</p>
-<p>secure：表示该cookie只能用https传输。一般用于包含认证信息的cookie，要求传输此cookie的时候，必须用https传输。</p>
-<p>httponly：表示此cookie必须用于http或https传输。这意味着，浏览器脚本，比如javascript中，是不允许访问操作此cookie的。</p>
-<p><img src="E:/Git/newBlog/SheilaTing.github.io/source/img/http/cookie.png" alt></p>
-<h4 id="解决无状态问题的例子"><a href="#解决无状态问题的例子" class="headerlink" title="解决无状态问题的例子"></a>解决无状态问题的例子</h4><p>让我们用几个例子来描述一下cookie和session机制之间的区别与联系。笔者曾经常去的一家咖啡店有喝5杯咖啡免费赠一杯咖啡的优惠，然而一次性消费5杯咖啡的机会微乎其微，这时就需要某种方式来纪录某位顾客的消费数量。想象一下其实也无外乎下面的几种方案： </p>
-<p>  1、该店的店员很厉害，能记住每位顾客的消费数量，只要顾客一走进咖啡店，店员就知道该怎么对待了。这种做法就是协议本身支持状态。 </p>
-<p>  2、发给顾客一张卡片，上面记录着消费的数量，一般还有个有效期限。每次消费时，如果顾客出示这张卡片，则此次消费就会与以前或以后的消费相联系起来。这种做法就是在客户端保持状态。 </p>
-<p>  3、发给顾客一张会员卡，除了卡号之外什么信息也不纪录，每次消费时，如果顾客出示该卡片，则店员在店里的纪录本上找到这个卡号对应的纪录添加一些消费信息。这种做法就是在服务器端保持状态。 </p>
-<p>  由于HTTP协议是无状态的，而出于种种考虑也不希望使之成为有状态的，因此，后面两种方案就成为现实的选择。具体来说cookie机制采用的是在客户端保持状态的方案，而session机制采用的是在服务器端保持状态的方案。同时我们也看到，由于采用服务器端保持状态的方案在客户端也需要保存一个标识，所以session机制可能需要借助于cookie机制来达到保存标识的目的，但实际上它还有其他选择。 </p>
-<h4 id="session"><a href="#session" class="headerlink" title="session"></a>session</h4><p><strong>理解session机制</strong> </p>
-<p><img src="../img/http/session.jpg" style="zoom:200%;"></p>
-<p>参考若愚老师的文章 <a href="https://zhuanlan.zhihu.com/p/58490770" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/58490770</a></p>
-<p><strong>session 的安全策略 以及 session 机制的缺点</strong></p>
-<h6 id="万一sessionId被泄露，那么请求就可以被伪造，例如被-XSS攻击获取这个cookie中的sessionId"><a href="#万一sessionId被泄露，那么请求就可以被伪造，例如被-XSS攻击获取这个cookie中的sessionId" class="headerlink" title="万一sessionId被泄露，那么请求就可以被伪造，例如被 XSS攻击获取这个cookie中的sessionId"></a>万一sessionId被泄露，那么请求就可以被伪造，例如被 XSS攻击获取这个cookie中的sessionId</h6><p><strong>解决如何使session更安全</strong></p>
-<h6 id="1-服务器端设置http-only-这样客户端就不能通过document-cookie来获取cookie，也就避免了xss攻击"><a href="#1-服务器端设置http-only-这样客户端就不能通过document-cookie来获取cookie，也就避免了xss攻击" class="headerlink" title="1.服务器端设置http-only,这样客户端就不能通过document.cookie来获取cookie，也就避免了xss攻击"></a>1.服务器端设置http-only,这样客户端就不能通过document.cookie来获取cookie，也就避免了xss攻击</h6><h6 id="2-使用https，加secure字段，secure：当-secure-值为-true-时，cookie-在-HTTP-中是无效，在-HTTPS-中才有效"><a href="#2-使用https，加secure字段，secure：当-secure-值为-true-时，cookie-在-HTTP-中是无效，在-HTTPS-中才有效" class="headerlink" title="2.使用https，加secure字段，secure：当 secure 值为 true 时，cookie 在 HTTP 中是无效，在 HTTPS 中才有效"></a>2.使用https，加secure字段，secure：当 secure 值为 true 时，cookie 在 HTTP 中是无效，在 HTTPS 中才有效</h6><p><strong>session的缺点</strong></p>
-<h6 id="1-使用场景限制-cookie-只能在浏览器中使用，换了其他客户端，小程序没有Cookie自然无法使用这个机制"><a href="#1-使用场景限制-cookie-只能在浏览器中使用，换了其他客户端，小程序没有Cookie自然无法使用这个机制" class="headerlink" title="1.使用场景限制 cookie 只能在浏览器中使用，换了其他客户端，小程序没有Cookie自然无法使用这个机制"></a>1.使用场景限制 cookie 只能在浏览器中使用，换了其他客户端，小程序没有Cookie自然无法使用这个机制</h6><h6 id="2-这个机制，服务器端需要创建session-对象，如果将session放在内存中，那如果有1000个对象访问那内存中岂不是又1000个对象，如果每个对象中的数据又很多，那内存会不会爆掉。不存在内存中，那么把它存入数据库中，例如redis数据库，那如果我们使用分布式服务器，又要考虑数据库的复用性，服务器端要做更多的事情来处理"><a href="#2-这个机制，服务器端需要创建session-对象，如果将session放在内存中，那如果有1000个对象访问那内存中岂不是又1000个对象，如果每个对象中的数据又很多，那内存会不会爆掉。不存在内存中，那么把它存入数据库中，例如redis数据库，那如果我们使用分布式服务器，又要考虑数据库的复用性，服务器端要做更多的事情来处理" class="headerlink" title="2.这个机制，服务器端需要创建session 对象，如果将session放在内存中，那如果有1000个对象访问那内存中岂不是又1000个对象，如果每个对象中的数据又很多，那内存会不会爆掉。不存在内存中，那么把它存入数据库中，例如redis数据库，那如果我们使用分布式服务器，又要考虑数据库的复用性，服务器端要做更多的事情来处理"></a>2.这个机制，服务器端需要创建session 对象，如果将session放在内存中，那如果有1000个对象访问那内存中岂不是又1000个对象，如果每个对象中的数据又很多，那内存会不会爆掉。不存在内存中，那么把它存入数据库中，例如redis数据库，那如果我们使用分布式服务器，又要考虑数据库的复用性，服务器端要做更多的事情来处理</h6><h4 id="JWT鉴权机制（解决session机制的弊端）JSON-web-token"><a href="#JWT鉴权机制（解决session机制的弊端）JSON-web-token" class="headerlink" title="JWT鉴权机制（解决session机制的弊端）JSON web token"></a>JWT鉴权机制（解决session机制的弊端）JSON web token</h4><p><img src="../img/http/jwt.jpg" style="zoom:200%;"></p>
-<p>第四步.token字符串的规则分为三部分，str1:鉴权机制，算法  str2：用户信息  str3:HMAC(str1+str2，secret_key)</p>
-<p>服务器把token发给浏览器，客户端存储下来，下次请求带上token即可，服务器端收到后，验证token,服务器使用 HMA()方法把客户端发来的数据拆开（base64先解密，因为发之前加密了），然后加上自己的 secretkey经过运算得到str3的值如果与发送来的str3一致，认证成功</p>
-<p>优点就是session 的缺点，缺点：增加了服务器端计算的压力</p>
-<p>还有一个缺点：token是有过期时间的，如果用户刚登录就点击了注销，那么此时token的过期时间还没到，依然是有效的，token的续期问题。。。。。发现越是想要做的安全，服务器还是要存储一些东西，反而变得复杂了，哈哈</p>
-<h4 id="Auth2-机制-（Open-Authorization-开放授权）"><a href="#Auth2-机制-（Open-Authorization-开放授权）" class="headerlink" title="Auth2 机制 （Open Authorization 开放授权）"></a>Auth2 机制 （Open Authorization 开放授权）</h4><h6 id="是为用户资源的授权定义了一个安全、开放及简单的标准，第三方无需知道用户的账号及密码，就可获取到用户的授权信息"><a href="#是为用户资源的授权定义了一个安全、开放及简单的标准，第三方无需知道用户的账号及密码，就可获取到用户的授权信息" class="headerlink" title="是为用户资源的授权定义了一个安全、开放及简单的标准，第三方无需知道用户的账号及密码，就可获取到用户的授权信息"></a>是为用户资源的授权定义了一个安全、开放及简单的标准，第三方无需知道用户的账号及密码，就可获取到用户的授权信息</h6><p><strong>流程</strong></p>
-<p><img src="../img/http/auth2.jpg" style="zoom:200%;"></p>
-<p>参考这个：<a href="https://www.barretlee.com/blog/2016/01/10/oauth2-introduce/" target="_blank" rel="noopener">https://www.barretlee.com/blog/2016/01/10/oauth2-introduce/</a></p>
-<h4 id="XSS攻击-（跨站脚本攻击）"><a href="#XSS攻击-（跨站脚本攻击）" class="headerlink" title="XSS攻击 （跨站脚本攻击）"></a>XSS攻击 （跨站脚本攻击）</h4><p>xss就是攻击者在web页面插入恶意的Script代码，当用户浏览该页之时，嵌入其中web里面的Script代码会被执行，从而达到恶意攻击用户的特殊目的。例如我们允许客户端上传图片</p>
-<p>造成 XSS 有几个要点：</p>
-<ol>
-<li><p>恶意用户可以提交内容</p>
-</li>
-<li><p>提交的内容可以显示在另一个用户的页面上</p>
-</li>
-<li><p>这些内容未经<strong>过滤</strong>，直接<strong>运行</strong>在另一个用户的页面上</p>
-</li>
-</ol>
-<h2 id="举例说明"><a href="#举例说明" class="headerlink" title="举例说明"></a>举例说明</h2><p>假设我们有一个评论系统。</p>
-<p>用户 A 提交评论「小谷你好」到服务器，然后用户 B 来访问网站，看到了 A 的评论「小谷你好」，这里没有 XSS。</p>
-<p>恶意用户 H 提交评论「<script>console.log(document.cookie)</script>」，然后用户 B 来访问网站，这段脚本在 B 的浏览器直接执行，恶意用户 H 的脚本就可以任意操作 B 的 cookie，而 B 对此毫无察觉。有了 cookie，恶意用户 H 就可以伪造 B 的登录信息，随意访问 B 的隐私了。而 B 始终被蒙在鼓里。</p>
-<p>所以我们前后端要做的就是要处理用户的输入，后端模板中不要直接展示用户的输出，可以把尖括号改为html实体符号输出，前端避免直接使用dom.html()来输出内容，尽量使用dom.text();</p>
-<p>js 中不要用 eval (这个我还真不知道哎)</p>
-<h4 id="CSRF攻击"><a href="#CSRF攻击" class="headerlink" title="CSRF攻击"></a>CSRF攻击</h4><h6 id="CSRF（Cross-site-request-forgery），中文名称：跨站请求伪造，也被称为：one-click-attack-session-riding，缩写为：CSRF-XSRF。"><a href="#CSRF（Cross-site-request-forgery），中文名称：跨站请求伪造，也被称为：one-click-attack-session-riding，缩写为：CSRF-XSRF。" class="headerlink" title="CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。"></a>CSRF（Cross-site request forgery），中文名称：跨站请求伪造，也被称为：one click attack/session riding，缩写为：CSRF/XSRF。</h6><p> CSRF的防御可以从服务端和客户端两方面着手，防御效果是从服务端着手效果比较好，现在一般的CSRF防御也都在服务端进行。</p>
-<p>　　服务器在返回用户响应的时候生成一个随机数，set到客户端的 cookie中，并且在页面上写一个隐藏的input 值就是这个随机数，那么每次向服务器发送请求时都会带上这个csrf_token服务器通过cookie拿到这个值，以及页面隐藏的这个值，对比如果一致则执行，不一致就拒绝</p>
-<p>想一下：如果攻击者去伪造这个随机数，服务器发现与页面传来的不一致不会执行。</p>
-<p>　　</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/17/http-session-cookie-token/" data-id="ckb7mn2jd000hzkw12ac0fykg" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
 
     </footer>
   </div>
@@ -814,7 +756,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 13.33px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 17.5px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -836,6 +778,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/10/react-高阶/">react-高阶</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/09/react-生命周期等/">react 生命周期等</a>
           </li>
         
@@ -849,10 +795,6 @@
         
           <li>
             <a href="/2020/06/01/node-js-commonJs规范/">node.js commonJs规范</a>
-          </li>
-        
-          <li>
-            <a href="/2020/05/31/前端模块化、工程化/">前端模块化、工程化</a>
           </li>
         
       </ul>
