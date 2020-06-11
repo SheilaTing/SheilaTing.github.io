@@ -62,6 +62,73 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-ajax" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/18/ajax/" class="article-date">
+  <time datetime="2020-05-18T08:23:21.000Z" itemprop="datePublished">2020-05-18</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/18/ajax/">ajax</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="与后端交互的方式"><a href="#与后端交互的方式" class="headerlink" title="与后端交互的方式"></a>与后端交互的方式</h4><h6 id="1-Form-表单提交"><a href="#1-Form-表单提交" class="headerlink" title="1. Form 表单提交"></a>1. Form 表单提交</h6><h6 id="2-AJAX"><a href="#2-AJAX" class="headerlink" title="2. AJAX"></a>2. AJAX</h6><h6 id="3-WebSocket-可以由服务端主动发起"><a href="#3-WebSocket-可以由服务端主动发起" class="headerlink" title="3. WebSocket  可以由服务端主动发起"></a>3. WebSocket  可以由服务端主动发起</h6><h2 id="我们如何向服务器发送请求？"><a href="#我们如何向服务器发送请求？" class="headerlink" title="我们如何向服务器发送请求？"></a><strong>我们如何向服务器发送请求？</strong></h2><ol>
+<li>用 form 可以发请求，但是会刷新页面或新开页面</li>
+<li>用 a 可以发 get 请求，但是也会刷新页面或新开页面</li>
+<li>用 img 可以发 get 请求，但是只能以图片的形式展示</li>
+<li>用 link 可以发 get 请求，但是只能以 CSS、favicon 的形式展示</li>
+<li>用 script 可以发 get 请求，但是只能以脚本的形式运行</li>
+</ol>
+<p>有没有什么方式，可以使用get、post、put、delete 请求都行，并且用任意的方式返回给浏览器展示？</p>
+<p><strong>当然有，这个就是AJAX。</strong></p>
+<p>AJAX = Asynchronous JavaScript and XML（异步的 JavaScript 和 XML）</p>
+<p>Jesse James Garrett 讲同时满足以下技术取名叫做AJAX:<strong>异步的 JavaScript 和 XML。</strong></p>
+<ol>
+<li>使用 XMLHttpRequest 发请求</li>
+<li>服务器返回 XML 格式的字符串 (当然现在基本上都是用json来传递数据了)</li>
+<li>JS 解析 XML，并更新局部页面</li>
+</ol>
+<p>ajax使用内置的XMLHttpRequest 和 fetch 对象，实现和服 务端进行数据交互</p>
+<p><strong>发送请求四步走</strong></p>
+<ul>
+<li>创建 xmlhttprequest对象</li>
+<li>配置参数（请求携带的参数，参数类型等）</li>
+<li>绑定事件 （请求的事件处理）</li>
+<li>发送请求 （send()）</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>, url, <span class="literal">true</span>)</span><br><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;&#125;</span><br><span class="line">xhr.send()</span><br><span class="line"></span><br><span class="line"><span class="comment">// 完整例子 GET 请求，参数在url中拼接</span></span><br><span class="line"><span class="keyword">let</span> url = <span class="string">'http://rap2api.taobao.org/app/mock/244238/weather?city=北京'</span></span><br><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>, url, <span class="literal">true</span>)</span><br><span class="line">xhr.onreadystatechange = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">if</span>(xhr.readyState === <span class="number">4</span>) &#123; <span class="comment">// xhr.DONE === 4 也可</span></span><br><span class="line"><span class="keyword">if</span>((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="built_in">JSON</span>.parse(xhr.responseText))</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'服务器异常'</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123; <span class="comment">// 可选</span></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'服务器异常'</span>)</span><br><span class="line">&#125;</span><br><span class="line">xhr.send()</span><br><span class="line"><span class="comment">//或者</span></span><br><span class="line"><span class="keyword">let</span> url = <span class="string">'http://rap2api.taobao.org/app/mock/244238/weather?city=北京'</span> </span><br><span class="line"><span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">xhr.open(<span class="string">'GET'</span>, url, <span class="literal">true</span>)</span><br><span class="line"><span class="comment">// onload 就不用了再判断状态了</span></span><br><span class="line">xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="keyword">if</span>((xhr.status &gt;= <span class="number">200</span> &amp;&amp; xhr.status &lt; <span class="number">300</span>) || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line"><span class="built_in">console</span>.log(xhr.response)</span><br><span class="line">&#125; <span class="keyword">else</span> &#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'数据异常'</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line">xhr.responseType = <span class="string">'json'</span> <span class="comment">//兼容性稍微差一些</span></span><br><span class="line">xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">'服务器异常'</span>)</span><br><span class="line">&#125;</span><br><span class="line">xhr.send()</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2020/05/18/ajax/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/18/ajax/" data-id="ckbalfw9300081cw1lmcw4e4d" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/">ajax</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-http-session-cookie-token" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/17/http-session-cookie-token/" class="article-date">
@@ -156,7 +223,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/17/http-session-cookie-token/" data-id="ckb968fjg000lzkw1txm6lwsc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/17/http-session-cookie-token/" data-id="ckbalfwcp000w1cw18cr55ztv" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
@@ -336,7 +403,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/16/https/" data-id="ckb968fje000jzkw1dikictsk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/16/https/" data-id="ckbalfwcn000v1cw1khjl8l1i" class="article-share-link">Share</a>
       
       
     </footer>
@@ -399,7 +466,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/15/密码学初探/" data-id="ckb968fl30017zkw12fo412mo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/15/密码学初探/" data-id="ckbalfwdi001j1cw11n7zr1xo" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https基础/">https基础</a></li></ul>
@@ -452,7 +519,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/15/http-缓存控制/" data-id="ckb968fjd000izkw1ow6il915" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/15/http-缓存控制/" data-id="ckbalfwcg000p1cw1l8ui6o6x" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
@@ -519,7 +586,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/14/http-TCP/" data-id="ckb968fjc000hzkw1ss8qkd3z" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/14/http-TCP/" data-id="ckbalfwcc000l1cw1yh157ua3" class="article-share-link">Share</a>
       
       
     </footer>
@@ -561,7 +628,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/12/近日案例总结/" data-id="ckb968fla001dzkw13nzrvar1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/12/近日案例总结/" data-id="ckbalfwdn001m1cw162nt2wu4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/summary/">summary</a></li></ul>
@@ -633,7 +700,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/12/js-事件/" data-id="ckb968fjl000pzkw1dyt1xh36" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/12/js-事件/" data-id="ckbalfwcq000x1cw1yt2165hk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -689,7 +756,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/10/css-定位/" data-id="ckb968fj6000ezkw1gyd9p347" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/10/css-定位/" data-id="ckbalfw98000b1cw18m1ixcqi" class="article-share-link">Share</a>
       
       
     </footer>
@@ -763,86 +830,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/09/Bom-浏览器对象/" data-id="ckb968fit0007zkw171y9557j" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/09/Bom-浏览器对象/" data-id="ckbalfw8x00051cw1w1vpmo15" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bom/">bom</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-inline-block" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/08/inline-block/" class="article-date">
-  <time datetime="2020-05-08T04:31:23.000Z" itemprop="datePublished">2020-05-08</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/08/inline-block/">inline-block</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h5 id="块级盒子特点"><a href="#块级盒子特点" class="headerlink" title="块级盒子特点"></a>块级盒子特点</h5><ul>
-<li>盒子会在水平方向上扩展并占据父容器在该方向上的所有可用空间()</li>
-<li>每个盒子都会换到新行 （独占一行）</li>
-<li>width 和 height 属性有效</li>
-<li>内边距（padding）, 外边距（margin） 和 边框（border） 会将其他元素从当 前盒子周围推开（也就是说如果它是一个子元素，它会撑开父容器，前提是父容器没有设置高度，设置了背景色可以观察到）</li>
-<li>可通过 display 属性改变显示类型</li>
-</ul>
-<h5 id="行级盒子"><a href="#行级盒子" class="headerlink" title="行级盒子"></a>行级盒子</h5><ul>
-<li>盒子不会产生换行</li>
-<li>width 和 height 属性将不起作用。</li>
-<li>内边距、外边距以及边框会被应用但是不会把其他处于 inline 状态的盒子推开（它如果是个子元素，你给它设置了内边距，父容器也不会被撑开，前提是父容器没有设置高度，设置了背景色可以观察到，如果想让它撑开可以设置 display:inline-block）</li>
-<li>可通过 display 属性改变显示类型</li>
-</ul>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>设置<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>个人<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>我的<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line"></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">.box &#123;</span><br><span class="line">  background:#ccc;</span><br><span class="line">&#125;</span><br><span class="line">span&#123;</span><br><span class="line">  padding:10px;</span><br><span class="line">  background:blue;</span><br><span class="line">  cursor:pointer;</span><br><span class="line">  display:inline-block;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="display-inline-block-行内盒模型-（既有块级盒子的属性（宽高）又有行内元素的特点-没有换行）"><a href="#display-inline-block-行内盒模型-（既有块级盒子的属性（宽高）又有行内元素的特点-没有换行）" class="headerlink" title="display:inline-block 行内盒模型 （既有块级盒子的属性（宽高）又有行内元素的特点 没有换行）"></a>display:inline-block 行内盒模型 （既有块级盒子的属性（宽高）又有行内元素的特点 没有换行）</h5><h6 id="对行内元素设置padding-会对背景色产生效果，但它不会撑开父容器，而会溢出"><a href="#对行内元素设置padding-会对背景色产生效果，但它不会撑开父容器，而会溢出" class="headerlink" title="对行内元素设置padding,会对背景色产生效果，但它不会撑开父容器，而会溢出"></a>对行内元素设置padding,会对背景色产生效果，但它不会撑开父容器，而会溢出</h6><p>此时发现，</p>
-<p><img src="../img/inline-block/gap.png" alt></p>
-<p>选项卡之间有缝隙，这个缝隙是哪里来的呢？行内元素时没有外边距合并这一说的；</p>
-<p>缝隙产生的原因？</p>
-<ul>
-<li>TAB、 LF、 FF、 CR、 SPACE 都是空白字符 </li>
-<li>多个连续的空白字符会合并成一个空格，而空格也占据 一个字符的空间 </li>
-<li>white-space 属性可以修改合并规则</li>
-</ul>
-<h6 id="white-space-规定段落中的文本不进行换行"><a href="#white-space-规定段落中的文本不进行换行" class="headerlink" title="white-space 规定段落中的文本不进行换行"></a>white-space 规定段落中的文本不进行换行</h6><figure class="highlight css"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="selector-tag">p</span>&#123;</span><br><span class="line">  <span class="attribute">white-space</span>: nowrap</span><br><span class="line">  &#125;</span><br></pre></td></tr></table></figure>
-<p>这是由于编辑器中这些字符的原因，我们在编辑器中写代码是有一定的缩进和换行的，这些缩进和换行符也占据一定的空间，展示在页面上就是这个缝隙；而对于块级元素来说，它本身就占据一行，所以它是否换行并不会产生这个缝隙；而对于行内元素，它本身并不占据一整行的空间，就算设置了Inline-block也只是可以设置宽高，所以如果你换行的话，那它就和换行符号在一行，自然就有了缝隙。看下图</p>
-<p><img src="../img/inline-block/gap1.png" alt></p>
-<p>场景：我想让三个panel 平均占据在一行</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">  <span class="tag">&lt;<span class="name">div</span> <span class="attr">class</span>=<span class="string">"box"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>设置<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">span</span>&gt;</span>个人<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br><span class="line">  <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">style</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="css">    <span class="selector-class">.box</span> &#123;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">background</span>:<span class="selector-id">#ccc</span>;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined">span&#123;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">background</span><span class="selector-pseudo">:blue</span>;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">cursor</span><span class="selector-pseudo">:pointer</span>;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">display</span><span class="selector-pseudo">:inline-block</span>;</span></span><br><span class="line"><span class="css">  <span class="selector-tag">width</span><span class="selector-pseudo">:33.3</span>%;</span></span><br><span class="line"><span class="undefined">&#125;</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">style</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p><img src="../img/inline-block/gap2.png" alt></p>
-<p>发现由于我们书写时换行导致它中间有缝隙，而折行了，我们可以把空白字符都删除掉，把代码写成这样  ,但显然这并不符合我们的编码习惯，代码变得非常不易读</p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">span</span>&gt;</span>首页<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>设置<span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;<span class="name">span</span>&gt;</span>个人<span class="tag">&lt;/<span class="name">span</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<p>那如何解决呢？</p>
-<ul>
-<li>通过设置font-size解决 </li>
-<li>通过更改布局方式来解决，比如使用float、flex、grid布局</li>
-</ul>
-<p>这些空白字符和换行符，最终也是文字存储在我们的文件中，那我们就可以控制它的字体大小，我们把父容器字体大小设置为0，那是不是所有的文字内容都看不到了，那我们再单独设置我们要展示的文字内容大小即可；因为这个案例我们的背景色是由它的paddin撑开的；它本身没有宽高，所以没了字体后会看不到；真神奇</p>
-<p><img src="../img/inline-block/gap3.png" alt></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/08/inline-block/" data-id="ckb968fjf000kzkw1z7qp0bud" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
 
     </footer>
   </div>
@@ -855,7 +846,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><a class="page-number" href="/page/5/">5</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="page-number current">2</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/3/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -879,7 +870,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 17.5px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 15px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -901,6 +892,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/11/react-hooks/">react hooks</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/10/react-高阶/">react-高阶</a>
           </li>
         
@@ -914,10 +909,6 @@
         
           <li>
             <a href="/2020/06/01/webpack-笔记/">webpack 笔记</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/01/node-js-commonJs规范/">node.js commonJs规范</a>
           </li>
         
       </ul>

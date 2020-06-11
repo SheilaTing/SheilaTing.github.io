@@ -1,0 +1,227 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>react hooks | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="作用让函数组件彻底取代 class 组件，解决函数组件中使用 state,生命周期函数，this的问题使用 reactHook(useState,useEffect) 解决这个问题 解决state 123456789import React,&amp;#123;useState&amp;#125; from &apos;react&apos;;fucntion App()&amp;#123;    //组件内部useState() 返回一个">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react hooks">
+<meta property="og:url" content="http://yoursite.com/2020/06/11/react-hooks/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="作用让函数组件彻底取代 class 组件，解决函数组件中使用 state,生命周期函数，this的问题使用 reactHook(useState,useEffect) 解决这个问题 解决state 123456789import React,&amp;#123;useState&amp;#125; from &apos;react&apos;;fucntion App()&amp;#123;    //组件内部useState() 返回一个">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-11T09:04:58.961Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react hooks">
+<meta name="twitter:description" content="作用让函数组件彻底取代 class 组件，解决函数组件中使用 state,生命周期函数，this的问题使用 reactHook(useState,useEffect) 解决这个问题 解决state 123456789import React,&amp;#123;useState&amp;#125; from &apos;react&apos;;fucntion App()&amp;#123;    //组件内部useState() 返回一个">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-react-hooks" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/11/react-hooks/" class="article-date">
+  <time datetime="2020-06-11T04:02:25.000Z" itemprop="datePublished">2020-06-11</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      react hooks
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><h6 id="让函数组件彻底取代-class-组件，解决函数组件中使用-state-生命周期函数，this的问题"><a href="#让函数组件彻底取代-class-组件，解决函数组件中使用-state-生命周期函数，this的问题" class="headerlink" title="让函数组件彻底取代 class 组件，解决函数组件中使用 state,生命周期函数，this的问题"></a>让函数组件彻底取代 class 组件，解决函数组件中使用 state,生命周期函数，this的问题</h6><p><strong>使用 reactHook(useState,useEffect) 解决这个问题</strong></p>
+<p><strong>解决state</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React,&#123;useState&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line">fucntion App()&#123;</span><br><span class="line">    <span class="comment">//组件内部useState() 返回一个数组，数组中分别是属性，set属性方法，传递的参数为属性的初始值</span></span><br><span class="line">    <span class="comment">// 此时该组件内部相当于有了一个 count 属性以及一个 setCount 方法，初始值为0;</span></span><br><span class="line">    <span class="keyword">const</span> [count,setCount] = userState(<span class="number">0</span>);</span><br><span class="line">    <span class="comment">//改变 count 的值可以调用 setState(新值)即可，使用直接使用 count</span></span><br><span class="line">      <span class="comment">//可以有多个useState, 多个属性</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>解决生命周期函数 useEffect</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React,&#123;useState,useEffect&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="comment">//一个函数参数</span></span><br><span class="line">    <span class="keyword">const</span> [count,setCount] = userState(<span class="number">0</span>);</span><br><span class="line">    <span class="comment">//这个函数相当于 componentDidMount和 componentDidUpdate</span></span><br><span class="line">    useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'数据挂载或更新时执行'</span>)</span><br><span class="line">    &#125;); <span class="comment">// 监控所有的 state 属性</span></span><br><span class="line"><span class="comment">//一个函数参数且该函数 return 一个函数</span></span><br><span class="line">      useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'state数据挂载或更新时执行'</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="comment">//相当于 componetWillUnmount,组件卸载时执行</span></span><br><span class="line">            consoel.log(<span class="string">'状态更新和写在组件时执行'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"> <span class="comment">//一个函数参数，一个数组参数</span></span><br><span class="line">      useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'组件挂载或更新时执行'</span>)</span><br><span class="line">    &#125;,[count]);</span><br><span class="line">    <span class="comment">//count 为 state 的属性，此时代表只监控count所在组件的状态，若为空数组，则不监控，若没有设置则监控state 中所有属性 也就是当这个属性的值改变时就会执行到该函数内部</span></span><br><span class="line">   <span class="comment">// 所谓卸载也就是不在引用这个state 属性了 可以这么理解</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="实现一个简单的-useState"><a href="#实现一个简单的-useState" class="headerlink" title="实现一个简单的 useState"></a>实现一个简单的 useState</h4><h6 id="模仿它的使用，定义一个函数-useState-传递参数，返回数组及方法"><a href="#模仿它的使用，定义一个函数-useState-传递参数，返回数组及方法" class="headerlink" title="模仿它的使用，定义一个函数 useState 传递参数，返回数组及方法"></a>模仿它的使用，定义一个函数 useState 传递参数，返回数组及方法</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> state;<span class="comment">// 定义一个属性 注意要定义在外部，否则每次调用 setState 都会给初始值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setState</span>(<span class="params">inivalue</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//因为如果多次使用这个 state,我们要保留 state 上一次的执行结果，所以要写到全局作用域中</span></span><br><span class="line">    <span class="comment">// 如果state 没有值就是用初始值 也就代表是第一次执行</span></span><br><span class="line">    state = state || initvalue;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">setState</span>(<span class="params">newState</span>)</span>&#123;</span><br><span class="line">        state = newState;</span><br><span class="line">         render()  <span class="comment">// ReactDom.render()</span></span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">return</span> [state,setState];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> ReactDOM.render(</span><br><span class="line"> &lt;App /&gt;,</span><br><span class="line"> <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line"> );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 刚刚又犯迷糊了，函数的定义和返回结果是不一样的好吗，定义时只是形参，叫什么都行，调用时你是可以更改的呀 刚才傻逼似的 直接用返回值【state】 去了...... 而且数组只能用下标访问才对啊，怎么那么蠢</span></span><br><span class="line"><span class="comment">// 我可以直接用一个变量接收，那这个变量就是 一个数组，为了取出每一项，我可以数组【【0】赋值给一个值。。。。 为了方便可以直接使用 【a,b】 = 返回的值即可</span></span><br><span class="line"><span class="comment">// 例如 【a,b】= [1,3]  a=1,b =3; 啊啊啊啊啊</span></span><br></pre></td></tr></table></figure>
+<h4 id="实现一个简单的-userEffect"><a href="#实现一个简单的-userEffect" class="headerlink" title="实现一个简单的 userEffect"></a>实现一个简单的 userEffect</h4><h4 id="最主要的就是看传递来的属性值有没有改变过，改变过就执行-callback-否则就不执行"><a href="#最主要的就是看传递来的属性值有没有改变过，改变过就执行-callback-否则就不执行" class="headerlink" title="最主要的就是看传递来的属性值有没有改变过，改变过就执行 callback,否则就不执行"></a>最主要的就是看传递来的属性值有没有改变过，改变过就执行 callback,否则就不执行</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> oldProps;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useEffect</span>(<span class="params">callback,props</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//如果不是第一次执行callback并且传递了 props，那么oldProps 就会有值,此时对比新值，返回对比结果取反，(如果经过比较发生了变化，那么会返回 false,我们需要取反变为 true，这样才能继续执行 callback)如果不存在说明是第一次执行，那么 callback 肯定要被执行所以是 true</span></span><br><span class="line">    <span class="comment">// 也就是说第一次进来无论如何都会去执行 callback 的</span></span><br><span class="line">    <span class="keyword">const</span> hasChangeProps = oldProps ? !props.every(el,index=&gt; el=== oldProps[index]) : <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//如果没有传递这个属性或者说 传递了这个属性而且值发生了变化 就会执行这个 callback函数</span></span><br><span class="line">    <span class="comment">// 这里对props 取反来判断，如果!props 为true，则代表 props 为空，妙啊</span></span><br><span class="line">    <span class="keyword">if</span>(!props || hasChangeProps)&#123;</span><br><span class="line">         callback();</span><br><span class="line">         oldProps = props;  <span class="comment">//将新的属性值传递给一个变量保存</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果传递的这个属性没有发生改变，那么久不会执行 callback</span></span><br><span class="line"><span class="comment">// 因为第一次进来这个属性假如是1，再次进来还是1， 它的值没有变过，自然不会执行(第一次还是会执行的)</span></span><br></pre></td></tr></table></figure>
+<h4 id="reactHook-useState-的完整实现"><a href="#reactHook-useState-的完整实现" class="headerlink" title="reactHook-useState 的完整实现"></a>reactHook-useState 的完整实现</h4><h6 id="之前的之所以说是简单实现是因为我们只定义了一个-全局变量，加入我们有多个-useState-useEffect-那么这个变量就会被覆盖"><a href="#之前的之所以说是简单实现是因为我们只定义了一个-全局变量，加入我们有多个-useState-useEffect-那么这个变量就会被覆盖" class="headerlink" title="之前的之所以说是简单实现是因为我们只定义了一个 全局变量，加入我们有多个 useState,useEffect,那么这个变量就会被覆盖"></a>之前的之所以说是简单实现是因为我们只定义了一个 全局变量，加入我们有多个 useState,useEffect,那么这个变量就会被覆盖</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> memorizState = []; <span class="comment">// 用来保存不同的 state</span></span><br><span class="line"><span class="keyword">let</span> cursor=<span class="number">0</span>; <span class="comment">//用来指向当前数组中操作的属性下标</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useState</span>(<span class="params">initvalue</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//将初始值赋值到数组中</span></span><br><span class="line">    memorizeState[cursor] = memorizeState[cursor] || initvalue;</span><br><span class="line">    <span class="comment">//保留当前下标到当前作用域中 (闭包)</span></span><br><span class="line">    <span class="keyword">const</span> currentCursor = cursor;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">setState</span>(<span class="params">newState</span>)</span>&#123;</span><br><span class="line">         memorizeState[currentCursor] = <span class="keyword">new</span> State;</span><br><span class="line">        render();</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">return</span> [memorizedState[cursor++,setState];</span><br><span class="line">           <span class="comment">//注意这里 cursor 会先取出 然后再++</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="useEffect-的完整实现"><a href="#useEffect-的完整实现" class="headerlink" title="useEffect 的完整实现"></a>useEffect 的完整实现</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useEffect</span>(<span class="params">callbcak,depArray</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//取反，depArray 为空时，hasNoDep 才为true;</span></span><br><span class="line">    <span class="keyword">const</span> hasNoDeps = !depArray;</span><br><span class="line">    <span class="keyword">const</span> deps = memorizedState[cursor]; <span class="comment">//将当前的state 属性复制给这个变量</span></span><br><span class="line">    <span class="keyword">const</span> hasChangeDeps = oldProps ? !deps.every(el,index=&gt; el=== oldDeps[index]) : <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">if</span>(hasNoDeps || hasChangeDeps)&#123;</span><br><span class="line">        callback()</span><br><span class="line">        memorizeState[cursor] = depArray;</span><br><span class="line">    &#125;</span><br><span class="line">    cursor++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/11/react-hooks/" data-id="ckbalfwcz00161cw141y5xn8l" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/10/react-高阶/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">react-高阶</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/11/react-hooks/">react hooks</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/10/react-高阶/">react-高阶</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/09/react-生命周期等/">react 生命周期等</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/06/手写-react/">手写 react</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/01/webpack-笔记/">webpack 笔记</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
