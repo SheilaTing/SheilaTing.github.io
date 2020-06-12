@@ -62,6 +62,100 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-react-router" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/12/react-router/" class="article-date">
+  <time datetime="2020-06-12T06:53:47.000Z" itemprop="datePublished">2020-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/12/react-router/">react-router</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>npm install –save react-router-dom</p>
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><h6 id="在页面上引入所需的组件对象"><a href="#在页面上引入所需的组件对象" class="headerlink" title="在页面上引入所需的组件对象"></a>在页面上引入所需的组件对象</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;BrowserRouter || HashRouter <span class="keyword">as</span> Router,</span><br><span class="line">       Switch,</span><br><span class="line">        Route,</span><br><span class="line">        Link</span><br><span class="line">       &#125;  <span class="comment">// 取别名</span></span><br><span class="line"><span class="comment">// hashRouter 和 BrowserRouter 区别是url 一个带 # 一个不带</span></span><br><span class="line"></span><br><span class="line">BrowserRouter 的作用就是声明这个组件被 router 接管了。</span><br><span class="line"><span class="comment">// 在组件 return 的 逻辑中，我们使用 &lt;Router&gt; 标签来包裹这些 路由标签，Switch,route,link 等</span></span><br><span class="line">Switch 相当于 js 中的 <span class="keyword">switch</span> 语句主要用来判断不同的条件执行不同的代码</span><br><span class="line">Route 标签则是用来渲染组件的，一般会包裹一个组件，或者在它的属性上使用 component，children 来指定要渲染的组件   </span><br><span class="line">Link 标签则是指定点击时要跳转的组件路径 很像 a 链接</span><br></pre></td></tr></table></figure>
+<p><strong>下面是一个简单的使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;BrowserRouter <span class="keyword">as</span> Router,</span><br><span class="line">    Switch,</span><br><span class="line">    Route,</span><br><span class="line">    Link</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Nav</span>(<span class="params">props</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;Router&gt;</span><br><span class="line">            &lt;nav&gt;</span><br><span class="line">                &lt;Link to=<span class="string">"/home"</span>&gt;首页&lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">                &lt;Link to="/</span>history<span class="string">"&gt;历史&lt;/Link&gt;</span></span><br><span class="line"><span class="string">                &lt;Link to="</span>/my<span class="string">"&gt;我的&lt;/Link&gt;</span></span><br><span class="line"><span class="string">                &lt;Link to="</span>/about<span class="string">"&gt;关于&lt;/Link&gt;</span></span><br><span class="line"><span class="string">            &lt;/nav&gt;</span></span><br><span class="line"><span class="string">            &lt;Switch&gt;</span></span><br><span class="line"><span class="string">                &lt;Route path="</span>/about<span class="string">"&gt;</span></span><br><span class="line"><span class="string">                    &lt;About/&gt;</span></span><br><span class="line"><span class="string">                &lt;/Route&gt;</span></span><br><span class="line"><span class="string">                &lt;Route path="</span>/history<span class="string">" component=&#123;History&#125;&gt;              </span></span><br><span class="line"><span class="string">                &lt;/Route&gt;</span></span><br><span class="line"><span class="string">                &lt;Route path="</span>/my<span class="string">" children=&#123;&lt;My/&gt;&#125;&gt;</span></span><br><span class="line"><span class="string">                   </span></span><br><span class="line"><span class="string">                &lt;/Route&gt;</span></span><br><span class="line"><span class="string">                &lt;Route path="</span>/home<span class="string">"&gt;</span></span><br><span class="line"><span class="string">                    &lt;Home/&gt;</span></span><br><span class="line"><span class="string">                &lt;/Route&gt;</span></span><br><span class="line"><span class="string">            &lt;/Switch&gt;</span></span><br><span class="line"><span class="string">        &lt;/Router&gt;</span></span><br><span class="line"><span class="string">    )</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">function Home()&#123;</span></span><br><span class="line"><span class="string">    return &lt;h2&gt;首页&lt;/h2&gt;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">function History()&#123;</span></span><br><span class="line"><span class="string">    return &lt;h2&gt;历史&lt;/h2&gt;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">function My()&#123;</span></span><br><span class="line"><span class="string">    return &lt;h2&gt;我的&lt;/h2&gt;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">function About()&#123;</span></span><br><span class="line"><span class="string">    return &lt;h2&gt;关于&lt;/h2&gt;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">export default Nav;</span></span><br></pre></td></tr></table></figure>
+<h6 id="当然一般情况下我们会把这个路由-Router-标签放在-index-js-中，包裹所有的-组件，这样在其他组件中我们无需再引入这个-router，直接使用其提供的标签即可。"><a href="#当然一般情况下我们会把这个路由-Router-标签放在-index-js-中，包裹所有的-组件，这样在其他组件中我们无需再引入这个-router，直接使用其提供的标签即可。" class="headerlink" title="当然一般情况下我们会把这个路由 Router 标签放在 index.js 中，包裹所有的 组件，这样在其他组件中我们无需再引入这个 router，直接使用其提供的标签即可。"></a>当然一般情况下我们会把这个路由 Router 标签放在 index.js 中，包裹所有的 组件，这样在其他组件中我们无需再引入这个 router，直接使用其提供的标签即可。</h6><h4 id="Navlink-amp-Redirect"><a href="#Navlink-amp-Redirect" class="headerlink" title="Navlink &amp; Redirect"></a>Navlink &amp; Redirect</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;Navlink,Redirect&#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span></span><br></pre></td></tr></table></figure>
+<h6 id="navlink-为我们提供了一个-activeClassName-css-属性，只有当这个link被选中时，它才会拥有这个属性，我们可以通过事先给它绑定样式来实现我们当前选中的是哪个-标签"><a href="#navlink-为我们提供了一个-activeClassName-css-属性，只有当这个link被选中时，它才会拥有这个属性，我们可以通过事先给它绑定样式来实现我们当前选中的是哪个-标签" class="headerlink" title="navlink 为我们提供了一个 activeClassName css 属性，只有当这个link被选中时，它才会拥有这个属性，我们可以通过事先给它绑定样式来实现我们当前选中的是哪个 标签"></a>navlink 为我们提供了一个 activeClassName css 属性，只有当这个link被选中时，它才会拥有这个属性，我们可以通过事先给它绑定样式来实现我们当前选中的是哪个 标签</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;NavLink activeClassName=<span class="string">'active'</span>exact  to=<span class="string">"/"</span>&gt;首页&lt;<span class="regexp">/NavLink&gt;</span></span><br><span class="line"><span class="regexp">&lt;NavLink activeClassName='active'exact  to="/</span>history<span class="string">"&gt;历史&lt;/NavLink&gt;</span></span><br><span class="line"><span class="string">&lt;NavLink activeClassName='active' exact  to="</span>/my<span class="string">"&gt;我的&lt;/NavLink&gt;</span></span><br><span class="line"><span class="string">&lt;NavLink activeClassName='active'exact  to="</span>/about<span class="string">"&gt;关于&lt;/NavLink&gt;</span></span><br></pre></td></tr></table></figure>
+<h6 id="有一个匹配的问题，因为它最终还是通过当前访问的url来确定你点击的是哪个link-所以当首页的path是-时，其他页面分别是-xxx-，它只做了一级匹配，它只匹配一级url-也就是它值对比-一个-后面的-sxx-它都不管了，只要你有我访问路径的一层我就当做你被选中了。那么当页面访问-about-时，也匹配-首页，所以首页也会应用-css。为了解决这个问题，我们可以给它加一个属性-exact-就会完全匹配，一般只给首页加，因为其他的url一般不会相同，看情况吧"><a href="#有一个匹配的问题，因为它最终还是通过当前访问的url来确定你点击的是哪个link-所以当首页的path是-时，其他页面分别是-xxx-，它只做了一级匹配，它只匹配一级url-也就是它值对比-一个-后面的-sxx-它都不管了，只要你有我访问路径的一层我就当做你被选中了。那么当页面访问-about-时，也匹配-首页，所以首页也会应用-css。为了解决这个问题，我们可以给它加一个属性-exact-就会完全匹配，一般只给首页加，因为其他的url一般不会相同，看情况吧" class="headerlink" title="有一个匹配的问题，因为它最终还是通过当前访问的url来确定你点击的是哪个link,所以当首页的path是 / 时，其他页面分别是 / xxx ，它只做了一级匹配，它只匹配一级url,也就是它值对比 一个 /,后面的/sxx 它都不管了，只要你有我访问路径的一层我就当做你被选中了。那么当页面访问 /about 时，也匹配/ 首页，所以首页也会应用 css。为了解决这个问题，我们可以给它加一个属性 exact 就会完全匹配，一般只给首页加，因为其他的url一般不会相同，看情况吧"></a>有一个匹配的问题，因为它最终还是通过当前访问的url来确定你点击的是哪个link,所以当首页的path是 / 时，其他页面分别是 / xxx ，它只做了一级匹配，它只匹配一级url,也就是它值对比 一个 /,后面的/sxx 它都不管了，只要你有我访问路径的一层我就当做你被选中了。那么当页面访问 /about 时，也匹配/ 首页，所以首页也会应用 css。为了解决这个问题，我们可以给它加一个属性 exact 就会完全匹配，一般只给首页加，因为其他的url一般不会相同，看情况吧</h6><h4 id="Redirect-重定向到。。。。"><a href="#Redirect-重定向到。。。。" class="headerlink" title="Redirect 重定向到。。。。"></a>Redirect 重定向到。。。。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Redirect to =<span class="string">'/about'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">Redirect</span>&gt;</span></span> <span class="comment">//重定向到 /about 这个路径下的 组件里</span></span><br></pre></td></tr></table></figure>
+<h4 id="React-router-代码分割"><a href="#React-router-代码分割" class="headerlink" title="React-router 代码分割"></a>React-router 代码分割</h4><h6 id="其实就是把需要引入的代码在不同的时机（需要的时候）分别引入进来"><a href="#其实就是把需要引入的代码在不同的时机（需要的时候）分别引入进来" class="headerlink" title="其实就是把需要引入的代码在不同的时机（需要的时候）分别引入进来"></a>其实就是把需要引入的代码在不同的时机（需要的时候）分别引入进来</h6><h6 id="使用之前学习的const-组件-React-lazy-gt-import-……"><a href="#使用之前学习的const-组件-React-lazy-gt-import-……" class="headerlink" title="使用之前学习的const 组件 = React.lazy(()=&gt; import ……)"></a>使用之前学习的const 组件 = React.lazy(()=&gt; import ……)</h6><h4 id="React-router-滚动设置"><a href="#React-router-滚动设置" class="headerlink" title="React-router 滚动设置"></a>React-router 滚动设置</h4><h6 id="单页面应用，当我们切换不同的路由时，也就是不同的组件，我们在-a页面之前滚动的位置，切换到-b-时，也会默认在b页面-a-的位置，按理来说，切换后应该默认在当前组件页面的顶部才对，为了解决这个问题，我们定义一个组件-ScrollToTop"><a href="#单页面应用，当我们切换不同的路由时，也就是不同的组件，我们在-a页面之前滚动的位置，切换到-b-时，也会默认在b页面-a-的位置，按理来说，切换后应该默认在当前组件页面的顶部才对，为了解决这个问题，我们定义一个组件-ScrollToTop" class="headerlink" title="单页面应用，当我们切换不同的路由时，也就是不同的组件，我们在 a页面之前滚动的位置，切换到 b 时，也会默认在b页面 a 的位置，按理来说，切换后应该默认在当前组件页面的顶部才对，为了解决这个问题，我们定义一个组件 ScrollToTop"></a>单页面应用，当我们切换不同的路由时，也就是不同的组件，我们在 a页面之前滚动的位置，切换到 b 时，也会默认在b页面 a 的位置，按理来说，切换后应该默认在当前组件页面的顶部才对，为了解决这个问题，我们定义一个组件 ScrollToTop</h6><p>引入 useLoacation</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;useLocation&#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"><span class="comment">//在组件中就可以使用 useLoaction 的方法</span></span><br><span class="line"><span class="keyword">const</span> &#123;pathName&#125; = useLoaction();  <span class="comment">//获取到当前页面上的url 访问路径</span></span><br><span class="line">相当于浏览器中的 location 对象的 pathname 属性 location.pathname</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">ScrollToTop</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;pathName&#125; = useLoaction();</span><br><span class="line">    useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    &#125;,[pathname])</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 我们使用 useEffect 监控 访问的url pathname ,当它发生改变的时候，将滚动到页面顶部</span></span><br><span class="line">这个组件放在全局任意一个地方即可</span><br><span class="line"></span><br><span class="line">也可以放在一个单独的组件中，放在单独组件中我们就不用监控这个 访问路径了，就让它一切换到这个组件的路径就将页面滚动到顶部即可</span><br><span class="line"><span class="keyword">export</span> funtion SrcollToTop()&#123;</span><br><span class="line">    useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    &#125;,[])<span class="comment">//传递空 什么都不监控，那么就会只执行一次</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="useParams"><a href="#useParams" class="headerlink" title="useParams"></a>useParams</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取url中传递来的 参数</span></span><br><span class="line">例如页面访问 /blog/aaaa</span><br><span class="line">&lt;Route path = <span class="string">'/blog/:slug'</span>&gt;</span><br><span class="line">    <span class="comment">//这个路由渲染的组件是 blog</span></span><br><span class="line">    &lt;BlogPost/&gt;</span><br><span class="line">    &lt;<span class="regexp">/Route&gt;</span></span><br><span class="line"><span class="regexp">当访问/</span>blog/aaa 会到这个路由，进而访问到这个 blogPost 组件</span><br><span class="line">那么在 blogPost中</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BlogPost</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> &#123;slug&#125; = useParams();  <span class="comment">// slug 就能得到url传递来的参数</span></span><br><span class="line">    <span class="keyword">return</span> ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>更多用例查看 react-router 官网</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/12/react-router/" data-id="ckbbyszmd000v94w1cf1l17ce" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-react-css使用" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/12/react-css使用/" class="article-date">
+  <time datetime="2020-06-12T06:21:04.000Z" itemprop="datePublished">2020-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/12/react-css使用/">react-css使用</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="样式引入"><a href="#样式引入" class="headerlink" title="样式引入"></a>样式引入</h4><h6 id="现在我们都通过-create-react-app-来创建-react-项目，在-create-react-app-中支持我们使用-module-的方式来引入-css-文件"><a href="#现在我们都通过-create-react-app-来创建-react-项目，在-create-react-app-中支持我们使用-module-的方式来引入-css-文件" class="headerlink" title="现在我们都通过 create-react-app 来创建 react 项目，在 create react app 中支持我们使用 module 的方式来引入 css 文件"></a>现在我们都通过 create-react-app 来创建 react 项目，在 create react app 中支持我们使用 module 的方式来引入 css 文件</h6><p>es6 中我们引入文件可以使用 import 关键字即可，坏处是这个css 会全局公用</p>
+<p>第二种方式 引入 css modules 这种方式可以指定使用的是哪个 css 文件的样式，但该 css 文件的命名必须为 XXX.module.css </p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> styles <span class="keyword">from</span> <span class="string">'./Error.module.css'</span>;</span><br><span class="line"><span class="comment">//使用时可以直接 styles.文件中的样式选择器即可使用</span></span><br><span class="line"><span class="comment">//例如 css 中有一个 .error &#123;color:red&#125;</span></span><br><span class="line">style.error 即可</span><br><span class="line"><span class="comment">// 这样这个 css 就只在这个组件中生效</span></span><br></pre></td></tr></table></figure>
+<hr>
+<p><strong>style-components</strong></p>
+<h6 id="之前我们引入-css-都是需要引入-css-文件，如果我们想要直接在-js-中写-css-需要使用-style-components-这个包-使用前需要先安装"><a href="#之前我们引入-css-都是需要引入-css-文件，如果我们想要直接在-js-中写-css-需要使用-style-components-这个包-使用前需要先安装" class="headerlink" title="之前我们引入 css 都是需要引入 css 文件，如果我们想要直接在 js 中写 css 需要使用 style-components 这个包 使用前需要先安装"></a>之前我们引入 css 都是需要引入 css 文件，如果我们想要直接在 js 中写 css 需要使用 style-components 这个包 使用前需要先安装</h6><p>然后再组件中引入</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> style <span class="keyword">from</span> <span class="string">'style-components'</span></span><br><span class="line"><span class="comment">//然后再组件中定义这个样式</span></span><br><span class="line"><span class="keyword">const</span> Wrapper = style.footer<span class="string">`border:1px solid red`</span>; 注意这个符号</span><br><span class="line"><span class="comment">//然后 直接使用这个 Wrapper 对象即可，此时这个包帮我们生成一个footer 标签，而且应用了我们定义的css。</span></span><br><span class="line">&lt;Wrapper&gt;someThing&lt;<span class="regexp">/Wrapper&gt;</span></span><br><span class="line"><span class="regexp">反正就记住这样用就好了，定义一个对象，然后想使用什么标签就 style.标签名`css 代码`,最后直接使用这个返回的对象即可，自动应用我们``中定义的样式</span></span><br><span class="line"><span class="regexp">===================================</span></span><br><span class="line"><span class="regexp">解密：</span></span><br><span class="line"><span class="regexp">style.footer`` 其实是一个函数 ``中的内容时参数，省略了小括号</span></span><br><span class="line"><span class="regexp">let style = &#123;footer:str=&gt;console.log(str)&#125;</span></span><br><span class="line"><span class="regexp">style.footer`border:1px solid blue`</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/12/react-css使用/" data-id="ckbbyszmc000u94w1pzk5xcj7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/create-react-app/">create-react-app</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-react-hooks" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/11/react-hooks/" class="article-date">
@@ -97,7 +191,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/11/react-hooks/" data-id="ckbalfwcz00161cw141y5xn8l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/11/react-hooks/" data-id="ckbbyszml001394w1xc0mmh9t" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
@@ -145,7 +239,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/10/react-高阶/" data-id="ckbalfwdb001d1cw13jyd99xj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/10/react-高阶/" data-id="ckbbyszmj001194w1in4hzz5a" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
@@ -222,7 +316,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/09/react-生命周期等/" data-id="ckbalfwd300191cw1d3hrw8um" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/09/react-生命周期等/" data-id="ckbbyszmf000x94w1w4xm4806" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
@@ -301,7 +395,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/06/手写-react/" data-id="ckbalfwdq001p1cw1h478tbuu" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/06/手写-react/" data-id="ckbbysznk001a94w1ymuf3tkd" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
@@ -388,7 +482,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/01/webpack-笔记/" data-id="ckbalfwda001c1cw1eklq4dcy" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/01/webpack-笔记/" data-id="ckbbyszmi001094w1ffw4mwce" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
@@ -464,7 +558,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/01/node-js-commonJs规范/" data-id="ckbalfwd200181cw1dl41qitf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/01/node-js-commonJs规范/" data-id="ckbbyszme000w94w1y0hv9f6y" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
@@ -527,7 +621,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/31/前端模块化、工程化/" data-id="ckbalfwdc001e1cw1xb9m0uj8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/31/前端模块化、工程化/" data-id="ckbbyszmm001494w1a3m6ohu1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工程化/">工程化</a></li></ul>
@@ -586,121 +680,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/22/跨域/" data-id="ckbalfwdp001o1cw1dtugrufl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/22/跨域/" data-id="ckbbyszo0001g94w1jdstznz7" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-promise" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/20/promise/" class="article-date">
-  <time datetime="2020-05-20T06:59:31.000Z" itemprop="datePublished">2020-05-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/20/promise/">promise</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>()接受两个函数参数对象 此时状态为 pending，resolve 和 reject </span><br><span class="line">执行resolve()后 promise的状态变为 已执行（fullfilled） 代表成功执行</span><br><span class="line">执行reject() 代表执行失败 failed</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span>&#123;</span><br><span class="line">    reject(<span class="string">"拒绝"</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">value</span> =&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//代表promise函数执行成功后的回调，value为执行后得到的数据</span></span><br><span class="line">&#125;,reason =&gt;&#123;</span><br><span class="line">    <span class="comment">//执行失败后执行的函数</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="JS任务优先级"><a href="#JS任务优先级" class="headerlink" title="JS任务优先级"></a>JS任务优先级</h4><p>代码执行优先级从上到下一次执行</p>
-<ul>
-<li>同步代码块 </li>
-<li>微任务队列<ul>
-<li>promise 的 then() 会放入微任务队列执行（在执行完 resolve后返回状态后放入微任务队列）</li>
-</ul>
-</li>
-<li>宏任务队列<ul>
-<li>setTimeOut 会放入宏任务队列执行</li>
-</ul>
-</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	 <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">            setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                resolve(); <span class="comment">// 生成微任务放入微任务队列</span></span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">"settimeout"</span>);</span><br><span class="line">            &#125;, <span class="number">0</span>); <span class="comment">// 宏任务</span></span><br><span class="line">        &#125;).then(<span class="function"><span class="params">value</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'成功'</span>))</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"案例"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出顺序为 "案例" 》 "settimeout" 》 "成功"</span></span><br></pre></td></tr></table></figure>
-<h4 id="then-层层传递"><a href="#then-层层传递" class="headerlink" title="then 层层传递"></a>then 层层传递</h4><h6 id="promise-then-也是一个-promise"><a href="#promise-then-也是一个-promise" class="headerlink" title="promise.then() 也是一个 promise"></a>promise.then() 也是一个 promise</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// resolve("一瓶可乐")  resolve 和 reject 一次只能返回一种结果，不可能又成功又失败</span></span><br><span class="line">    reject(<span class="string">"涨价了"</span>);</span><br><span class="line">&#125;).then()  <span class="comment">//此处不处理，结果会向下传递</span></span><br><span class="line">.then(<span class="literal">null</span>,err=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"失败的原因"</span>+err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<h4 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolv, reject</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="comment">//resolve("fullfilled")</span></span><br><span class="line">          reject(<span class="string">"rejected"</span>)</span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> p2 = p1.then(</span><br><span class="line">          value =&gt; <span class="built_in">console</span>.log(value),</span><br><span class="line">          reason =&gt; <span class="built_in">console</span>.log(reason)</span><br><span class="line">          ).then(</span><br><span class="line">              a=&gt; <span class="built_in">console</span>.log(<span class="string">"成功"</span>),</span><br><span class="line">              b =&gt; <span class="built_in">console</span>.log(b)</span><br><span class="line">          )</span><br><span class="line">      </span><br><span class="line">      <span class="built_in">console</span>.log(p2) <span class="comment">//会发现它是一个 promise对象</span></span><br><span class="line">      </span><br><span class="line">      <span class="comment">// .then() 本身返回的也是一个 promise对象 p2也是一个promise，所以它也有相应的.then()函数</span></span><br><span class="line">      <span class="comment">//此刻p1的结果为 rejected,所以p1.then会捕获到 reason 输出 rejected,而p2,我们没有显示的指定它是成功还是失败，默认是成功的，所以会监听到 成功 （此刻我们不能打印 a 的值，因为我们没有设置 例如使用 resolve（值） 或者 return（值））</span></span><br></pre></td></tr></table></figure>
-<h5 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(成功)&#123;</span><br><span class="line">			resolve(data)</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			reject(reason)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn(arg).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">reason</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(reason)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//复杂案例 也就是使用 Promise 封装 ajax 的请求过程    </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getIp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">                xhr.open(<span class="string">'GET'</span>,</span><br><span class="line">                    <span class="string">'http://rap2.taobao.org:38080/app/mock/245421/getIp'</span>, <span class="literal">true</span>)</span><br><span class="line">                xhr.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">var</span> retJson = <span class="built_in">JSON</span>.parse(xhr.responseText)</span><br><span class="line">                    resolve(retJson.ip)</span><br><span class="line">                &#125;</span><br><span class="line">                xhr.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    reject(<span class="string">'获取IP失败'</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                xhr.send()</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">return</span> promise</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> getCityFromIp = <span class="function"><span class="params">ip</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">                xhr.open(<span class="string">'GET'</span>,</span><br><span class="line">                    <span class="string">'http://rap2.taobao.org:38080/app/mock/245421/getCity?ip='</span> + ip, <span class="literal">true</span>)</span><br><span class="line">                xhr.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                    resolve(<span class="built_in">JSON</span>.parse(xhr.responseText).city)</span><br><span class="line">                &#125;</span><br><span class="line">                xhr.onerror = <span class="function"><span class="params">()</span> =&gt;</span> reject(<span class="string">'获取city失败'</span>)</span><br><span class="line">                xhr.send()</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
-<h4 id="Promise-封装-ajax-请求（上面也是）"><a href="#Promise-封装-ajax-请求（上面也是）" class="headerlink" title="Promise 封装 ajax 请求（上面也是）"></a>Promise 封装 ajax 请求（上面也是）</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;).then()   <span class="comment">//一般这样写，promise会立即执行，并在then()中做后续处理</span></span><br><span class="line"><span class="comment">//封装 ajax 这里只定义 promise 请求，未对请求结果做处理，在调用时处理</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRquest();</span><br><span class="line">        xhr.open(<span class="string">'GET'</span>,url);</span><br><span class="line">        xhr.send();</span><br><span class="line">        xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.status == <span class="number">200</span>)&#123;</span><br><span class="line">                resolve(<span class="built_in">JSON</span>.parse(<span class="keyword">this</span>.response))</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                reject(<span class="string">'请求失败'</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            reject(<span class="keyword">this</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用时候使用.then()处理请求的返回结果</span></span><br><span class="line"><span class="comment">//第一个ajax 请求</span></span><br><span class="line">ajax(<span class="string">'getUser?参数...'</span>).then(</span><br><span class="line">						user =&gt;&#123;</span><br><span class="line">                            <span class="keyword">return</span> ajax(<span class="string">`getCourse?id=`</span>+user.id)</span><br><span class="line">                           <span class="comment">// consoel.log('user 是请求得到的结果')</span></span><br><span class="line">                        &#125;,</span><br><span class="line">    					reason =&gt;&#123;</span><br><span class="line">                            <span class="comment">//可以在此处单独处理getname 请求的错误信息</span></span><br><span class="line">                            consoel.log(<span class="string">'失败的原因reason'</span>)</span><br><span class="line">                        &#125;</span><br><span class="line">					).then(</span><br><span class="line">						course =&gt;&#123;</span><br><span class="line">                            <span class="built_in">console</span>.log(<span class="string">'course 是根据上面一步的请求的user.id获取到的结果'</span>)</span><br><span class="line">                        &#125;</span><br><span class="line">						).chtch(<span class="function"><span class="params">error</span> =&gt;</span>&#123;</span><br><span class="line">   								<span class="built_in">console</span>.log(<span class="string">'在此处做统一的错误处理'</span>)</span><br><span class="line">					&#125;)</span><br><span class="line"></span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="comment">//未使用 promise 之前 封装的 ajax 方法</span></span><br><span class="line"><span class="comment">//四个参数，请求url, 请求参数，请求成功的处理，请求失败的处理</span></span><br><span class="line"> <span class="keyword">const</span> request = <span class="function">(<span class="params">url,params,onsuccess,onerror</span>) =&gt;</span>&#123;</span><br><span class="line">     <span class="comment">//get 方式拼接参数 url 字符串 将传递的对象参数拆分后拼接</span></span><br><span class="line">     url = url+<span class="string">'?'</span>+<span class="built_in">Object</span>.entries(params).map(<span class="function"><span class="params">param</span> =&gt;</span> arr[<span class="number">0</span>]+<span class="string">'='</span>+arr[<span class="number">1</span>]).join(<span class="string">'&amp;'</span>);</span><br><span class="line">     <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRquest()</span><br><span class="line">     xhr.open(<span class="string">'GET'</span>,url,<span class="literal">true</span>); <span class="comment">// 第三个参数是否使用异步</span></span><br><span class="line">     xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(xhr.status == <span class="number">200</span> || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line">             <span class="comment">//请求成功执行  onsuccess函数</span></span><br><span class="line">             onsuccess(<span class="built_in">JSON</span>.parse(xhr.responseText))</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             <span class="comment">//请求失败执行 onerror函数</span></span><br><span class="line">             onerror()</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">//xhr有默认的 error方法，把我们自定义的赋值给它</span></span><br><span class="line">     xhr.onerror = onerror</span><br><span class="line">     xhr.send()</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"> <span class="comment">//调用</span></span><br><span class="line"> request(<span class="string">'url'</span>,&#123;<span class="attr">param</span>:<span class="string">'rel'</span>&#125;,</span><br><span class="line">        	data=&gt;&#123;</span><br><span class="line">     			consoel.log(<span class="string">'请求成功'</span>)</span><br><span class="line">    			 consoel.log(data)</span><br><span class="line"> 			&#125;,</span><br><span class="line">         ()=&gt;&#123;</span><br><span class="line">     			consoel.log(<span class="string">'异常'</span>)</span><br><span class="line">			 &#125;</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/20/promise/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/20/promise/" data-id="ckbalfwd100171cw1as3nkuvz" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promise/">promise</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-mock数据" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/19/mock数据/" class="article-date">
-  <time datetime="2020-05-19T08:35:44.000Z" itemprop="datePublished">2020-05-19</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/19/mock数据/">mock数据</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="简单的-node-js-服务器"><a href="#简单的-node-js-服务器" class="headerlink" title="简单的 node.js 服务器"></a>简单的 node.js 服务器</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Node.js 模拟 server</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//解析url 将url解析成对象</span></span><br><span class="line">    <span class="keyword">let</span> urlObj = url.parse(req.url);</span><br><span class="line">    <span class="comment">// console.log(urlObj)</span></span><br><span class="line">    <span class="comment">//如何在服务器中展示一个我们已经写好的html页面呢？</span></span><br><span class="line">    <span class="comment">//使用fs模块解析该文件，res返回即可</span></span><br><span class="line">    <span class="keyword">let</span> file =  fs.readFileSync(__dirname+<span class="string">'/index.html'</span>);</span><br><span class="line">    <span class="comment">//处理用户请求</span></span><br><span class="line">    <span class="keyword">if</span>(urlObj.pathname === <span class="string">'/getWeather'</span>)&#123;</span><br><span class="line">        res.end(<span class="built_in">JSON</span>.stringify(&#123;<span class="attr">data</span>:<span class="string">'晴朗'</span>&#125;))</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        res.end(file)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">8888</span>);</span><br></pre></td></tr></table></figure>
-<p><strong>对应的html代码</strong></p>
-<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span> = <span class="string">"weather"</span>&gt;</span>天气：<span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> $ = <span class="function"><span class="params">s</span> =&gt;</span> <span class="built_in">document</span>.querySelector(s);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">    xhr.open(<span class="string">'GET'</span>,<span class="string">'http://localhost:8888/getWeather'</span>,<span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">    xhr.onload = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span></span><br><span class="line"><span class="javascript">        $(<span class="string">'span'</span>).innerText = <span class="built_in">JSON</span>.parse(xhr.responseText).data;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    xhr.send();</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
-<h6 id="详解步骤"><a href="#详解步骤" class="headerlink" title="详解步骤"></a>详解步骤</h6><ul>
-<li>使用node.js 创建一个 httpServer,监听端口 8888</li>
-<li>为了让我们已有的html在服务器中运行，在服务器的代码中使用 fs模块取读文件，然后将结果返回到客户端，于是展现了我们的html 页面</li>
-<li>html页面中的 javascript 代码中又向我们的server中发送了一个请求，server中接收到请求后根据请求的路径进行相应的响应处理</li>
-</ul>
-<h4 id="更完善的-server"><a href="#更完善的-server" class="headerlink" title="更完善的 server"></a>更完善的 server</h4>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/19/mock数据/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/19/mock数据/" data-id="ckbalfwcw00131cw1vumd96ed" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mock/">mock</a></li></ul>
-
     </footer>
   </div>
   
@@ -726,7 +708,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -736,7 +718,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 17.5px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -758,6 +740,14 @@
       <ul>
         
           <li>
+            <a href="/2020/06/12/react-router/">react-router</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/12/react-css使用/">react-css使用</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/11/react-hooks/">react hooks</a>
           </li>
         
@@ -767,14 +757,6 @@
         
           <li>
             <a href="/2020/06/09/react-生命周期等/">react 生命周期等</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/06/手写-react/">手写 react</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/01/webpack-笔记/">webpack 笔记</a>
           </li>
         
       </ul>

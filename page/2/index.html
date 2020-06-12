@@ -62,6 +62,118 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-promise" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/20/promise/" class="article-date">
+  <time datetime="2020-05-20T06:59:31.000Z" itemprop="datePublished">2020-05-20</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/20/promise/">promise</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="语法"><a href="#语法" class="headerlink" title="语法"></a>语法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>()接受两个函数参数对象 此时状态为 pending，resolve 和 reject </span><br><span class="line">执行resolve()后 promise的状态变为 已执行（fullfilled） 代表成功执行</span><br><span class="line">执行reject() 代表执行失败 failed</span><br><span class="line"></span><br><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span>&#123;</span><br><span class="line">    reject(<span class="string">"拒绝"</span>)</span><br><span class="line">&#125;).then(<span class="function"><span class="params">value</span> =&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//代表promise函数执行成功后的回调，value为执行后得到的数据</span></span><br><span class="line">&#125;,reason =&gt;&#123;</span><br><span class="line">    <span class="comment">//执行失败后执行的函数</span></span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="JS任务优先级"><a href="#JS任务优先级" class="headerlink" title="JS任务优先级"></a>JS任务优先级</h4><p>代码执行优先级从上到下一次执行</p>
+<ul>
+<li>同步代码块 </li>
+<li>微任务队列<ul>
+<li>promise 的 then() 会放入微任务队列执行（在执行完 resolve后返回状态后放入微任务队列）</li>
+</ul>
+</li>
+<li>宏任务队列<ul>
+<li>setTimeOut 会放入宏任务队列执行</li>
+</ul>
+</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">	 <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="params">resolve</span> =&gt;</span> &#123;</span><br><span class="line">            setTimeout(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                resolve(); <span class="comment">// 生成微任务放入微任务队列</span></span><br><span class="line">                <span class="built_in">console</span>.log(<span class="string">"settimeout"</span>);</span><br><span class="line">            &#125;, <span class="number">0</span>); <span class="comment">// 宏任务</span></span><br><span class="line">        &#125;).then(<span class="function"><span class="params">value</span> =&gt;</span> <span class="built_in">console</span>.log(<span class="string">'成功'</span>))</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">"案例"</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//输出顺序为 "案例" 》 "settimeout" 》 "成功"</span></span><br></pre></td></tr></table></figure>
+<h4 id="then-层层传递"><a href="#then-层层传递" class="headerlink" title="then 层层传递"></a>then 层层传递</h4><h6 id="promise-then-也是一个-promise"><a href="#promise-then-也是一个-promise" class="headerlink" title="promise.then() 也是一个 promise"></a>promise.then() 也是一个 promise</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span>&#123;</span><br><span class="line">    <span class="comment">// resolve("一瓶可乐")  resolve 和 reject 一次只能返回一种结果，不可能又成功又失败</span></span><br><span class="line">    reject(<span class="string">"涨价了"</span>);</span><br><span class="line">&#125;).then()  <span class="comment">//此处不处理，结果会向下传递</span></span><br><span class="line">.then(<span class="literal">null</span>,err=&gt;&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"失败的原因"</span>+err)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<h4 id="链式调用"><a href="#链式调用" class="headerlink" title="链式调用"></a>链式调用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> p1 = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolv, reject</span>) =&gt;</span> &#123;</span><br><span class="line">          <span class="comment">//resolve("fullfilled")</span></span><br><span class="line">          reject(<span class="string">"rejected"</span>)</span><br><span class="line">      &#125;)</span><br><span class="line"></span><br><span class="line">      <span class="keyword">let</span> p2 = p1.then(</span><br><span class="line">          value =&gt; <span class="built_in">console</span>.log(value),</span><br><span class="line">          reason =&gt; <span class="built_in">console</span>.log(reason)</span><br><span class="line">          ).then(</span><br><span class="line">              a=&gt; <span class="built_in">console</span>.log(<span class="string">"成功"</span>),</span><br><span class="line">              b =&gt; <span class="built_in">console</span>.log(b)</span><br><span class="line">          )</span><br><span class="line">      </span><br><span class="line">      <span class="built_in">console</span>.log(p2) <span class="comment">//会发现它是一个 promise对象</span></span><br><span class="line">      </span><br><span class="line">      <span class="comment">// .then() 本身返回的也是一个 promise对象 p2也是一个promise，所以它也有相应的.then()函数</span></span><br><span class="line">      <span class="comment">//此刻p1的结果为 rejected,所以p1.then会捕获到 reason 输出 rejected,而p2,我们没有显示的指定它是成功还是失败，默认是成功的，所以会监听到 成功 （此刻我们不能打印 a 的值，因为我们没有设置 例如使用 resolve（值） 或者 return（值））</span></span><br></pre></td></tr></table></figure>
+<h5 id="常用语法"><a href="#常用语法" class="headerlink" title="常用语法"></a>常用语法</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fn</span>(<span class="params">arg</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span>(<span class="params">resolve,reject</span>)</span>&#123;</span><br><span class="line">		<span class="keyword">if</span>(成功)&#123;</span><br><span class="line">			resolve(data)</span><br><span class="line">		&#125;<span class="keyword">else</span>&#123;</span><br><span class="line">			reject(reason)</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;)</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">fn(arg).then(<span class="function"><span class="keyword">function</span>(<span class="params">data</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(data)</span><br><span class="line">&#125;).catch(<span class="function"><span class="keyword">function</span>(<span class="params">reason</span>)</span>&#123;</span><br><span class="line">	<span class="built_in">console</span>.log(reason)</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//复杂案例 也就是使用 Promise 封装 ajax 的请求过程    </span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">getIp</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">            <span class="keyword">var</span> promise = <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function"><span class="keyword">function</span> (<span class="params">resolve, reject</span>) </span>&#123;</span><br><span class="line">                <span class="keyword">var</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">                xhr.open(<span class="string">'GET'</span>,</span><br><span class="line">                    <span class="string">'http://rap2.taobao.org:38080/app/mock/245421/getIp'</span>, <span class="literal">true</span>)</span><br><span class="line">                xhr.onload = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    <span class="keyword">var</span> retJson = <span class="built_in">JSON</span>.parse(xhr.responseText)</span><br><span class="line">                    resolve(retJson.ip)</span><br><span class="line">                &#125;</span><br><span class="line">                xhr.onerror = <span class="function"><span class="keyword">function</span> (<span class="params"></span>) </span>&#123;</span><br><span class="line">                    reject(<span class="string">'获取IP失败'</span>)</span><br><span class="line">                &#125;</span><br><span class="line">                xhr.send()</span><br><span class="line">            &#125;)</span><br><span class="line">            <span class="keyword">return</span> promise</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">const</span> getCityFromIp = <span class="function"><span class="params">ip</span> =&gt;</span> &#123;</span><br><span class="line">            <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve, reject</span>) =&gt;</span> &#123;</span><br><span class="line">                <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest()</span><br><span class="line">                xhr.open(<span class="string">'GET'</span>,</span><br><span class="line">                    <span class="string">'http://rap2.taobao.org:38080/app/mock/245421/getCity?ip='</span> + ip, <span class="literal">true</span>)</span><br><span class="line">                xhr.onload = <span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line">                    resolve(<span class="built_in">JSON</span>.parse(xhr.responseText).city)</span><br><span class="line">                &#125;</span><br><span class="line">                xhr.onerror = <span class="function"><span class="params">()</span> =&gt;</span> reject(<span class="string">'获取city失败'</span>)</span><br><span class="line">                xhr.send()</span><br><span class="line">            &#125;)</span><br><span class="line">        &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Promise-封装-ajax-请求（上面也是）"><a href="#Promise-封装-ajax-请求（上面也是）" class="headerlink" title="Promise 封装 ajax 请求（上面也是）"></a>Promise 封装 ajax 请求（上面也是）</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;).then()   <span class="comment">//一般这样写，promise会立即执行，并在then()中做后续处理</span></span><br><span class="line"><span class="comment">//封装 ajax 这里只定义 promise 请求，未对请求结果做处理，在调用时处理</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">ajax</span>(<span class="params">url</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> <span class="keyword">new</span> <span class="built_in">Promise</span>(<span class="function">(<span class="params">resolve,reject</span>) =&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRquest();</span><br><span class="line">        xhr.open(<span class="string">'GET'</span>,url);</span><br><span class="line">        xhr.send();</span><br><span class="line">        xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            <span class="keyword">if</span>(<span class="keyword">this</span>.status == <span class="number">200</span>)&#123;</span><br><span class="line">                resolve(<span class="built_in">JSON</span>.parse(<span class="keyword">this</span>.response))</span><br><span class="line">            &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">                reject(<span class="string">'请求失败'</span>)</span><br><span class="line">            &#125;</span><br><span class="line">        &#125;</span><br><span class="line">        xhr.onerror = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            reject(<span class="keyword">this</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//调用时候使用.then()处理请求的返回结果</span></span><br><span class="line"><span class="comment">//第一个ajax 请求</span></span><br><span class="line">ajax(<span class="string">'getUser?参数...'</span>).then(</span><br><span class="line">						user =&gt;&#123;</span><br><span class="line">                            <span class="keyword">return</span> ajax(<span class="string">`getCourse?id=`</span>+user.id)</span><br><span class="line">                           <span class="comment">// consoel.log('user 是请求得到的结果')</span></span><br><span class="line">                        &#125;,</span><br><span class="line">    					reason =&gt;&#123;</span><br><span class="line">                            <span class="comment">//可以在此处单独处理getname 请求的错误信息</span></span><br><span class="line">                            consoel.log(<span class="string">'失败的原因reason'</span>)</span><br><span class="line">                        &#125;</span><br><span class="line">					).then(</span><br><span class="line">						course =&gt;&#123;</span><br><span class="line">                            <span class="built_in">console</span>.log(<span class="string">'course 是根据上面一步的请求的user.id获取到的结果'</span>)</span><br><span class="line">                        &#125;</span><br><span class="line">						).chtch(<span class="function"><span class="params">error</span> =&gt;</span>&#123;</span><br><span class="line">   								<span class="built_in">console</span>.log(<span class="string">'在此处做统一的错误处理'</span>)</span><br><span class="line">					&#125;)</span><br><span class="line"></span><br><span class="line">-------------------------------------------------------------------------------</span><br><span class="line"></span><br><span class="line"><span class="comment">//未使用 promise 之前 封装的 ajax 方法</span></span><br><span class="line"><span class="comment">//四个参数，请求url, 请求参数，请求成功的处理，请求失败的处理</span></span><br><span class="line"> <span class="keyword">const</span> request = <span class="function">(<span class="params">url,params,onsuccess,onerror</span>) =&gt;</span>&#123;</span><br><span class="line">     <span class="comment">//get 方式拼接参数 url 字符串 将传递的对象参数拆分后拼接</span></span><br><span class="line">     url = url+<span class="string">'?'</span>+<span class="built_in">Object</span>.entries(params).map(<span class="function"><span class="params">param</span> =&gt;</span> arr[<span class="number">0</span>]+<span class="string">'='</span>+arr[<span class="number">1</span>]).join(<span class="string">'&amp;'</span>);</span><br><span class="line">     <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRquest()</span><br><span class="line">     xhr.open(<span class="string">'GET'</span>,url,<span class="literal">true</span>); <span class="comment">// 第三个参数是否使用异步</span></span><br><span class="line">     xhr.onload = <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">         <span class="keyword">if</span>(xhr.status == <span class="number">200</span> || xhr.status === <span class="number">304</span>)&#123;</span><br><span class="line">             <span class="comment">//请求成功执行  onsuccess函数</span></span><br><span class="line">             onsuccess(<span class="built_in">JSON</span>.parse(xhr.responseText))</span><br><span class="line">         &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">             <span class="comment">//请求失败执行 onerror函数</span></span><br><span class="line">             onerror()</span><br><span class="line">         &#125;</span><br><span class="line">     &#125;</span><br><span class="line">     <span class="comment">//xhr有默认的 error方法，把我们自定义的赋值给它</span></span><br><span class="line">     xhr.onerror = onerror</span><br><span class="line">     xhr.send()</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> </span><br><span class="line"> <span class="comment">//调用</span></span><br><span class="line"> request(<span class="string">'url'</span>,&#123;<span class="attr">param</span>:<span class="string">'rel'</span>&#125;,</span><br><span class="line">        	data=&gt;&#123;</span><br><span class="line">     			consoel.log(<span class="string">'请求成功'</span>)</span><br><span class="line">    			 consoel.log(data)</span><br><span class="line"> 			&#125;,</span><br><span class="line">         ()=&gt;&#123;</span><br><span class="line">     			consoel.log(<span class="string">'异常'</span>)</span><br><span class="line">			 &#125;</span><br><span class="line">        )</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2020/05/20/promise/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/20/promise/" data-id="ckbbyszmb000t94w1sjken2p7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promise/">promise</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-mock数据" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/19/mock数据/" class="article-date">
+  <time datetime="2020-05-19T08:35:44.000Z" itemprop="datePublished">2020-05-19</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/19/mock数据/">mock数据</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="简单的-node-js-服务器"><a href="#简单的-node-js-服务器" class="headerlink" title="简单的 node.js 服务器"></a>简单的 node.js 服务器</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Node.js 模拟 server</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="keyword">const</span> url = <span class="built_in">require</span>(<span class="string">'url'</span>)</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> server = http.createServer(<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="comment">//解析url 将url解析成对象</span></span><br><span class="line">    <span class="keyword">let</span> urlObj = url.parse(req.url);</span><br><span class="line">    <span class="comment">// console.log(urlObj)</span></span><br><span class="line">    <span class="comment">//如何在服务器中展示一个我们已经写好的html页面呢？</span></span><br><span class="line">    <span class="comment">//使用fs模块解析该文件，res返回即可</span></span><br><span class="line">    <span class="keyword">let</span> file =  fs.readFileSync(__dirname+<span class="string">'/index.html'</span>);</span><br><span class="line">    <span class="comment">//处理用户请求</span></span><br><span class="line">    <span class="keyword">if</span>(urlObj.pathname === <span class="string">'/getWeather'</span>)&#123;</span><br><span class="line">        res.end(<span class="built_in">JSON</span>.stringify(&#123;<span class="attr">data</span>:<span class="string">'晴朗'</span>&#125;))</span><br><span class="line">    &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">        res.end(file)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;);</span><br><span class="line">server.listen(<span class="number">8888</span>);</span><br></pre></td></tr></table></figure>
+<p><strong>对应的html代码</strong></p>
+<figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">&lt;!DOCTYPE html&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">html</span> <span class="attr">lang</span>=<span class="string">"en"</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">head</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">charset</span>=<span class="string">"UTF-8"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">meta</span> <span class="attr">name</span>=<span class="string">"viewport"</span> <span class="attr">content</span>=<span class="string">"width=device-width, initial-scale=1.0"</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">title</span>&gt;</span>Document<span class="tag">&lt;/<span class="name">title</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">head</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">body</span>&gt;</span></span><br><span class="line">    <span class="tag">&lt;<span class="name">h2</span> <span class="attr">class</span> = <span class="string">"weather"</span>&gt;</span>天气：<span class="tag">&lt;<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">span</span>&gt;</span><span class="tag">&lt;/<span class="name">h2</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">body</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;<span class="name">script</span>&gt;</span><span class="undefined"></span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> $ = <span class="function"><span class="params">s</span> =&gt;</span> <span class="built_in">document</span>.querySelector(s);</span></span><br><span class="line"><span class="javascript">    <span class="keyword">let</span> xhr = <span class="keyword">new</span> XMLHttpRequest();</span></span><br><span class="line"><span class="javascript">    xhr.open(<span class="string">'GET'</span>,<span class="string">'http://localhost:8888/getWeather'</span>,<span class="literal">true</span>);</span></span><br><span class="line"><span class="javascript">    xhr.onload = <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span></span><br><span class="line"><span class="javascript">        $(<span class="string">'span'</span>).innerText = <span class="built_in">JSON</span>.parse(xhr.responseText).data;</span></span><br><span class="line"><span class="undefined">    &#125;</span></span><br><span class="line"><span class="undefined">    xhr.send();</span></span><br><span class="line"><span class="undefined"></span><span class="tag">&lt;/<span class="name">script</span>&gt;</span></span><br><span class="line"><span class="tag">&lt;/<span class="name">html</span>&gt;</span></span><br></pre></td></tr></table></figure>
+<h6 id="详解步骤"><a href="#详解步骤" class="headerlink" title="详解步骤"></a>详解步骤</h6><ul>
+<li>使用node.js 创建一个 httpServer,监听端口 8888</li>
+<li>为了让我们已有的html在服务器中运行，在服务器的代码中使用 fs模块取读文件，然后将结果返回到客户端，于是展现了我们的html 页面</li>
+<li>html页面中的 javascript 代码中又向我们的server中发送了一个请求，server中接收到请求后根据请求的路径进行相应的响应处理</li>
+</ul>
+<h4 id="更完善的-server"><a href="#更完善的-server" class="headerlink" title="更完善的 server"></a>更完善的 server</h4>
+        
+          <p class="article-more-link">
+            <a href="/2020/05/19/mock数据/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/19/mock数据/" data-id="ckbbyszm8000q94w158rzqxkp" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mock/">mock</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-ajax" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/18/ajax/" class="article-date">
@@ -117,7 +229,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/18/ajax/" data-id="ckbalfw9300081cw1lmcw4e4d" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/18/ajax/" data-id="ckbbyszkh000394w1k82a3f6l" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/">ajax</a></li></ul>
@@ -223,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/17/http-session-cookie-token/" data-id="ckbalfwcp000w1cw18cr55ztv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/17/http-session-cookie-token/" data-id="ckbbyszln000g94w16e1w8e5s" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
@@ -403,7 +515,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/16/https/" data-id="ckbalfwcn000v1cw1khjl8l1i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/16/https/" data-id="ckbbyszlv000j94w1v8we0zwl" class="article-share-link">Share</a>
       
       
     </footer>
@@ -466,7 +578,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/15/密码学初探/" data-id="ckbalfwdi001j1cw11n7zr1xo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/15/密码学初探/" data-id="ckbbyszna001794w15h6by1tm" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https基础/">https基础</a></li></ul>
@@ -519,7 +631,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/15/http-缓存控制/" data-id="ckbalfwcg000p1cw1l8ui6o6x" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/15/http-缓存控制/" data-id="ckbbyszlg000d94w1v2ka0cg1" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
@@ -586,7 +698,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/14/http-TCP/" data-id="ckbalfwcc000l1cw1yh157ua3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/14/http-TCP/" data-id="ckbbyszlk000f94w1hmzngtj5" class="article-share-link">Share</a>
       
       
     </footer>
@@ -628,7 +740,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/12/近日案例总结/" data-id="ckbalfwdn001m1cw162nt2wu4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/12/近日案例总结/" data-id="ckbbysznv001e94w1bpjn48fb" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/summary/">summary</a></li></ul>
@@ -700,141 +812,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/12/js-事件/" data-id="ckbalfwcq000x1cw1yt2165hk" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/12/js-事件/" data-id="ckbbyszm9000r94w1ise9f2qj" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-css-定位" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/10/css-定位/" class="article-date">
-  <time datetime="2020-05-10T05:50:22.000Z" itemprop="datePublished">2020-05-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/10/css-定位/">css 定位</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="为什么需要定位"><a href="#为什么需要定位" class="headerlink" title="为什么需要定位"></a>为什么需要定位</h4><h6 id="这两天在用css写一个叉号的时候，用到了定位，当时懵逼了好长时间，才想明白，有必要对定位再做一次笔记和回顾了"><a href="#这两天在用css写一个叉号的时候，用到了定位，当时懵逼了好长时间，才想明白，有必要对定位再做一次笔记和回顾了" class="headerlink" title="这两天在用css写一个叉号的时候，用到了定位，当时懵逼了好长时间，才想明白，有必要对定位再做一次笔记和回顾了"></a>这两天在用css写一个叉号的时候，用到了定位，当时懵逼了好长时间，才想明白，有必要对定位再做一次笔记和回顾了</h6><ul>
-<li>改变元素的位置</li>
-<li>让元素重叠放置任意位置 （写叉号用到的）</li>
-<li>让元素固定在窗口固定位置</li>
-</ul>
-<h4 id="涉及的属性"><a href="#涉及的属性" class="headerlink" title="涉及的属性"></a>涉及的属性</h4><ul>
-<li>position：static、relative、absolute、fixed、stick</li>
-<li>top、left、right、bottom</li>
-<li>z-index</li>
-</ul>
-<h5 id="static"><a href="#static" class="headerlink" title="static"></a>static</h5><p>该关键字指定元素使用正常的布局行为，即元素在文档常规流中当前的布局位置。</p>
-<p>此时top，right，bottom,left, 和 z-index 属性无效，也就是它没有定位</p>
-<p>之所以有这个属性，是为了给定位元素取消定位属性而设置的</p>
-<h5 id="relative"><a href="#relative" class="headerlink" title="relative"></a>relative</h5><p>相对定位</p>
-<p>未脱离普通流，它依然占据空间，设置背景色可以看出来</p>
-<p>元素本身在普通流中的位置并未发生变化，只是视觉上变化</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/10/css-定位/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/10/css-定位/" data-id="ckbalfw98000b1cw18m1ixcqi" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-Bom-浏览器对象" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/09/Bom-浏览器对象/" class="article-date">
-  <time datetime="2020-05-09T01:53:25.000Z" itemprop="datePublished">2020-05-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/09/Bom-浏览器对象/">Bom 浏览器对象</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="概念"><a href="#概念" class="headerlink" title="概念"></a>概念</h4><h5 id="BOM-Browser-Object-Model-浏览-器对象模型，提供了独立于内容的、-可以与浏览器窗口进行互动的对象结构"><a href="#BOM-Browser-Object-Model-浏览-器对象模型，提供了独立于内容的、-可以与浏览器窗口进行互动的对象结构" class="headerlink" title="BOM(Browser Object Model) 浏览 器对象模型，提供了独立于内容的、 可以与浏览器窗口进行互动的对象结构"></a>BOM(Browser Object Model) 浏览 器对象模型，提供了独立于内容的、 可以与浏览器窗口进行互动的对象结构</h5><h5 id="window"><a href="#window" class="headerlink" title="window"></a>window</h5><ul>
-<li>var声明的全局变量和functin声明的函数是window的属 性</li>
-<li>let 、const声明的变量不是</li>
-</ul>
-<h5 id="navigator"><a href="#navigator" class="headerlink" title="navigator"></a>navigator</h5><h6 id="Navigator-对象包含有关浏览器的信息。"><a href="#Navigator-对象包含有关浏览器的信息。" class="headerlink" title="Navigator 对象包含有关浏览器的信息。"></a>Navigator 对象包含有关浏览器的信息。</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">window</span>.navigator.userAgent</span><br><span class="line"></span><br><span class="line"><span class="comment">//Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like //Gecko) Chrome/81.0.4044.138 Safari/537.36</span></span><br><span class="line"><span class="comment">//可以用来判断用户的设备信息</span></span><br><span class="line"><span class="keyword">const</span> isIphone = <span class="function"><span class="params">()</span>=&gt;</span> /iphone/i.test(navigator.userAgent);</span><br></pre></td></tr></table></figure>
-<h4 id="screen"><a href="#screen" class="headerlink" title="screen"></a>screen</h4><figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">screen.width</span><br><span class="line">screen.height</span><br><span class="line">screen.orientation.type  //方向landscape-primary横屏 portrait-primary 竖屏</span><br><span class="line">screen.orientation.onchange = function()&#123;</span><br><span class="line">	console.log(screen.orientation.type)</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="尺寸"><a href="#尺寸" class="headerlink" title="尺寸"></a>尺寸</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.documentElement.offSetHeight <span class="comment">//页面文档高度</span></span><br><span class="line">screen.height <span class="comment">//屏幕高度</span></span><br><span class="line"><span class="comment">//浏览器视窗高度</span></span><br><span class="line"><span class="built_in">document</span>.documentElement.clientHeight</span><br><span class="line"><span class="built_in">window</span>.innerHeight</span><br><span class="line"><span class="comment">//距离最近是定位元素的祖先元素对象</span></span><br><span class="line">element.offSetParent</span><br><span class="line"><span class="comment">//到距离最近的是定位元素的祖先元素的距离</span></span><br><span class="line">element.offSetTop</span><br><span class="line"><span class="comment">//页面滚动的垂直距离</span></span><br><span class="line"><span class="built_in">window</span>.scrollY</span><br><span class="line"><span class="built_in">document</span>.documentElement.scrollTop</span><br><span class="line"><span class="comment">//获取元素在视窗中的位置</span></span><br><span class="line">element.getBoundingClientRect()</span><br><span class="line"><span class="comment">//元素距离页面顶部的距离  元素距离窗口的距离加上滚动的距离</span></span><br><span class="line">element.getBoundingClientRect().top + <span class="built_in">document</span>.body.scrollTop</span><br><span class="line"><span class="comment">//判断元素是否出现在窗口视野</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">isShow</span>(<span class="params">dom</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//两种情况</span></span><br><span class="line">  <span class="keyword">var</span> res = <span class="literal">false</span>;</span><br><span class="line">  <span class="keyword">if</span>(dom.getBoundingClientRect().y&lt;<span class="number">0</span>)&#123;</span><br><span class="line">      <span class="comment">//判断元素是在窗口上部还是下部，如果是上部，则它距离窗口的距离会小于0</span></span><br><span class="line">      <span class="comment">//并且如果它距离窗口的距离是个负数加上它本身的高度大于0，它就会出现在视窗中</span></span><br><span class="line">    <span class="keyword">if</span>((dom.getBoundingClientRect().top+dom.getBoundingClientRect().height)&gt;<span class="number">0</span>)&#123;</span><br><span class="line">      res = <span class="literal">true</span>;</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;<span class="keyword">else</span> <span class="keyword">if</span>(dom.getBoundingClientRect().y&lt;<span class="built_in">window</span>.innerHeight)&#123;</span><br><span class="line">      <span class="comment">//在窗口下部，如果元素到窗口顶部的距离小于窗口的高度，它肯定出现在视窗中</span></span><br><span class="line">    res = <span class="literal">true</span>;</span><br><span class="line">  &#125;</span><br><span class="line">  <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h5 id="滚动"><a href="#滚动" class="headerlink" title="滚动"></a>滚动</h5><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//水平滚动到哪里</span></span><br><span class="line"><span class="built_in">window</span>.scrollTO(&#123;</span><br><span class="line">	top:<span class="number">100</span>,</span><br><span class="line">	left:<span class="number">0</span>,</span><br><span class="line">	behavor:<span class="string">'smooth'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//水平滚动多少</span></span><br><span class="line"><span class="built_in">window</span>.scrollBy(&#123;</span><br><span class="line">	top:<span class="built_in">window</span>.innerHeight,</span><br><span class="line">	left:<span class="number">0</span>,</span><br><span class="line">	behavior:<span class="string">'smooth'</span></span><br><span class="line">&#125;)</span><br><span class="line"><span class="comment">//回到顶部效果</span></span><br><span class="line">  <span class="keyword">let</span> $toTop = <span class="built_in">document</span>.querySelector(<span class="string">'.btn-to-top'</span>)</span><br><span class="line">    <span class="built_in">window</span>.onscroll = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="keyword">if</span>(<span class="built_in">window</span>.scrollY &gt; <span class="number">150</span>) &#123;</span><br><span class="line">        $toTop.classList.add(<span class="string">'show'</span>)</span><br><span class="line">      &#125; <span class="keyword">else</span> &#123;</span><br><span class="line">        $toTop.classList.remove(<span class="string">'show'</span>)</span><br><span class="line">      &#125;</span><br><span class="line">    &#125;</span><br><span class="line">    $toTop.onclick = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line">      <span class="built_in">window</span>.scrollTo(&#123;</span><br><span class="line">        top: <span class="number">0</span>,</span><br><span class="line">        behavior: <span class="string">'smooth'</span></span><br><span class="line">      &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h5 id="fullpage滚动的效果"><a href="#fullpage滚动的效果" class="headerlink" title="fullpage滚动的效果"></a>fullpage滚动的效果</h5><h6 id="思路：监听用户键盘按下事件，如果按的是向下的箭头，则将滚动条滚动一整个窗口的高度"><a href="#思路：监听用户键盘按下事件，如果按的是向下的箭头，则将滚动条滚动一整个窗口的高度" class="headerlink" title="思路：监听用户键盘按下事件，如果按的是向下的箭头，则将滚动条滚动一整个窗口的高度"></a>思路：监听用户键盘按下事件，如果按的是向下的箭头，则将滚动条滚动一整个窗口的高度</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">  <span class="built_in">window</span>.onkeydown = <span class="function"><span class="keyword">function</span>(<span class="params">e</span>) </span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(e)</span><br><span class="line">        <span class="keyword">if</span>(e.key === <span class="string">'ArrowDown'</span>) &#123;</span><br><span class="line">          e.preventDefault()</span><br><span class="line">          <span class="built_in">window</span>.scrollBy(&#123;</span><br><span class="line">            top: <span class="built_in">window</span>.innerHeight,</span><br><span class="line">            behavior: <span class="string">'smooth'</span></span><br><span class="line">          &#125;)</span><br><span class="line">        &#125;<span class="keyword">else</span> <span class="keyword">if</span>(e.key === <span class="string">'ArrowUp'</span>) &#123;</span><br><span class="line">          e.preventDefault()</span><br><span class="line">          <span class="built_in">window</span>.scrollBy(&#123;</span><br><span class="line">            top: <span class="number">0</span> - <span class="built_in">window</span>.innerHeight,</span><br><span class="line">            behavior: <span class="string">'smooth'</span></span><br><span class="line">          &#125;)          </span><br><span class="line">        &#125;</span><br><span class="line">      &#125;</span><br><span class="line"><span class="comment">//按向下键，向下滚动一屏的高度，向上键滚动-一屏的高度</span></span><br></pre></td></tr></table></figure>
-<h4 id="URL编码解码"><a href="#URL编码解码" class="headerlink" title="URL编码解码"></a>URL编码解码</h4><ul>
-<li>encodeURI()  不会对 : / ? &amp; = # 编码</li>
-<li>encodeURIComponent()   会对 : / ? &amp; = # 编码</li>
-</ul>
-<h4 id="cookie"><a href="#cookie" class="headerlink" title="cookie"></a>cookie</h4><ul>
-<li>cookie是存储在浏览器上的一小段数据，用来记录某些当页面关闭或者刷新后 仍然需要记录的信息。在控制台用 「document.cookie」查看你当前正在浏览的网 站的cookie</li>
-<li>cookie可以使用 js 在浏览器直接设置（用于记录不敏感信息，如用户名）, 也 可以在服务端通使用 HTTP 协议规定的 set-cookie 来让浏览器种下cookie，这是 最常见的做法。</li>
-<li>cookie可以使用 js 在浏览器直接设置（用于记录不敏感信息，如用户名）, 也 可以在服务端通使用 HTTP 协议规定的 set-cookie 来让浏览器种下cookie，这是 最常见的做法。</li>
-<li>一般浏览器存储cookie 最大容量为4k，所以大量数据不要存到cookie。</li>
-<li>设置cookie时的参数：<ul>
-<li>path：表示 cookie 影响到的路径，匹配该路径才发送这个 cookie。 </li>
-<li>expires 和 maxAge：告诉浏览器 cookie 时候过期，maxAge 是 cookie 多久后过期的相对时间。不设置这两个选项 时会产生 session cookie，当用户关闭浏览器时，就被清除。一般用来保存 session 的 session_id。 •</li>
-<li>secure：当 secure 值为 true 时，cookie 在 HTTP 中是无效，在 HTTPS 中才有效 </li>
-<li>httpOnly：浏览器不允许脚本操作 document.cookie 去更改 cookie。一般情况下都应该设置这个为 true，这样可以 避免被 xss 攻击拿到cookie。</li>
-</ul>
-</li>
-</ul>
-<h4 id="session"><a href="#session" class="headerlink" title="session"></a>session</h4><ul>
-<li>创建session后，会把关联的session_id 通过setCookie 添加到http响应头部中。 </li>
-<li>浏览器在加载页面时发现响应头部有 set-cookie字段，就把这个cookie 种到浏览器指定域名下。 </li>
-<li>当下次刷新页面时，发送的请求会带上这条cookie， 服务端在接收到后根据这个session_id来识别用户。</li>
-<li>cookie 是存储在浏览器里的一小段「数据」，而session是服务器用来 识别身份的一段数据，有时候也特指身份识别机制</li>
-</ul>
-<h4 id="localStorage"><a href="#localStorage" class="headerlink" title="localStorage"></a>localStorage</h4><ul>
-<li>localStorage HTML5本地存储web storage特性的API之一，用于将大量数据（最大5M）保存在 浏览器中</li>
-<li>保存后数据永远存在不会失效过期，除非用 js手动清除</li>
-<li>不参与网络传输</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> information = &#123;<span class="attr">name</span>: <span class="string">'hunger'</span>, <span class="attr">friends</span>: [<span class="string">'Bob'</span>, <span class="string">'Alice'</span>]&#125;</span><br><span class="line">localStorage.detail= <span class="built_in">JSON</span>.stringify(information)</span><br><span class="line">localStorage[<span class="string">'age'</span>] = <span class="number">20</span></span><br><span class="line">localStorage.setItem(<span class="string">'sex'</span>, <span class="string">'male'</span>)</span><br><span class="line">localStorage.removeItem(<span class="string">'sex'</span>)</span><br><span class="line"><span class="built_in">console</span>.log(localStorage.getItem(<span class="string">'age'</span>))</span><br><span class="line"><span class="keyword">let</span> oldInfo = <span class="built_in">JSON</span>.parse(localStorage.detail)</span><br><span class="line">oldInfo.friends.push(<span class="string">'David'</span>)</span><br><span class="line">localStorage.detail= <span class="built_in">JSON</span>.stringify(oldInfo)</span><br><span class="line">localStorage.clear()</span><br><span class="line"><span class="comment">//注意只能存字符串；</span></span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/09/Bom-浏览器对象/" data-id="ckbalfw8x00051cw1w1vpmo15" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bom/">bom</a></li></ul>
-
     </footer>
   </div>
   
@@ -860,7 +840,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -870,7 +850,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 17.5px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -892,6 +872,14 @@
       <ul>
         
           <li>
+            <a href="/2020/06/12/react-router/">react-router</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/12/react-css使用/">react-css使用</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/11/react-hooks/">react hooks</a>
           </li>
         
@@ -901,14 +889,6 @@
         
           <li>
             <a href="/2020/06/09/react-生命周期等/">react 生命周期等</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/06/手写-react/">手写 react</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/01/webpack-笔记/">webpack 笔记</a>
           </li>
         
       </ul>

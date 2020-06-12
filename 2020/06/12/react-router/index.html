@@ -1,0 +1,229 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>react-router | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="安装npm install –save react-router-dom 基本使用在页面上引入所需的组件对象123456789101112import &amp;#123;BrowserRouter || HashRouter as Router,       Switch,        Route,        Link       &amp;#125;  // 取别名// hashRouter 和 Bro">
+<meta name="keywords" content="react">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react-router">
+<meta property="og:url" content="http://yoursite.com/2020/06/12/react-router/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="安装npm install –save react-router-dom 基本使用在页面上引入所需的组件对象123456789101112import &amp;#123;BrowserRouter || HashRouter as Router,       Switch,        Route,        Link       &amp;#125;  // 取别名// hashRouter 和 Bro">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-12T08:42:09.231Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react-router">
+<meta name="twitter:description" content="安装npm install –save react-router-dom 基本使用在页面上引入所需的组件对象123456789101112import &amp;#123;BrowserRouter || HashRouter as Router,       Switch,        Route,        Link       &amp;#125;  // 取别名// hashRouter 和 Bro">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-react-router" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/12/react-router/" class="article-date">
+  <time datetime="2020-06-12T06:53:47.000Z" itemprop="datePublished">2020-06-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      react-router
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="安装"><a href="#安装" class="headerlink" title="安装"></a>安装</h4><p>npm install –save react-router-dom</p>
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><h6 id="在页面上引入所需的组件对象"><a href="#在页面上引入所需的组件对象" class="headerlink" title="在页面上引入所需的组件对象"></a>在页面上引入所需的组件对象</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;BrowserRouter || HashRouter <span class="keyword">as</span> Router,</span><br><span class="line">       Switch,</span><br><span class="line">        Route,</span><br><span class="line">        Link</span><br><span class="line">       &#125;  <span class="comment">// 取别名</span></span><br><span class="line"><span class="comment">// hashRouter 和 BrowserRouter 区别是url 一个带 # 一个不带</span></span><br><span class="line"></span><br><span class="line">BrowserRouter 的作用就是声明这个组件被 router 接管了。</span><br><span class="line"><span class="comment">// 在组件 return 的 逻辑中，我们使用 &lt;Router&gt; 标签来包裹这些 路由标签，Switch,route,link 等</span></span><br><span class="line">Switch 相当于 js 中的 <span class="keyword">switch</span> 语句主要用来判断不同的条件执行不同的代码</span><br><span class="line">Route 标签则是用来渲染组件的，一般会包裹一个组件，或者在它的属性上使用 component，children 来指定要渲染的组件   </span><br><span class="line">Link 标签则是指定点击时要跳转的组件路径 很像 a 链接</span><br></pre></td></tr></table></figure>
+<p><strong>下面是一个简单的使用</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="keyword">import</span> &#123;BrowserRouter <span class="keyword">as</span> Router,</span><br><span class="line">    Switch,</span><br><span class="line">    Route,</span><br><span class="line">    Link</span><br><span class="line">&#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Nav</span>(<span class="params">props</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">        &lt;Router&gt;</span><br><span class="line">            &lt;nav&gt;</span><br><span class="line">                &lt;Link to=<span class="string">"/home"</span>&gt;首页&lt;<span class="regexp">/Link&gt;</span></span><br><span class="line"><span class="regexp">                &lt;Link to="/</span>history<span class="string">"&gt;历史&lt;/Link&gt;</span></span><br><span class="line"><span class="string">                &lt;Link to="</span>/my<span class="string">"&gt;我的&lt;/Link&gt;</span></span><br><span class="line"><span class="string">                &lt;Link to="</span>/about<span class="string">"&gt;关于&lt;/Link&gt;</span></span><br><span class="line"><span class="string">            &lt;/nav&gt;</span></span><br><span class="line"><span class="string">            &lt;Switch&gt;</span></span><br><span class="line"><span class="string">                &lt;Route path="</span>/about<span class="string">"&gt;</span></span><br><span class="line"><span class="string">                    &lt;About/&gt;</span></span><br><span class="line"><span class="string">                &lt;/Route&gt;</span></span><br><span class="line"><span class="string">                &lt;Route path="</span>/history<span class="string">" component=&#123;History&#125;&gt;              </span></span><br><span class="line"><span class="string">                &lt;/Route&gt;</span></span><br><span class="line"><span class="string">                &lt;Route path="</span>/my<span class="string">" children=&#123;&lt;My/&gt;&#125;&gt;</span></span><br><span class="line"><span class="string">                   </span></span><br><span class="line"><span class="string">                &lt;/Route&gt;</span></span><br><span class="line"><span class="string">                &lt;Route path="</span>/home<span class="string">"&gt;</span></span><br><span class="line"><span class="string">                    &lt;Home/&gt;</span></span><br><span class="line"><span class="string">                &lt;/Route&gt;</span></span><br><span class="line"><span class="string">            &lt;/Switch&gt;</span></span><br><span class="line"><span class="string">        &lt;/Router&gt;</span></span><br><span class="line"><span class="string">    )</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">function Home()&#123;</span></span><br><span class="line"><span class="string">    return &lt;h2&gt;首页&lt;/h2&gt;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">function History()&#123;</span></span><br><span class="line"><span class="string">    return &lt;h2&gt;历史&lt;/h2&gt;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">function My()&#123;</span></span><br><span class="line"><span class="string">    return &lt;h2&gt;我的&lt;/h2&gt;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string">function About()&#123;</span></span><br><span class="line"><span class="string">    return &lt;h2&gt;关于&lt;/h2&gt;</span></span><br><span class="line"><span class="string">&#125;</span></span><br><span class="line"><span class="string"></span></span><br><span class="line"><span class="string">export default Nav;</span></span><br></pre></td></tr></table></figure>
+<h6 id="当然一般情况下我们会把这个路由-Router-标签放在-index-js-中，包裹所有的-组件，这样在其他组件中我们无需再引入这个-router，直接使用其提供的标签即可。"><a href="#当然一般情况下我们会把这个路由-Router-标签放在-index-js-中，包裹所有的-组件，这样在其他组件中我们无需再引入这个-router，直接使用其提供的标签即可。" class="headerlink" title="当然一般情况下我们会把这个路由 Router 标签放在 index.js 中，包裹所有的 组件，这样在其他组件中我们无需再引入这个 router，直接使用其提供的标签即可。"></a>当然一般情况下我们会把这个路由 Router 标签放在 index.js 中，包裹所有的 组件，这样在其他组件中我们无需再引入这个 router，直接使用其提供的标签即可。</h6><h4 id="Navlink-amp-Redirect"><a href="#Navlink-amp-Redirect" class="headerlink" title="Navlink &amp; Redirect"></a>Navlink &amp; Redirect</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;Navlink,Redirect&#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span></span><br></pre></td></tr></table></figure>
+<h6 id="navlink-为我们提供了一个-activeClassName-css-属性，只有当这个link被选中时，它才会拥有这个属性，我们可以通过事先给它绑定样式来实现我们当前选中的是哪个-标签"><a href="#navlink-为我们提供了一个-activeClassName-css-属性，只有当这个link被选中时，它才会拥有这个属性，我们可以通过事先给它绑定样式来实现我们当前选中的是哪个-标签" class="headerlink" title="navlink 为我们提供了一个 activeClassName css 属性，只有当这个link被选中时，它才会拥有这个属性，我们可以通过事先给它绑定样式来实现我们当前选中的是哪个 标签"></a>navlink 为我们提供了一个 activeClassName css 属性，只有当这个link被选中时，它才会拥有这个属性，我们可以通过事先给它绑定样式来实现我们当前选中的是哪个 标签</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">&lt;NavLink activeClassName=<span class="string">'active'</span>exact  to=<span class="string">"/"</span>&gt;首页&lt;<span class="regexp">/NavLink&gt;</span></span><br><span class="line"><span class="regexp">&lt;NavLink activeClassName='active'exact  to="/</span>history<span class="string">"&gt;历史&lt;/NavLink&gt;</span></span><br><span class="line"><span class="string">&lt;NavLink activeClassName='active' exact  to="</span>/my<span class="string">"&gt;我的&lt;/NavLink&gt;</span></span><br><span class="line"><span class="string">&lt;NavLink activeClassName='active'exact  to="</span>/about<span class="string">"&gt;关于&lt;/NavLink&gt;</span></span><br></pre></td></tr></table></figure>
+<h6 id="有一个匹配的问题，因为它最终还是通过当前访问的url来确定你点击的是哪个link-所以当首页的path是-时，其他页面分别是-xxx-，它只做了一级匹配，它只匹配一级url-也就是它值对比-一个-后面的-sxx-它都不管了，只要你有我访问路径的一层我就当做你被选中了。那么当页面访问-about-时，也匹配-首页，所以首页也会应用-css。为了解决这个问题，我们可以给它加一个属性-exact-就会完全匹配，一般只给首页加，因为其他的url一般不会相同，看情况吧"><a href="#有一个匹配的问题，因为它最终还是通过当前访问的url来确定你点击的是哪个link-所以当首页的path是-时，其他页面分别是-xxx-，它只做了一级匹配，它只匹配一级url-也就是它值对比-一个-后面的-sxx-它都不管了，只要你有我访问路径的一层我就当做你被选中了。那么当页面访问-about-时，也匹配-首页，所以首页也会应用-css。为了解决这个问题，我们可以给它加一个属性-exact-就会完全匹配，一般只给首页加，因为其他的url一般不会相同，看情况吧" class="headerlink" title="有一个匹配的问题，因为它最终还是通过当前访问的url来确定你点击的是哪个link,所以当首页的path是 / 时，其他页面分别是 / xxx ，它只做了一级匹配，它只匹配一级url,也就是它值对比 一个 /,后面的/sxx 它都不管了，只要你有我访问路径的一层我就当做你被选中了。那么当页面访问 /about 时，也匹配/ 首页，所以首页也会应用 css。为了解决这个问题，我们可以给它加一个属性 exact 就会完全匹配，一般只给首页加，因为其他的url一般不会相同，看情况吧"></a>有一个匹配的问题，因为它最终还是通过当前访问的url来确定你点击的是哪个link,所以当首页的path是 / 时，其他页面分别是 / xxx ，它只做了一级匹配，它只匹配一级url,也就是它值对比 一个 /,后面的/sxx 它都不管了，只要你有我访问路径的一层我就当做你被选中了。那么当页面访问 /about 时，也匹配/ 首页，所以首页也会应用 css。为了解决这个问题，我们可以给它加一个属性 exact 就会完全匹配，一般只给首页加，因为其他的url一般不会相同，看情况吧</h6><h4 id="Redirect-重定向到。。。。"><a href="#Redirect-重定向到。。。。" class="headerlink" title="Redirect 重定向到。。。。"></a>Redirect 重定向到。。。。</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">&lt;Redirect to =<span class="string">'/about'</span>&gt;<span class="xml"><span class="tag">&lt;/<span class="name">Redirect</span>&gt;</span></span> <span class="comment">//重定向到 /about 这个路径下的 组件里</span></span><br></pre></td></tr></table></figure>
+<h4 id="React-router-代码分割"><a href="#React-router-代码分割" class="headerlink" title="React-router 代码分割"></a>React-router 代码分割</h4><h6 id="其实就是把需要引入的代码在不同的时机（需要的时候）分别引入进来"><a href="#其实就是把需要引入的代码在不同的时机（需要的时候）分别引入进来" class="headerlink" title="其实就是把需要引入的代码在不同的时机（需要的时候）分别引入进来"></a>其实就是把需要引入的代码在不同的时机（需要的时候）分别引入进来</h6><h6 id="使用之前学习的const-组件-React-lazy-gt-import-……"><a href="#使用之前学习的const-组件-React-lazy-gt-import-……" class="headerlink" title="使用之前学习的const 组件 = React.lazy(()=&gt; import ……)"></a>使用之前学习的const 组件 = React.lazy(()=&gt; import ……)</h6><h4 id="React-router-滚动设置"><a href="#React-router-滚动设置" class="headerlink" title="React-router 滚动设置"></a>React-router 滚动设置</h4><h6 id="单页面应用，当我们切换不同的路由时，也就是不同的组件，我们在-a页面之前滚动的位置，切换到-b-时，也会默认在b页面-a-的位置，按理来说，切换后应该默认在当前组件页面的顶部才对，为了解决这个问题，我们定义一个组件-ScrollToTop"><a href="#单页面应用，当我们切换不同的路由时，也就是不同的组件，我们在-a页面之前滚动的位置，切换到-b-时，也会默认在b页面-a-的位置，按理来说，切换后应该默认在当前组件页面的顶部才对，为了解决这个问题，我们定义一个组件-ScrollToTop" class="headerlink" title="单页面应用，当我们切换不同的路由时，也就是不同的组件，我们在 a页面之前滚动的位置，切换到 b 时，也会默认在b页面 a 的位置，按理来说，切换后应该默认在当前组件页面的顶部才对，为了解决这个问题，我们定义一个组件 ScrollToTop"></a>单页面应用，当我们切换不同的路由时，也就是不同的组件，我们在 a页面之前滚动的位置，切换到 b 时，也会默认在b页面 a 的位置，按理来说，切换后应该默认在当前组件页面的顶部才对，为了解决这个问题，我们定义一个组件 ScrollToTop</h6><p>引入 useLoacation</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;useLocation&#125; <span class="keyword">from</span> <span class="string">'react-router-dom'</span>;</span><br><span class="line"><span class="comment">//在组件中就可以使用 useLoaction 的方法</span></span><br><span class="line"><span class="keyword">const</span> &#123;pathName&#125; = useLoaction();  <span class="comment">//获取到当前页面上的url 访问路径</span></span><br><span class="line">相当于浏览器中的 location 对象的 pathname 属性 location.pathname</span><br><span class="line"></span><br><span class="line"><span class="keyword">export</span> <span class="function"><span class="keyword">function</span> <span class="title">ScrollToTop</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">const</span> &#123;pathName&#125; = useLoaction();</span><br><span class="line">    useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    &#125;,[pathname])</span><br><span class="line">    <span class="keyword">return</span> <span class="literal">null</span>;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 我们使用 useEffect 监控 访问的url pathname ,当它发生改变的时候，将滚动到页面顶部</span></span><br><span class="line">这个组件放在全局任意一个地方即可</span><br><span class="line"></span><br><span class="line">也可以放在一个单独的组件中，放在单独组件中我们就不用监控这个 访问路径了，就让它一切换到这个组件的路径就将页面滚动到顶部即可</span><br><span class="line"><span class="keyword">export</span> funtion SrcollToTop()&#123;</span><br><span class="line">    useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">window</span>.scrollTo(<span class="number">0</span>,<span class="number">0</span>);</span><br><span class="line">    &#125;,[])<span class="comment">//传递空 什么都不监控，那么就会只执行一次</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="useParams"><a href="#useParams" class="headerlink" title="useParams"></a>useParams</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// 获取url中传递来的 参数</span></span><br><span class="line">例如页面访问 /blog/aaaa</span><br><span class="line">&lt;Route path = <span class="string">'/blog/:slug'</span>&gt;</span><br><span class="line">    <span class="comment">//这个路由渲染的组件是 blog</span></span><br><span class="line">    &lt;BlogPost/&gt;</span><br><span class="line">    &lt;<span class="regexp">/Route&gt;</span></span><br><span class="line"><span class="regexp">当访问/</span>blog/aaa 会到这个路由，进而访问到这个 blogPost 组件</span><br><span class="line">那么在 blogPost中</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">BlogPost</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> &#123;slug&#125; = useParams();  <span class="comment">// slug 就能得到url传递来的参数</span></span><br><span class="line">    <span class="keyword">return</span> ......</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p><strong>更多用例查看 react-router 官网</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/12/react-router/" data-id="ckbbyszmd000v94w1cf1l17ce" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/12/react-css使用/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">react-css使用</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 17.5px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/12/react-router/">react-router</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/12/react-css使用/">react-css使用</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/11/react-hooks/">react hooks</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/10/react-高阶/">react-高阶</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/09/react-生命周期等/">react 生命周期等</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
