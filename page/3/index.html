@@ -62,6 +62,185 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-http-TCP" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/14/http-TCP/" class="article-date">
+  <time datetime="2020-05-14T04:47:30.000Z" itemprop="datePublished">2020-05-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/14/http-TCP/">http-TCP</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="osi"><a href="#osi" class="headerlink" title="osi"></a>osi</h4><h6 id="开放式系统互联通信参考模型（open-system-intercnnection-reference-model）"><a href="#开放式系统互联通信参考模型（open-system-intercnnection-reference-model）" class="headerlink" title="开放式系统互联通信参考模型（open system intercnnection reference model）;"></a>开放式系统互联通信参考模型（open system intercnnection reference model）;</h6><h5 id="应用层-（Application-Layer）"><a href="#应用层-（Application-Layer）" class="headerlink" title="应用层 （Application Layer）"></a>应用层 （Application Layer）</h5><h6 id="提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如：http-https-ftp-telnet-ssh-smtp-pop3等"><a href="#提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如：http-https-ftp-telnet-ssh-smtp-pop3等" class="headerlink" title="提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如：http,https,ftp,telnet,ssh,smtp,pop3等"></a>提供为应用软件而设的接口，以设置与另一应用软件之间的通信。例如：http,https,ftp,telnet,ssh,smtp,pop3等</h6><h5 id="表示层-Presentation-Layer"><a href="#表示层-Presentation-Layer" class="headerlink" title="表示层 (Presentation Layer)"></a>表示层 (Presentation Layer)</h5><h6 id="把数据转换为能与接收者的系统格式兼容并适合传输的格式"><a href="#把数据转换为能与接收者的系统格式兼容并适合传输的格式" class="headerlink" title="把数据转换为能与接收者的系统格式兼容并适合传输的格式"></a>把数据转换为能与接收者的系统格式兼容并适合传输的格式</h6><h5 id="会话层-（Session-Layer）"><a href="#会话层-（Session-Layer）" class="headerlink" title="会话层 （Session Layer）"></a>会话层 （Session Layer）</h5><h6 id="负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接"><a href="#负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接" class="headerlink" title="负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接"></a>负责在数据传输中设置和维护计算机网络中两台计算机之间的通信连接</h6><h5 id="传输层-（Transport-Layer）"><a href="#传输层-（Transport-Layer）" class="headerlink" title="传输层 （Transport Layer）"></a>传输层 （Transport Layer）</h5><h6 id="把传输表头（th）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如TCP、UDP等。"><a href="#把传输表头（th）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如TCP、UDP等。" class="headerlink" title="把传输表头（th）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如TCP、UDP等。"></a>把传输表头（th）加至数据以形成数据包。传输表头包含了所使用的协议等发送信息。例如TCP、UDP等。</h6><h5 id="网络层-（Network-Layer）"><a href="#网络层-（Network-Layer）" class="headerlink" title="网络层 （Network Layer）"></a>网络层 （Network Layer）</h5><h6 id="数据链路层（Data-Link-Layer）-负责网络寻址，错误侦测和改错。当表头和表尾被加至数据包时，会形成帧。数据链表头（DLH）是包含了物理地址和错误帧测以及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如：以太网，无线局域网（wifi）和通用分组无线服务GPRS-等；"><a href="#数据链路层（Data-Link-Layer）-负责网络寻址，错误侦测和改错。当表头和表尾被加至数据包时，会形成帧。数据链表头（DLH）是包含了物理地址和错误帧测以及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如：以太网，无线局域网（wifi）和通用分组无线服务GPRS-等；" class="headerlink" title="数据链路层（Data Link Layer） 负责网络寻址，错误侦测和改错。当表头和表尾被加至数据包时，会形成帧。数据链表头（DLH）是包含了物理地址和错误帧测以及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如：以太网，无线局域网（wifi）和通用分组无线服务GPRS 等；"></a>数据链路层（Data Link Layer） 负责网络寻址，错误侦测和改错。当表头和表尾被加至数据包时，会形成帧。数据链表头（DLH）是包含了物理地址和错误帧测以及改错的方法。数据链表尾（DLT）是一串指示数据包末端的字符串。例如：以太网，无线局域网（wifi）和通用分组无线服务GPRS 等；</h6><h5 id="物理层-（Physical-Layer）"><a href="#物理层-（Physical-Layer）" class="headerlink" title="物理层 （Physical Layer）"></a>物理层 （Physical Layer）</h5><h6 id="在局部局域网上传送数据帧-（data-frame）-它负责管理计算机通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机适配器等；"><a href="#在局部局域网上传送数据帧-（data-frame）-它负责管理计算机通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机适配器等；" class="headerlink" title="在局部局域网上传送数据帧 （data frame）,它负责管理计算机通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机适配器等；"></a>在局部局域网上传送数据帧 （data frame）,它负责管理计算机通信设备和网络媒体之间的互通。包括了针脚、电压、线缆规范、集线器、中继器、网卡、主机适配器等；</h6><h4 id="TCP-IP四层模型"><a href="#TCP-IP四层模型" class="headerlink" title="TCP/IP四层模型"></a>TCP/IP四层模型</h4><h5 id="应用层"><a href="#应用层" class="headerlink" title="应用层"></a>应用层</h5><p>应用层是大多数普通与网络相关的程序为了通过网络与其他程序通信所使用的层。这个层的处理过程是应用特有的；数据从网络相关的程序以这种应用内部使用的格式进行传送，然后被编码成标准协议的格式。每一个应用层协议一般都会使用到传输层协议TCP和UDP协议之一：</p>
+<p>运行在TCP协议上的协议：</p>
+<p>下面这些协议相当于不同的管家（各自负责各自的职责，可以这样理解）</p>
+<ol>
+<li>HTTP（80端口），主要用于普通浏览。</li>
+<li>HTTPS（443端口）,HTTP协议的安全版本。</li>
+<li>FTP（20和21端口），由名知义，用于文件传输。</li>
+<li>POP3（110端口），收邮件用。</li>
+<li>SMTP（25端口），用来发送电子邮件。</li>
+<li>SSH（22端口），用于加密安全登陆用。</li>
+</ol>
+<p>运行在UDP协议上的协议：</p>
+<ol>
+<li>DHCP（67端口，动态主机配置协议），动态配置IP地址。</li>
+</ol>
+<p>其他：</p>
+<ol>
+<li>DNS（Domain Name Service，域名服务），用于完成地址查找，邮件转发等工作（运行在TCP和UDP协议上）。</li>
+<li>SNMP（Simple Network Management Protocol，简单网络管理协议），用于网络信息的收集和网络管理。</li>
+<li>ARP（Address Resolution Protocol，地址解析协议），用于动态解析以太网硬件的地址。</li>
+</ol>
+<h5 id="传输层"><a href="#传输层" class="headerlink" title="传输层"></a>传输层</h5><p>解决诸如端到端可靠性（数据是否已经到达目的地？）和保证数据按照正确的顺序到达这样的问题。TCP、UDP都是传输层协议。</p>
+<h5 id="网络层"><a href="#网络层" class="headerlink" title="网络层"></a>网络层</h5><p>解决在一个单一网络上传输数据包的问题。IP协议是网络层协议。</p>
+<h5 id="数据链路层"><a href="#数据链路层" class="headerlink" title="数据链路层"></a>数据链路层</h5><p>它是数据包从一个设备的网络层传输到另外一个设备的网络层的方法。这个过程能够在网卡的软件驱动程序中控制或者专用芯片中控制。这将完成如添加报头准备发送、通过实体介质实际发送这样一些数据链路功能。另一端，链路层将完成数据帧接收、去除报头并且将接收到的包传到网络层。</p>
+<h4 id="通俗解释"><a href="#通俗解释" class="headerlink" title="通俗解释"></a>通俗解释</h4><p><strong>应用层协议 http协议定义了包的结构，定义了报文的格式（写信的格式），     tcp 传输层协议（管家与管家通信说我要寄信了） 进行握手，连接通信三步，断开通信 四步    网络层协议（邮差），确定ip地址，方便传输 数据链路层（邮筒）底层协议 驱动程序</strong></p>
+        
+          <p class="article-more-link">
+            <a href="/2020/05/14/http-TCP/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/14/http-TCP/" data-id="ckbdifgif000fngw1cbawv8sj" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-近日案例总结" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/12/近日案例总结/" class="article-date">
+  <time datetime="2020-05-12T09:21:50.000Z" itemprop="datePublished">2020-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/12/近日案例总结/">近日案例总结</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h5 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h5><h6 id="最近在跟着老师视频写案例，发现了自己很多不足，但同时这也是我学到的东西，哈哈哈，那就总结下吧"><a href="#最近在跟着老师视频写案例，发现了自己很多不足，但同时这也是我学到的东西，哈哈哈，那就总结下吧" class="headerlink" title="最近在跟着老师视频写案例，发现了自己很多不足，但同时这也是我学到的东西，哈哈哈，那就总结下吧"></a>最近在跟着老师视频写案例，发现了自己很多不足，但同时这也是我学到的东西，哈哈哈，那就总结下吧</h6><p>抛开CSS先不说哈，这个css功力肯定是要花时间和案例去练习的；当然所有的编程都需要去动手实践练习哈！</p>
+<p>在写一些组件的时候，老师会从这个组件的实现流程上入手，先不管其他细节，先把这个框架，流程大致跑下来，搭建一些空壳子，空函数，至于里面怎么实现，回过头来再说，我觉得特别好，因为我之前写东西，都是先想好一切，或者关键部分才开始动手，可实际上你根本不可能在一开始就把所有东西都想明白的，要先动手。最近的知识都是对以前学习知识的复习，巩固。</p>
+<p>一些经验：比如在写模态框的时候，我们点击页面按钮弹出对话框，同时模态框遮罩页面，一般控制元素的显示和隐藏都是通过css的，而一般情况下，我们可能会想到使用display:none，显示的时候设置为display:block； 但实际应用中，前端应该更友好的展示，比如加上一些小效果，渐隐的效果，加上一些动画什么的，所以，在写这个的时候，我们在控制元素出现的时候一是要控制模态框的样式，模态框我们一开始设置它的透明度为0，显示时在设置透明度为1，再加上一些动画，transition,这样对用户体验来讲，真的更加友好了。而对于模态框，我们想要做出一个从上到下滑下来的感觉，我们设置它默认在y轴上偏离出浏览器窗口，transform translateY() ，然后显示时，加上动画，在把位置偏移回来，这样动效就有了。</p>
+<h6 id="动效不执行的原因"><a href="#动效不执行的原因" class="headerlink" title="动效不执行的原因"></a>动效不执行的原因</h6><p>浏览器会对js代码进行优化，有时候我们会写这样的代码，让这个元素出现后，然后消失，两行代码或者两个方法依次执行，但浏览器会优化执行，可能会导致我们添加的一些动画效果无法展示出来，此时可以考虑使用setTimeout 定时器，写在这个函数中的内容是会放到队列中的，等待主线任务执行后才开始执行，这样浏览器就不会把它们优化执行，可以达到我们想要的效果。</p>
+<h6 id="this指向的问题"><a href="#this指向的问题" class="headerlink" title="this指向的问题"></a>this指向的问题</h6><p>在事件中，this指的是调用当前函数的对象，如果此时你想使用全局的this,这个组件对象的这个this，可把this使用一个变量暂存起来，然后在使用。或者使用bind()方法在调用的时候绑定当前作用域的this。    </p>
+<p>暂时先这些吧，想到再写</p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/12/近日案例总结/" data-id="ckbdifgmb001ingw1mh82cct5" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/summary/">summary</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js-事件" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/12/js-事件/" class="article-date">
+  <time datetime="2020-05-12T08:29:17.000Z" itemprop="datePublished">2020-05-12</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/12/js-事件/">js 事件</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>常用事件</p>
+<p>鼠标事件、键盘事件、拖放事件、媒体事件、进度事件、存储事件，更新事件等</p>
+<p>单击，双击，鼠标放置，表单内容发生变化，拖拽，页面滚动。。。。。</p>
+<h4 id="dom事件流"><a href="#dom事件流" class="headerlink" title="dom事件流"></a>dom事件流</h4><p>三个阶段</p>
+<ul>
+<li>事件捕获阶段</li>
+<li>处于目标阶段</li>
+<li>事件冒泡阶段</li>
+</ul>
+<h4 id="事件处理程序"><a href="#事件处理程序" class="headerlink" title="事件处理程序"></a>事件处理程序</h4><p>当事件发生时执行的函数</p>
+<p>三种绑定方式</p>
+<ol>
+<li>在html 中绑定</li>
+<li>给dom元素的 onclick 赋值</li>
+<li>调用dom的 addEventlistener函数</li>
+</ol>
+<h6 id="addEventListener"><a href="#addEventListener" class="headerlink" title="addEventListener"></a>addEventListener</h6><p>target.addEventListener(type, listener, options)</p>
+<ul>
+<li>type:事件类型</li>
+<li>listener:事件处理方法</li>
+<li>options: 默认全是false {capture:是否捕获阶段监听，once:只监听一次，passive:是否忽略 preventDefault}</li>
+</ul>
+<p>target.addEventListener(type, listener, useCapture)</p>
+<p>useCapture: 可选，true表示在捕获阶段调用listener，false表示冒泡阶段处理</p>
+<p>target.removeEventListener</p>
+<ul>
+<li>target.removeEventListener(‘click’, handler)</li>
+<li>target.removeEventListener(‘click’, handler, true)</li>
+</ul>
+<h4 id="冒泡与捕获"><a href="#冒泡与捕获" class="headerlink" title="冒泡与捕获"></a>冒泡与捕获</h4>
+        
+          <p class="article-more-link">
+            <a href="/2020/05/12/js-事件/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/12/js-事件/" data-id="ckbdifgiq000mngw1jx6zlawl" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-css-定位" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/10/css-定位/" class="article-date">
@@ -108,7 +287,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/10/css-定位/" data-id="ckbbyszku000594w1g98udkaz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/10/css-定位/" data-id="ckbdifggz0005ngw1incqfshz" class="article-share-link">Share</a>
       
       
     </footer>
@@ -182,7 +361,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/09/Bom-浏览器对象/" data-id="ckbbyszla000a94w1p2aj9es1" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/09/Bom-浏览器对象/" data-id="ckbdifgcg0000ngw1ma7vig0n" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/bom/">bom</a></li></ul>
@@ -258,7 +437,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/08/inline-block/" data-id="ckbbyszly000k94w1lt18kmmw" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/08/inline-block/" data-id="ckbdifgil000ingw17h9gvf2r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -318,7 +497,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/07/基础类型引用类型/" data-id="ckbbyszn6001694w1qtn11vne" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/07/基础类型引用类型/" data-id="ckbdifgln0018ngw1o1yn5hb4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -388,7 +567,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/05/外边距合并/" data-id="ckbbyszn2001594w1yu7c9t1g" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/05/外边距合并/" data-id="ckbdifglu001bngw166x1uifi" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -444,7 +623,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/02/dom-相关操作/" data-id="ckbbyszl4000794w1rl35g42b" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/02/dom-相关操作/" data-id="ckbdifghh000bngw15b7dna0u" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/dom/">dom</a></li></ul>
@@ -490,160 +669,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/02/闭包/" data-id="ckbbyszny001f94w1p3zuuw4a" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-不同载体中的方法写法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/01/不同载体中的方法写法/" class="article-date">
-  <time datetime="2020-05-01T10:34:03.000Z" itemprop="datePublished">2020-05-01</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/01/不同载体中的方法写法/">不同载体中的方法写法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="好烦各种写法"><a href="#好烦各种写法" class="headerlink" title="好烦各种写法"></a>好烦各种写法</h4><h5 id="在对象中"><a href="#在对象中" class="headerlink" title="在对象中"></a>在对象中</h5><p>对象属性也可以是一个<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions" target="_blank" rel="noopener">函数</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get" target="_blank" rel="noopener">getter</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set" target="_blank" rel="noopener">setter</a>方法。</p>
-<p>getter and setter:将对象属性绑定到查询/设置该属性时将被调用的函数 (注意这是函数，但调用时是好像是当做属性来调用似的,在getter中一般返回某个需要的值)</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	name:<span class="string">"隔壁老王"</span>,   <span class="comment">//注意要加逗号分隔，因为下面也是对象的属性</span></span><br><span class="line">	age:<span class="number">20</span>, <span class="comment">//注意此处赋值用的是冒号，不是等号</span></span><br><span class="line">	sayHi:functin()&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"Hi,man"</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//es6也可以这样写，省略function</span></span><br><span class="line">	say()&#123;  </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"abc"</span>)</span><br><span class="line">	  &#125;</span><br><span class="line">	get test()&#123;<span class="keyword">return</span> <span class="keyword">this</span>.age&#125;</span><br><span class="line">	set age(val)&#123;<span class="keyword">this</span>.age = val&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">调用时：</span><br><span class="line">注意，大爷的我刚赋值了半天没对，原来是语法错误</span><br><span class="line">调用 get set 时候：obj.test = <span class="number">100</span>  而不是 obj(<span class="number">100</span>),直接当做属性来使用</span><br></pre></td></tr></table></figure>
-<h4 id="在Class中"><a href="#在Class中" class="headerlink" title="在Class中"></a>在Class中</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span></span>&#123;</span><br><span class="line">  name = <span class="string">"test"</span></span><br><span class="line">  <span class="comment">// name:"test"  //注意不要这样写，不对，不要问为啥</span></span><br><span class="line">  test()&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"test"</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//或者这种最原始的写法，不要再发明别的写法了比如说 函数名：function 这种，不对</span></span><br><span class="line">  test=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"test"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="在-constructor中"><a href="#在-constructor中" class="headerlink" title="在 constructor中"></a>在 constructor中</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">constructor</span>()&#123;</span><br><span class="line"> <span class="comment">//一定要加 this 因为this指向当前创建的对象</span></span><br><span class="line">    <span class="keyword">this</span>.test=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"sdfsdfsf"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;<span class="keyword">this</span>.test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;</span><br><span class="line">  <span class="comment">//注意在这里不能用es6写法这样写，不要问为何，因为我也不知道（我还纠结了半天）</span></span><br><span class="line">  <span class="keyword">this</span>.test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">//你可以这样写,但注意这样就直接返回了，后面的代码就不会执行了</span></span><br><span class="line">     <span class="keyword">return</span>&#123;</span><br><span class="line">    test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//或者你可以这样写</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">   <span class="keyword">return</span>&#123;</span><br><span class="line">    test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;,</span><br><span class="line">     tip()&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"aaaaaaaaaaa"</span>)</span><br><span class="line">     &#125;,</span><br><span class="line">      name:<span class="string">"jirengu"</span>  <span class="comment">//注意这里不要用等于号赋值，奶奶的，我又懵逼了半天</span></span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> People();</span><br><span class="line">s.test();</span><br><span class="line">s.tip()</span><br><span class="line"><span class="built_in">console</span>.log(s.name)</span><br><span class="line"><span class="comment">//但是这样写，其实有些麻烦哈，可以考虑使用 Object.assign()来讲内容聚合到this 中，这样也是OK的</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">   <span class="built_in">Object</span>.assign(<span class="keyword">this</span>,&#123;</span><br><span class="line">    test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;,</span><br><span class="line">     tip()&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"aaaaaaaaaaa"</span>)</span><br><span class="line">     &#125;,</span><br><span class="line">      name:<span class="string">"jirengu"</span></span><br><span class="line">   &#125;)</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> People();</span><br><span class="line">s.test();</span><br><span class="line">s.tip()</span><br><span class="line"><span class="built_in">console</span>.log(s.name)</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/01/不同载体中的方法写法/" data-id="ckbbyszmk001294w1w4bowqc0" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js-原型链" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/29/js-原型链/" class="article-date">
-  <time datetime="2020-04-29T06:25:04.000Z" itemprop="datePublished">2020-04-29</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/29/js-原型链/">js 原型链</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>原型链设计机制一直是大多数前端开发最难理解的部分，据说当初 Brendan Eich 设计之初不想引入类的概念，但是为了将对象联系起来，加入的C++ new的概念，但是new没有办法共享属性，就在构造函数里设置了一个prototype属性，这一设计理念成为了js跟其他面向对象语言不同的地方，同时也埋下了巨大的坑！</p>
-<p>为了解决因为委托机制带来的各种各样的缺点及语法问题，es6之后引入的class，class的实质还是基于原型链封装的语法糖，但是却大大简化的前端开发的代码，也解决了很多历史遗留的问题</p>
-<p><img src="../img/原型链/图示.png" alt></p>
-<p><img src="../img/原型链/图示1.png" alt></p>
-<p>注意看此图，刚刚我们的操作就是把父类的prototype 挂载到了这个对象的—proto—上(执行了Human.prototype = Object.create(Mammal.prototype) //将human原型执行mammal原型 )</p>
-<h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><p>构造函数方式创建</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.color = color</span><br><span class="line"><span class="keyword">this</span>.sayColor = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`汪汪<span class="subst">$&#123;<span class="keyword">this</span>.color&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> dog1 = <span class="keyword">new</span> Dog(<span class="string">'red'</span>)</span><br><span class="line">dog1.sayColor()</span><br><span class="line"><span class="keyword">let</span> dog2 = <span class="keyword">new</span> Dog(<span class="string">'yellow'</span>)</span><br><span class="line">dog2.sayColor()</span><br></pre></td></tr></table></figure>
-<p>new Dog做了哪些事?</p>
-<ul>
-<li>创建一个空对象{}，假设名字是tempObj</li>
-<li>执行Dog函数，执行过程中对 this 操作就是对tempObj 进行操作(使用apply调用构造器函数，this绑定到空对象obj上)</li>
-<li>函数执行完毕后返回刚刚创建的tempObj</li>
-<li>把tempObj赋值给dog1</li>
-</ul>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">NEW_OBJECT</span>(<span class="params">Foo</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj=&#123;&#125;;</span><br><span class="line">    obj.__proto__=Foo.prototype;</span><br><span class="line">    obj.constructor=Foo;</span><br><span class="line">    Foo.apply(obj,<span class="built_in">arguments</span>)</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/29/js-原型链/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ckbbyszm1000l94w1hnjk8qx9" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-定时器" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/28/定时器/" class="article-date">
-  <time datetime="2020-04-28T07:21:40.000Z" itemprop="datePublished">2020-04-28</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/28/定时器/">定时器</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="关于堆和栈（作为内存区域来说）"><a href="#关于堆和栈（作为内存区域来说）" class="headerlink" title="关于堆和栈（作为内存区域来说）"></a>关于堆和栈（作为内存区域来说）</h4><ul>
-<li>堆（heap）：存放object、array、function等不确定内存大小的数据存储；</li>
-<li>栈（stack）：存放基本数据类型以及引用数据类型指向堆中的数据的指针，具有具体大小的数据结构，存取速度快；</li>
-</ul>
-<h4 id="调用栈（作为一种代码运行机制）"><a href="#调用栈（作为一种代码运行机制）" class="headerlink" title="调用栈（作为一种代码运行机制）"></a>调用栈（作为一种代码运行机制）</h4><h4 id="事件循环机制（event-loop）"><a href="#事件循环机制（event-loop）" class="headerlink" title="事件循环机制（event loop）"></a>事件循环机制（event loop）</h4><p>参考：<a href="https://www.jianshu.com/p/12b9f73c5a4f#" target="_blank" rel="noopener">js事件循环机制</a></p>
-<ul>
-<li>存在整个javascript脚本执行期间</li>
-<li>作用：将任务队列的中可以执行的函数压入调用栈中</li>
-</ul>
-<h3 id="任务队列（task-queue）"><a href="#任务队列（task-queue）" class="headerlink" title="任务队列（task queue）"></a>任务队列（task queue）</h3><ol>
-<li>宏任务（macro task）：在新标准中叫task<ul>
-<li>宏任务主要包括：script(整体代码), setTimeout, setInterval, setImmediate, I/O, UI rendering</li>
-</ul>
-</li>
-<li>微任务（micro task）：在新标准中叫jobs</li>
-<li>微任务主要包括：process.nextTick, Promise, Object.observe(已废弃), MutationObserver(html5新特性)</li>
-</ol>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/28/定时器/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/28/定时器/" data-id="ckbbysznd001894w15bg5l62u" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/02/闭包/" data-id="ckbdifgmd001jngw1sp266d7e" class="article-share-link">Share</a>
       
       
     </footer>
@@ -671,7 +697,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js基本功/">js基本功</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobx/">mobx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -681,7 +707,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 17.5px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/js基本功/" style="font-size: 10px;">js基本功</a> <a href="/tags/mobx/" style="font-size: 10px;">mobx</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -703,23 +729,23 @@
       <ul>
         
           <li>
+            <a href="/2020/06/13/js-装饰器/">js 装饰器</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/13/嘚啵嘚两句-class-和-function/">嘚啵嘚两句 class 和 function</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/13/mobx/">mobx</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/12/react-router/">react-router</a>
           </li>
         
           <li>
             <a href="/2020/06/12/react-css使用/">react-css使用</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/11/react-hooks/">react hooks</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/10/react-高阶/">react-高阶</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/09/react-生命周期等/">react 生命周期等</a>
           </li>
         
       </ul>

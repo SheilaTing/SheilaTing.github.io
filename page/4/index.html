@@ -62,6 +62,159 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-不同载体中的方法写法" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/01/不同载体中的方法写法/" class="article-date">
+  <time datetime="2020-05-01T10:34:03.000Z" itemprop="datePublished">2020-05-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/01/不同载体中的方法写法/">不同载体中的方法写法</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="好烦各种写法"><a href="#好烦各种写法" class="headerlink" title="好烦各种写法"></a>好烦各种写法</h4><h5 id="在对象中"><a href="#在对象中" class="headerlink" title="在对象中"></a>在对象中</h5><p>对象属性也可以是一个<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions" target="_blank" rel="noopener">函数</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/get" target="_blank" rel="noopener">getter</a>、<a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Functions/set" target="_blank" rel="noopener">setter</a>方法。</p>
+<p>getter and setter:将对象属性绑定到查询/设置该属性时将被调用的函数 (注意这是函数，但调用时是好像是当做属性来调用似的,在getter中一般返回某个需要的值)</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">var</span> obj = &#123;</span><br><span class="line">	name:<span class="string">"隔壁老王"</span>,   <span class="comment">//注意要加逗号分隔，因为下面也是对象的属性</span></span><br><span class="line">	age:<span class="number">20</span>, <span class="comment">//注意此处赋值用的是冒号，不是等号</span></span><br><span class="line">	sayHi:functin()&#123;</span><br><span class="line">		<span class="built_in">console</span>.log(<span class="string">"Hi,man"</span>)</span><br><span class="line">	&#125;,</span><br><span class="line">	<span class="comment">//es6也可以这样写，省略function</span></span><br><span class="line">	say()&#123;  </span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"abc"</span>)</span><br><span class="line">	  &#125;</span><br><span class="line">	get test()&#123;<span class="keyword">return</span> <span class="keyword">this</span>.age&#125;</span><br><span class="line">	set age(val)&#123;<span class="keyword">this</span>.age = val&#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">调用时：</span><br><span class="line">注意，大爷的我刚赋值了半天没对，原来是语法错误</span><br><span class="line">调用 get set 时候：obj.test = <span class="number">100</span>  而不是 obj(<span class="number">100</span>),直接当做属性来使用</span><br></pre></td></tr></table></figure>
+<h4 id="在Class中"><a href="#在Class中" class="headerlink" title="在Class中"></a>在Class中</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span></span>&#123;</span><br><span class="line">  name = <span class="string">"test"</span></span><br><span class="line">  <span class="comment">// name:"test"  //注意不要这样写，不对，不要问为啥</span></span><br><span class="line">  test()&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"test"</span>)</span><br><span class="line">  &#125;,</span><br><span class="line">  <span class="comment">//或者这种最原始的写法，不要再发明别的写法了比如说 函数名：function 这种，不对</span></span><br><span class="line">  test=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">"test"</span>)</span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="在-constructor中"><a href="#在-constructor中" class="headerlink" title="在 constructor中"></a>在 constructor中</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br></pre></td><td class="code"><pre><span class="line"> <span class="keyword">constructor</span>()&#123;</span><br><span class="line"> <span class="comment">//一定要加 this 因为this指向当前创建的对象</span></span><br><span class="line">    <span class="keyword">this</span>.test=<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">      <span class="built_in">console</span>.log(<span class="string">"sdfsdfsf"</span>)</span><br><span class="line">    &#125;</span><br><span class="line">  &#125;<span class="keyword">this</span>.test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;</span><br><span class="line">  <span class="comment">//注意在这里不能用es6写法这样写，不要问为何，因为我也不知道（我还纠结了半天）</span></span><br><span class="line">  <span class="keyword">this</span>.test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;</span><br><span class="line">   <span class="comment">//你可以这样写,但注意这样就直接返回了，后面的代码就不会执行了</span></span><br><span class="line">     <span class="keyword">return</span>&#123;</span><br><span class="line">    test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;</span><br><span class="line">   &#125;</span><br><span class="line"><span class="comment">//或者你可以这样写</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">   <span class="keyword">return</span>&#123;</span><br><span class="line">    test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;,</span><br><span class="line">     tip()&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"aaaaaaaaaaa"</span>)</span><br><span class="line">     &#125;,</span><br><span class="line">      name:<span class="string">"jirengu"</span>  <span class="comment">//注意这里不要用等于号赋值，奶奶的，我又懵逼了半天</span></span><br><span class="line">   &#125;</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> People();</span><br><span class="line">s.test();</span><br><span class="line">s.tip()</span><br><span class="line"><span class="built_in">console</span>.log(s.name)</span><br><span class="line"><span class="comment">//但是这样写，其实有些麻烦哈，可以考虑使用 Object.assign()来讲内容聚合到this 中，这样也是OK的</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">People</span></span>&#123;</span><br><span class="line">  <span class="keyword">constructor</span>()&#123;</span><br><span class="line">   <span class="built_in">Object</span>.assign(<span class="keyword">this</span>,&#123;</span><br><span class="line">    test()&#123;</span><br><span class="line">     <span class="built_in">console</span>.log(<span class="string">"sdfsdf"</span>)</span><br><span class="line">   &#125;,</span><br><span class="line">     tip()&#123;</span><br><span class="line">       <span class="built_in">console</span>.log(<span class="string">"aaaaaaaaaaa"</span>)</span><br><span class="line">     &#125;,</span><br><span class="line">      name:<span class="string">"jirengu"</span></span><br><span class="line">   &#125;)</span><br><span class="line">  </span><br><span class="line">  &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">var</span> s = <span class="keyword">new</span> People();</span><br><span class="line">s.test();</span><br><span class="line">s.tip()</span><br><span class="line"><span class="built_in">console</span>.log(s.name)</span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/01/不同载体中的方法写法/" data-id="ckbdifglp0019ngw1pe31147n" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-js-原型链" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/29/js-原型链/" class="article-date">
+  <time datetime="2020-04-29T06:25:04.000Z" itemprop="datePublished">2020-04-29</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/29/js-原型链/">js 原型链</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>原型链设计机制一直是大多数前端开发最难理解的部分，据说当初 Brendan Eich 设计之初不想引入类的概念，但是为了将对象联系起来，加入的C++ new的概念，但是new没有办法共享属性，就在构造函数里设置了一个prototype属性，这一设计理念成为了js跟其他面向对象语言不同的地方，同时也埋下了巨大的坑！</p>
+<p>为了解决因为委托机制带来的各种各样的缺点及语法问题，es6之后引入的class，class的实质还是基于原型链封装的语法糖，但是却大大简化的前端开发的代码，也解决了很多历史遗留的问题</p>
+<p><img src="../img/原型链/图示.png" alt></p>
+<p><img src="../img/原型链/图示1.png" alt></p>
+<p>注意看此图，刚刚我们的操作就是把父类的prototype 挂载到了这个对象的—proto—上(执行了Human.prototype = Object.create(Mammal.prototype) //将human原型执行mammal原型 )</p>
+<h4 id="创建对象"><a href="#创建对象" class="headerlink" title="创建对象"></a>创建对象</h4><p>构造函数方式创建</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Dog</span>(<span class="params">color</span>) </span>&#123;</span><br><span class="line"><span class="keyword">this</span>.color = color</span><br><span class="line"><span class="keyword">this</span>.sayColor = <span class="function"><span class="keyword">function</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">`汪汪<span class="subst">$&#123;<span class="keyword">this</span>.color&#125;</span>`</span>)</span><br><span class="line">&#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> dog1 = <span class="keyword">new</span> Dog(<span class="string">'red'</span>)</span><br><span class="line">dog1.sayColor()</span><br><span class="line"><span class="keyword">let</span> dog2 = <span class="keyword">new</span> Dog(<span class="string">'yellow'</span>)</span><br><span class="line">dog2.sayColor()</span><br></pre></td></tr></table></figure>
+<p>new Dog做了哪些事?</p>
+<ul>
+<li>创建一个空对象{}，假设名字是tempObj</li>
+<li>执行Dog函数，执行过程中对 this 操作就是对tempObj 进行操作(使用apply调用构造器函数，this绑定到空对象obj上)</li>
+<li>函数执行完毕后返回刚刚创建的tempObj</li>
+<li>把tempObj赋值给dog1</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">NEW_OBJECT</span>(<span class="params">Foo</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> obj=&#123;&#125;;</span><br><span class="line">    obj.__proto__=Foo.prototype;</span><br><span class="line">    obj.constructor=Foo;</span><br><span class="line">    Foo.apply(obj,<span class="built_in">arguments</span>)</span><br><span class="line">    <span class="keyword">return</span> obj;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2020/04/29/js-原型链/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ckbdifgip000lngw1bq2v4knp" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-定时器" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/28/定时器/" class="article-date">
+  <time datetime="2020-04-28T07:21:40.000Z" itemprop="datePublished">2020-04-28</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/28/定时器/">定时器</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="关于堆和栈（作为内存区域来说）"><a href="#关于堆和栈（作为内存区域来说）" class="headerlink" title="关于堆和栈（作为内存区域来说）"></a>关于堆和栈（作为内存区域来说）</h4><ul>
+<li>堆（heap）：存放object、array、function等不确定内存大小的数据存储；</li>
+<li>栈（stack）：存放基本数据类型以及引用数据类型指向堆中的数据的指针，具有具体大小的数据结构，存取速度快；</li>
+</ul>
+<h4 id="调用栈（作为一种代码运行机制）"><a href="#调用栈（作为一种代码运行机制）" class="headerlink" title="调用栈（作为一种代码运行机制）"></a>调用栈（作为一种代码运行机制）</h4><h4 id="事件循环机制（event-loop）"><a href="#事件循环机制（event-loop）" class="headerlink" title="事件循环机制（event loop）"></a>事件循环机制（event loop）</h4><p>参考：<a href="https://www.jianshu.com/p/12b9f73c5a4f#" target="_blank" rel="noopener">js事件循环机制</a></p>
+<ul>
+<li>存在整个javascript脚本执行期间</li>
+<li>作用：将任务队列的中可以执行的函数压入调用栈中</li>
+</ul>
+<h3 id="任务队列（task-queue）"><a href="#任务队列（task-queue）" class="headerlink" title="任务队列（task queue）"></a>任务队列（task queue）</h3><ol>
+<li>宏任务（macro task）：在新标准中叫task<ul>
+<li>宏任务主要包括：script(整体代码), setTimeout, setInterval, setImmediate, I/O, UI rendering</li>
+</ul>
+</li>
+<li>微任务（micro task）：在新标准中叫jobs</li>
+<li>微任务主要包括：process.nextTick, Promise, Object.observe(已废弃), MutationObserver(html5新特性)</li>
+</ol>
+        
+          <p class="article-more-link">
+            <a href="/2020/04/28/定时器/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/28/定时器/" data-id="ckbdifgm8001hngw10etz216k" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-正则表达式" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/28/正则表达式/" class="article-date">
@@ -126,7 +279,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ckbbyszng001994w1delon5lc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ckbdifgly001dngw14njr450v" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
@@ -182,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/26/Math-Date-API/" data-id="ckbbyszkp000494w1kgqsxzr3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/26/Math-Date-API/" data-id="ckbdifgii000hngw1nwktyeww" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
@@ -231,7 +384,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/26/对象与json/" data-id="ckbbyszno001b94w1g0iu8p5q" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/26/对象与json/" data-id="ckbdifglw001cngw1t6u06ze8" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li></ul>
@@ -276,7 +429,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/25/递归优化/" data-id="ckbbysznu001d94w1hm4fitln" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/25/递归优化/" data-id="ckbdifgs8002mngw1jdet130r" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
@@ -377,7 +530,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/hexo备份/" data-id="ckbbyszld000c94w1pl9b8r93" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/24/hexo备份/" data-id="ckbdifgid000engw1yuusdui2" class="article-share-link">Share</a>
       
       
     </footer>
@@ -431,7 +584,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ckbbyszm2000m94w1yv1ok4d3" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ckbdifgiw000qngw192yj9nom" class="article-share-link">Share</a>
       
       
     </footer>
@@ -484,194 +637,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ckbbyszm3000n94w15xqwgg05" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ckbdifgit000ongw1lqxxpanr" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js运算符疑惑笔记" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/20/js运算符疑惑笔记/" class="article-date">
-  <time datetime="2020-04-20T07:32:46.000Z" itemprop="datePublished">2020-04-20</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/20/js运算符疑惑笔记/">js运算符疑惑笔记</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="运算符"><a href="#运算符" class="headerlink" title="+ 运算符"></a>+ 运算符</h4><ul>
-<li>在两个操作数都是数字的时候，会做加法运算 </li>
-<li>两个参数都是字符串或在有一个参数是字符串的情况下会把另外一个参数转换为字符串做字符串拼接 </li>
-<li>在参数有对象的情况下会调用其valueOf或toString ü 在只有一个字符串参数的时候会尝试将其转换为数字 </li>
-<li>在只有一个数字参数的时候返回其整数值（例如：+“3” 返回3）</li>
-</ul>
-<h4 id="x-和-x"><a href="#x-和-x" class="headerlink" title="++x 和 x++"></a>++x 和 x++</h4><p>++x 表示x 先自加1在参与运算，而x++表示x先参与运算，再自加1</p>
-<p>例如：a=1; b=a++; 此时 b=1; a=2；</p>
-<p>​            a=1;b=++a; 此时  a=a+1=2; b = a=2;</p>
-<p>​            – 和 ++ 是一样的道理；</p>
-<p>注意：我今天突然忘记了这种写法： a+=2; 代表 a=a+2; 时间久了不写，忘记了。哈哈，不只是+=包括%= -= 都是一样的道理；</p>
-<!--展开更多-->
-<p>注意，还有一种场景：</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br></pre></td><td class="code"><pre><span class="line">let a = 1</span><br><span class="line">console.log( a+++a ) /** 此时打印出结果为：3**/</span><br><span class="line">let a = 1</span><br><span class="line">console.log( a+a++ ) /** 此时打印结果为： 2**/</span><br><span class="line">解释如下：</span><br><span class="line">  +</span><br><span class="line">    /   \</span><br><span class="line">   /     \</span><br><span class="line"> a        a++</span><br><span class="line"></span><br><span class="line">编译器的处理过程：</span><br><span class="line">1. push(a), a入栈(1)</span><br><span class="line">2. push(a++)，即push(1)，之后 a自增变成2</span><br><span class="line">3. result = pop()+pop(), 出栈两个操作数(1,1)相加，得到2</span><br><span class="line"></span><br><span class="line">      +</span><br><span class="line">    /   \</span><br><span class="line">   /     \</span><br><span class="line">  a++     a</span><br><span class="line"></span><br><span class="line">编译器的处理过程：</span><br><span class="line">1. push(a++), 即push(1)，之后 a自增变成2</span><br><span class="line">2. push(a)，即push(2)</span><br><span class="line">3. result = pop()+pop(), 出栈两个操作数(1,2)相加，得到3</span><br></pre></td></tr></table></figure>
-<h4 id="比较运算符"><a href="#比较运算符" class="headerlink" title="比较运算符"></a>比较运算符</h4><p>对于判断语句if（）来说</p>
-<p>看括号中的内容的类型来判断：参考下表：</p>
-<p><img src="../img/js疑惑笔记/boolean1.png" alt></p>
-<p>例如：括号中如果是“”空字符串则为false 其他都为true 包括（“ ”）的。但是当“ ”直接与true作比较的话，会返回false。原因是作比较时，会把布尔类型的值 false 转为数字number 类型 也就是1，然后把“ ”也转化为number 类型也是0,1和0比较自然为false；而在if（）语句中，他是通过 boolean()方法来转化的，所以为true；</p>
-<p>还有，当两个不同类型的变量或表达式作比较时 x和y，参考下表：</p>
-<p>解释：例如 x 为numer y为string 则比较的时候会把Y（string类型）通过toNumber方法转化后作比较</p>
-<p><img src="../img/js疑惑笔记/boolean2.png" alt></p>
-<h4 id="toNumber方法"><a href="#toNumber方法" class="headerlink" title="toNumber方法"></a>toNumber方法</h4><p><img src="../img/js疑惑笔记/number.png" alt></p>
-<p>上图解析：当 toNumber()方法中的参数为undefined时，结果为NaN;一次类推；</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ckbbyszm4000o94w16soy26lk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-grid-布局" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/16/grid-布局/" class="article-date">
-  <time datetime="2020-04-16T02:56:08.000Z" itemprop="datePublished">2020-04-16</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/16/grid-布局/">grid 布局</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><p>是一种二维布局模型，先在页面上画好“虚拟格子” ，再设置元素在格子上的 位置和跨度</p>
-<h4 id="相关概念"><a href="#相关概念" class="headerlink" title="相关概念"></a>相关概念</h4><ul>
-<li>Grid Container </li>
-<li>Grid Item </li>
-<li>Grid Line </li>
-<li>Grid Track</li>
-<li>Grid Cell</li>
-<li>Grid Area</li>
-</ul>
-<h4 id="使用方法"><a href="#使用方法" class="headerlink" title="使用方法"></a>使用方法</h4><ul>
-<li><p>声明使用grid布局 • display: grid; /<em> inline-grid</em>/</p>
-</li>
-<li><p>画好虚拟表格 • grid: 30px auto 30px / 10% 1fr 10% • grid-gap: 10px 20px; </p>
-<ul>
-<li>表示：设置格子 三行两列，auto表示长度由内容决定，1fr表示撑满自由空间，此例子表示画一个三行三列的表格，行高，列宽，第一行高30px，第二行高度自适应，第三行高度也是30px,第一列宽度为总宽度的10%，第二列宽度自适应，第三列宽度为总宽度的10%；grid-gap 第一个参数表示，行之间的间隙，第二个为列之间的间隙；</li>
-</ul>
-</li>
-<li>告诉内容如何放置 • align-items: center; • justify-items: center; • align-content: start; • justify-content: space-evenly;</li>
-</ul>
-<h4 id="子项属性"><a href="#子项属性" class="headerlink" title="子项属性"></a>子项属性</h4><p>设置子项的范围和位置</p>
-<ul>
-<li>grid-column： 3 / span 2; <ul>
-<li>表示：从列的第三条线开始，跨两列，等价于 grid-column:1/3;</li>
-</ul>
-</li>
-<li>grid-row: 3 / 4; <ul>
-<li>表示：从行的第三条线开始，到行的第四条线结束，相当于 grid-row:3/span 1;</li>
-</ul>
-</li>
-<li>justify-self: start; </li>
-<li>align-self: center; </li>
-<li>grid-area:3/1/4/3<ul>
-<li>表示：从第3条行线和第1条列线开始，到第4条行线和第3条列线结束 </li>
-<li>表示 开始的行线/开始的列线/结束的行线/结束的列线 所覆盖的范围 </li>
-<li>grid-column、grid-row的替代写法，相当于 grid-row: 3 / 4; grid-column: 1 / 3</li>
-</ul>
-</li>
-</ul>
-<h4 id="更复杂用法参考"><a href="#更复杂用法参考" class="headerlink" title="更复杂用法参考"></a>更复杂用法参考</h4><p><a href="https://zhuanlan.zhihu.com/p/33030746" target="_blank" rel="noopener">https://zhuanlan.zhihu.com/p/33030746</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/16/grid-布局/" data-id="ckbbyszlc000b94w1rpofhhi7" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-水平垂直居中的几种方式" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/15/水平垂直居中的几种方式/" class="article-date">
-  <time datetime="2020-04-15T09:42:52.000Z" itemprop="datePublished">2020-04-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/15/水平垂直居中的几种方式/">水平垂直剧中的几种方式</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="方式一"><a href="#方式一" class="headerlink" title="方式一"></a>方式一</h4><p><img src="../img/垂直居中/way1.png" alt></p>
-<h4 id="方式二"><a href="#方式二" class="headerlink" title="方式二"></a>方式二</h4><p><img src="../img/垂直居中/way2.png" alt></p>
-<h4 id="方式三"><a href="#方式三" class="headerlink" title="方式三"></a>方式三</h4><p><img src="../img/垂直居中/way3.png" alt></p>
-<h4 id="方式四"><a href="#方式四" class="headerlink" title="方式四"></a>方式四</h4><p><img src="../img/垂直居中/way4.png" alt></p>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/15/水平垂直居中的几种方式/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/15/水平垂直居中的几种方式/" data-id="ckbbyszns001c94w1gd913n4h" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
 
     </footer>
   </div>
@@ -698,7 +667,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js基本功/">js基本功</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobx/">mobx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -708,7 +677,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 12.5px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 15px;">js</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 17.5px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 12.5px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/js基本功/" style="font-size: 10px;">js基本功</a> <a href="/tags/mobx/" style="font-size: 10px;">mobx</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -730,23 +699,23 @@
       <ul>
         
           <li>
+            <a href="/2020/06/13/js-装饰器/">js 装饰器</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/13/嘚啵嘚两句-class-和-function/">嘚啵嘚两句 class 和 function</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/13/mobx/">mobx</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/12/react-router/">react-router</a>
           </li>
         
           <li>
             <a href="/2020/06/12/react-css使用/">react-css使用</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/11/react-hooks/">react hooks</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/10/react-高阶/">react-高阶</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/09/react-生命周期等/">react 生命周期等</a>
           </li>
         
       </ul>

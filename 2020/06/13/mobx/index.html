@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>mobx | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="全局状态管理之前在 class 组件中通过 state 来实现状态管理，存储数据，在 function 组件中我们通过 useState 来实现状态管理上面这些都是父子关系之间组件传值可以通过共享state中的数据。如果层级嵌套十分严重，那么共享数据会变得十分复杂。假如我们可以把一些组件会公用的一些数据放在组件外面，那个组件需要就直接拿即可，就十分方便了，而且当我们修改了这些公用的全局的数据，对应">
+<meta name="keywords" content="mobx">
+<meta property="og:type" content="article">
+<meta property="og:title" content="mobx">
+<meta property="og:url" content="http://yoursite.com/2020/06/13/mobx/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="全局状态管理之前在 class 组件中通过 state 来实现状态管理，存储数据，在 function 组件中我们通过 useState 来实现状态管理上面这些都是父子关系之间组件传值可以通过共享state中的数据。如果层级嵌套十分严重，那么共享数据会变得十分复杂。假如我们可以把一些组件会公用的一些数据放在组件外面，那个组件需要就直接拿即可，就十分方便了，而且当我们修改了这些公用的全局的数据，对应">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-13T10:37:46.985Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="mobx">
+<meta name="twitter:description" content="全局状态管理之前在 class 组件中通过 state 来实现状态管理，存储数据，在 function 组件中我们通过 useState 来实现状态管理上面这些都是父子关系之间组件传值可以通过共享state中的数据。如果层级嵌套十分严重，那么共享数据会变得十分复杂。假如我们可以把一些组件会公用的一些数据放在组件外面，那个组件需要就直接拿即可，就十分方便了，而且当我们修改了这些公用的全局的数据，对应">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-mobx" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/13/mobx/" class="article-date">
+  <time datetime="2020-06-13T04:05:32.000Z" itemprop="datePublished">2020-06-13</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      mobx
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="全局状态管理"><a href="#全局状态管理" class="headerlink" title="全局状态管理"></a>全局状态管理</h4><h6 id="之前在-class-组件中通过-state-来实现状态管理，存储数据，在-function-组件中我们通过-useState-来实现状态管理"><a href="#之前在-class-组件中通过-state-来实现状态管理，存储数据，在-function-组件中我们通过-useState-来实现状态管理" class="headerlink" title="之前在 class 组件中通过 state 来实现状态管理，存储数据，在 function 组件中我们通过 useState 来实现状态管理"></a>之前在 class 组件中通过 state 来实现状态管理，存储数据，在 function 组件中我们通过 useState 来实现状态管理</h6><h6 id="上面这些都是父子关系之间组件传值可以通过共享state中的数据。如果层级嵌套十分严重，那么共享数据会变得十分复杂。"><a href="#上面这些都是父子关系之间组件传值可以通过共享state中的数据。如果层级嵌套十分严重，那么共享数据会变得十分复杂。" class="headerlink" title="上面这些都是父子关系之间组件传值可以通过共享state中的数据。如果层级嵌套十分严重，那么共享数据会变得十分复杂。"></a>上面这些都是父子关系之间组件传值可以通过共享state中的数据。如果层级嵌套十分严重，那么共享数据会变得十分复杂。</h6><h6 id="假如我们可以把一些组件会公用的一些数据放在组件外面，那个组件需要就直接拿即可，就十分方便了，而且当我们修改了这些公用的全局的数据，对应的引用这个数据的组件也会自动更新。所以我们需要这个全局状态管理工具，react-中可以用-redux-mobx-Vue-中有-vux"><a href="#假如我们可以把一些组件会公用的一些数据放在组件外面，那个组件需要就直接拿即可，就十分方便了，而且当我们修改了这些公用的全局的数据，对应的引用这个数据的组件也会自动更新。所以我们需要这个全局状态管理工具，react-中可以用-redux-mobx-Vue-中有-vux" class="headerlink" title="假如我们可以把一些组件会公用的一些数据放在组件外面，那个组件需要就直接拿即可，就十分方便了，而且当我们修改了这些公用的全局的数据，对应的引用这个数据的组件也会自动更新。所以我们需要这个全局状态管理工具，react 中可以用 redux,mobx Vue 中有 vux."></a>假如我们可以把一些组件会公用的一些数据放在组件外面，那个组件需要就直接拿即可，就十分方便了，而且当我们修改了这些公用的全局的数据，对应的引用这个数据的组件也会自动更新。所以我们需要这个全局状态管理工具，react 中可以用 redux,mobx Vue 中有 vux.</h6><h4 id="mobx"><a href="#mobx" class="headerlink" title="mobx"></a>mobx</h4><p><strong>state</strong></p>
+<h6 id="state-中保存了我们要维护的一些数据，也就是一个数据容器"><a href="#state-中保存了我们要维护的一些数据，也就是一个数据容器" class="headerlink" title="state 中保存了我们要维护的一些数据，也就是一个数据容器"></a>state 中保存了我们要维护的一些数据，也就是一个数据容器</h6><p><strong>Action</strong></p>
+<h6 id="如果我们想要修改这个state中管理的数据，不建议直接修改它，要使用mobx-提供的一个action方法去修改，保证了数据的安全，也可以追溯用户的操作（打印日志等）"><a href="#如果我们想要修改这个state中管理的数据，不建议直接修改它，要使用mobx-提供的一个action方法去修改，保证了数据的安全，也可以追溯用户的操作（打印日志等）" class="headerlink" title="如果我们想要修改这个state中管理的数据，不建议直接修改它，要使用mobx 提供的一个action方法去修改，保证了数据的安全，也可以追溯用户的操作（打印日志等）"></a>如果我们想要修改这个state中管理的数据，不建议直接修改它，要使用mobx 提供的一个action方法去修改，保证了数据的安全，也可以追溯用户的操作（打印日志等）</h6><p><strong>computed value</strong> 计算属性值</p>
+<h6 id="当state中维护的数据发生改变时，就会引起-计算属性值得改变，也就是说这个-computed-value-是根据这个-state-中数据的值来生成的。"><a href="#当state中维护的数据发生改变时，就会引起-计算属性值得改变，也就是说这个-computed-value-是根据这个-state-中数据的值来生成的。" class="headerlink" title="当state中维护的数据发生改变时，就会引起 计算属性值得改变，也就是说这个 computed value 是根据这个 state 中数据的值来生成的。"></a>当state中维护的数据发生改变时，就会引起 计算属性值得改变，也就是说这个 computed value 是根据这个 state 中数据的值来生成的。</h6><p><strong>Reaction</strong>s  反应</p>
+<h6 id="当state-中数据发生改变时，如果此时用户需要在这个时候做一些事情，这些事情就是-reactions"><a href="#当state-中数据发生改变时，如果此时用户需要在这个时候做一些事情，这些事情就是-reactions" class="headerlink" title="当state 中数据发生改变时，如果此时用户需要在这个时候做一些事情，这些事情就是 reactions"></a>当state 中数据发生改变时，如果此时用户需要在这个时候做一些事情，这些事情就是 reactions</h6><h4 id="基本用法"><a href="#基本用法" class="headerlink" title="基本用法"></a>基本用法</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123;observable,computed,action,autorun&#125; <span class="keyword">from</span> <span class="string">'mobx'</span>;</span><br><span class="line"><span class="comment">// todos 就是要监控的数据 通过 observale 函数来生成，相当于state中的数据</span></span><br><span class="line"><span class="keyword">const</span> todos = (observable([</span><br><span class="line">    &#123;</span><br><span class="line">        title:<span class="string">'起床'</span>,</span><br><span class="line">        completed:<span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        title:<span class="string">'穿衣'</span>,</span><br><span class="line">        completed:<span class="literal">false</span></span><br><span class="line">    &#125;,</span><br><span class="line">      &#123;</span><br><span class="line">        title:<span class="string">'洗漱'</span>,</span><br><span class="line">        completed:<span class="literal">false</span></span><br><span class="line">    &#125;</span><br><span class="line">]))</span><br><span class="line"></span><br><span class="line"><span class="comment">//Computed values 这个值是通过 state 中数据得来的，当state 数据更新时，它也会更新</span></span><br><span class="line"><span class="comment">// 通过 computed()函数，操作 state 中的数据</span></span><br><span class="line"><span class="keyword">let</span> uncompletedCount = computed(<span class="function"><span class="params">()</span>=&gt;</span> todos.filter(<span class="function"><span class="params">todo</span>=&gt;</span> !todo.completed.length);</span><br><span class="line"><span class="comment">//Reactions  当state 和 computedValue 改变时会触发 reactions</span></span><br><span class="line">  autorun = <span class="function">(<span class="params">(</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">`剩余任务：<span class="subst">$&#123;uncompletedCount&#125;</span>`</span></span><br><span class="line">        todos</span><br><span class="line">         .filter(<span class="function"><span class="params">todo</span> =&gt;</span> !todo.completed)</span><br><span class="line">         .map(<span class="function"><span class="params">todo</span> =&gt;</span> todo.title)</span><br><span class="line">         .join(<span class="string">", "</span>)</span><br><span class="line">    ),</span><br><span class="line">&#125;)       </span><br><span class="line"></span><br><span class="line"><span class="built_in">console</span>.log(<span class="string">``</span>,.....)  <span class="comment">// console.log 可以这样写的</span></span><br><span class="line"><span class="comment">//这个方法就是 当state 和 computedvalue 变化时，会自动运行这个 autrun 函数，打印出state 中未完成的任务</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// Actions  用来改变被观察者 也就是 state 中的数据</span></span><br><span class="line"><span class="keyword">const</span> doTask = action(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">    todos.find(<span class="function"><span class="params">todo</span>=&gt;</span>!todo.completed).completed = <span class="literal">true</span>;</span><br><span class="line">&#125;)</span><br><span class="line"></span><br><span class="line"><span class="comment">// arry.find(item=&gt;) 函数 find() 方法返回数组中满足提供的测试函数的第一个元素的值。否则返回 undefined。  一次只返回一个值</span></span><br><span class="line"></span><br><span class="line"><span class="comment">// doTask 这个函数，因为action 本身是个函数赋值给 doTask 所以它也是个函数,只不过在action 参数中的函数中做了一些处理，来修改 state 也就是 todos 中的数据。</span></span><br></pre></td></tr></table></figure>
+<h4 id="mobx-装饰器写法-装饰器-是-ES2016-也就是-es7-的新语法-详情看-装饰器笔记"><a href="#mobx-装饰器写法-装饰器-是-ES2016-也就是-es7-的新语法-详情看-装饰器笔记" class="headerlink" title="mobx 装饰器写法 (装饰器 是 ES2016 也就是 es7 的新语法,详情看 装饰器笔记)"></a>mobx 装饰器写法 (装饰器 是 ES2016 也就是 es7 的新语法,详情看 装饰器笔记)</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> &#123; observable, autorun, computed, action &#125; <span class="keyword">from</span> <span class="string">'mobx'</span>;</span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">Todo</span> </span>&#123;</span><br><span class="line"> @observable todos = []</span><br><span class="line"> <span class="keyword">constructor</span>() &#123;</span><br><span class="line"> autorun(<span class="function"><span class="params">()</span> =&gt;</span> &#123;</span><br><span class="line"> <span class="built_in">console</span>.log(</span><br><span class="line"> <span class="string">`剩余任务:<span class="subst">$&#123;<span class="keyword">this</span>.uncompletedCount&#125;</span>`</span>,</span><br><span class="line"> <span class="keyword">this</span>.todos</span><br><span class="line"> .filter(<span class="function"><span class="params">todo</span> =&gt;</span> !todo.completed)</span><br><span class="line"> .map(<span class="function"><span class="params">todo</span> =&gt;</span> todo.title)</span><br><span class="line"> .join(<span class="string">", "</span>)</span><br><span class="line"> );</span><br><span class="line"> &#125;);</span><br><span class="line"> &#125;</span><br><span class="line"></span><br><span class="line"> @computed get uncompletedCount() &#123;</span><br><span class="line"> <span class="keyword">return</span> <span class="keyword">this</span>.todos.filter(<span class="function"><span class="params">todo</span> =&gt;</span> !todo.completed).length;</span><br><span class="line"> &#125;</span><br><span class="line">@action addTodo(title) &#123;</span><br><span class="line"> <span class="keyword">this</span>.todos.push(&#123;</span><br><span class="line"> title: title,</span><br><span class="line"> completed: <span class="literal">false</span></span><br><span class="line"> &#125;);</span><br><span class="line"> &#125;</span><br><span class="line"> @action doTask()&#123;</span><br><span class="line"> <span class="keyword">this</span>.todos.find(<span class="function"><span class="params">todo</span> =&gt;</span> !todo.completed).completed = <span class="literal">true</span></span><br><span class="line"> &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="keyword">let</span> todo = <span class="built_in">window</span>.todo = <span class="keyword">new</span> Todo();</span><br><span class="line">todo.addTodo(<span class="string">'吃饭'</span>);</span><br><span class="line">todo.doTask()</span><br></pre></td></tr></table></figure>
+<p><strong>核心思想：状态的改变引发⼀系列⾃动⾏为</strong></p>
+<h4 id="react-项目中使用装饰器"><a href="#react-项目中使用装饰器" class="headerlink" title="react 项目中使用装饰器"></a>react 项目中使用装饰器</h4><p>操作</p>
+<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">create-react-app</span><br><span class="line"></span><br><span class="line">yarn eject 或者 npm run eject 暴露出配置文件</span><br><span class="line"></span><br><span class="line">yarn add @babel/plugin-proposal-decorators  //安装支持 装饰器的插件</span><br><span class="line">修改package.json， 找到 babel字段， 添加</span><br><span class="line">//查看 npm 上 plugin-proposal-decorators 包的用法</span><br><span class="line"> <span class="string">"babel"</span>: &#123;</span><br><span class="line"> <span class="string">"plugins"</span>: [</span><br><span class="line"> <span class="string">"@babel/plugin-proposal-decorators"</span></span><br><span class="line"> ],</span><br><span class="line"> <span class="string">"presets"</span>: [</span><br><span class="line"> <span class="string">"react-app"</span></span><br><span class="line"> ]</span><br><span class="line"> &#125;</span><br></pre></td></tr></table></figure>
+<h4 id="react-mobx"><a href="#react-mobx" class="headerlink" title="react-mobx"></a>react-mobx</h4>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/13/mobx/" data-id="ckbdifgj80010ngw18j2xgfu2" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mobx/">mobx</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/06/13/嘚啵嘚两句-class-和-function/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          嘚啵嘚两句 class 和 function
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/06/12/react-router/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">react-router</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js基本功/">js基本功</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobx/">mobx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/js基本功/" style="font-size: 10px;">js基本功</a> <a href="/tags/mobx/" style="font-size: 10px;">mobx</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/13/js-装饰器/">js 装饰器</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/13/嘚啵嘚两句-class-和-function/">嘚啵嘚两句 class 和 function</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/13/mobx/">mobx</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/12/react-router/">react-router</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/12/react-css使用/">react-css使用</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>
