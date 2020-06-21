@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>react 打包发布问题记录 | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="问题今天把这几天学习的项目写完了，然后准备打包，发布到 Github Pages 上，结果打包后发现各种报错，总的来说就是 打包后的 css 和 js 文件引入错误，路径不对，报错如下：1Refused to apply style from &apos;http://localhost:3000/assets/styles/custom-style.css&apos; because its MIME type (">
+<meta name="keywords" content="打包">
+<meta property="og:type" content="article">
+<meta property="og:title" content="react 打包发布问题记录">
+<meta property="og:url" content="http://yoursite.com/2020/06/21/react-打包发布问题记录/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="问题今天把这几天学习的项目写完了，然后准备打包，发布到 Github Pages 上，结果打包后发现各种报错，总的来说就是 打包后的 css 和 js 文件引入错误，路径不对，报错如下：1Refused to apply style from &apos;http://localhost:3000/assets/styles/custom-style.css&apos; because its MIME type (">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-06-21T09:41:49.288Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="react 打包发布问题记录">
+<meta name="twitter:description" content="问题今天把这几天学习的项目写完了，然后准备打包，发布到 Github Pages 上，结果打包后发现各种报错，总的来说就是 打包后的 css 和 js 文件引入错误，路径不对，报错如下：1Refused to apply style from &apos;http://localhost:3000/assets/styles/custom-style.css&apos; because its MIME type (">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-react-打包发布问题记录" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/21/react-打包发布问题记录/" class="article-date">
+  <time datetime="2020-06-21T08:44:09.000Z" itemprop="datePublished">2020-06-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      react 打包发布问题记录
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="问题"><a href="#问题" class="headerlink" title="问题"></a>问题</h4><h6 id="今天把这几天学习的项目写完了，然后准备打包，发布到-Github-Pages-上，结果打包后发现各种报错，总的来说就是-打包后的-css-和-js-文件引入错误，路径不对，报错如下："><a href="#今天把这几天学习的项目写完了，然后准备打包，发布到-Github-Pages-上，结果打包后发现各种报错，总的来说就是-打包后的-css-和-js-文件引入错误，路径不对，报错如下：" class="headerlink" title="今天把这几天学习的项目写完了，然后准备打包，发布到 Github Pages 上，结果打包后发现各种报错，总的来说就是 打包后的 css 和 js 文件引入错误，路径不对，报错如下："></a>今天把这几天学习的项目写完了，然后准备打包，发布到 Github Pages 上，结果打包后发现各种报错，总的来说就是 打包后的 css 和 js 文件引入错误，路径不对，报错如下：</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">Refused to apply style <span class="keyword">from</span> <span class="string">'http://localhost:3000/assets/styles/custom-style.css'</span> because its MIME type (<span class="string">'text/html'</span>) is not a supported stylesheet MIME type, and strict MIME checking is enabled.</span><br></pre></td></tr></table></figure>
+<h6 id="百度了一下，有人说是要在-packge-json-中指定-homepage-为-因为打开控制台发现-index-html引入的资源文件是从-下开始找的，应该在-下开始查找"><a href="#百度了一下，有人说是要在-packge-json-中指定-homepage-为-因为打开控制台发现-index-html引入的资源文件是从-下开始找的，应该在-下开始查找" class="headerlink" title="百度了一下，有人说是要在 packge.json 中指定 homepage 为 .,因为打开控制台发现 index.html引入的资源文件是从 / 下开始找的，应该在 ./ 下开始查找"></a>百度了一下，有人说是要在 packge.json 中指定 homepage 为 .,因为打开控制台发现 index.html引入的资源文件是从 / 下开始找的，应该在 ./ 下开始查找</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"homepage"</span>:<span class="string">"."</span></span><br></pre></td></tr></table></figure>
+<h6 id="百度看到一个对build命令后输出的提示的一个解释："><a href="#百度看到一个对build命令后输出的提示的一个解释：" class="headerlink" title="百度看到一个对build命令后输出的提示的一个解释："></a>百度看到一个对build命令后输出的提示的一个解释：</h6><p>你必须把build里的文件直接放到应用服务器的根路径下，比如，你的服务器IP是172.16.38.253，应用服务器端口为8080，你应该保证<a href="http://172.16.38.253:8080这种访问方式，访问到的是你的build下的文件。如果你希望以http://172.16.38.253:8080/build/index.htm这种方式访问应用，那么你可以在package.json文件中增加一个homepage字段，如下：" target="_blank" rel="noopener">http://172.16.38.253:8080这种访问方式，访问到的是你的build下的文件。如果你希望以http://172.16.38.253:8080/build/index.htm这种方式访问应用，那么你可以在package.json文件中增加一个homepage字段，如下：</a></p>
+<p>“homepage”: “.”,</p>
+<h6 id="不管怎样，这样添加后发现-index-html-中引用资源文件路径正确了，可是新的问题来了，当我切换路由时发现页面空白，控制台报错也是加载资源的问题，后来百度后发现有人讲："><a href="#不管怎样，这样添加后发现-index-html-中引用资源文件路径正确了，可是新的问题来了，当我切换路由时发现页面空白，控制台报错也是加载资源的问题，后来百度后发现有人讲：" class="headerlink" title="不管怎样，这样添加后发现 index.html 中引用资源文件路径正确了，可是新的问题来了，当我切换路由时发现页面空白，控制台报错也是加载资源的问题，后来百度后发现有人讲："></a>不管怎样，这样添加后发现 index.html 中引用资源文件路径正确了，可是新的问题来了，当我切换路由时发现页面空白，控制台报错也是加载资源的问题，后来百度后发现有人讲：</h6><h6 id="BrowserRouter会变成类似这样的路径-http-111-230-139-105-3001-detail-9459469，这样的路径在访问服务器时，服务器会认为是请求查找某个接口数据"><a href="#BrowserRouter会变成类似这样的路径-http-111-230-139-105-3001-detail-9459469，这样的路径在访问服务器时，服务器会认为是请求查找某个接口数据" class="headerlink" title="BrowserRouter会变成类似这样的路径  http://111.230.139.105:3001/detail/9459469，这样的路径在访问服务器时，服务器会认为是请求查找某个接口数据"></a>BrowserRouter会变成类似这样的路径  <a href="http://111.230.139.105:3001/detail/9459469，这样的路径在访问服务器时，服务器会认为是请求查找某个接口数据" target="_blank" rel="noopener">http://111.230.139.105:3001/detail/9459469，这样的路径在访问服务器时，服务器会认为是请求查找某个接口数据</a></h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">This request URL /detail/9459469 was not found on this server.</span><br></pre></td></tr></table></figure>
+<p><strong>所以这个时候必须使用 HashRouter,这时候访问具体页面时就是<a href="http://111.230.139.105:3001/#/detail/9459469" target="_blank" rel="noopener">http://111.230.139.105:3001/#/detail/9459469</a>  改为 HashRouter 后发现问题解决了</strong></p>
+<p>另外,webpack打包时要添加NODE_ENV,并且将devtool:’eval-source-map’,去除，不然build出来的js特别大，source map是为了代码出错后采用source-map的形式直接显示你出错代码的位置</p>
+<p>打包生产包时去除，加上这两个后大部分简单单页面应用会在100k到200k</p>
+<h4 id="HashRouter-和-BrowserRouter-区别"><a href="#HashRouter-和-BrowserRouter-区别" class="headerlink" title="HashRouter 和 BrowserRouter 区别"></a>HashRouter 和 BrowserRouter 区别</h4><p>一、从原理上</p>
+<p>HashRouter在路径中包含了#，相当于HTML的锚点定位。（<code>#</code> 符号的英文叫hash，所以叫HashRouter，和散列没关系哦））</p>
+<p>而BrowserRouter使用的是HTML5的新特性History，没有HashRouter(锚点定位)那样通用，低版本浏览器可能不支持。</p>
+<p>二、从用法上</p>
+<p>BrowserRouter进行组件跳转时可以传递任意参数实现组件间的通信，而HashRouter不能(除非手动拼接URL字符串)，因此一般配合Redux使用，实现组件间的数据通信。</p>
+<p>三、生产实践</p>
+<p>1.HashRouter</p>
+<p> HashRouter相当于锚点定位，因此不论#后面的路径怎么变化，请求的都相当于是#之前的那个页面。可以很容易的进行前后端不分离的部署(也就是把前端打包后的文件放到服务器端的public或static里)，</p>
+<p>因为请求的链接都是ip地址:端口/#/xxxx，因此请求的资源路径永远为/，相当于index.html，而其他的后端API接口都可以正常请求，不会和/冲突，由于前后端不分离也不会产生跨域问题。</p>
+<p>缺点就是丑，路径里总有个#，宝宝表示强迫症犯了…</p>
+<p>2.BrowserRouter</p>
+<p>因为BrowserRouter模式下请求的链接都是ip地址:端口/xxxx/xxxx，因此相当于每个URL都会访问一个不同的后端地址，如果后端没有覆盖到路由就会产生404错误。</p>
+<p>可以通过加入中间件解决，放在服务器端路由匹配的最后，如果前面的API接口都不匹配，则返回index.html页面。但这样也有一些小问题，因为要求前端路由和后端路由的URL不能重复。</p>
+<p>比如商品列表组件叫/product/list，而请求商品列表的API也是/product/list，那么就会访问不到页面，而是被API接口匹配到。</p>
+<p>解决方法:</p>
+<p>进行前后端分离的部署，比如前端地址ip1:端口1，后端接口地址ip2:端口2，使用Nginx反向代理服务器进行请求分发。前端向后端发起请求的URL为nginx所在的服务器+/api/xxx，通过NGINX的配置文件判断，如果URL以api开头则转发至后端接口，否则转发至前端的地址，访问项目只需访问Nginx服务器即可。</p>
+<p>参考：<a href="https://www.cnblogs.com/flamestudio/p/11965991.html" target="_blank" rel="noopener">https://www.cnblogs.com/flamestudio/p/11965991.html</a></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/21/react-打包发布问题记录/" data-id="ckbovue3e000zl0w1shvhksli" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/打包/">打包</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+  
+    <a href="/2020/06/13/js-装饰器/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">js 装饰器</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js基本功/">js基本功</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobx/">mobx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/js基本功/" style="font-size: 10px;">js基本功</a> <a href="/tags/mobx/" style="font-size: 10px;">mobx</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/打包/" style="font-size: 10px;">打包</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/06/21/react-打包发布问题记录/">react 打包发布问题记录</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/13/js-装饰器/">js 装饰器</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/13/嘚啵嘚两句-class-和-function/">嘚啵嘚两句 class 和 function</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/13/mobx/">mobx</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/12/react-router/">react-router</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 John Doe<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

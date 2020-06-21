@@ -62,6 +62,93 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-webpack-笔记" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/06/01/webpack-笔记/" class="article-date">
+  <time datetime="2020-06-01T07:25:41.000Z" itemprop="datePublished">2020-06-01</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/06/01/webpack-笔记/">webpack 笔记</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><h6 id="静态模块打包器"><a href="#静态模块打包器" class="headerlink" title="静态模块打包器"></a>静态模块打包器</h6><h6 id="根据文档学习"><a href="#根据文档学习" class="headerlink" title="根据文档学习"></a>根据文档学习</h6><h4 id="资源管理"><a href="#资源管理" class="headerlink" title="资源管理"></a>资源管理</h4><h6 id="使用-webpack-命令时，可以指定webpack的配置文件，webpack-–config-webpack-config-js-该命令可以简写为-webpack，它会默认去找这个名称的配置文件"><a href="#使用-webpack-命令时，可以指定webpack的配置文件，webpack-–config-webpack-config-js-该命令可以简写为-webpack，它会默认去找这个名称的配置文件" class="headerlink" title="使用 webpack 命令时，可以指定webpack的配置文件，webpack –config webpack.config.js,该命令可以简写为 webpack，它会默认去找这个名称的配置文件"></a>使用 webpack 命令时，可以指定webpack的配置文件，webpack –config webpack.config.js,该命令可以简写为 webpack，它会默认去找这个名称的配置文件</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="string">"scripts"</span>: &#123;</span><br><span class="line">    <span class="string">"test"</span>: <span class="string">"echo \"Error: no test specified\" &amp;&amp; exit 1"</span>,</span><br><span class="line">     <span class="string">"build"</span>:<span class="string">"webpack"</span>  </span><br><span class="line">  &#125;,</span><br></pre></td></tr></table></figure>
+<p><strong>webpack.config.js 部分内容</strong></p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = &#123;</span><br><span class="line">    entry:<span class="string">'./src/index.js'</span>,</span><br><span class="line">    output:&#123;</span><br><span class="line">        filename:<span class="string">'bundle.js'</span>,  <span class="comment">//指定打包后的文件名称,在入口html中引入即可</span></span><br><span class="line">        path:path.resolve(__dirname,<span class="string">'dist'</span>)   <span class="comment">//文件路径</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h6 id="有一个概念你必须清楚的就是-我们的项目目录，分为-src-源代码目录，供开发人员开发使用，而dist目录是打包后的目录，供上线使用，这个里面的文件经过压缩处理，体积小，而且把我们模块化编写的代码打包成浏览器可以识别的代码。"><a href="#有一个概念你必须清楚的就是-我们的项目目录，分为-src-源代码目录，供开发人员开发使用，而dist目录是打包后的目录，供上线使用，这个里面的文件经过压缩处理，体积小，而且把我们模块化编写的代码打包成浏览器可以识别的代码。" class="headerlink" title="有一个概念你必须清楚的就是,我们的项目目录，分为 src 源代码目录，供开发人员开发使用，而dist目录是打包后的目录，供上线使用，这个里面的文件经过压缩处理，体积小，而且把我们模块化编写的代码打包成浏览器可以识别的代码。"></a>有一个概念你必须清楚的就是,我们的项目目录，分为 src 源代码目录，供开发人员开发使用，而dist目录是打包后的目录，供上线使用，这个里面的文件经过压缩处理，体积小，而且把我们模块化编写的代码打包成浏览器可以识别的代码。</h6><h4 id="管理输出"><a href="#管理输出" class="headerlink" title="管理输出"></a>管理输出</h4><h6 id="htmlwebpackPlugin-帮助我们生成-dist-下的index-html-也就是最终运行的html-并且将打包后的js文件引入该-html"><a href="#htmlwebpackPlugin-帮助我们生成-dist-下的index-html-也就是最终运行的html-并且将打包后的js文件引入该-html" class="headerlink" title="htmlwebpackPlugin 帮助我们生成 dist 下的index.html,(也就是最终运行的html)并且将打包后的js文件引入该 html."></a>htmlwebpackPlugin 帮助我们生成 dist 下的index.html,(也就是最终运行的html)并且将打包后的js文件引入该 html.</h6><h4 id="开发环境"><a href="#开发环境" class="headerlink" title="开发环境"></a>开发环境</h4><p><strong>inline-source-map</strong></p>
+<h6 id="webpack-config-js-中-配置-dev-tool-inline-source-map-作用是对源码和打包后的代码做一个映射，这样出错后，点击相应的文件能定位到源代码，方便开发人员"><a href="#webpack-config-js-中-配置-dev-tool-inline-source-map-作用是对源码和打包后的代码做一个映射，这样出错后，点击相应的文件能定位到源代码，方便开发人员" class="headerlink" title="webpack.config.js 中 配置 dev-tool:inline-source-map,作用是对源码和打包后的代码做一个映射，这样出错后，点击相应的文件能定位到源代码，方便开发人员"></a>webpack.config.js 中 配置 dev-tool:inline-source-map,作用是对源码和打包后的代码做一个映射，这样出错后，点击相应的文件能定位到源代码，方便开发人员</h6><hr>
+<h4 id="webpack-dev-server"><a href="#webpack-dev-server" class="headerlink" title="webpack-dev-server"></a>webpack-dev-server</h4><h6 id="刚发现-webpack-dev-server-执行后并不会在本地生成-dist-文件夹，以及打包后的文件，在浏览器中可以看到打包后的js，再一次明确一点哈：开发环境我们为了方便查看页面的变化所以引入了webpack-dev-server-，而在生产环境，我们直接执行-npx-webpack-打包好代码，这个命令会在当前目录生成-dist文件夹，文件夹下是相应的打包文件，然后把这个dist放入服务器即可。"><a href="#刚发现-webpack-dev-server-执行后并不会在本地生成-dist-文件夹，以及打包后的文件，在浏览器中可以看到打包后的js，再一次明确一点哈：开发环境我们为了方便查看页面的变化所以引入了webpack-dev-server-，而在生产环境，我们直接执行-npx-webpack-打包好代码，这个命令会在当前目录生成-dist文件夹，文件夹下是相应的打包文件，然后把这个dist放入服务器即可。" class="headerlink" title="刚发现 webpack-dev-server 执行后并不会在本地生成 dist 文件夹，以及打包后的文件，在浏览器中可以看到打包后的js，再一次明确一点哈：开发环境我们为了方便查看页面的变化所以引入了webpack-dev-server ，而在生产环境，我们直接执行 npx webpack 打包好代码，这个命令会在当前目录生成 dist文件夹，文件夹下是相应的打包文件，然后把这个dist放入服务器即可。"></a>刚发现 webpack-dev-server 执行后并不会在本地生成 dist 文件夹，以及打包后的文件，在浏览器中可以看到打包后的js，再一次明确一点哈：开发环境我们为了方便查看页面的变化所以引入了webpack-dev-server ，而在生产环境，我们直接执行 npx webpack 打包好代码，这个命令会在当前目录生成 dist文件夹，文件夹下是相应的打包文件，然后把这个dist放入服务器即可。</h6><p>刚刚使用 webpack-dev-server 纳闷了半天 dist 为何是空的</p>
+<p>也就是说：我们引入 htmlwebpackplugin 插件 这个插件会生成dist文件夹，并且在里面生成 index.html,并且引入相关打包后的js,以及我们引入的 cleanwebpackplugin 插件，清理 dist文件夹，都是为了我们的生产环境而引入的。我这样理解没错吧，可为何，安装包时放到了 dev中，为了开发测试？</p>
+<h4 id="HMR-（hot-module-replacement）-模块热更新）（仅限开发环境使用）"><a href="#HMR-（hot-module-replacement）-模块热更新）（仅限开发环境使用）" class="headerlink" title="HMR （hot module replacement） 模块热更新）（仅限开发环境使用）"></a>HMR （hot module replacement） 模块热更新）（仅限开发环境使用）</h4><p>它允许在运行时更新各种模块，而无需进行完全刷新，即只变动你修改的地方，其他的代码还保留之前的状态。</p>
+<p>启用这个功能需要配合 webpack-dev-server 一起使用。</p>
+<h6 id="使用这个功能的时候，如果想要对某一个模块进行热更新，需要在入口文件中加入一些代码："><a href="#使用这个功能的时候，如果想要对某一个模块进行热更新，需要在入口文件中加入一些代码：" class="headerlink" title="使用这个功能的时候，如果想要对某一个模块进行热更新，需要在入口文件中加入一些代码："></a>使用这个功能的时候，如果想要对某一个模块进行热更新，需要在入口文件中加入一些代码：</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"></span><br><span class="line"></span><br><span class="line"><span class="comment">//在要热更细的模块中</span></span><br><span class="line"><span class="keyword">if</span>(<span class="built_in">module</span>.hot)&#123;  <span class="comment">//判断是否开启了热更新</span></span><br><span class="line"><span class="comment">//热更新功能接受print.js的变动的更新,即只刷新print.js 中的变动，其他代码状态不会被刷新</span></span><br><span class="line"><span class="comment">// 例如，入口文件中有一个变量i,每次执行都会++，你会发现当接受print.js的热更新后，入口文件中的 i还是会从它上次执行的地方开始++，而不是从初始值（例如1）开始；这就是热更新</span></span><br><span class="line">	<span class="built_in">module</span>.hot.accept(<span class="string">'./print.js'</span>,<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">		<span class="comment">//回调函数</span></span><br><span class="line">		</span><br><span class="line">	&#125;),</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="Tree-shaking"><a href="#Tree-shaking" class="headerlink" title="Tree shaking"></a>Tree shaking</h4><h6 id="你可以将应用程序想象成一棵树。绿色表示实际用到的源码和-library，是树上活的树叶。灰色表示无用的代码，是秋天树上枯萎的树叶。为了除去死去的树叶，你必须摇动这棵树，使它们落下。"><a href="#你可以将应用程序想象成一棵树。绿色表示实际用到的源码和-library，是树上活的树叶。灰色表示无用的代码，是秋天树上枯萎的树叶。为了除去死去的树叶，你必须摇动这棵树，使它们落下。" class="headerlink" title="你可以将应用程序想象成一棵树。绿色表示实际用到的源码和 library，是树上活的树叶。灰色表示无用的代码，是秋天树上枯萎的树叶。为了除去死去的树叶，你必须摇动这棵树，使它们落下。"></a>你可以将应用程序想象成一棵树。绿色表示实际用到的源码和 library，是树上活的树叶。灰色表示无用的代码，是秋天树上枯萎的树叶。为了除去死去的树叶，你必须摇动这棵树，使它们落下。</h6><p>结论： 在生产环境下，加入  mode: “production” 就会自动将无用的代码给去除，减小体积，提高效率</p>
+<p>例如，在a.js 中有export 出了两个函数，但只被引用了一个函数，但打包后，你会发现打包后的代码中依旧是包含未使用的函数的，加入这个配置后，就会只引入使用的这个函数；binggo</p>
+<h4 id="生产环境"><a href="#生产环境" class="headerlink" title="生产环境"></a>生产环境</h4><h6 id="开发环境-development-和生产环境-production-的构建目标差异很大。在开发环境中，我们需要具有强大的、具有实时重新加载-live-reloading-或热模块替换-hot-module-replacement-能力的-source-map-和-localhost-server。而在生产环境中，我们的目标则转向于关注更小的-bundle，更轻量的-source-map，以及更优化的资源，以改善加载时间。由于要遵循逻辑分离，我们通常建议为每个环境编写彼此独立的-webpack-配置"><a href="#开发环境-development-和生产环境-production-的构建目标差异很大。在开发环境中，我们需要具有强大的、具有实时重新加载-live-reloading-或热模块替换-hot-module-replacement-能力的-source-map-和-localhost-server。而在生产环境中，我们的目标则转向于关注更小的-bundle，更轻量的-source-map，以及更优化的资源，以改善加载时间。由于要遵循逻辑分离，我们通常建议为每个环境编写彼此独立的-webpack-配置" class="headerlink" title="开发环境(development)和生产环境(production)的构建目标差异很大。在开发环境中，我们需要具有强大的、具有实时重新加载(live reloading)或热模块替换(hot module replacement)能力的 source map 和 localhost server。而在生产环境中，我们的目标则转向于关注更小的 bundle，更轻量的 source map，以及更优化的资源，以改善加载时间。由于要遵循逻辑分离，我们通常建议为每个环境编写彼此独立的 webpack 配置"></a><em>开发环境(development)</em>和<em>生产环境(production)</em>的构建目标差异很大。在<em>开发环境</em>中，我们需要具有强大的、具有实时重新加载(live reloading)或热模块替换(hot module replacement)能力的 source map 和 localhost server。而在<em>生产环境</em>中，我们的目标则转向于关注更小的 bundle，更轻量的 source map，以及更优化的资源，以改善加载时间。由于要遵循逻辑分离，我们通常建议为每个环境编写<strong>彼此独立的 webpack 配置</strong></h6><p>使用参考官方文档</p>
+<p>思路：拆分 webpack.config.js</p>
+<p>开发环境：webpack-dev.js</p>
+<p>生产环境： webpack-prod.js</p>
+<p>common.js ：包含生产和开发环境都需要的公共的一些配置</p>
+<p>下载一个 merge 包，用来根据不同的环境  —- 开发环境（或者生产环境）的js 和 common.js 合并</p>
+<p>在package.js scripts 中设置脚本，</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//例如</span></span><br><span class="line">scripts:&#123;</span><br><span class="line">    <span class="string">"start"</span>:<span class="string">"webpack-dev-server --open --config webpack.dev.js"</span> , <span class="comment">//启动 webpackserver 并且是通过开发环境的配置文件启动的</span></span><br><span class="line">    <span class="string">"build"</span>:<span class="string">"webpack --config webpack.prod.js"</span>  <span class="comment">//生产环境的配置文件，生产环境是不需要启动webpackserver的，所以就是这样喽</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="指定环境"><a href="#指定环境" class="headerlink" title="指定环境"></a>指定环境</h4><p>任何位于 <code>/src</code> 的本地代码都可以关联到 process.env.NODE_ENV 环境变量，所以以下检查也是有效的</p>
+<p>配置环境的步骤如下：</p>
+<p>在相应的webpack配置文件中写上，例如在dev.js 中写 development</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">new</span> webpack.DefinePlugin(&#123;</span><br><span class="line">            <span class="string">'process.env.NODE_ENV'</span>:<span class="built_in">JSON</span>.stringify(<span class="string">'development'</span>)</span><br><span class="line">        &#125;)</span><br></pre></td></tr></table></figure>
+<p>这样，你执行 该文件的话，就会获得当前配置的环境名称，然后做判断，例如打印日志什么的</p>
+<p>在 src下的文件中都可以访问到该 类似全局变量的这个环境配置</p>
+<h4 id="代码分离-好处就是可以把共有的东西抽离出来"><a href="#代码分离-好处就是可以把共有的东西抽离出来" class="headerlink" title="代码分离 好处就是可以把共有的东西抽离出来"></a>代码分离 好处就是可以把共有的东西抽离出来</h4><h6 id="代码分离就是可以把不同的文件打包到不同的bundle-js中，例如之前配置的-多个-entry-以及output"><a href="#代码分离就是可以把不同的文件打包到不同的bundle-js中，例如之前配置的-多个-entry-以及output" class="headerlink" title="代码分离就是可以把不同的文件打包到不同的bundle.js中，例如之前配置的 多个 entry,以及output"></a>代码分离就是可以把不同的文件打包到不同的bundle.js中，例如之前配置的 多个 entry,以及output</h6><p>如果入口 chunks 之间包含重复的模块，那些重复模块都会被引入到各个 bundle 中</p>
+<p>但这种方式需要我们手动配置太麻烦，而且还会有一个问题，例如这两个入口文件中都引用了jquery,那么最终生成的两个 bundle.js 中都会包含 jquery,这样无疑文件体积会大很多，怎么解决呢，就是把共有的juqery 提取出来，其他模块需要，引入即可。</p>
+<p>具体解决方案：CommonsChunkPlugin</p>
+<p>这个插件可以将公共的依赖模块提取到已有的入口 chunk 中，或者提取到一个新生成的 chunk</p>
+<p>使用步骤见官网文档</p>
+<p><strong>动态导入</strong></p>
+<h6 id="就是在使用到它的时候在引入，例如有一个功能组件需要我们登陆后操作，那么我们在登录之前可以不用加载该模块，等用到的时候再导入"><a href="#就是在使用到它的时候在引入，例如有一个功能组件需要我们登陆后操作，那么我们在登录之前可以不用加载该模块，等用到的时候再导入" class="headerlink" title="就是在使用到它的时候在引入，例如有一个功能组件需要我们登陆后操作，那么我们在登录之前可以不用加载该模块，等用到的时候再导入"></a>就是在使用到它的时候在引入，例如有一个功能组件需要我们登陆后操作，那么我们在登录之前可以不用加载该模块，等用到的时候再导入</h6><p>这时候，我们不用指定多个入口，配置好后，通过动态引入这个公用的库，它会自动生成一个公用的js</p>
+<p>使用 import 函数 promise 风格的函数</p>
+<p>参见官网</p>
+<h4 id="疑问"><a href="#疑问" class="headerlink" title="疑问"></a>疑问</h4><p><strong>webpack 为何需要多个入口文件和输出文件？</strong></p>
+<h6 id="答：项目中肯定不止一个html页面，a页面需要引入a-js，b-js，c-js-在入口文件中require-a页面需要的js文件即可。"><a href="#答：项目中肯定不止一个html页面，a页面需要引入a-js，b-js，c-js-在入口文件中require-a页面需要的js文件即可。" class="headerlink" title="答：项目中肯定不止一个html页面，a页面需要引入a.js，b.js，c.js 在入口文件中require a页面需要的js文件即可。"></a>答：项目中肯定不止一个html页面，a页面需要引入a.js，b.js，c.js 在入口文件中require a页面需要的js文件即可。</h6><h6 id="b页面需要引入d-js-，e-js-，f-js-，如果不能设置多个入口文件和多个编译输出文件的话就需要在入口文件中引入全部6个js文件，并编译到一个输出文件，这岂不是违背了模块管理工具的初衷呢？"><a href="#b页面需要引入d-js-，e-js-，f-js-，如果不能设置多个入口文件和多个编译输出文件的话就需要在入口文件中引入全部6个js文件，并编译到一个输出文件，这岂不是违背了模块管理工具的初衷呢？" class="headerlink" title="b页面需要引入d.js ，e.js ，f.js ，如果不能设置多个入口文件和多个编译输出文件的话就需要在入口文件中引入全部6个js文件，并编译到一个输出文件，这岂不是违背了模块管理工具的初衷呢？"></a>b页面需要引入d.js ，e.js ，f.js ，如果不能设置多个入口文件和多个编译输出文件的话就需要在入口文件中引入全部6个js文件，并编译到一个输出文件，这岂不是违背了模块管理工具的初衷呢？</h6><h6 id="这就像是不同的模块需要不同的js一样"><a href="#这就像是不同的模块需要不同的js一样" class="headerlink" title="这就像是不同的模块需要不同的js一样"></a>这就像是不同的模块需要不同的js一样</h6><h4 id="自己创建-loader"><a href="#自己创建-loader" class="headerlink" title="自己创建 loader"></a>自己创建 loader</h4><h6 id="自己手写一个loader-需要在-webpack配置文件中指定loader的路径，有需要可以配置一些-options"><a href="#自己手写一个loader-需要在-webpack配置文件中指定loader的路径，有需要可以配置一些-options" class="headerlink" title="自己手写一个loader,需要在 webpack配置文件中指定loader的路径，有需要可以配置一些 options"></a>自己手写一个loader,需要在 webpack配置文件中指定loader的路径，有需要可以配置一些 options</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"> <span class="comment">//指定loader 目录</span></span><br><span class="line">    resolveLoader: &#123;</span><br><span class="line">        modules: [</span><br><span class="line">            <span class="string">'node_mdules'</span>,</span><br><span class="line">            path.resolve(__dirname, <span class="string">'loaders'</span>)</span><br><span class="line">        ]</span><br><span class="line">    &#125;, </span><br><span class="line"></span><br><span class="line">--------------------------------------------------------------</span><br><span class="line">&#123;</span><br><span class="line">                test:<span class="regexp">/\.js$/</span>,</span><br><span class="line">                use:[</span><br><span class="line">                    &#123;</span><br><span class="line">                        <span class="comment">//如果不在上面统一指明 loaders目录，那么就要像下面这样写全路径</span></span><br><span class="line">                        <span class="comment">// loader:path.resolve(__dirname,'loaders/replace.js'),</span></span><br><span class="line">                        <span class="comment">//如果已经制定了loader的目录那么这里loader直接写</span></span><br><span class="line">                        loader:<span class="string">"replace"</span>,</span><br><span class="line">                        options:&#123;</span><br><span class="line">                            name:<span class="string">'abc'</span></span><br><span class="line">                        &#125;</span><br><span class="line">                    &#125;</span><br><span class="line">                ]</span><br><span class="line">            &#125;</span><br></pre></td></tr></table></figure>
+<h6 id="loader-的编写"><a href="#loader-的编写" class="headerlink" title="loader 的编写"></a>loader 的编写</h6><h6 id="所谓-loader-只是一个导出为函数的-JavaScript-模块，（官网介绍的特别详细）loader-runner-会调用这个函数，然后把上一个-loader-产生的结果或者资源文件-resource-file-传入进去。函数的-this-上下文将由-webpack-填充，并且-loader-runner-具有一些有用方法，可以使-loader-改变为异步调用方式，或者获取-query-参数。"><a href="#所谓-loader-只是一个导出为函数的-JavaScript-模块，（官网介绍的特别详细）loader-runner-会调用这个函数，然后把上一个-loader-产生的结果或者资源文件-resource-file-传入进去。函数的-this-上下文将由-webpack-填充，并且-loader-runner-具有一些有用方法，可以使-loader-改变为异步调用方式，或者获取-query-参数。" class="headerlink" title="所谓 loader 只是一个导出为函数的 JavaScript 模块，（官网介绍的特别详细）loader runner 会调用这个函数，然后把上一个 loader 产生的结果或者资源文件(resource file)传入进去。函数的 this 上下文将由 webpack 填充，并且 loader runner 具有一些有用方法，可以使 loader 改变为异步调用方式，或者获取 query 参数。"></a>所谓 loader 只是一个导出为函数的 JavaScript 模块，（官网介绍的特别详细）<a href="https://github.com/webpack/loader-runner" target="_blank" rel="noopener">loader runner</a> 会调用这个函数，然后把上一个 loader 产生的结果或者资源文件(resource file)传入进去。函数的 <code>this</code> 上下文将由 webpack 填充，并且 <a href="https://github.com/webpack/loader-runner" target="_blank" rel="noopener">loader runner</a> 具有一些有用方法，可以使 loader 改变为异步调用方式，或者获取 query 参数。</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// testLoader.js</span></span><br><span class="line"><span class="keyword">const</span> &#123; getOptions &#125; = <span class="built_in">require</span>(<span class="string">'loader-utils'</span>)</span><br><span class="line"><span class="built_in">module</span>.exports = <span class="function"><span class="keyword">function</span>(<span class="params">source,map,meta</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//source 就是我们在配置文件中，设置匹配正则表达式的文件，而在loader 中 我们要做的事情就是，通过我们自己的一些个性化处理，来处理这个 source,然后返回出去</span></span><br><span class="line">    doSomeThing(csource)</span><br><span class="line">    <span class="keyword">const</span> options = getOptions(<span class="keyword">this</span>)</span><br><span class="line">    <span class="comment">// options 就是webpackconfig.js中loader配置的 options 参数</span></span><br><span class="line">    <span class="keyword">return</span> source;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="自己创建-plugin"><a href="#自己创建-plugin" class="headerlink" title="自己创建 plugin"></a>自己创建 plugin</h4><h6 id="插件能够-钩入-hook-到在每个编译-compilation-中触发的所有关键事件。在编译的每一步，插件都具备完全访问-compiler-对象的能力，如果情况合适，还可以访问当前-compilation-对象。"><a href="#插件能够-钩入-hook-到在每个编译-compilation-中触发的所有关键事件。在编译的每一步，插件都具备完全访问-compiler-对象的能力，如果情况合适，还可以访问当前-compilation-对象。" class="headerlink" title="插件能够 钩入(hook) 到在每个编译(compilation)中触发的所有关键事件。在编译的每一步，插件都具备完全访问 compiler 对象的能力，如果情况合适，还可以访问当前 compilation 对象。"></a>插件能够 <a href="https://www.webpackjs.com/api/compiler-hooks/#hooks" target="_blank" rel="noopener">钩入(hook)</a> 到在每个编译(compilation)中触发的所有关键事件。在编译的每一步，插件都具备完全访问 <code>compiler</code> 对象的能力，如果情况合适，还可以访问当前 <code>compilation</code> 对象。</h6><p>就是在编译过程的某个阶段做一些特定的事情</p>
+<p><code>webpack</code> 插件由以下组成：</p>
+<ul>
+<li>一个 JavaScript 命名函数</li>
+<li>在插件函数的 prototype 上定义一个 <code>apply</code> 方法。</li>
+<li>指定一个绑定到 webpack 自身的<a href="https://www.webpackjs.com/api/compiler-hooks/" target="_blank" rel="noopener">事件钩子</a></li>
+<li>处理 webpack 内部实例的特定数据</li>
+<li>功能完成后调用 webpack 提供的回调。</li>
+</ul>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//基本构架  es3</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">HelloPlugin</span>(<span class="params">options</span>)</span>&#123;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//compiler 对象是webpack 创建的一个对象，可以访问到webpack构建的每个过程,</span></span><br><span class="line">HelloPlugin.prototype.apply = <span class="function"><span class="keyword">function</span>(<span class="params">compiler</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//compiler 在执行过程中，可以获得当前过程中的 编译过程对象 compilation</span></span><br><span class="line">    compiler.hooks.done.tap(<span class="string">'helloPlugin'</span>,compilation=&gt;&#123;</span><br><span class="line">        <span class="comment">//做一些事情</span></span><br><span class="line">        consoel.log(<span class="string">'do something here'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">module</span>.exports = HelloPlugin</span><br><span class="line">-----------------------------------------</span><br><span class="line"><span class="comment">//es6</span></span><br><span class="line"><span class="class"><span class="keyword">class</span> <span class="title">HelloPlugin</span></span>&#123;</span><br><span class="line">    <span class="keyword">constructor</span>(options)&#123;</span><br><span class="line">        <span class="comment">//..</span></span><br><span class="line">    &#125;</span><br><span class="line">    apply(compiler)&#123;</span><br><span class="line">         compiler.hooks.done.tap(<span class="string">'helloPlugin'</span>,compilation=&gt;&#123;</span><br><span class="line">        consoel.log(<span class="string">'do something here'</span>)</span><br><span class="line">    &#125;)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="built_in">module</span>.exports = HelloPlugin</span><br></pre></td></tr></table></figure>
+<p><strong>哎，具体，我们也没学明白，就知道，先这样用起来</strong></p>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/06/01/webpack-笔记/" data-id="ckbovue3n0015l0w1pu71cl14" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/webpack/">webpack</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-node-js-commonJs规范" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/01/node-js-commonJs规范/" class="article-date">
@@ -126,7 +213,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/01/node-js-commonJs规范/" data-id="ckbhf7o0j000u3gw1wwpnme1f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/01/node-js-commonJs规范/" data-id="ckbovue35000ul0w1vci6oib4" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/node-js/">node.js</a></li></ul>
@@ -189,7 +276,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/31/前端模块化、工程化/" data-id="ckbhf7o0v00153gw186k0cxn5" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/31/前端模块化、工程化/" data-id="ckbovue3o0016l0w12dll49bx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/工程化/">工程化</a></li></ul>
@@ -248,7 +335,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/22/跨域/" data-id="ckbhf7o1b001i3gw16j90vf2f" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/22/跨域/" data-id="ckbovue41001il0w1840lpfy8" class="article-share-link">Share</a>
       
       
     </footer>
@@ -307,7 +394,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/20/promise/" data-id="ckbhf7o0p00103gw1zahbmhrr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/20/promise/" data-id="ckbovue3g0010l0w1lf28scbx" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/promise/">promise</a></li></ul>
@@ -358,7 +445,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/19/mock数据/" data-id="ckbhf7o0k000v3gw1cqrr7jqr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/19/mock数据/" data-id="ckbovue39000wl0w1ggitfxb6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mock/">mock</a></li></ul>
@@ -425,7 +512,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/18/ajax/" data-id="ckbhf7nyr00013gw13k6yeltc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/18/ajax/" data-id="ckbovue230009l0w16rfh5em6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/ajax/">ajax</a></li></ul>
@@ -531,7 +618,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/17/http-session-cookie-token/" data-id="ckbhf7o01000l3gw11q02iumc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/17/http-session-cookie-token/" data-id="ckbovue2v000ml0w1wp22h2zz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
@@ -711,7 +798,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/16/https/" data-id="ckbhf7nzx000h3gw1w2p821oc" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/16/https/" data-id="ckbovue2m000il0w1frbds40s" class="article-share-link">Share</a>
       
       
     </footer>
@@ -774,63 +861,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/15/密码学初探/" data-id="ckbhf7o1000193gw1sbu86xuq" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/15/密码学初探/" data-id="ckbovue3t001bl0w13sgcmvjn" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/https基础/">https基础</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-http-缓存控制" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/05/15/http-缓存控制/" class="article-date">
-  <time datetime="2020-05-15T04:40:42.000Z" itemprop="datePublished">2020-05-15</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/05/15/http-缓存控制/">http 缓存控制</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="node-js-静态服务器"><a href="#node-js-静态服务器" class="headerlink" title="node.js 静态服务器"></a>node.js 静态服务器</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// Node.js实现简单 http文件服务器</span></span><br><span class="line"><span class="comment">//引入需要的包</span></span><br><span class="line"><span class="keyword">const</span> http = <span class="built_in">require</span>(<span class="string">'http'</span>)</span><br><span class="line"><span class="comment">//文件处理包</span></span><br><span class="line"><span class="keyword">const</span> fs = <span class="built_in">require</span>(<span class="string">'fs'</span>)</span><br><span class="line"><span class="comment">//路径处理包</span></span><br><span class="line"><span class="keyword">const</span> path = <span class="built_in">require</span>(<span class="string">'path'</span>)</span><br><span class="line"></span><br><span class="line"><span class="comment">//服务器就是一段一直运行在某个端口的代码</span></span><br><span class="line">http.createServer(<span class="function">(<span class="params">req,res</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="built_in">console</span>.log(<span class="string">'path:===='</span>+__dirname)</span><br><span class="line">    <span class="comment">//_dirname 就是当前路径</span></span><br><span class="line">    fs.readFile(path.join(__dirname,req.url),(err,data) =&gt;&#123;</span><br><span class="line">        <span class="keyword">if</span>(err)&#123;</span><br><span class="line">            res.writeHead(<span class="number">404</span>,<span class="string">'not found'</span>)</span><br><span class="line">            res.end(<span class="string">'oh,not found'</span>)</span><br><span class="line">        &#125;<span class="keyword">else</span>&#123;</span><br><span class="line">            res.writeHead(<span class="number">200</span>,<span class="string">'ok'</span>)</span><br><span class="line">            res.end(data)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;)</span><br><span class="line">&#125;).listen(<span class="number">5000</span>)  <span class="comment">//监听5000 端口</span></span><br></pre></td></tr></table></figure>
-<h4 id="缓存控制"><a href="#缓存控制" class="headerlink" title="缓存控制"></a>缓存控制</h4><h6 id="为了更好的提升用户体验或者说为了节省流量，设置缓存-观看浏览器中的network中sizing字段的值，判断是走缓存还是从服务器请求来的数据。"><a href="#为了更好的提升用户体验或者说为了节省流量，设置缓存-观看浏览器中的network中sizing字段的值，判断是走缓存还是从服务器请求来的数据。" class="headerlink" title="为了更好的提升用户体验或者说为了节省流量，设置缓存 观看浏览器中的network中sizing字段的值，判断是走缓存还是从服务器请求来的数据。"></a>为了更好的提升用户体验或者说为了节省流量，设置缓存 观看浏览器中的network中sizing字段的值，判断是走缓存还是从服务器请求来的数据。</h6><p><strong>eg1 Expire 设置过期时间  res.setHeader(‘Expires’,’”Fri, 15 May 2020 05:00:39 GMT”‘);</strong></p>
-<h6 id="返回数据之前先给浏览器或者客户端返回一个过期时间，它们拿到这个时间后，会存储在本地，每次再请求这个资源时，如果在这个时间内即当前时间小于这个过期时间，就从本地缓存中读取，不再向服务器发请求-这句话会在resposeHeader中设置一个过期时间字段，值是我们设置的值"><a href="#返回数据之前先给浏览器或者客户端返回一个过期时间，它们拿到这个时间后，会存储在本地，每次再请求这个资源时，如果在这个时间内即当前时间小于这个过期时间，就从本地缓存中读取，不再向服务器发请求-这句话会在resposeHeader中设置一个过期时间字段，值是我们设置的值" class="headerlink" title="返回数据之前先给浏览器或者客户端返回一个过期时间，它们拿到这个时间后，会存储在本地，每次再请求这个资源时，如果在这个时间内即当前时间小于这个过期时间，就从本地缓存中读取，不再向服务器发请求,这句话会在resposeHeader中设置一个过期时间字段，值是我们设置的值"></a>返回数据之前先给浏览器或者客户端返回一个过期时间，它们拿到这个时间后，会存储在本地，每次再请求这个资源时，如果在这个时间内即当前时间小于这个过期时间，就从本地缓存中读取，不再向服务器发请求,这句话会在resposeHeader中设置一个过期时间字段，值是我们设置的值</h6><p><strong>eg2 pragma(pragmatic) 设置浏览器或客户端不读取缓存内容每次都向服务器发请求 res.setHeader(‘Pragma’,’no-cache’);</strong></p>
-<h6 id="这种情况下，服务器发给浏览器或客户端内容时，客户端还是会缓存，但它不会从缓存中拿"><a href="#这种情况下，服务器发给浏览器或客户端内容时，客户端还是会缓存，但它不会从缓存中拿" class="headerlink" title="这种情况下，服务器发给浏览器或客户端内容时，客户端还是会缓存，但它不会从缓存中拿"></a>这种情况下，服务器发给浏览器或客户端内容时，客户端还是会缓存，但它不会从缓存中拿</h6><p><strong>如果 expires 和 pragma 同时存在， pragma 优先级较高；</strong></p>
-<p><strong>获取 GMT(格林尼治时间 标准时间)方式  newDate().toGMTString();</strong></p>
-<p><strong>以上为http version 1 中的内容，下面会对以上内容进行补充</strong></p>
-<h6 id="只设置过期时间的话有一个问题，就是客户端的时间是可以随意更改的，如果客户端更改了时间一直小于这个过期时间，那我们是不是就永远也拿不到最新的服务器内容了，所以引出了下面这个字段来控制浏览器缓存时间"><a href="#只设置过期时间的话有一个问题，就是客户端的时间是可以随意更改的，如果客户端更改了时间一直小于这个过期时间，那我们是不是就永远也拿不到最新的服务器内容了，所以引出了下面这个字段来控制浏览器缓存时间" class="headerlink" title="只设置过期时间的话有一个问题，就是客户端的时间是可以随意更改的，如果客户端更改了时间一直小于这个过期时间，那我们是不是就永远也拿不到最新的服务器内容了，所以引出了下面这个字段来控制浏览器缓存时间"></a>只设置过期时间的话有一个问题，就是客户端的时间是可以随意更改的，如果客户端更改了时间一直小于这个过期时间，那我们是不是就永远也拿不到最新的服务器内容了，所以引出了下面这个字段来控制浏览器缓存时间</h6><h4 id="Cache-control-它的值有："><a href="#Cache-control-它的值有：" class="headerlink" title="Cache-control 它的值有："></a>Cache-control 它的值有：</h4><p><strong>eg1 res.setHeader(‘Cache-Control’,’max-age = 10’)</strong></p>
-<h6 id="max-age-表明距离上次请求的时间为10s-即-10s之内你请求这个文件走缓存，之后重新发请求；假如请求了服务器并在a时刻返回响应结果，则在max-age规定的秒数内，浏览器将不会发送对应的请求到服务器，数据由缓存直接返回；超过这一时间段才进一步由服务器决定是返回新数据还是仍由缓存提供"><a href="#max-age-表明距离上次请求的时间为10s-即-10s之内你请求这个文件走缓存，之后重新发请求；假如请求了服务器并在a时刻返回响应结果，则在max-age规定的秒数内，浏览器将不会发送对应的请求到服务器，数据由缓存直接返回；超过这一时间段才进一步由服务器决定是返回新数据还是仍由缓存提供" class="headerlink" title="max-age 表明距离上次请求的时间为10s,即 10s之内你请求这个文件走缓存，之后重新发请求；假如请求了服务器并在a时刻返回响应结果，则在max-age规定的秒数内，浏览器将不会发送对应的请求到服务器，数据由缓存直接返回；超过这一时间段才进一步由服务器决定是返回新数据还是仍由缓存提供"></a>max-age 表明距离上次请求的时间为10s,即 10s之内你请求这个文件走缓存，之后重新发请求；假如请求了服务器并在a时刻返回响应结果，则在max-age规定的秒数内，浏览器将不会发送对应的请求到服务器，数据由缓存直接返回；超过这一时间段才进一步由服务器决定是返回新数据还是仍由缓存提供</h6><p><strong>max-age 和 expire 同时存在的话，max-age 优先级较高</strong></p>
-<p><strong>eg2  res.setHeader(‘Cache-Control’,’no-cache’)</strong></p>
-<h6 id="请求时，浏览器还是会在本地缓存一份，但不会从缓存中取，每次都向服务器发请求要最新的，而最终服务器是否会返回你最新的，看服务器端的处理了，如果服务器端检测到这个文件没有改变，可能会返回客户端一个状态码比如304，告诉客户端，文件内容没变，你从缓存中拿"><a href="#请求时，浏览器还是会在本地缓存一份，但不会从缓存中取，每次都向服务器发请求要最新的，而最终服务器是否会返回你最新的，看服务器端的处理了，如果服务器端检测到这个文件没有改变，可能会返回客户端一个状态码比如304，告诉客户端，文件内容没变，你从缓存中拿" class="headerlink" title="请求时，浏览器还是会在本地缓存一份，但不会从缓存中取，每次都向服务器发请求要最新的，而最终服务器是否会返回你最新的，看服务器端的处理了，如果服务器端检测到这个文件没有改变，可能会返回客户端一个状态码比如304，告诉客户端，文件内容没变，你从缓存中拿"></a>请求时，浏览器还是会在本地缓存一份，但不会从缓存中取，每次都向服务器发请求要最新的，而最终服务器是否会返回你最新的，看服务器端的处理了，如果服务器端检测到这个文件没有改变，可能会返回客户端一个状态码比如304，告诉客户端，文件内容没变，你从缓存中拿</h6><p><strong>eg3   res.setHeader(‘Cache-Control’,’no-store’)**</strong></p>
-<h6 id="请求时，浏览器收到服务器返回的数据，不会再本地缓存一份，所以更无所谓说从本地取了，每次都会请求最新的"><a href="#请求时，浏览器收到服务器返回的数据，不会再本地缓存一份，所以更无所谓说从本地取了，每次都会请求最新的" class="headerlink" title="请求时，浏览器收到服务器返回的数据，不会再本地缓存一份，所以更无所谓说从本地取了，每次都会请求最新的"></a>请求时，浏览器收到服务器返回的数据，不会再本地缓存一份，所以更无所谓说从本地取了，每次都会请求最新的</h6><p><strong>cache-control 的缺陷之处，在于如果服务器中的文件没变，起始就没必要每次都发文件给客户端了，多浪费流量啊，所以引出了 last-modified 服务器端做处理，如果客户端请求的文件内容改变了，再发给客户端</strong></p>
-        
-          <p class="article-more-link">
-            <a href="/2020/05/15/http-缓存控制/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/15/http-缓存控制/" data-id="ckbhf7o00000k3gw1l7g8nbym" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/http/">http</a></li></ul>
 
     </footer>
   </div>
@@ -857,7 +891,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js基本功/">js基本功</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobx/">mobx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js基本功/">js基本功</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobx/">mobx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -867,7 +901,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/js基本功/" style="font-size: 10px;">js基本功</a> <a href="/tags/mobx/" style="font-size: 10px;">mobx</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/js基本功/" style="font-size: 10px;">js基本功</a> <a href="/tags/mobx/" style="font-size: 10px;">mobx</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/打包/" style="font-size: 10px;">打包</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -889,6 +923,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/21/react-打包发布问题记录/">react 打包发布问题记录</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/13/js-装饰器/">js 装饰器</a>
           </li>
         
@@ -902,10 +940,6 @@
         
           <li>
             <a href="/2020/06/12/react-router/">react-router</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/12/react-css使用/">react-css使用</a>
           </li>
         
       </ul>

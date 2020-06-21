@@ -62,6 +62,50 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-闭包" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/05/02/闭包/" class="article-date">
+  <time datetime="2020-05-02T04:55:33.000Z" itemprop="datePublished">2020-05-02</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/05/02/闭包/">闭包</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="定义"><a href="#定义" class="headerlink" title="定义"></a>定义</h4><h6 id="闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）"><a href="#闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）" class="headerlink" title="闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）"></a>闭包是由函数以及创建该函数的词法环境组合而成。这个环境包含了这个闭包创建时所能访问的所有局部变量。（也就是一个函数a中返回另一个函数b，而b中又使用了a中的局部变量，此时构成了闭包的环境）</h6><h4 id="闭包的作用"><a href="#闭包的作用" class="headerlink" title="闭包的作用"></a>闭包的作用</h4><h6 id="一般情况下使用闭包主要是为了"><a href="#一般情况下使用闭包主要是为了" class="headerlink" title="一般情况下使用闭包主要是为了"></a>一般情况下使用闭包主要是为了</h6><ul>
+<li><p>封装数据</p>
+<p>隐藏变量，只通过指定接口访问数据</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> cache = <span class="function">(<span class="params">(</span>)=&gt;</span>&#123;</span><br><span class="line">	<span class="keyword">const</span> store = &#123;&#125;;</span><br><span class="line">	<span class="keyword">return</span> &#123;</span><br><span class="line">		get(key)&#123;</span><br><span class="line">			<span class="keyword">return</span> store[key]</span><br><span class="line">		&#125;,</span><br><span class="line">		set(key,val)&#123;</span><br><span class="line">			store[key] = val</span><br><span class="line">		&#125;,</span><br><span class="line">		remove(key)&#123;</span><br><span class="line">			<span class="keyword">delete</span> store[key]</span><br><span class="line">		&#125;</span><br><span class="line">	&#125;</span><br><span class="line">&#125;)()</span><br><span class="line"><span class="comment">//cache = 一个立即执行函数，函数的返回值依然是一个函数，而且引用了函数中的变量</span></span><br><span class="line">cache.set(<span class="string">"name"</span>,<span class="string">"Jack"</span>);</span><br><span class="line">cache.get(<span class="string">'name'</span>);</span><br><span class="line">cache.remove(<span class="string">"name"</span>)</span><br></pre></td></tr></table></figure>
+        
+          <p class="article-more-link">
+            <a href="/2020/05/02/闭包/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/05/02/闭包/" data-id="ckbovue42001kl0w1fv4n2q9i" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-不同载体中的方法写法" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/05/01/不同载体中的方法写法/" class="article-date">
@@ -93,7 +137,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/05/01/不同载体中的方法写法/" data-id="ckbhf7o0s00133gw1gcilu19t" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/05/01/不同载体中的方法写法/" data-id="ckbovue3p0017l0w1l6k328qd" class="article-share-link">Share</a>
       
       
     </footer>
@@ -148,7 +192,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ckbhf7o02000m3gw1hxt6epgd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/29/js-原型链/" data-id="ckbovue2y000ol0w1xgykypsm" class="article-share-link">Share</a>
       
       
     </footer>
@@ -205,7 +249,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/28/定时器/" data-id="ckbhf7o11001a3gw1o4fizh77" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/28/定时器/" data-id="ckbovue3u001cl0w1q4hg6b9j" class="article-share-link">Share</a>
       
       
     </footer>
@@ -279,7 +323,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ckbhf7o18001f3gw1bsckjol2" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/28/正则表达式/" data-id="ckbovue3z001hl0w13g9kxzs9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/正则表达式/">正则表达式</a></li></ul>
@@ -335,7 +379,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/26/Math-Date-API/" data-id="ckbhf7nyu00033gw19gudusmv" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/26/Math-Date-API/" data-id="ckbovue1n0001l0w13uo4i2n7" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/JS/">JS</a></li></ul>
@@ -384,7 +428,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/26/对象与json/" data-id="ckbhf7o17001e3gw1zvee6hrj" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/26/对象与json/" data-id="ckbovue3v001dl0w1ajrmfeqa" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li></ul>
@@ -429,7 +473,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/25/递归优化/" data-id="ckbhf7o19001g3gw12ad5g6rr" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/25/递归优化/" data-id="ckbovue42001jl0w1xgvlbn98" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
@@ -530,7 +574,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/hexo备份/" data-id="ckbhf7nzt000e3gw16muslysm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/24/hexo备份/" data-id="ckbovue2h000el0w10mt1lifk" class="article-share-link">Share</a>
       
       
     </footer>
@@ -584,64 +628,9 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ckbhf7o0f000s3gw1ukf7ofaa" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ckbovue31000ql0w15gu8ezpj" class="article-share-link">Share</a>
       
       
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-js-变量作用域" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/23/js-变量作用域/" class="article-date">
-  <time datetime="2020-04-23T09:49:49.000Z" itemprop="datePublished">2020-04-23</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/23/js-变量作用域/">js 变量作用域</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="函数相关"><a href="#函数相关" class="headerlink" title="函数相关"></a>函数相关</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">sum</span>(<span class="params">a, b</span>)</span>&#123;</span><br><span class="line"><span class="keyword">return</span> <span class="built_in">console</span>.log(a + b)</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">let</span> result = sum(<span class="number">4</span>, <span class="number">5</span>)</span><br><span class="line"><span class="built_in">console</span>.log(result)</span><br></pre></td></tr></table></figure>
-<p>以上代码输出结果为 “undefined”,因为 console.log()本身返回值就是 undefined；</p>
-<h4 id="箭头函数"><a href="#箭头函数" class="headerlink" title="箭头函数"></a>箭头函数</h4><p>函数名=参数=&gt;函数语句   单个参数，单行语句的情况</p>
-<p>例如： const fn =name =&gt; ‘hello’+name</p>
-<p>name 为参数名称，”hello”+name 为函数语句 =&gt;相当于大花括号</p>
-<p>看下图：</p>
-<p><img src="../img/js作用域/arrow.png" alt></p>
-<h4 id="函数的命名规则"><a href="#函数的命名规则" class="headerlink" title="函数的命名规则"></a>函数的命名规则</h4><ul>
-<li>动词、动宾 sum、hide、show ü printName、sayHello </li>
-<li>返回一个非布尔值 ü getData、getBooks </li>
-<li>设置内容 ü setInfo、setData </li>
-<li>返回一个布尔值 ü canClicked、hasMoney、isEnabled</li>
-</ul>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/23/js-变量作用域/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ckbhf7o04000n3gw1qap6jslq" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
-
     </footer>
   </div>
   
@@ -667,7 +656,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js基本功/">js基本功</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobx/">mobx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js基本功/">js基本功</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobx/">mobx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -677,7 +666,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/js基本功/" style="font-size: 10px;">js基本功</a> <a href="/tags/mobx/" style="font-size: 10px;">mobx</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/http/" style="font-size: 13.33px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 16.67px;">js</a> <a href="/tags/js基本功/" style="font-size: 10px;">js基本功</a> <a href="/tags/mobx/" style="font-size: 10px;">mobx</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 16.67px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/webpack/" style="font-size: 13.33px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/打包/" style="font-size: 10px;">打包</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -699,6 +688,10 @@
       <ul>
         
           <li>
+            <a href="/2020/06/21/react-打包发布问题记录/">react 打包发布问题记录</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/13/js-装饰器/">js 装饰器</a>
           </li>
         
@@ -712,10 +705,6 @@
         
           <li>
             <a href="/2020/06/12/react-router/">react-router</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/12/react-css使用/">react-css使用</a>
           </li>
         
       </ul>
