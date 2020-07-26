@@ -1,0 +1,230 @@
+<!DOCTYPE html>
+<html>
+<head><meta name="generator" content="Hexo 3.9.0">
+  <meta charset="utf-8">
+  
+
+  
+  <title>防抖与节流 | SheilaTing 的博客呀</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1">
+  <meta name="description" content="防抖概念在一段时间内例如10秒内，如果用户持续触发这个事件，那么时间就重新计时，只有当用户触发完这个事件后的时间超过10s 才执行这个事件应用场景 页面上的搜索框，我们监听了它的change事件，只要一输入内容，我们就像后端发送请求获取相应的数据，此时就会非常耗性能，因为我们本来希望的是当用户输入完完整的搜索条件后，我们才去发送请求，现在变成了只要输入我们就发送请求，这显然是不合理的，所以此时我们">
+<meta name="keywords" content="js性能">
+<meta property="og:type" content="article">
+<meta property="og:title" content="防抖与节流">
+<meta property="og:url" content="http://yoursite.com/2020/07/21/防抖与节流/index.html">
+<meta property="og:site_name" content="SheilaTing 的博客呀">
+<meta property="og:description" content="防抖概念在一段时间内例如10秒内，如果用户持续触发这个事件，那么时间就重新计时，只有当用户触发完这个事件后的时间超过10s 才执行这个事件应用场景 页面上的搜索框，我们监听了它的change事件，只要一输入内容，我们就像后端发送请求获取相应的数据，此时就会非常耗性能，因为我们本来希望的是当用户输入完完整的搜索条件后，我们才去发送请求，现在变成了只要输入我们就发送请求，这显然是不合理的，所以此时我们">
+<meta property="og:locale" content="default">
+<meta property="og:updated_time" content="2020-07-22T04:08:43.312Z">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:title" content="防抖与节流">
+<meta name="twitter:description" content="防抖概念在一段时间内例如10秒内，如果用户持续触发这个事件，那么时间就重新计时，只有当用户触发完这个事件后的时间超过10s 才执行这个事件应用场景 页面上的搜索框，我们监听了它的change事件，只要一输入内容，我们就像后端发送请求获取相应的数据，此时就会非常耗性能，因为我们本来希望的是当用户输入完完整的搜索条件后，我们才去发送请求，现在变成了只要输入我们就发送请求，这显然是不合理的，所以此时我们">
+  
+    <link rel="alternate" href="/atom.xml" title="SheilaTing 的博客呀" type="application/atom+xml">
+  
+  
+    <link rel="icon" href="/favicon.png">
+  
+  
+    <link href="//fonts.googleapis.com/css?family=Source+Code+Pro" rel="stylesheet" type="text/css">
+  
+  <link rel="stylesheet" href="/css/style.css">
+</head>
+</html>
+<body>
+  <div id="container">
+    <div id="wrap">
+      <header id="header">
+  <div id="banner"></div>
+  <div id="header-outer" class="outer">
+    <div id="header-title" class="inner">
+      <h1 id="logo-wrap">
+        <a href="/" id="logo">SheilaTing 的博客呀</a>
+      </h1>
+      
+    </div>
+    <div id="header-inner" class="inner">
+      <nav id="main-nav">
+        <a id="main-nav-toggle" class="nav-icon"></a>
+        
+          <a class="main-nav-link" href="/">Home</a>
+        
+          <a class="main-nav-link" href="/archives">Archives</a>
+        
+      </nav>
+      <nav id="sub-nav">
+        
+          <a id="nav-rss-link" class="nav-icon" href="/atom.xml" title="RSS Feed"></a>
+        
+        <a id="nav-search-btn" class="nav-icon" title="Search"></a>
+      </nav>
+      <div id="search-form-wrap">
+        <form action="//google.com/search" method="get" accept-charset="UTF-8" class="search-form"><input type="search" name="q" class="search-form-input" placeholder="Search"><button type="submit" class="search-form-submit">&#xF002;</button><input type="hidden" name="sitesearch" value="http://yoursite.com"></form>
+      </div>
+    </div>
+  </div>
+</header>
+      <div class="outer">
+        <section id="main"><article id="post-防抖与节流" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/21/防抖与节流/" class="article-date">
+  <time datetime="2020-07-21T05:37:46.000Z" itemprop="datePublished">2020-07-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 class="article-title" itemprop="name">
+      防抖与节流
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="防抖概念"><a href="#防抖概念" class="headerlink" title="防抖概念"></a>防抖概念</h4><h6 id="在一段时间内例如10秒内，如果用户持续触发这个事件，那么时间就重新计时，只有当用户触发完这个事件后的时间超过10s-才执行这个事件"><a href="#在一段时间内例如10秒内，如果用户持续触发这个事件，那么时间就重新计时，只有当用户触发完这个事件后的时间超过10s-才执行这个事件" class="headerlink" title="在一段时间内例如10秒内，如果用户持续触发这个事件，那么时间就重新计时，只有当用户触发完这个事件后的时间超过10s 才执行这个事件"></a>在一段时间内例如10秒内，如果用户持续触发这个事件，那么时间就重新计时，只有当用户触发完这个事件后的时间超过10s 才执行这个事件</h6><p><strong>应用场景</strong></p>
+<h6 id="页面上的搜索框，我们监听了它的change事件，只要一输入内容，我们就像后端发送请求获取相应的数据，此时就会非常耗性能，因为我们本来希望的是当用户输入完完整的搜索条件后，我们才去发送请求，现在变成了只要输入我们就发送请求，这显然是不合理的，所以此时我们就可以使用防抖函数，来对我们的change事件做一层包装，"><a href="#页面上的搜索框，我们监听了它的change事件，只要一输入内容，我们就像后端发送请求获取相应的数据，此时就会非常耗性能，因为我们本来希望的是当用户输入完完整的搜索条件后，我们才去发送请求，现在变成了只要输入我们就发送请求，这显然是不合理的，所以此时我们就可以使用防抖函数，来对我们的change事件做一层包装，" class="headerlink" title="页面上的搜索框，我们监听了它的change事件，只要一输入内容，我们就像后端发送请求获取相应的数据，此时就会非常耗性能，因为我们本来希望的是当用户输入完完整的搜索条件后，我们才去发送请求，现在变成了只要输入我们就发送请求，这显然是不合理的，所以此时我们就可以使用防抖函数，来对我们的change事件做一层包装，"></a>页面上的搜索框，我们监听了它的change事件，只要一输入内容，我们就像后端发送请求获取相应的数据，此时就会非常耗性能，因为我们本来希望的是当用户输入完完整的搜索条件后，我们才去发送请求，现在变成了只要输入我们就发送请求，这显然是不合理的，所以此时我们就可以使用防抖函数，来对我们的change事件做一层包装，</h6><h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js 手写 防抖函数 这里我们仿照 underscore.js 来写</span></span><br><span class="line"><span class="comment">// 因为只是包装我们原来的函数，也就是说当change 时我们调用包装后返回的函数，所以返回一个函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fun,wait</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">let</span> timeout</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> args = <span class="built_in">arguments</span> <span class="comment">// 函数参数</span></span><br><span class="line">        clearTimeout(timeout) <span class="comment">// 清除定时器，下次触发这个函数时，先清除这个定时器</span></span><br><span class="line">        <span class="comment">//然后再重新生成一个定时器</span></span><br><span class="line">        <span class="keyword">let</span> _this = <span class="keyword">this</span> <span class="comment">// 保存调用者的 this</span></span><br><span class="line">        <span class="comment">//使用定时器，wait 时间后再执行这个函数</span></span><br><span class="line">        timout = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            fun.apply(_this,args) <span class="comment">// 如果用箭头函数就直接绑定 this</span></span><br><span class="line">        &#125;,wait)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//之所以要清除这个定时器，是因为，一旦我们点击的速度太快，在wait时间内点击，因为你点击一次，就会执行一次，点击次数太多，定时器就一直执行，你会看到它在不间断的执行，因为执行的可能是你上上此的点击事件，这显然不是我们想要的结果，所以，为了解决这个问题，如果用户触发这个事件，那么判断下上次的有没有执行完，如果没有就清除掉，这样就会像我们预期的一样执行了。</span></span><br></pre></td></tr></table></figure>
+<h4 id="节流概念"><a href="#节流概念" class="headerlink" title="节流概念"></a>节流概念</h4><h6 id="对于上面的例子，当然我们也可以不监听输入框的change事件而是给页面上加一个搜索按钮，当用户点击搜索时再发送请求，但这样会有另一个问题，那就是假如这个用户比较手欠，它一直点搜索，那么我们就要像服务器一直发送请求，异步请求比较耗时，可能造成数据堵塞，进而引发页面卡顿现象，这个时候我们就可以使用节流函数来对我们的函数做一层包装，在一段时间内例如10s，我们只发送一次请求，用户在这个时间内点击了再多次我们也只发送一次请求，减少对服务器的请求次数"><a href="#对于上面的例子，当然我们也可以不监听输入框的change事件而是给页面上加一个搜索按钮，当用户点击搜索时再发送请求，但这样会有另一个问题，那就是假如这个用户比较手欠，它一直点搜索，那么我们就要像服务器一直发送请求，异步请求比较耗时，可能造成数据堵塞，进而引发页面卡顿现象，这个时候我们就可以使用节流函数来对我们的函数做一层包装，在一段时间内例如10s，我们只发送一次请求，用户在这个时间内点击了再多次我们也只发送一次请求，减少对服务器的请求次数" class="headerlink" title="对于上面的例子，当然我们也可以不监听输入框的change事件而是给页面上加一个搜索按钮，当用户点击搜索时再发送请求，但这样会有另一个问题，那就是假如这个用户比较手欠，它一直点搜索，那么我们就要像服务器一直发送请求，异步请求比较耗时，可能造成数据堵塞，进而引发页面卡顿现象，这个时候我们就可以使用节流函数来对我们的函数做一层包装，在一段时间内例如10s，我们只发送一次请求，用户在这个时间内点击了再多次我们也只发送一次请求，减少对服务器的请求次数"></a>对于上面的例子，当然我们也可以不监听输入框的change事件而是给页面上加一个搜索按钮，当用户点击搜索时再发送请求，但这样会有另一个问题，那就是假如这个用户比较手欠，它一直点搜索，那么我们就要像服务器一直发送请求，异步请求比较耗时，可能造成数据堵塞，进而引发页面卡顿现象，这个时候我们就可以使用节流函数来对我们的函数做一层包装，在一段时间内例如10s，我们只发送一次请求，用户在这个时间内点击了再多次我们也只发送一次请求，减少对服务器的请求次数</h6><h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// js 手写 节流函数  使用时间戳</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fun,wait</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> time = <span class="number">0</span>;  <span class="comment">// 闭包，上一次执行的时间</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        args = <span class="built_in">arguments</span></span><br><span class="line">        _this = <span class="keyword">this</span></span><br><span class="line">        <span class="keyword">let</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf() <span class="comment">// 当前时间</span></span><br><span class="line">        <span class="keyword">if</span>(now - time &gt; wait)&#123;</span><br><span class="line">            fun.apply(_this,args)</span><br><span class="line">            time = now</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 首次触发这个函数会立即执行，同时把当前的时间赋值给时间戳（上次的执行时间），再次触发，判断当前的时间和上次的时间的间隔是否大于wait的时间，大于则执行，不大于则不执行</span></span><br><span class="line"><span class="comment">// setTimeout 方式实现</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fun,wait</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timeout,args,_this;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        args = <span class="built_in">arguments</span></span><br><span class="line">        _this = <span class="keyword">this</span></span><br><span class="line">        <span class="comment">//首次timout 不存在取反为true执行,</span></span><br><span class="line">        <span class="keyword">if</span>(!timeout)&#123;</span><br><span class="line">              timeout = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                 timeout = <span class="literal">null</span> <span class="comment">// 置空，否则永远进不了 if </span></span><br><span class="line">            	 fun.apply(_this,args)</span><br><span class="line">       		 &#125;,wait)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 利用setTimeout 延迟执行的特点，第一次将timeout 初始为空，取反后判断是否为true,只有当定时器为空时，才去执行这个定时器函数，并在函数内将上一次的定时器置为null,其实可以不是定时器对象，随便定义一个变量判断也可以,第一次触发会延迟wait时间执行，此时 timout 有值,!timeout 为 false,此时执行定时器里面的函数，如果用户此时再发送事件请求，因为!timeout为false,所以不会进入执行体内，实现了想要的效果。</span></span><br><span class="line"><span class="comment">// 其实就是在定时器执行执行的过程中我们设置一个标记，来让后续的请求都无法进入到执行体内，只有当执行体内的函数执行完成后，再改变这个条件，接收新的请求！</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/21/防抖与节流/" data-id="ckd2l3zjo001rkcw1bza9try7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js性能/">js性能</a></li></ul>
+
+    </footer>
+  </div>
+  
+    
+<nav id="article-nav">
+  
+    <a href="/2020/07/26/用户体验以及产品相关/" id="article-nav-newer" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Newer</strong>
+      <div class="article-nav-title">
+        
+          用户体验以及产品相关
+        
+      </div>
+    </a>
+  
+  
+    <a href="/2020/07/14/html-css-复习/" id="article-nav-older" class="article-nav-link-wrap">
+      <strong class="article-nav-caption">Older</strong>
+      <div class="article-nav-title">html-css 复习</div>
+    </a>
+  
+</nav>
+
+  
+</article>
+
+</section>
+        
+          <aside id="sidebar">
+  
+    
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tags</h3>
+    <div class="widget">
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-css/">html-css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js基本功/">js基本功</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js性能/">js性能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobx/">mobx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/product/">product</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue项目/">vue项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Tag Cloud</h3>
+    <div class="widget tagcloud">
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/html-css/" style="font-size: 10px;">html-css</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/js基本功/" style="font-size: 10px;">js基本功</a> <a href="/tags/js性能/" style="font-size: 10px;">js性能</a> <a href="/tags/mobx/" style="font-size: 10px;">mobx</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/product/" style="font-size: 10px;">product</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/vue项目/" style="font-size: 10px;">vue项目</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/打包/" style="font-size: 10px;">打包</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+    </div>
+  </div>
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Archives</h3>
+    <div class="widget">
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+    </div>
+  </div>
+
+
+  
+    
+  <div class="widget-wrap">
+    <h3 class="widget-title">Recent Posts</h3>
+    <div class="widget">
+      <ul>
+        
+          <li>
+            <a href="/2020/07/26/用户体验以及产品相关/">用户体验以及产品相关</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/21/防抖与节流/">防抖与节流</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/14/html-css-复习/">html-css 复习</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/24/vue-account/">vue-account</a>
+          </li>
+        
+          <li>
+            <a href="/2020/06/21/react-打包发布问题记录/">react 打包发布问题记录</a>
+          </li>
+        
+      </ul>
+    </div>
+  </div>
+
+  
+</aside>
+        
+      </div>
+      <footer id="footer">
+  
+  <div class="outer">
+    <div id="footer-info" class="inner">
+      &copy; 2020 sheila<br>
+      Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
+    </div>
+  </div>
+</footer>
+    </div>
+    <nav id="mobile-nav">
+  
+    <a href="/" class="mobile-nav-link">Home</a>
+  
+    <a href="/archives" class="mobile-nav-link">Archives</a>
+  
+</nav>
+    
+
+<script src="//ajax.googleapis.com/ajax/libs/jquery/2.0.3/jquery.min.js"></script>
+
+
+  <link rel="stylesheet" href="/fancybox/jquery.fancybox.css">
+  <script src="/fancybox/jquery.fancybox.pack.js"></script>
+
+
+<script src="/js/script.js"></script>
+
+
+
+  </div>
+</body>
+</html>

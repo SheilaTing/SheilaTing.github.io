@@ -62,6 +62,169 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-用户体验以及产品相关" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/26/用户体验以及产品相关/" class="article-date">
+  <time datetime="2020-07-26T04:26:33.000Z" itemprop="datePublished">2020-07-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/26/用户体验以及产品相关/">用户体验以及产品相关</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="用户体验要素-书"><a href="#用户体验要素-书" class="headerlink" title="用户体验要素 书"></a>用户体验要素 书</h4><p><a href="https://www.cnblogs.com/frankfang/archive/2011/04/21/2023618.html" target="_blank" rel="noopener">https://www.cnblogs.com/frankfang/archive/2011/04/21/2023618.html</a></p>
+<h4 id="网站开发的流程"><a href="#网站开发的流程" class="headerlink" title="网站开发的流程"></a>网站开发的流程</h4><ol>
+<li>立项 - 确定要做，确定人员，确定预算等</li>
+<li>需求 - 需求收集和分析<ul>
+<li>收集比分析更难，有的时候用户也不知道自己的需求</li>
+<li>亨利·福特曾说过，「如果我最初是问消费者他们想要什么，他们应该是会告诉我，要一匹更快的马！」</li>
+<li>可以用「用例图」来分析需求</li>
+</ul>
+</li>
+<li>可行性分析</li>
+<li>系统设计（功能设计、框架设计）<ul>
+<li>UML 图、时序图等</li>
+</ul>
+</li>
+<li>原型设计（草图、线框图）<ul>
+<li>草图用纸和笔画</li>
+<li>线框图可以用 Balsamiq</li>
+</ul>
+</li>
+<li>交互设计<ul>
+<li>可以用 Axure RP、墨刀、Sketch.app</li>
+</ul>
+</li>
+<li>视觉设计<ul>
+<li>可以用 Photoshop、Fireworks、Sketch.app</li>
+</ul>
+</li>
+<li>程序开发</li>
+<li>测试</li>
+<li>功能预演</li>
+<li>内测</li>
+<li><p>灰度发布</p>
+<p>13.正式发布</p>
+</li>
+</ol>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/26/用户体验以及产品相关/" data-id="ckd2l3zje001kkcw1yqck902r" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/product/">product</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-防抖与节流" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/21/防抖与节流/" class="article-date">
+  <time datetime="2020-07-21T05:37:46.000Z" itemprop="datePublished">2020-07-21</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/21/防抖与节流/">防抖与节流</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="防抖概念"><a href="#防抖概念" class="headerlink" title="防抖概念"></a>防抖概念</h4><h6 id="在一段时间内例如10秒内，如果用户持续触发这个事件，那么时间就重新计时，只有当用户触发完这个事件后的时间超过10s-才执行这个事件"><a href="#在一段时间内例如10秒内，如果用户持续触发这个事件，那么时间就重新计时，只有当用户触发完这个事件后的时间超过10s-才执行这个事件" class="headerlink" title="在一段时间内例如10秒内，如果用户持续触发这个事件，那么时间就重新计时，只有当用户触发完这个事件后的时间超过10s 才执行这个事件"></a>在一段时间内例如10秒内，如果用户持续触发这个事件，那么时间就重新计时，只有当用户触发完这个事件后的时间超过10s 才执行这个事件</h6><p><strong>应用场景</strong></p>
+<h6 id="页面上的搜索框，我们监听了它的change事件，只要一输入内容，我们就像后端发送请求获取相应的数据，此时就会非常耗性能，因为我们本来希望的是当用户输入完完整的搜索条件后，我们才去发送请求，现在变成了只要输入我们就发送请求，这显然是不合理的，所以此时我们就可以使用防抖函数，来对我们的change事件做一层包装，"><a href="#页面上的搜索框，我们监听了它的change事件，只要一输入内容，我们就像后端发送请求获取相应的数据，此时就会非常耗性能，因为我们本来希望的是当用户输入完完整的搜索条件后，我们才去发送请求，现在变成了只要输入我们就发送请求，这显然是不合理的，所以此时我们就可以使用防抖函数，来对我们的change事件做一层包装，" class="headerlink" title="页面上的搜索框，我们监听了它的change事件，只要一输入内容，我们就像后端发送请求获取相应的数据，此时就会非常耗性能，因为我们本来希望的是当用户输入完完整的搜索条件后，我们才去发送请求，现在变成了只要输入我们就发送请求，这显然是不合理的，所以此时我们就可以使用防抖函数，来对我们的change事件做一层包装，"></a>页面上的搜索框，我们监听了它的change事件，只要一输入内容，我们就像后端发送请求获取相应的数据，此时就会非常耗性能，因为我们本来希望的是当用户输入完完整的搜索条件后，我们才去发送请求，现在变成了只要输入我们就发送请求，这显然是不合理的，所以此时我们就可以使用防抖函数，来对我们的change事件做一层包装，</h6><h4 id="代码实现"><a href="#代码实现" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//js 手写 防抖函数 这里我们仿照 underscore.js 来写</span></span><br><span class="line"><span class="comment">// 因为只是包装我们原来的函数，也就是说当change 时我们调用包装后返回的函数，所以返回一个函数</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">debounce</span>(<span class="params">fun,wait</span>)</span>&#123;</span><br><span class="line">      <span class="keyword">let</span> timeout</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="keyword">let</span> args = <span class="built_in">arguments</span> <span class="comment">// 函数参数</span></span><br><span class="line">        clearTimeout(timeout) <span class="comment">// 清除定时器，下次触发这个函数时，先清除这个定时器</span></span><br><span class="line">        <span class="comment">//然后再重新生成一个定时器</span></span><br><span class="line">        <span class="keyword">let</span> _this = <span class="keyword">this</span> <span class="comment">// 保存调用者的 this</span></span><br><span class="line">        <span class="comment">//使用定时器，wait 时间后再执行这个函数</span></span><br><span class="line">        timout = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">            fun.apply(_this,args) <span class="comment">// 如果用箭头函数就直接绑定 this</span></span><br><span class="line">        &#125;,wait)</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//之所以要清除这个定时器，是因为，一旦我们点击的速度太快，在wait时间内点击，因为你点击一次，就会执行一次，点击次数太多，定时器就一直执行，你会看到它在不间断的执行，因为执行的可能是你上上此的点击事件，这显然不是我们想要的结果，所以，为了解决这个问题，如果用户触发这个事件，那么判断下上次的有没有执行完，如果没有就清除掉，这样就会像我们预期的一样执行了。</span></span><br></pre></td></tr></table></figure>
+<h4 id="节流概念"><a href="#节流概念" class="headerlink" title="节流概念"></a>节流概念</h4><h6 id="对于上面的例子，当然我们也可以不监听输入框的change事件而是给页面上加一个搜索按钮，当用户点击搜索时再发送请求，但这样会有另一个问题，那就是假如这个用户比较手欠，它一直点搜索，那么我们就要像服务器一直发送请求，异步请求比较耗时，可能造成数据堵塞，进而引发页面卡顿现象，这个时候我们就可以使用节流函数来对我们的函数做一层包装，在一段时间内例如10s，我们只发送一次请求，用户在这个时间内点击了再多次我们也只发送一次请求，减少对服务器的请求次数"><a href="#对于上面的例子，当然我们也可以不监听输入框的change事件而是给页面上加一个搜索按钮，当用户点击搜索时再发送请求，但这样会有另一个问题，那就是假如这个用户比较手欠，它一直点搜索，那么我们就要像服务器一直发送请求，异步请求比较耗时，可能造成数据堵塞，进而引发页面卡顿现象，这个时候我们就可以使用节流函数来对我们的函数做一层包装，在一段时间内例如10s，我们只发送一次请求，用户在这个时间内点击了再多次我们也只发送一次请求，减少对服务器的请求次数" class="headerlink" title="对于上面的例子，当然我们也可以不监听输入框的change事件而是给页面上加一个搜索按钮，当用户点击搜索时再发送请求，但这样会有另一个问题，那就是假如这个用户比较手欠，它一直点搜索，那么我们就要像服务器一直发送请求，异步请求比较耗时，可能造成数据堵塞，进而引发页面卡顿现象，这个时候我们就可以使用节流函数来对我们的函数做一层包装，在一段时间内例如10s，我们只发送一次请求，用户在这个时间内点击了再多次我们也只发送一次请求，减少对服务器的请求次数"></a>对于上面的例子，当然我们也可以不监听输入框的change事件而是给页面上加一个搜索按钮，当用户点击搜索时再发送请求，但这样会有另一个问题，那就是假如这个用户比较手欠，它一直点搜索，那么我们就要像服务器一直发送请求，异步请求比较耗时，可能造成数据堵塞，进而引发页面卡顿现象，这个时候我们就可以使用节流函数来对我们的函数做一层包装，在一段时间内例如10s，我们只发送一次请求，用户在这个时间内点击了再多次我们也只发送一次请求，减少对服务器的请求次数</h6><h4 id="代码实现-1"><a href="#代码实现-1" class="headerlink" title="代码实现"></a>代码实现</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">// js 手写 节流函数  使用时间戳</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fun,wait</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> time = <span class="number">0</span>;  <span class="comment">// 闭包，上一次执行的时间</span></span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        args = <span class="built_in">arguments</span></span><br><span class="line">        _this = <span class="keyword">this</span></span><br><span class="line">        <span class="keyword">let</span> now = <span class="keyword">new</span> <span class="built_in">Date</span>().valueOf() <span class="comment">// 当前时间</span></span><br><span class="line">        <span class="keyword">if</span>(now - time &gt; wait)&#123;</span><br><span class="line">            fun.apply(_this,args)</span><br><span class="line">            time = now</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 首次触发这个函数会立即执行，同时把当前的时间赋值给时间戳（上次的执行时间），再次触发，判断当前的时间和上次的时间的间隔是否大于wait的时间，大于则执行，不大于则不执行</span></span><br><span class="line"><span class="comment">// setTimeout 方式实现</span></span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">throttle</span>(<span class="params">fun,wait</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">let</span> timeout,args,_this;</span><br><span class="line">    <span class="keyword">return</span> <span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        args = <span class="built_in">arguments</span></span><br><span class="line">        _this = <span class="keyword">this</span></span><br><span class="line">        <span class="comment">//首次timout 不存在取反为true执行,</span></span><br><span class="line">        <span class="keyword">if</span>(!timeout)&#123;</span><br><span class="line">              timeout = setTimeout(<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">                 timeout = <span class="literal">null</span> <span class="comment">// 置空，否则永远进不了 if </span></span><br><span class="line">            	 fun.apply(_this,args)</span><br><span class="line">       		 &#125;,wait)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 利用setTimeout 延迟执行的特点，第一次将timeout 初始为空，取反后判断是否为true,只有当定时器为空时，才去执行这个定时器函数，并在函数内将上一次的定时器置为null,其实可以不是定时器对象，随便定义一个变量判断也可以,第一次触发会延迟wait时间执行，此时 timout 有值,!timeout 为 false,此时执行定时器里面的函数，如果用户此时再发送事件请求，因为!timeout为false,所以不会进入执行体内，实现了想要的效果。</span></span><br><span class="line"><span class="comment">// 其实就是在定时器执行执行的过程中我们设置一个标记，来让后续的请求都无法进入到执行体内，只有当执行体内的函数执行完成后，再改变这个条件，接收新的请求！</span></span><br></pre></td></tr></table></figure>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/21/防抖与节流/" data-id="ckd2l3zjo001rkcw1bza9try7" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js性能/">js性能</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-html-css-复习" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/07/14/html-css-复习/" class="article-date">
+  <time datetime="2020-07-14T02:57:10.000Z" itemprop="datePublished">2020-07-14</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/07/14/html-css-复习/">html-css 复习</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="动态-rem"><a href="#动态-rem" class="headerlink" title="动态 rem"></a>动态 rem</h4><p><a href="https://www.jianshu.com/p/b13e32321459" target="_blank" rel="noopener">https://www.jianshu.com/p/b13e32321459</a></p>
+<h4 id="data-set"><a href="#data-set" class="headerlink" title="data-set"></a>data-set</h4><h6 id="自定义属性-data-属性名，可以存储一些数据，例如："><a href="#自定义属性-data-属性名，可以存储一些数据，例如：" class="headerlink" title="自定义属性 data-属性名，可以存储一些数据，例如："></a>自定义属性 data-属性名，可以存储一些数据，例如：</h6><figure class="highlight html"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="tag">&lt;<span class="name">div</span> <span class="attr">id</span>=<span class="string">"div"</span> <span class="attr">data-color</span> = <span class="string">"red"</span>&gt;</span><span class="tag">&lt;/<span class="name">div</span>&gt;</span></span><br><span class="line"></span><br><span class="line">// js中</span><br><span class="line">node.dataset.color //  等于 red</span><br><span class="line">//也可以这样</span><br><span class="line">Object.assign(node.style,node.dataset) // 自动样式就变红了</span><br></pre></td></tr></table></figure>
+<h4 id="首页白屏，无样式内容闪烁"><a href="#首页白屏，无样式内容闪烁" class="headerlink" title="首页白屏，无样式内容闪烁"></a>首页白屏，无样式内容闪烁</h4><ul>
+<li><p><script> 加载-&gt;执行-&gt;往后解析；加载会阻塞解析，多个JS按顺序执行</p>
+</li>
+<li><p><script async> 不影响DOM的解析和其他资源的加载，特例独行，不保证顺序，不保证时机</p>
+</li>
+<li><p><script defer> 不影响DOM的解析和其他资源的加载，但是会保证在DOM资源准备就绪后再执行，并且对于多个defer的外置js按顺序执行</p>
+</li>
+</ul>
+<h6 id="白屏的原因一般就是js的加载阻碍了-dom-和-css-的加载，一般把-js-放在body-后面，css的加载是非阻塞的，无内容闪烁，就是页面没有样式，一般把样式文件加载放在-header中。"><a href="#白屏的原因一般就是js的加载阻碍了-dom-和-css-的加载，一般把-js-放在body-后面，css的加载是非阻塞的，无内容闪烁，就是页面没有样式，一般把样式文件加载放在-header中。" class="headerlink" title="白屏的原因一般就是js的加载阻碍了 dom 和 css 的加载，一般把 js 放在body 后面，css的加载是非阻塞的，无内容闪烁，就是页面没有样式，一般把样式文件加载放在 header中。"></a>白屏的原因一般就是js的加载阻碍了 dom 和 css 的加载，一般把 js 放在body 后面，css的加载是非阻塞的，无内容闪烁，就是页面没有样式，一般把样式文件加载放在 header中。</h6><h4 id="浏览器的渲染机制"><a href="#浏览器的渲染机制" class="headerlink" title="浏览器的渲染机制"></a>浏览器的渲染机制</h4><h6 id="解析HTML，构建DOM树；解析CSS构建CSSOM树；组合成渲染树；计算节点的位置和几何结构；绘制到屏幕上"><a href="#解析HTML，构建DOM树；解析CSS构建CSSOM树；组合成渲染树；计算节点的位置和几何结构；绘制到屏幕上" class="headerlink" title="解析HTML，构建DOM树；解析CSS构建CSSOM树；组合成渲染树；计算节点的位置和几何结构；绘制到屏幕上"></a>解析HTML，构建DOM树；解析CSS构建CSSOM树；组合成渲染树；计算节点的位置和几何结构；绘制到屏幕上</h6><h6 id="回流：重新计算元素的几何尺寸，位置。添加删除元素，修改盒模型属性，display-none等，引起自己尺寸、位置变化或者其他元素尺寸位置的变化。"><a href="#回流：重新计算元素的几何尺寸，位置。添加删除元素，修改盒模型属性，display-none等，引起自己尺寸、位置变化或者其他元素尺寸位置的变化。" class="headerlink" title="回流：重新计算元素的几何尺寸，位置。添加删除元素，修改盒模型属性，display: none等，引起自己尺寸、位置变化或者其他元素尺寸位置的变化。"></a>回流：重新计算元素的几何尺寸，位置。添加删除元素，修改盒模型属性，display: none等，引起自己尺寸、位置变化或者其他元素尺寸位置的变化。</h6><h6 id="重绘：重新绘制全部或者部分界面。修改颜色、背景色等。不需要重新计算位置，只需要重新绘制效果。"><a href="#重绘：重新绘制全部或者部分界面。修改颜色、背景色等。不需要重新计算位置，只需要重新绘制效果。" class="headerlink" title="重绘：重新绘制全部或者部分界面。修改颜色、背景色等。不需要重新计算位置，只需要重新绘制效果。"></a>重绘：重新绘制全部或者部分界面。修改颜色、背景色等。不需要重新计算位置，只需要重新绘制效果。</h6><h6 id="优化：一次性修改样式；给动画使用绝对定位或者transfrom减小影响面；在DOM离线状态下修改样式。"><a href="#优化：一次性修改样式；给动画使用绝对定位或者transfrom减小影响面；在DOM离线状态下修改样式。" class="headerlink" title="优化：一次性修改样式；给动画使用绝对定位或者transfrom减小影响面；在DOM离线状态下修改样式。"></a>优化：一次性修改样式；给动画使用绝对定位或者transfrom减小影响面；在DOM离线状态下修改样式。</h6><h6 id="因为如果不使用绝对定位它就在普通流中，动画每执行一次，就会影响到普通流中的dom，造成页面回流和重回，绝对定位后脱离了文档流，减小了影响面。"><a href="#因为如果不使用绝对定位它就在普通流中，动画每执行一次，就会影响到普通流中的dom，造成页面回流和重回，绝对定位后脱离了文档流，减小了影响面。" class="headerlink" title="因为如果不使用绝对定位它就在普通流中，动画每执行一次，就会影响到普通流中的dom，造成页面回流和重回，绝对定位后脱离了文档流，减小了影响面。"></a>因为如果不使用绝对定位它就在普通流中，动画每执行一次，就会影响到普通流中的dom，造成页面回流和重回，绝对定位后脱离了文档流，减小了影响面。</h6><h4 id="css-盒模型"><a href="#css-盒模型" class="headerlink" title="css 盒模型"></a>css 盒模型</h4><h6 id="IE-盒模型-和-标准盒模型"><a href="#IE-盒模型-和-标准盒模型" class="headerlink" title="IE 盒模型 和 标准盒模型"></a>IE 盒模型 和 标准盒模型</h6><h6 id="IE-盒模型寬度-border-padding-content"><a href="#IE-盒模型寬度-border-padding-content" class="headerlink" title="IE 盒模型寬度 = border + padding + content"></a>IE 盒模型寬度 = border + padding + content</h6><h6 id="標準盒模型-寬度-內容的寬度"><a href="#標準盒模型-寬度-內容的寬度" class="headerlink" title="標準盒模型 寬度 = 內容的寬度"></a>標準盒模型 寬度 = 內容的寬度</h6><h6 id="使用-box-sizing-设置盒模型-默认为-contentbox-标准盒模型，IE盒模型：border-box-有时候还挺好用"><a href="#使用-box-sizing-设置盒模型-默认为-contentbox-标准盒模型，IE盒模型：border-box-有时候还挺好用" class="headerlink" title="使用 box-sizing 设置盒模型 默认为 contentbox 标准盒模型，IE盒模型：border-box (有时候还挺好用)"></a>使用 box-sizing 设置盒模型 默认为 contentbox 标准盒模型，IE盒模型：border-box (有时候还挺好用)</h6><h4 id="BFC"><a href="#BFC" class="headerlink" title="BFC"></a>BFC</h4><h4 id="svg-教程地址"><a href="#svg-教程地址" class="headerlink" title="svg 教程地址"></a>svg 教程地址</h4><p> <a href="https://jirengu.github.io/svg-you-should-know/zh-cn/chapter1/svg_icon.html">https://jirengu.github.io/svg-you-should-know/zh-cn/chapter1/svg_icon.html</a>)</p>
+</script></p></li></ul>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/07/14/html-css-复习/" data-id="ckd2l3zhn000hkcw1qxid1he6" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/html-css/">html-css</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-vue-account" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/06/24/vue-account/" class="article-date">
@@ -95,7 +258,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/24/vue-account/" data-id="ckclc4izq000y08w1dpa9vfeo" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/24/vue-account/" data-id="ckd2l3zix0018kcw1l1velqrh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/vue项目/">vue项目</a></li></ul>
@@ -158,7 +321,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/21/react-打包发布问题记录/" data-id="ckclc4j00001308w1be2faiwz" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/21/react-打包发布问题记录/" data-id="ckd2l3zis0014kcw1ts63os6g" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/打包/">打包</a></li></ul>
@@ -202,7 +365,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/13/js-装饰器/" data-id="ckclc4ize000p08w1nnifnm8k" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/13/js-装饰器/" data-id="ckd2l3zid000skcw12na2apxh" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -241,7 +404,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/13/嘚啵嘚两句-class-和-function/" data-id="ckclc4j08001808w1lzg8lhr4" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/13/嘚啵嘚两句-class-和-function/" data-id="ckd2l3zj9001gkcw1pxs0zjix" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js基本功/">js基本功</a></li></ul>
@@ -288,7 +451,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/13/mobx/" data-id="ckclc4j0l001j08w123k3wsyd" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/13/mobx/" data-id="ckd2l3zik000xkcw1ir43g2vz" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/mobx/">mobx</a></li></ul>
@@ -337,7 +500,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/12/react-router/" data-id="ckclc4izn000x08w1vcz1jlrl" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/12/react-router/" data-id="ckd2l3ziu0015kcw145usa6t0" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
@@ -382,183 +545,10 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/12/react-css使用/" data-id="ckclc4izx001108w1hipwzlpt" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/06/12/react-css使用/" data-id="ckd2l3ziq0012kcw1w9akazv9" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/create-react-app/">create-react-app</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-react-hooks" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/11/react-hooks/" class="article-date">
-  <time datetime="2020-06-11T04:02:25.000Z" itemprop="datePublished">2020-06-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/11/react-hooks/">react hooks</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="作用"><a href="#作用" class="headerlink" title="作用"></a>作用</h4><h6 id="让函数组件彻底取代-class-组件，解决函数组件中使用-state-生命周期函数，this的问题"><a href="#让函数组件彻底取代-class-组件，解决函数组件中使用-state-生命周期函数，this的问题" class="headerlink" title="让函数组件彻底取代 class 组件，解决函数组件中使用 state,生命周期函数，this的问题"></a>让函数组件彻底取代 class 组件，解决函数组件中使用 state,生命周期函数，this的问题</h6><p><strong>使用 reactHook(useState,useEffect) 解决这个问题</strong></p>
-<p><strong>解决state</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React,&#123;useState&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line">fucntion App()&#123;</span><br><span class="line">    <span class="comment">//组件内部useState() 返回一个数组，数组中分别是属性，set属性方法，传递的参数为属性的初始值</span></span><br><span class="line">    <span class="comment">// 此时该组件内部相当于有了一个 count 属性以及一个 setCount 方法，初始值为0;</span></span><br><span class="line">    <span class="keyword">const</span> [count,setCount] = userState(<span class="number">0</span>);</span><br><span class="line">    <span class="comment">//改变 count 的值可以调用 setState(新值)即可，使用直接使用 count</span></span><br><span class="line">      <span class="comment">//可以有多个useState, 多个属性</span></span><br><span class="line">    </span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<p><strong>解决生命周期函数 useEffect</strong></p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">import</span> React,&#123;useState,useEffect&#125; <span class="keyword">from</span> <span class="string">'react'</span>;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">Counter</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line"><span class="comment">//一个函数参数</span></span><br><span class="line">    <span class="keyword">const</span> [count,setCount] = userState(<span class="number">0</span>);</span><br><span class="line">    <span class="comment">//这个函数相当于 componentDidMount和 componentDidUpdate</span></span><br><span class="line">    useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'数据挂载或更新时执行'</span>)</span><br><span class="line">    &#125;); <span class="comment">// 监控所有的 state 属性</span></span><br><span class="line"><span class="comment">//一个函数参数且该函数 return 一个函数</span></span><br><span class="line">      useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'state数据挂载或更新时执行'</span>);</span><br><span class="line">        <span class="keyword">return</span> <span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">            <span class="comment">//相当于 componetWillUnmount,组件卸载时执行</span></span><br><span class="line">            consoel.log(<span class="string">'状态更新和写在组件时执行'</span>)</span><br><span class="line">        &#125;</span><br><span class="line">    &#125;);</span><br><span class="line"> <span class="comment">//一个函数参数，一个数组参数</span></span><br><span class="line">      useEffect(<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.log(<span class="string">'组件挂载或更新时执行'</span>)</span><br><span class="line">    &#125;,[count]);</span><br><span class="line">    <span class="comment">//count 为 state 的属性，此时代表只监控count所在组件的状态，若为空数组，则不监控，若没有设置则监控state 中所有属性 也就是当这个属性的值改变时就会执行到该函数内部</span></span><br><span class="line">   <span class="comment">// 所谓卸载也就是不在引用这个state 属性了 可以这么理解</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="实现一个简单的-useState"><a href="#实现一个简单的-useState" class="headerlink" title="实现一个简单的 useState"></a>实现一个简单的 useState</h4><h6 id="模仿它的使用，定义一个函数-useState-传递参数，返回数组及方法"><a href="#模仿它的使用，定义一个函数-useState-传递参数，返回数组及方法" class="headerlink" title="模仿它的使用，定义一个函数 useState 传递参数，返回数组及方法"></a>模仿它的使用，定义一个函数 useState 传递参数，返回数组及方法</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> state;<span class="comment">// 定义一个属性 注意要定义在外部，否则每次调用 setState 都会给初始值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">setState</span>(<span class="params">inivalue</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//因为如果多次使用这个 state,我们要保留 state 上一次的执行结果，所以要写到全局作用域中</span></span><br><span class="line">    <span class="comment">// 如果state 没有值就是用初始值 也就代表是第一次执行</span></span><br><span class="line">    state = state || initvalue;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">setState</span>(<span class="params">newState</span>)</span>&#123;</span><br><span class="line">        state = newState;</span><br><span class="line">         render()  <span class="comment">// ReactDom.render()</span></span><br><span class="line">    &#125;</span><br><span class="line">   </span><br><span class="line">    <span class="keyword">return</span> [state,setState];</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">render</span>(<span class="params"></span>) </span>&#123;</span><br><span class="line"> ReactDOM.render(</span><br><span class="line"> &lt;App /&gt;,</span><br><span class="line"> <span class="built_in">document</span>.getElementById(<span class="string">'root'</span>)</span><br><span class="line"> );</span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">// 刚刚又犯迷糊了，函数的定义和返回结果是不一样的好吗，定义时只是形参，叫什么都行，调用时你是可以更改的呀 刚才傻逼似的 直接用返回值【state】 去了...... 而且数组只能用下标访问才对啊，怎么那么蠢</span></span><br><span class="line"><span class="comment">// 我可以直接用一个变量接收，那这个变量就是 一个数组，为了取出每一项，我可以数组【【0】赋值给一个值。。。。 为了方便可以直接使用 【a,b】 = 返回的值即可</span></span><br><span class="line"><span class="comment">// 例如 【a,b】= [1,3]  a=1,b =3; 啊啊啊啊啊</span></span><br></pre></td></tr></table></figure>
-<h4 id="实现一个简单的-userEffect"><a href="#实现一个简单的-userEffect" class="headerlink" title="实现一个简单的 userEffect"></a>实现一个简单的 userEffect</h4><h4 id="最主要的就是看传递来的属性值有没有改变过，改变过就执行-callback-否则就不执行"><a href="#最主要的就是看传递来的属性值有没有改变过，改变过就执行-callback-否则就不执行" class="headerlink" title="最主要的就是看传递来的属性值有没有改变过，改变过就执行 callback,否则就不执行"></a>最主要的就是看传递来的属性值有没有改变过，改变过就执行 callback,否则就不执行</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> oldProps;</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useEffect</span>(<span class="params">callback,props</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//如果不是第一次执行callback并且传递了 props，那么oldProps 就会有值,此时对比新值，返回对比结果取反，(如果经过比较发生了变化，那么会返回 false,我们需要取反变为 true，这样才能继续执行 callback)如果不存在说明是第一次执行，那么 callback 肯定要被执行所以是 true</span></span><br><span class="line">    <span class="comment">// 也就是说第一次进来无论如何都会去执行 callback 的</span></span><br><span class="line">    <span class="keyword">const</span> hasChangeProps = oldProps ? !props.every(el,index=&gt; el=== oldProps[index]) : <span class="literal">true</span>;</span><br><span class="line">    <span class="comment">//如果没有传递这个属性或者说 传递了这个属性而且值发生了变化 就会执行这个 callback函数</span></span><br><span class="line">    <span class="comment">// 这里对props 取反来判断，如果!props 为true，则代表 props 为空，妙啊</span></span><br><span class="line">    <span class="keyword">if</span>(!props || hasChangeProps)&#123;</span><br><span class="line">         callback();</span><br><span class="line">         oldProps = props;  <span class="comment">//将新的属性值传递给一个变量保存</span></span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 如果传递的这个属性没有发生改变，那么久不会执行 callback</span></span><br><span class="line"><span class="comment">// 因为第一次进来这个属性假如是1，再次进来还是1， 它的值没有变过，自然不会执行(第一次还是会执行的)</span></span><br></pre></td></tr></table></figure>
-<h4 id="reactHook-useState-的完整实现"><a href="#reactHook-useState-的完整实现" class="headerlink" title="reactHook-useState 的完整实现"></a>reactHook-useState 的完整实现</h4><h6 id="之前的之所以说是简单实现是因为我们只定义了一个-全局变量，加入我们有多个-useState-useEffect-那么这个变量就会被覆盖"><a href="#之前的之所以说是简单实现是因为我们只定义了一个-全局变量，加入我们有多个-useState-useEffect-那么这个变量就会被覆盖" class="headerlink" title="之前的之所以说是简单实现是因为我们只定义了一个 全局变量，加入我们有多个 useState,useEffect,那么这个变量就会被覆盖"></a>之前的之所以说是简单实现是因为我们只定义了一个 全局变量，加入我们有多个 useState,useEffect,那么这个变量就会被覆盖</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">let</span> memorizState = []; <span class="comment">// 用来保存不同的 state</span></span><br><span class="line"><span class="keyword">let</span> cursor=<span class="number">0</span>; <span class="comment">//用来指向当前数组中操作的属性下标</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useState</span>(<span class="params">initvalue</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//将初始值赋值到数组中</span></span><br><span class="line">    memorizeState[cursor] = memorizeState[cursor] || initvalue;</span><br><span class="line">    <span class="comment">//保留当前下标到当前作用域中 (闭包)</span></span><br><span class="line">    <span class="keyword">const</span> currentCursor = cursor;</span><br><span class="line">    <span class="function"><span class="keyword">function</span> <span class="title">setState</span>(<span class="params">newState</span>)</span>&#123;</span><br><span class="line">         memorizeState[currentCursor] = <span class="keyword">new</span> State;</span><br><span class="line">        render();</span><br><span class="line">    &#125;</span><br><span class="line">   <span class="keyword">return</span> [memorizedState[cursor++,setState];</span><br><span class="line">           <span class="comment">//注意这里 cursor 会先取出 然后再++</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-<h4 id="useEffect-的完整实现"><a href="#useEffect-的完整实现" class="headerlink" title="useEffect 的完整实现"></a>useEffect 的完整实现</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">useEffect</span>(<span class="params">callbcak,depArray</span>)</span>&#123;</span><br><span class="line">    <span class="comment">//取反，depArray 为空时，hasNoDep 才为true;</span></span><br><span class="line">    <span class="keyword">const</span> hasNoDeps = !depArray;</span><br><span class="line">    <span class="keyword">const</span> deps = memorizedState[cursor]; <span class="comment">//将当前的state 属性复制给这个变量</span></span><br><span class="line">    <span class="keyword">const</span> hasChangeDeps = oldProps ? !deps.every(el,index=&gt; el=== oldDeps[index]) : <span class="literal">true</span>;</span><br><span class="line">    <span class="keyword">if</span>(hasNoDeps || hasChangeDeps)&#123;</span><br><span class="line">        callback()</span><br><span class="line">        memorizeState[cursor] = depArray;</span><br><span class="line">    &#125;</span><br><span class="line">    cursor++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/11/react-hooks/" data-id="ckclc4izy001208w1apm33j7q" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-react-高阶" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/10/react-高阶/" class="article-date">
-  <time datetime="2020-06-10T08:33:42.000Z" itemprop="datePublished">2020-06-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/10/react-高阶/">react-高阶</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="代码分割"><a href="#代码分割" class="headerlink" title="代码分割"></a>代码分割</h4><h6 id="动态加载js-或者组件文件"><a href="#动态加载js-或者组件文件" class="headerlink" title="动态加载js 或者组件文件"></a>动态加载js 或者组件文件</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//点击按钮才会动态引入文件，不会再刚加载时就引入 </span></span><br><span class="line">handleClick=<span class="function"><span class="params">()</span>=&gt;</span>&#123;</span><br><span class="line">        <span class="keyword">import</span> (<span class="string">'./advance/math'</span>).then(<span class="function">(<span class="params">math</span>)=&gt;</span>&#123;</span><br><span class="line">            <span class="comment">//使用 引入来的 js 文件中的功能</span></span><br><span class="line">          <span class="keyword">this</span>.setState(&#123;<span class="attr">res</span>:math.add(<span class="number">3</span>,<span class="number">4</span>)&#125;)</span><br><span class="line">        &#125;)</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
-<h6 id="懒加载-可以做到优雅降级，在引入文件未完全加载进来时，可以在页面展示一些预处理页面，例如Loading-等，使用时需要-suspense-标签包裹"><a href="#懒加载-可以做到优雅降级，在引入文件未完全加载进来时，可以在页面展示一些预处理页面，例如Loading-等，使用时需要-suspense-标签包裹" class="headerlink" title="懒加载 可以做到优雅降级，在引入文件未完全加载进来时，可以在页面展示一些预处理页面，例如Loading 等，使用时需要 suspense 标签包裹"></a>懒加载 可以做到优雅降级，在引入文件未完全加载进来时，可以在页面展示一些预处理页面，例如Loading 等，使用时需要 suspense 标签包裹</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> Button = React.lazy(<span class="function"><span class="params">()</span>=&gt;</span> <span class="keyword">import</span>(<span class="string">'./Button'</span>));</span><br><span class="line"></span><br><span class="line"> &lt;Suspense fallback = &#123;&lt;div&gt;Loading......&lt;<span class="regexp">/div&gt;&#125;&gt;</span></span><br><span class="line"><span class="regexp">      &lt;Button/</span>&gt;</span><br><span class="line"> &lt;<span class="regexp">/Suspense&gt;</span></span><br></pre></td></tr></table></figure>
-<p><strong>Fragments</strong></p>
-<h6 id="react-要求我们的组件中的jsx-只能拥有一个顶级标签，为了解决这个问题我们可以使用一个空标签或者-Fragment-标签包裹（这个标签不会再页面上展示，仅起到语法作用）"><a href="#react-要求我们的组件中的jsx-只能拥有一个顶级标签，为了解决这个问题我们可以使用一个空标签或者-Fragment-标签包裹（这个标签不会再页面上展示，仅起到语法作用）" class="headerlink" title="react 要求我们的组件中的jsx 只能拥有一个顶级标签，为了解决这个问题我们可以使用一个空标签或者 Fragment 标签包裹（这个标签不会再页面上展示，仅起到语法作用）"></a>react 要求我们的组件中的jsx 只能拥有一个顶级标签，为了解决这个问题我们可以使用一个空标签或者 Fragment 标签包裹（这个标签不会再页面上展示，仅起到语法作用）</h6><h4 id="Context"><a href="#Context" class="headerlink" title="Context"></a>Context</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> 组件写法  注意 <span class="title">function</span> 方式的组件不用继承 <span class="title">component</span>,手写 <span class="title">react</span>时候想想是怎么处理的，使我们手动给它创造了一个 <span class="title">class</span></span></span><br><span class="line"><span class="function"><span class="title">function</span> 组件名称(<span class="params">props</span>)</span>&#123;</span><br><span class="line">	......</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line">也可以写成,一样的</span><br><span class="line"><span class="keyword">const</span> 组件名 = <span class="function"><span class="params">props</span> =&gt;</span> &#123;......&#125;</span><br></pre></td></tr></table></figure>
-<h6 id="react-传递数据，父组件向子组件传值通过-props-属性，层层传递"><a href="#react-传递数据，父组件向子组件传值通过-props-属性，层层传递" class="headerlink" title="react 传递数据，父组件向子组件传值通过 props 属性，层层传递"></a>react 传递数据，父组件向子组件传值通过 props 属性，层层传递</h6><h6 id="层层传递-如果层级太多，代码冗余"><a href="#层层传递-如果层级太多，代码冗余" class="headerlink" title="层层传递 如果层级太多，代码冗余"></a>层层传递 如果层级太多，代码冗余</h6><p>context 传递方式</p>
- <figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">const</span> ThemeContext = React.createContext();</span><br><span class="line"><span class="comment">// 在传递的组件地方 使用 这个标签 themeContext.provider 包裹 提供要传递的 value</span></span><br><span class="line">&lt;ThemeCOntext.Provider value=<span class="string">"传递的内容"</span>&gt;</span><br><span class="line"> &lt;组件/&gt;   <span class="comment">// 组件本身呢里面也包含组件a,b,c，d,我们要把这个值传递到 d上面，那么我们就在 d 中接收</span></span><br><span class="line"> &lt;<span class="regexp">/ThemeContenxt.Provider&gt;</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 在接收的组件内部定义 一个静态属性 等于这个标签对象，直接使用 this.context 获取</span></span><br><span class="line"><span class="regexp">在 d中 定义 static abc = ThemeContext</span></span><br><span class="line"><span class="regexp">使用 this.context 获取到传递过来的内容</span></span><br><span class="line"><span class="regexp"></span></span><br><span class="line"><span class="regexp">/</span><span class="regexp">/ 注意，如果是用 function 方式写的，有一点不同之处在于，接收方无需定义 静态属性指向这个标签，直接 在 return 中使用 &lt;ThemeContext.Consumer&gt;&#123;val=&gt;(包裹这个组件的内容并且这是一个回调箭头函数,val 就是传递来的对象)&#125;&lt;/</span>Th&gt;eContext.Consumer&gt;  例如：</span><br><span class="line"><span class="keyword">const</span> Button = <span class="function">(<span class="params">props</span>)=&gt;</span>&#123;</span><br><span class="line">    <span class="keyword">return</span>(</span><br><span class="line">    	&lt;Theme.context.consumer&gt;</span><br><span class="line">        &#123;val=&gt;(<span class="xml"><span class="tag">&lt;<span class="name">div</span>&gt;</span></span></span><br><span class="line"><span class="xml">         	val.a,val.c......</span></span><br><span class="line"><span class="xml">         <span class="tag">&lt;/<span class="name">div</span>&gt;</span></span>)</span><br><span class="line">        &#125;</span><br><span class="line">        &lt;<span class="regexp">/Theme.context.consumer&gt;</span></span><br><span class="line"><span class="regexp">    )</span></span><br><span class="line"><span class="regexp">&#125;</span></span><br></pre></td></tr></table></figure>
-<h4 id="数据传递"><a href="#数据传递" class="headerlink" title="数据传递"></a>数据传递</h4><h6 id="子组件向父组件传值"><a href="#子组件向父组件传值" class="headerlink" title="子组件向父组件传值"></a>子组件向父组件传值</h6><h6 id="当子组件中的数据发生变化时，调用父组件中的方法来改变，这种方式的前提是父子组件的数据源都来自于-state-中。例如："><a href="#当子组件中的数据发生变化时，调用父组件中的方法来改变，这种方式的前提是父子组件的数据源都来自于-state-中。例如：" class="headerlink" title="当子组件中的数据发生变化时，调用父组件中的方法来改变，这种方式的前提是父子组件的数据源都来自于 state 中。例如："></a>当子组件中的数据发生变化时，调用父组件中的方法来改变，这种方式的前提是父子组件的数据源都来自于 state 中。例如：</h6><h6 id="其实就是，当子组件向父组件传值时，父组件必须有一个变量来接受这个值对不，那么在-state中开辟一个变量来存储，然后写一个函数，改变state-中这个变量的值，（只有class-组件中有this）然后把这个函数传递给子组件，子组件中想传递自己的值给父组件时，通过-props-获取到这个函数，（此时这个函数中的-代码以及this-都是闭包，是父组件的this）-然后把自己的值传递给这个函数即可实现值的传递；"><a href="#其实就是，当子组件向父组件传值时，父组件必须有一个变量来接受这个值对不，那么在-state中开辟一个变量来存储，然后写一个函数，改变state-中这个变量的值，（只有class-组件中有this）然后把这个函数传递给子组件，子组件中想传递自己的值给父组件时，通过-props-获取到这个函数，（此时这个函数中的-代码以及this-都是闭包，是父组件的this）-然后把自己的值传递给这个函数即可实现值的传递；" class="headerlink" title="其实就是，当子组件向父组件传值时，父组件必须有一个变量来接受这个值对不，那么在 state中开辟一个变量来存储，然后写一个函数，改变state 中这个变量的值，（只有class 组件中有this）然后把这个函数传递给子组件，子组件中想传递自己的值给父组件时，通过 props 获取到这个函数，（此时这个函数中的 代码以及this 都是闭包，是父组件的this） 然后把自己的值传递给这个函数即可实现值的传递；"></a>其实就是，当子组件向父组件传值时，父组件必须有一个变量来接受这个值对不，那么在 state中开辟一个变量来存储，然后写一个函数，改变state 中这个变量的值，（只有class 组件中有this）然后把这个函数传递给子组件，子组件中想传递自己的值给父组件时，通过 props 获取到这个函数，（此时这个函数中的 代码以及this 都是闭包，是父组件的this） 然后把自己的值传递给这个函数即可实现值的传递；</h6><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="class"><span class="keyword">class</span> 父组件</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    	&lt;div&gt;</span><br><span class="line">         	&lt;Son value=&#123;<span class="keyword">this</span>.state.son&#125; onChange=<span class="function">(<span class="params">e</span>) =&gt;</span> &#123;<span class="keyword">this</span>.setState(&#123;<span class="attr">first</span>:e.target.value&#125;)&#125;/&gt;</span><br><span class="line">			&lt;p&gt;son : &#123;<span class="keyword">this</span>.state.son&#125;&lt;<span class="regexp">/p&gt;</span></span><br><span class="line"><span class="regexp">         &lt;/</span>div&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//first 组件</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">first</span>(<span class="params">props</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">return</span> (</span><br><span class="line">    	&lt;input value = &#123;props.value&#125; onChange=&#123;props.onChange&#125;&gt;</span><br><span class="line">    )</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">// 刚开始子组件的值是父组件通过 props 传递来的，当子组件的值发生改变时调用传递来的onchange方法，也就是父组件的 oncahnge,这个方法将子组件现在的值更新到 state 中，然后父组件中更新，又传递给子组件，达到了父组件也更新的目的</span></span><br></pre></td></tr></table></figure>
-<h6 id="今天回过头来看了下子组件向父组件传值，有点疑惑，就是这个-this-的问题，所以特意打印了子组件在接受到父组件的函数，发现果然有闭包存在-子组件中保存了父组件的闭包，如下图"><a href="#今天回过头来看了下子组件向父组件传值，有点疑惑，就是这个-this-的问题，所以特意打印了子组件在接受到父组件的函数，发现果然有闭包存在-子组件中保存了父组件的闭包，如下图" class="headerlink" title="今天回过头来看了下子组件向父组件传值，有点疑惑，就是这个 this 的问题，所以特意打印了子组件在接受到父组件的函数，发现果然有闭包存在,子组件中保存了父组件的闭包，如下图"></a>今天回过头来看了下子组件向父组件传值，有点疑惑，就是这个 this 的问题，所以特意打印了子组件在接受到父组件的函数，发现果然有闭包存在,子组件中保存了父组件的闭包，如下图</h6><p><img src="../img/react/closure.png" alt></p>
-<h6 id="Fist-js-是我做测试的父组件的文件名，这段代码是在自组件从props-拿到传递来的函数后打印的这个函数，所以疑惑解开了，this是父组件的，自然能修改喽；"><a href="#Fist-js-是我做测试的父组件的文件名，这段代码是在自组件从props-拿到传递来的函数后打印的这个函数，所以疑惑解开了，this是父组件的，自然能修改喽；" class="headerlink" title="Fist.js 是我做测试的父组件的文件名，这段代码是在自组件从props 拿到传递来的函数后打印的这个函数，所以疑惑解开了，this是父组件的，自然能修改喽；"></a>Fist.js 是我做测试的父组件的文件名，这段代码是在自组件从props 拿到传递来的函数后打印的这个函数，所以疑惑解开了，this是父组件的，自然能修改喽；</h6><h4 id="错误边界"><a href="#错误边界" class="headerlink" title="错误边界"></a>错误边界</h4><h4 id="非受控组件与Refs"><a href="#非受控组件与Refs" class="headerlink" title="非受控组件与Refs"></a>非受控组件与Refs</h4><p>如何获取要操作的这个 dom?</p>
-<p><strong>第一步：</strong> 在组件内部创建一个 React.createRef() 对象，绑定到当前组件上，也就是赋值给 this.属性（在构造函数中），然后下次就可以通过 this.属性获取到这个对象了，然后在 render() 中，一般都在这里返回 dom 的，我们在需要操控的dom上加上 ref = {this.属性}</p>
-<p>在需要时，就能通过 this.属性.current.  什么什么 —–  获取到这个对象了</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/10/react-高阶/" data-id="ckclc4izm000w08w1huh94bwk" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-react-生命周期等" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/06/09/react-生命周期等/" class="article-date">
-  <time datetime="2020-06-09T07:11:53.000Z" itemprop="datePublished">2020-06-09</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/06/09/react-生命周期等/">react 生命周期等</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="生命周期"><a href="#生命周期" class="headerlink" title="生命周期"></a>生命周期</h4><p>![</p>
-<p>](../img/react/cycle.png)</p>
-<h6 id="这个图好糊呀-反正记住-这主要的额三个就行了"><a href="#这个图好糊呀-反正记住-这主要的额三个就行了" class="headerlink" title="这个图好糊呀  反正记住 这主要的额三个就行了"></a>这个图好糊呀  反正记住 这主要的额三个就行了</h6><p><strong>生命周期完整版如下</strong></p>
-<ul>
-<li>挂载时<ul>
-<li>constructor()</li>
-<li>render() </li>
-<li>componentDidMount()</li>
-</ul>
-</li>
-<li>更新时<ul>
-<li>shouldComponentUpdate()  组件中数据更新时，return true 才会渲染</li>
-<li>render()</li>
-<li>componentDidMount()</li>
-</ul>
-</li>
-<li>卸载时<ul>
-<li>componentWillUnmount()</li>
-</ul>
-</li>
-<li>错误处理<ul>
-<li>componentDidCatch()</li>
-</ul>
-</li>
-</ul>
-<p><strong>comonentWillMount、componentWillUpdate、componentWillReceiveProps 已过时废弃</strong></p>
-<h4 id="列表"><a href="#列表" class="headerlink" title="列表"></a>列表</h4><p>列表循环必须加key属性 </p>
-<p> key属性对应的值尽量是独⼀⽆⼆的 </p>
-<p>不要⽤列表序号做为key属性的值，除⾮万不得已</p>
-<h6 id="key-是用来在渲染页面时做-diff-算法的，一般选择一个独一无二的值，不推荐使用数据的下标-0-1-2……-因为在做diff时候，会把key拿出来跟上次的对比，（如果有就直接拿出来用）如果那数组中的下标都是-0-1-2-3-4-5-无论数组中的内容怎么变化，所以这样就达不到对比的效果了，都会更新-例如原来数组-1-2-3-新数组-0-1-2-3-原来-1的下标为0key-0-现在-1的-key-为1，这就起不到diff-的作用了，相当于白加，它还会用它默认的算法来对比。"><a href="#key-是用来在渲染页面时做-diff-算法的，一般选择一个独一无二的值，不推荐使用数据的下标-0-1-2……-因为在做diff时候，会把key拿出来跟上次的对比，（如果有就直接拿出来用）如果那数组中的下标都是-0-1-2-3-4-5-无论数组中的内容怎么变化，所以这样就达不到对比的效果了，都会更新-例如原来数组-1-2-3-新数组-0-1-2-3-原来-1的下标为0key-0-现在-1的-key-为1，这就起不到diff-的作用了，相当于白加，它还会用它默认的算法来对比。" class="headerlink" title="key 是用来在渲染页面时做 diff 算法的，一般选择一个独一无二的值，不推荐使用数据的下标 0,1,2…… 因为在做diff时候，会把key拿出来跟上次的对比，（如果有就直接拿出来用）如果那数组中的下标都是 0,1,2,3,4,5 无论数组中的内容怎么变化，所以这样就达不到对比的效果了，都会更新 例如原来数组 1,2,3 新数组 0,1,2,3 原来 1的下标为0key=0 现在 1的 key 为1，这就起不到diff 的作用了，相当于白加，它还会用它默认的算法来对比。"></a>key 是用来在渲染页面时做 diff 算法的，一般选择一个独一无二的值，不推荐使用数据的下标 0,1,2…… 因为在做diff时候，会把key拿出来跟上次的对比，（如果有就直接拿出来用）如果那数组中的下标都是 0,1,2,3,4,5 无论数组中的内容怎么变化，所以这样就达不到对比的效果了，都会更新 例如原来数组 1,2,3 新数组 0,1,2,3 原来 1的下标为0key=0 现在 1的 key 为1，这就起不到diff 的作用了，相当于白加，它还会用它默认的算法来对比。</h6><h4 id="表单"><a href="#表单" class="headerlink" title="表单"></a>表单</h4><p><strong>受控组件</strong></p>
-<p>state做为唯⼀数据驱动源，且⽤户对表单的操作需要反馈到 state</p>
-<p>特点：表单的value由state决定，监听表单变化后从event获取新 value重新设置state</p>
-<h4 id="setState-同步与异步"><a href="#setState-同步与异步" class="headerlink" title="setState 同步与异步"></a>setState 同步与异步</h4><h2 id="为什么setState有异步更新？"><a href="#为什么setState有异步更新？" class="headerlink" title="为什么setState有异步更新？"></a>为什么setState有异步更新？</h2><p>React在执行setState之后，要执行render、diff、更新DOM等一系列操作，性能开销是比较大的。加入异步更新、更新合并等策略能优化性能。</p>
-<h2 id="什么时候异步更新，什么时候同步更新"><a href="#什么时候异步更新，什么时候同步更新" class="headerlink" title="什么时候异步更新，什么时候同步更新"></a>什么时候异步更新，什么时候同步更新</h2><p>组件里等事件处理程序，如 <code>onClick={this.handleClick}</code> 里面等setState是异步更新。声明生命周期函数里等setState也是异步更新。如果需要多次更新需要用异步设置等语法，如</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">this</span>.setState(<span class="function">(<span class="params">state, props</span>) =&gt;</span> &#123;</span><br><span class="line">  <span class="keyword">return</span> &#123;<span class="attr">count</span>: state.count + props.count &#125;</span><br><span class="line">&#125;)</span><br></pre></td></tr></table></figure>
-<p>如setTimeout里，对原生绑定如 addEventListener 里，都是同步更新。</p>
-<p>例如：</p>
-<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="built_in">document</span>.querySelector(<span class="string">"#btn"</span>).onclick=<span class="function"><span class="params">()</span>=&gt;</span>&#123;.....setState(...)&#125;</span><br><span class="line">                                                          </span><br><span class="line">setTimeout(<span class="function"><span class="params">()</span>=&gt;</span>&#123;<span class="keyword">this</span>.setState(...),<span class="keyword">this</span>,setState(...)&#125;,<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
-<h2 id="异步更新在效果上有什么表现"><a href="#异步更新在效果上有什么表现" class="headerlink" title="异步更新在效果上有什么表现"></a>异步更新在效果上有什么表现</h2><p>表现为更新合并，上次更新未生效。也就是如果你执行了两次 setState 它只会执行一次，因为它自己做了优化</p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/06/09/react-生命周期等/" data-id="ckclc4j0k001i08w1oew849wx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/react/">react</a></li></ul>
 
     </footer>
   </div>
@@ -571,7 +561,7 @@
 
   <nav id="page-nav">
     
-    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
+    <span class="page-number current">1</span><a class="page-number" href="/page/2/">2</a><a class="page-number" href="/page/3/">3</a><span class="space">&hellip;</span><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/2/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -585,7 +575,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js基本功/">js基本功</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobx/">mobx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue项目/">vue项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-css/">html-css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js基本功/">js基本功</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js性能/">js性能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobx/">mobx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/product/">product</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue项目/">vue项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -595,7 +585,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/js基本功/" style="font-size: 10px;">js基本功</a> <a href="/tags/mobx/" style="font-size: 10px;">mobx</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/vue项目/" style="font-size: 10px;">vue项目</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/打包/" style="font-size: 10px;">打包</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/html-css/" style="font-size: 10px;">html-css</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/js基本功/" style="font-size: 10px;">js基本功</a> <a href="/tags/js性能/" style="font-size: 10px;">js性能</a> <a href="/tags/mobx/" style="font-size: 10px;">mobx</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/product/" style="font-size: 10px;">product</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/vue项目/" style="font-size: 10px;">vue项目</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/打包/" style="font-size: 10px;">打包</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -604,7 +594,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
     </div>
   </div>
 
@@ -617,23 +607,23 @@
       <ul>
         
           <li>
+            <a href="/2020/07/26/用户体验以及产品相关/">用户体验以及产品相关</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/21/防抖与节流/">防抖与节流</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/14/html-css-复习/">html-css 复习</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/24/vue-account/">vue-account</a>
           </li>
         
           <li>
             <a href="/2020/06/21/react-打包发布问题记录/">react 打包发布问题记录</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/13/js-装饰器/">js 装饰器</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/13/嘚啵嘚两句-class-和-function/">嘚啵嘚两句 class 和 function</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/13/mobx/">mobx</a>
           </li>
         
       </ul>
@@ -648,7 +638,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
+      &copy; 2020 sheila<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>

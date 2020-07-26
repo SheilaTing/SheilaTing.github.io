@@ -62,6 +62,199 @@
       <div class="outer">
         <section id="main">
   
+    <article id="post-对象与json" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/26/对象与json/" class="article-date">
+  <time datetime="2020-04-26T03:03:02.000Z" itemprop="datePublished">2020-04-26</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/26/对象与json/">对象与json</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="对象"><a href="#对象" class="headerlink" title="对象"></a>对象</h4><p>ps:(最近刚学了对象，虽然之前也有了解，可一直模模糊糊，最近使用才发现原来自己对对象的掌握这么不扎实)</p>
+<p>从定义说起：<strong>对象：无序的数据集合，由若干个“键值对”（属性: 值）构成</strong></p>
+<p>对象里面包含：1.属性 2. 方法</p>
+<p><strong>对象的一些操作方法</strong></p>
+<p><strong>Object.keys(对象)</strong>：获取对象中的所有属性数组，注意此处是数组，然后就可以使用数组的方法来操作它。例如 ，arrr.map()  返回新的数组 ,arry.foreach()  arr.filter()返回新数组</p>
+<p>删除属性： delete 对象.属性名或者 delete 对象【’属性名‘】</p>
+<h4 id="基本使用"><a href="#基本使用" class="headerlink" title="基本使用"></a>基本使用</h4><figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//定义一个对象</span></span><br><span class="line"><span class="keyword">let</span> obj = &#123;</span><br><span class="line">    name:<span class="string">'jirengu'</span>,  <span class="comment">//主义此处 name属性没有加引号，起始默认是有引号的，js这样写也没错</span></span><br><span class="line">    age:<span class="number">5</span>,</span><br><span class="line">    sayHello:<span class="function"><span class="keyword">function</span>(<span class="params"></span>)</span>&#123;</span><br><span class="line">        <span class="built_in">console</span>.lot(<span class="string">`hello <span class="subst">$&#123;<span class="keyword">this</span>.name<span class="string">`)</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">    &#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">&#125;</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//通过.访问属性</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj.name</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//通过[‘属性名’]  主义此时要加上引号，因为它本身是有引号的，定义时省略了而已</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj['name']</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//通过[属性名] 注意此处没有加引号，不加引号js会把【】中的值解析为一个值来对待</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">let key = 'age';</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj[key] //的值就是5；就是属性age的值</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//使用点操作符增加属性</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj.grade=5; //为obj 增加了一个 grade属性；</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">//使用【】符号来增加属性</span></span></span></span><br><span class="line"><span class="string"><span class="subst"><span class="string">obj['score']=100;</span></span></span></span><br></pre></td></tr></table></figure>
+<h4 id="JSON"><a href="#JSON" class="headerlink" title="JSON"></a>JSON</h4><ul>
+<li>JSON.stringify  用于把一个值变成符合JSON格式的字符串</li>
+<li>JSON.parse  用于把一个符合JSON格式的字符串还原对象</li>
+</ul>
+
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/26/对象与json/" data-id="ckd2l3zjh001mkcw1ewybox2g" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/对象/">对象</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-递归优化" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/25/递归优化/" class="article-date">
+  <time datetime="2020-04-25T02:18:19.000Z" itemprop="datePublished">2020-04-25</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/25/递归优化/">递归优化</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <h4 id="递归实现N的阶乘"><a href="#递归实现N的阶乘" class="headerlink" title="递归实现N的阶乘"></a>递归实现N的阶乘</h4><p>阶乘的概念   假如 n =5;  则 5！= 5*4！ 4！=4*3！ 3!=3*2! 2! = 2*1！ 1！= 1；基本上就是连乘的效果</p>
+<figure class="highlight javascript"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(n===<span class="number">1</span>) <span class="keyword">return</span> <span class="number">1</span>;  <span class="comment">//如果 n 为1 则返回 1的阶乘 结果1</span></span><br><span class="line">     <span class="keyword">return</span> n*(fact(n<span class="number">-1</span>));</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="comment">//普通方法实现n的阶乘</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res = <span class="number">1</span>;  <span class="comment">//最终返回的阶乘结果，之所以是1，是因为阶乘的最小结果就是1;就是1的阶乘</span></span><br><span class="line">    <span class="comment">//然后分析，数字n 肯定是大于0的数字对吧，所以我们要实现的效果就是 1*（n-1）,</span></span><br><span class="line">    <span class="comment">//er在这个过程中，n会逐渐递减,所以考虑使用循环来实现 这里使用while循环，当然也可以使用 for</span></span><br><span class="line">    <span class="keyword">while</span>(n&gt;<span class="number">0</span>)&#123;</span><br><span class="line">           res*=n;</span><br><span class="line">           n--;</span><br><span class="line">          &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">    </span><br><span class="line">&#125;</span><br><span class="line"><span class="comment">//for 循环实现方式，同上</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">    <span class="keyword">var</span> res =<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(;n&gt;<span class="number">0</span>;n--)&#123;</span><br><span class="line">        res*=n;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br><span class="line"><span class="built_in">console</span>.log(fact(<span class="number">5</span>));</span><br><span class="line"><span class="comment">//按照我们从递归的起始值1开始计算到 n,n每增加1，则用res=1,乘以这个值，</span></span><br><span class="line"><span class="comment">//其实道理同上的，只不过上面是从n递减到初始值1 看代码啦</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">fact</span>(<span class="params">n</span>)</span>&#123;</span><br><span class="line">	<span class="keyword">var</span> res =<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="keyword">let</span> i =<span class="number">0</span>;i&lt;=n;i++)&#123;</span><br><span class="line">        res*=i;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> res;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h4 id="实现斐波那契数列"><a href="#实现斐波那契数列" class="headerlink" title="实现斐波那契数列"></a>实现斐波那契数列</h4>
+        
+          <p class="article-more-link">
+            <a href="/2020/04/25/递归优化/#more">Read More</a>
+          </p>
+        
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/25/递归优化/" data-id="ckd2l3zjn001qkcw1o15bk45u" class="article-share-link">Share</a>
+      
+      
+  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/递归/">递归</a></li></ul>
+
+    </footer>
+  </div>
+  
+</article>
+
+
+  
+    <article id="post-hexo备份" class="article article-type-post" itemscope itemprop="blogPost">
+  <div class="article-meta">
+    <a href="/2020/04/24/hexo备份/" class="article-date">
+  <time datetime="2020-04-24T11:05:12.000Z" itemprop="datePublished">2020-04-24</time>
+</a>
+    
+  </div>
+  <div class="article-inner">
+    
+    
+      <header class="article-header">
+        
+  
+    <h1 itemprop="name">
+      <a class="article-title" href="/2020/04/24/hexo备份/">hexo备份</a>
+    </h1>
+  
+
+      </header>
+    
+    <div class="article-entry" itemprop="articleBody">
+      
+        <p>作者：直上云霄<br>链接：<a href="https://www.zhihu.com/question/21193762/answer/489124966" target="_blank" rel="noopener">https://www.zhihu.com/question/21193762/answer/489124966</a><br>来源：知乎<br>著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。</p>
+<h2 id="git分支进行多终端工作"><a href="#git分支进行多终端工作" class="headerlink" title="git分支进行多终端工作"></a><strong>git分支进行多终端工作</strong></h2><p>问题来了，如果你现在在自己的笔记本上写的博客，部署在了网站上，那么你在家里用台式机，或者实验室的台式机，发现你电脑里面没有博客的文件，或者要换电脑了，最后不知道怎么移动文件，怎么办？</p>
+<p>在这里我们就可以利用git的分支系统进行多终端工作了，这样每次打开不一样的电脑，只需要进行简单的配置和在github上把文件同步下来，就可以无缝操作了。</p>
+<h2 id="机制"><a href="#机制" class="headerlink" title="机制"></a><strong>机制</strong></h2><p>机制是这样的，由于<code>hexo d</code>上传部署到github的其实是hexo编译后的文件，是用来生成网页的，不包含源文件。</p>
+<p><img src="https://pic3.zhimg.com/50/v2-32ab30d0d28b916a204c03de4ed0fc4f_hd.jpg" alt="img"><img src="https://pic3.zhimg.com/80/v2-32ab30d0d28b916a204c03de4ed0fc4f_720w.jpg" alt="img"></p>
+<p>也就是上传的是在本地目录里自动生成的<code>.deploy_git</code>里面。</p>
+<p>其他文件 ，包括我们写在source 里面的，和配置文件，主题文件，都没有上传到github</p>
+<p><img src="https://pic4.zhimg.com/50/v2-59bb330178a4e010d9818911f789082b_hd.jpg" alt="img"><img src="https://pic4.zhimg.com/80/v2-59bb330178a4e010d9818911f789082b_720w.jpg" alt="img"></p>
+<p>所以可以利用git的分支管理，将源文件上传到github的另一个分支即可。</p>
+<h2 id="上传分支"><a href="#上传分支" class="headerlink" title="上传分支"></a><strong>上传分支</strong></h2><p>首先，先在github上新建一个hexo分支，如图：</p>
+<p><img src="https://pic1.zhimg.com/50/v2-ebb3e05632e85ab036663390305caa1c_hd.jpg" alt="img"><img src="https://pic1.zhimg.com/80/v2-ebb3e05632e85ab036663390305caa1c_720w.jpg" alt="img"></p>
+<p>然后在这个仓库的settings中，选择默认分支为hexo分支（这样每次同步的时候就不用指定分支，比较方便）。</p>
+<p><img src="https://pic2.zhimg.com/50/v2-1899b6219f3787832652813b958b9b3d_hd.jpg" alt="img"><img src="https://pic2.zhimg.com/80/v2-1899b6219f3787832652813b958b9b3d_720w.jpg" alt="img"></p>
+<p>然后在本地的任意目录下，打开git bash，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@github.com:ZJUFangzh/ZJUFangzh.github.io.git</span><br></pre></td></tr></table></figure>
+<p>将其克隆到本地，因为默认分支已经设成了hexo，所以clone时只clone了hexo。</p>
+<p>接下来在克隆到本地的<code>ZJUFangzh.github.io</code>中，把除了.git 文件夹外的所有文件都删掉</p>
+<p> 把之前我们写的博客源文件全部复制过来，除了<code>.deploy_git</code>。这里应该说一句，复制过来的源文件应该有一个<code>.gitignore</code>，用来忽略一些不需要的文件，如果没有的话，自己新建一个，在里面写上如下，表示这些类型文件不需要git：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">.DS_Store</span><br><span class="line">Thumbs.db</span><br><span class="line">db.json</span><br><span class="line">*.log</span><br><span class="line">node_modules/</span><br><span class="line">public/</span><br><span class="line">.deploy*/</span><br></pre></td></tr></table></figure>
+<p>注意，如果你之前克隆过theme中的主题文件，那么应该把主题文件中的<code>.git</code>文件夹删掉，因为git不能嵌套上传，最好是显示隐藏文件，检查一下有没有，否则上传的时候会出错，导致你的主题文件无法上传，这样你的配置在别的电脑上就用不了了。</p>
+<p>而后</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit –m &quot;add branch&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<p>这样就上传完了，可以去你的github上看一看hexo分支有没有上传上去，其中<code>node_modules</code>、<code>public</code>、<code>db.json</code>已经被忽略掉了，没有关系，不需要上传的，因为在别的电脑上需要重新输入命令安装 。</p>
+<p><img src="https://pic4.zhimg.com/50/v2-a94330ca825f4debde8ce7ceeb8f8394_hd.jpg" alt="img"><img src="https://pic4.zhimg.com/80/v2-a94330ca825f4debde8ce7ceeb8f8394_720w.jpg" alt="img"></p>
+<p>这样就上传完了。</p>
+<h2 id="更换电脑操作"><a href="#更换电脑操作" class="headerlink" title="更换电脑操作"></a><strong>更换电脑操作</strong></h2><p>一样的，跟之前的环境搭建一样，</p>
+<ul>
+<li>安装git</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install git</span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置git全局邮箱和用户名</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">git config --global user.name &quot;yourgithubname&quot;</span><br><span class="line">git config --global user.email &quot;yourgithubemail&quot;</span><br></pre></td></tr></table></figure>
+<ul>
+<li>设置ssh key</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ssh-keygen -t rsa -C &quot;youremail&quot;</span><br><span class="line">#生成后填到github和coding上（有coding平台的话）</span><br><span class="line">#验证是否成功</span><br><span class="line">ssh -T git@github.com</span><br><span class="line">ssh -T git@git.coding.net #(有coding平台的话)</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装nodejs</li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">sudo apt-get install nodejs</span><br><span class="line">sudo apt-get install npm</span><br></pre></td></tr></table></figure>
+<ul>
+<li>安装hexo  </li>
+</ul>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">sudo npm install hexo-cli -g</span><br></pre></td></tr></table></figure>
+<p>但是已经不需要初始化了，</p>
+<p>直接在任意文件夹下，</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git clone git@………………</span><br></pre></td></tr></table></figure>
+<p>然后进入克隆到的文件夹：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">cd xxx.github.io</span><br><span class="line">npm install</span><br><span class="line">npm install hexo-deployer-git --save</span><br></pre></td></tr></table></figure>
+<p>生成，部署：</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">hexo g</span><br><span class="line">hexo d</span><br></pre></td></tr></table></figure>
+<p>然后就可以开始写你的新博客了</p>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">hexo new newpage</span><br></pre></td></tr></table></figure>
+<p><strong>Tips:</strong></p>
+<ol>
+<li>不要忘了，每次写完最好都把源文件上传一下</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">git add .</span><br><span class="line">git commit –m &quot;xxxx&quot;</span><br><span class="line">git push</span><br></pre></td></tr></table></figure>
+<ol>
+<li>如果是在已经编辑过的电脑上，已经有clone文件夹了，那么，每次只要和远端同步一下就行了</li>
+</ol>
+<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">git pull</span><br></pre></td></tr></table></figure>
+      
+    </div>
+    <footer class="article-footer">
+      <a data-url="http://yoursite.com/2020/04/24/hexo备份/" data-id="ckd2l3zhj000fkcw1c0owle28" class="article-share-link">Share</a>
+      
+      
+    </footer>
+  </div>
+  
+</article>
+
+
+  
     <article id="post-js数组字符串相关api" class="article article-type-post" itemscope itemprop="blogPost">
   <div class="article-meta">
     <a href="/2020/04/24/js数组字符串相关api/" class="article-date">
@@ -106,7 +299,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ckclc4izh000q08w16cia280i" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/24/js数组字符串相关api/" data-id="ckd2l3zif000ukcw16y5ujw1w" class="article-share-link">Share</a>
       
       
     </footer>
@@ -159,7 +352,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ckclc4iz6000l08w1pnrbsfku" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/23/js-变量作用域/" data-id="ckd2l3zie000tkcw1wfqhgs4d" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -220,7 +413,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ckclc4izc000o08w15a1fimgm" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/20/js运算符疑惑笔记/" data-id="ckd2l3zih000vkcw1v267ffue" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/js/">js</a></li></ul>
@@ -297,7 +490,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/16/grid-布局/" data-id="ckclc4iyi000908w1xly22pbf" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/16/grid-布局/" data-id="ckd2l3zhg000ckcw1v7svzfuk" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -343,7 +536,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/15/水平垂直居中的几种方式/" data-id="ckclc4j0h001e08w1vfxvrux9" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/15/水平垂直居中的几种方式/" data-id="ckd2l3zjl001okcw1xd7qgxcq" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
@@ -443,7 +636,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/14/flex-布局/" data-id="ckclc4iy8000708w1s56a57u8" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/14/flex-布局/" data-id="ckd2l3zhh000dkcw157zzhsg6" class="article-share-link">Share</a>
       
       
   <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/flex/">flex</a></li></ul>
@@ -498,166 +691,7 @@
       
     </div>
     <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/13/css案例总结/" data-id="ckclc4iy5000608w16x0geu46" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-css-float" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/11/css-float/" class="article-date">
-  <time datetime="2020-04-11T06:15:42.000Z" itemprop="datePublished">2020-04-11</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/11/css-float/">css-float</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="浮动定义"><a href="#浮动定义" class="headerlink" title="浮动定义"></a>浮动定义</h4><p>float 属性能让一个元素放在其容器的左侧或右侧，允许文本和内联元素环绕它。 设置浮动的元素从网页的普通流(normal flow)中脱离，但不是完全脱离</p>
-<p>特性：一个浮动元素会向左或向右移动，直到其外边（outer edge）挨到包含块边沿 或者另一个浮动元素的外边。如果存在行盒，浮动元素的外top（边）会与当前行盒 的top（边）对齐 如果没有足够的水平空间来浮动，它会向下移动，直到位置合适</p>
-<p>因为浮动元素不在普通流内，在浮动盒之前或者之后创建的未定位的（nonpositioned）块盒会竖直排列，就像浮动不存在一样。然而，浮动元素之后的行盒 会进行必要的缩短，为了给浮动元素的margin box让出空间</p>
-<h4 id="浮动元素的特性案例"><a href="#浮动元素的特性案例" class="headerlink" title="浮动元素的特性案例"></a>浮动元素的特性案例</h4><ul>
-<li><p>浮动元素宽度是收缩的</p>
-<p><img src="./eg2.png" alt></p>
-</li>
-<li><p>对周边行内元素的影响</p>
-<p>行内元素依旧可以发现浮动元素，例如文字环绕的实现；但改文字所在的div块级元素不会发现浮动元素，设置背景色依然会覆盖浮动元素；</p>
-<p><img src="./eg1.png" alt></p>
-</li>
-<li><p>浮动元素呈现块级特性</p>
-<p>浮动的行内元素可以设置宽度、高度、内外边距</p>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/11/css-float/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/11/css-float/" data-id="ckclc4iy0000308w185ngvmnx" class="article-share-link">Share</a>
-      
-      
-  <ul class="article-tag-list"><li class="article-tag-list-item"><a class="article-tag-list-link" href="/tags/css/">css</a></li></ul>
-
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-markdown-常用语法" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/10/markdown-常用语法/" class="article-date">
-  <time datetime="2020-04-10T12:46:01.000Z" itemprop="datePublished">2020-04-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/markdown-常用语法/">markdown 常用语法</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <h4 id="标题"><a href="#标题" class="headerlink" title="标题"></a>标题</h4><blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">&gt; <span class="comment"># 这是一级标题</span></span><br><span class="line">&gt; <span class="comment">## 这是二级标题</span></span><br><span class="line">&gt; <span class="comment">### 这是三级标题</span></span><br><span class="line">&gt; <span class="comment">#### 这是四级标题</span></span><br><span class="line">&gt; <span class="comment">##### 这是五级标题</span></span><br><span class="line">&gt; <span class="comment">###### 这是六级标题</span></span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h4 id="字体"><a href="#字体" class="headerlink" title="字体"></a>字体</h4><blockquote>
-<p>要加粗的文字左右分别用两个*号包起来</p>
-<p>要倾斜的文字左右分别用一个*号包起来</p>
-<p>要倾斜和加粗的文字左右分别用三个*号包起来</p>
-<p>要加删除线的文字左右分别用两个~~号包起来</p>
-<figure class="highlight plain"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; **这是加粗的文字**</span><br><span class="line">&gt; *这是倾斜的文字*`</span><br><span class="line">&gt; ***这是斜体加粗的文字***</span><br><span class="line">&gt; ~~这是加删除线的文字~~</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-<h4 id="引用"><a href="#引用" class="headerlink" title="引用"></a>引用</h4><blockquote>
-<p>在引用的文字前加&gt;即可。引用也可以嵌套，如加两个&gt;&gt;三个&gt;&gt;&gt;</p>
-</blockquote>
-<h4 id="分割线"><a href="#分割线" class="headerlink" title="分割线"></a>分割线</h4><blockquote>
-<p>三个或者三个以上的 - 或者 * 都可以。</p>
-</blockquote>
-<h4 id="图片"><a href="#图片" class="headerlink" title="图片"></a>图片</h4><blockquote>
-<figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">&gt; ![图片alt](图片地址 <span class="string">''</span>图片title<span class="string">''</span>)</span><br><span class="line">&gt; </span><br><span class="line">&gt; 图片alt就是显示在图片下面的文字，相当于对图片内容的解释。</span><br><span class="line">&gt; 图片title是图片的标题，当鼠标移到图片上时显示的内容。title可加可不加</span><br><span class="line">&gt;</span><br></pre></td></tr></table></figure>
-</blockquote>
-        
-          <p class="article-more-link">
-            <a href="/2020/04/10/markdown-常用语法/#more">Read More</a>
-          </p>
-        
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/10/markdown-常用语法/" data-id="ckclc4iza000n08w12qlghkqx" class="article-share-link">Share</a>
-      
-      
-    </footer>
-  </div>
-  
-</article>
-
-
-  
-    <article id="post-hello-world" class="article article-type-post" itemscope itemprop="blogPost">
-  <div class="article-meta">
-    <a href="/2020/04/10/hello-world/" class="article-date">
-  <time datetime="2020-04-10T12:42:38.043Z" itemprop="datePublished">2020-04-10</time>
-</a>
-    
-  </div>
-  <div class="article-inner">
-    
-    
-      <header class="article-header">
-        
-  
-    <h1 itemprop="name">
-      <a class="article-title" href="/2020/04/10/hello-world/">Hello World</a>
-    </h1>
-  
-
-      </header>
-    
-    <div class="article-entry" itemprop="articleBody">
-      
-        <p>Welcome to <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a>! This is your very first post. Check <a href="https://hexo.io/docs/" target="_blank" rel="noopener">documentation</a> for more info. If you get any problems when using Hexo, you can find the answer in <a href="https://hexo.io/docs/troubleshooting.html" target="_blank" rel="noopener">troubleshooting</a> or you can ask me on <a href="https://github.com/hexojs/hexo/issues" target="_blank" rel="noopener">GitHub</a>.</p>
-<h2 id="Quick-Start"><a href="#Quick-Start" class="headerlink" title="Quick Start"></a>Quick Start</h2><h3 id="Create-a-new-post"><a href="#Create-a-new-post" class="headerlink" title="Create a new post"></a>Create a new post</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo new <span class="string">"My New Post"</span></span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/writing.html" target="_blank" rel="noopener">Writing</a></p>
-<h3 id="Run-server"><a href="#Run-server" class="headerlink" title="Run server"></a>Run server</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo server</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/server.html" target="_blank" rel="noopener">Server</a></p>
-<h3 id="Generate-static-files"><a href="#Generate-static-files" class="headerlink" title="Generate static files"></a>Generate static files</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo generate</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/generating.html" target="_blank" rel="noopener">Generating</a></p>
-<h3 id="Deploy-to-remote-sites"><a href="#Deploy-to-remote-sites" class="headerlink" title="Deploy to remote sites"></a>Deploy to remote sites</h3><figure class="highlight bash"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line">$ hexo deploy</span><br></pre></td></tr></table></figure>
-<p>More info: <a href="https://hexo.io/docs/deployment.html" target="_blank" rel="noopener">Deployment</a></p>
-
-      
-    </div>
-    <footer class="article-footer">
-      <a data-url="http://yoursite.com/2020/04/10/hello-world/" data-id="ckclc4iyd000808w18nb1xa2l" class="article-share-link">Share</a>
+      <a data-url="http://yoursite.com/2020/04/13/css案例总结/" data-id="ckd2l3zh50006kcw1bneox8vn" class="article-share-link">Share</a>
       
       
     </footer>
@@ -671,7 +705,7 @@
 
   <nav id="page-nav">
     
-    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
+    <a class="extend prev" rel="prev" href="/page/4/">&laquo; Prev</a><a class="page-number" href="/">1</a><span class="space">&hellip;</span><a class="page-number" href="/page/3/">3</a><a class="page-number" href="/page/4/">4</a><span class="page-number current">5</span><a class="page-number" href="/page/6/">6</a><a class="page-number" href="/page/7/">7</a><a class="extend next" rel="next" href="/page/6/">Next &raquo;</a>
   </nav>
 
 </section>
@@ -685,7 +719,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tags</h3>
     <div class="widget">
-      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js基本功/">js基本功</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobx/">mobx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue项目/">vue项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
+      <ul class="tag-list"><li class="tag-list-item"><a class="tag-list-link" href="/tags/JS/">JS</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/ajax/">ajax</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/bom/">bom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/create-react-app/">create-react-app</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/css/">css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/dom/">dom</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/flex/">flex</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/html-css/">html-css</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/http/">http</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/https基础/">https基础</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js/">js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js基本功/">js基本功</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/js性能/">js性能</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mobx/">mobx</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/mock/">mock</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/node-js/">node.js</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/product/">product</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/promise/">promise</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/react/">react</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/summary/">summary</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/vue项目/">vue项目</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/webpack/">webpack</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/对象/">对象</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/工程化/">工程化</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/打包/">打包</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/正则表达式/">正则表达式</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/网站建站案例练习/">网站建站案例练习</a></li><li class="tag-list-item"><a class="tag-list-link" href="/tags/递归/">递归</a></li></ul>
     </div>
   </div>
 
@@ -695,7 +729,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Tag Cloud</h3>
     <div class="widget tagcloud">
-      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/js基本功/" style="font-size: 10px;">js基本功</a> <a href="/tags/mobx/" style="font-size: 10px;">mobx</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/vue项目/" style="font-size: 10px;">vue项目</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/打包/" style="font-size: 10px;">打包</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
+      <a href="/tags/JS/" style="font-size: 10px;">JS</a> <a href="/tags/ajax/" style="font-size: 10px;">ajax</a> <a href="/tags/bom/" style="font-size: 10px;">bom</a> <a href="/tags/create-react-app/" style="font-size: 10px;">create-react-app</a> <a href="/tags/css/" style="font-size: 20px;">css</a> <a href="/tags/dom/" style="font-size: 10px;">dom</a> <a href="/tags/flex/" style="font-size: 10px;">flex</a> <a href="/tags/html-css/" style="font-size: 10px;">html-css</a> <a href="/tags/http/" style="font-size: 15px;">http</a> <a href="/tags/https基础/" style="font-size: 10px;">https基础</a> <a href="/tags/js/" style="font-size: 20px;">js</a> <a href="/tags/js基本功/" style="font-size: 10px;">js基本功</a> <a href="/tags/js性能/" style="font-size: 10px;">js性能</a> <a href="/tags/mobx/" style="font-size: 10px;">mobx</a> <a href="/tags/mock/" style="font-size: 10px;">mock</a> <a href="/tags/node-js/" style="font-size: 10px;">node.js</a> <a href="/tags/product/" style="font-size: 10px;">product</a> <a href="/tags/promise/" style="font-size: 10px;">promise</a> <a href="/tags/react/" style="font-size: 20px;">react</a> <a href="/tags/summary/" style="font-size: 10px;">summary</a> <a href="/tags/vue项目/" style="font-size: 10px;">vue项目</a> <a href="/tags/webpack/" style="font-size: 15px;">webpack</a> <a href="/tags/对象/" style="font-size: 10px;">对象</a> <a href="/tags/工程化/" style="font-size: 10px;">工程化</a> <a href="/tags/打包/" style="font-size: 10px;">打包</a> <a href="/tags/正则表达式/" style="font-size: 10px;">正则表达式</a> <a href="/tags/网站建站案例练习/" style="font-size: 10px;">网站建站案例练习</a> <a href="/tags/递归/" style="font-size: 10px;">递归</a>
     </div>
   </div>
 
@@ -704,7 +738,7 @@
   <div class="widget-wrap">
     <h3 class="widget-title">Archives</h3>
     <div class="widget">
-      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
+      <ul class="archive-list"><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/07/">July 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/06/">June 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/05/">May 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2020/04/">April 2020</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/08/">August 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/07/">July 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2019/06/">June 2019</a></li><li class="archive-list-item"><a class="archive-list-link" href="/archives/2018/04/">April 2018</a></li></ul>
     </div>
   </div>
 
@@ -717,23 +751,23 @@
       <ul>
         
           <li>
+            <a href="/2020/07/26/用户体验以及产品相关/">用户体验以及产品相关</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/21/防抖与节流/">防抖与节流</a>
+          </li>
+        
+          <li>
+            <a href="/2020/07/14/html-css-复习/">html-css 复习</a>
+          </li>
+        
+          <li>
             <a href="/2020/06/24/vue-account/">vue-account</a>
           </li>
         
           <li>
             <a href="/2020/06/21/react-打包发布问题记录/">react 打包发布问题记录</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/13/js-装饰器/">js 装饰器</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/13/嘚啵嘚两句-class-和-function/">嘚啵嘚两句 class 和 function</a>
-          </li>
-        
-          <li>
-            <a href="/2020/06/13/mobx/">mobx</a>
           </li>
         
       </ul>
@@ -748,7 +782,7 @@
   
   <div class="outer">
     <div id="footer-info" class="inner">
-      &copy; 2020 John Doe<br>
+      &copy; 2020 sheila<br>
       Powered by <a href="http://hexo.io/" target="_blank">Hexo</a>
     </div>
   </div>
